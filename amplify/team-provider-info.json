@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-wykopx-dev-232416-authRole",
+      "UnauthRoleArn": "arn:aws:iam::783867341575:role/amplify-wykopx-dev-232416-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::783867341575:role/amplify-wykopx-dev-232416-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+      "UnauthRoleName": "amplify-wykopx-dev-232416-unauthRole",
+      "StackName": "amplify-wykopx-dev-232416",
+      "StackId": "arn:aws:cloudformation:eu-central-1:783867341575:stack/amplify-wykopx-dev-232416/0f916780-6dad-11ec-902b-02017f7b568a",
+      "AmplifyAppId": "d25ragnar7mkzl"
+    }
+  }
+}
