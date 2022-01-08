@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "https://aujvmlo6mf.execute-api.eu-central-1.amazonaws.com/dev/main/1"
+        "https://x0rzbejrn6.execute-api.eu-central-1.amazonaws.com/dev/main/1"
       )
       .then((resp) => {
         console.log(resp);
