@@ -10,6 +10,27 @@
       "StackName": "amplify-wykopx-dev-232416",
       "StackId": "arn:aws:cloudformation:eu-central-1:783867341575:stack/amplify-wykopx-dev-232416/0f916780-6dad-11ec-902b-02017f7b568a",
       "AmplifyAppId": "d25ragnar7mkzl"
+    },
+    "categories": {
+      "function": {
+        "main": {
+          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+          "s3Key": "amplify-builds/main-6855713265576f777455-build.zip",
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "aNd401dAPp"
+        },
+        "wykopxApiFunctionLayer": {
+          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+          "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersionc8db7ab1-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d25ragnar7mkzl",
+          "type": "cicd"
+        }
+      }
     }
   }
 }
