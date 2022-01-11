@@ -15,14 +15,14 @@
       "function": {
         "main": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/main-6855713265576f777455-build.zip",
+          "s3Key": "amplify-builds/main-3877504438386b674474-build.zip",
           "apiKey": "482VSi3YyC",
           "secret": "v8RO1EXXQZ",
           "owmApiKey": "aNd401dAPp"
         },
         "wykopxApiFunctionLayer": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersion7fea5240-build.zip"
+          "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersion282bdf5a-build.zip"
         }
       },
       "hosting": {

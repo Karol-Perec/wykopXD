@@ -1,5 +1,7 @@
+const axios = require("axios");
+
 const mapEntries = (entries) =>
-  entries.map((e) => ({
+  entries?.map((e) => ({
     id: e.id,
     author: e.author,
     blocked: e.blocked,
@@ -27,15 +29,21 @@ const mapEntries = (entries) =>
 const mapLinks = (links) =>
   links.map((l) => ({
     id: l.id,
-    title: l.title,
-    description: l.description,
-    sourceUrl: l.source_url,
-    preview: l.preview,
-    voteCount: l.vote_count,
+    author: l.author,
+    buryCount: l.bury_count,
+    canVote: l.can_vote,
     commentsCount: l.comments_count,
     date: l.date,
-    plus18: l.plus18,
+    description: l.description,
     isHot: l.is_hot,
+    plus18: l.plus18,
+    preview: l.preview,
+    relatedCount: l.related_count,
+    sourceUrl: l.source_url,
+    status: l.status,
+    tags: l.tags,
+    title: l.title,
+    voteCount: l.vote_count,
   }));
 
 module.exports = { mapEntries, mapLinks };
