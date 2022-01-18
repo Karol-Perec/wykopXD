@@ -1,5 +1,19 @@
-import { createTheme } from '@mui/material';
+import { PaletteMode, ThemeOptions } from "@mui/material";
 
-export const theme = createTheme({
-  palette: { mode: 'dark', primary: { main: '#328efe' } },
+export const getTheme = (mode: PaletteMode): ThemeOptions => ({
+  palette: {
+    mode,
+    primary: { main: mode === "dark" ? "#328efe" : "#aaaaaa" },
+    text: { secondary: "#bbb" },
+  },
+  typography: {
+    h2: {
+      fontSize: 18,
+      fontWeight: 500,
+      textAlign: "center",
+    },
+    body1: {
+      fontSize: 14,
+    },
+  },
 });

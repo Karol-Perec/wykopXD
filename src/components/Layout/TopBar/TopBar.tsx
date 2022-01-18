@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Logo } from '../../Logo/Logo';
 import * as S from './TopBar.styles';
+import { ThemeToggler } from './ThemeToggler/ThemeToggler';
 
 const pages = ['Główna', 'Wykopalisko', 'Hity', 'Mikroblog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -51,6 +52,7 @@ export const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
           <S.LogoContainer>
             <Logo />
           </S.LogoContainer>
+          <ThemeToggler />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
