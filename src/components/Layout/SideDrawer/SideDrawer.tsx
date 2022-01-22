@@ -2,14 +2,18 @@ import {
   Divider,
   Drawer,
   List,
-  ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
+  useTheme,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { Logo } from '../../Logo/Logo';
+import { Link, NavLink } from 'react-router-dom';
+import { TravelExplore, Whatshot } from '@mui/icons-material';
+import * as S from './SideDrawer.styles';
+import { NavItems } from './NavItems/NavItems';
 
 interface SideDrawerProps {
   open: boolean;
@@ -17,37 +21,20 @@ interface SideDrawerProps {
 }
 
 export const SideDrawer = ({ open, onBackdropClick }: SideDrawerProps) => {
-  const list = (
-    <Box sx={{ width: 250 }}>
-      <Logo />
-      <Divider />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
     <Drawer open={open} onClose={onBackdropClick}>
-      {list}
+      <Box>
+        <ListItemIcon>
+          <S.WykopMainLogoContainer>
+            <Link to='/'>
+              <Logo />
+            </Link>
+          </S.WykopMainLogoContainer>
+        </ListItemIcon>
+        <Divider />
+        <NavItems />
+        <Divider />
+      </Box>
     </Drawer>
   );
 };

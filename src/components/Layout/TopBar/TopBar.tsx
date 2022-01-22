@@ -50,9 +50,8 @@ export const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
       <Container>
         <Toolbar disableGutters>
           <S.LogoContainer>
-            <Logo />
+            <Logo color='main' />
           </S.LogoContainer>
-          <ThemeToggler />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -97,6 +96,7 @@ export const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+            <ThemeToggler />
             <Tooltip title='Open settings'>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />

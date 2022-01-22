@@ -1,9 +1,10 @@
 import * as S from './Logo.styles';
 
-interface LogoProps {}
+export interface LogoProps {
+  color?: string;
+  transform?: string;
+}
 
-export const Logo = () => (
-  <S.Containter>
-    <S.Logo />
-  </S.Containter>
+export const Logo = ({ color, transform }: LogoProps) => (
+  <S.Logo color={color} transform={transform} />
 );
