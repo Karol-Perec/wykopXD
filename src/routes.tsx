@@ -1,6 +1,15 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Main } from './containers/Main/Main';
 
+export enum ROUTE {
+  MAIN = '/',
+  UPCOMING = '/wykopalisko',
+  HITS = '/hity',
+  MIKROBLOG = '/mikroblog',
+  MY_WYKOP = '/moj',
+  ANY = '*',
+}
+
 export const routes = (
   <Routes>
     {/* <Route path='/login'>
@@ -19,7 +28,7 @@ export const routes = (
       <Link />
     </Route> */}
 
-    <Route path='/' element={<Main />} />
-    <Route path='*' element={<Navigate to='/' />} />
+    <Route path={ROUTE.MAIN} element={<Main />} />
+    <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
   </Routes>
 );

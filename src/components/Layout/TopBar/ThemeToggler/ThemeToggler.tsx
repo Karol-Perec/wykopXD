@@ -5,6 +5,7 @@ import { ThemeModeContext } from '../../../../contexts/themeModeContext';
 
 export const ThemeToggler = () => {
   const colorMode = useContext(ThemeModeContext);
+
   return (
     <IconButton onClick={colorMode.toggleThemeMode} color='inherit'>
       {colorMode.themeMode === 'dark' ? <Brightness7 /> : <Brightness4 />}

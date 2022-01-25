@@ -50,7 +50,7 @@ export const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
       <Container>
         <Toolbar disableGutters>
           <S.LogoContainer>
-            <Logo color='main' />
+            <Logo />
           </S.LogoContainer>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

@@ -2,6 +2,7 @@ import { ReactNode, useState } from 'react';
 import { TopBar } from './TopBar/TopBar';
 import * as S from './Layout.styles';
 import { SideDrawer } from './SideDrawer/SideDrawer';
+import { useTheme } from '@mui/system';
 
 interface LayoutProps {
   children: ReactNode;

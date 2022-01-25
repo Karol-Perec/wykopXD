@@ -1,9 +1,9 @@
 import { List, useTheme } from '@mui/material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { AccountCircle, TravelExplore, Whatshot } from '@mui/icons-material';
 import { Logo } from '../../../Logo/Logo';
-import { TravelExplore, Whatshot } from '@mui/icons-material';
 import * as S from './NavItems.styles';
 import { NavItem } from './NavItem/NavItem';
+import { ROUTE } from '../../../../routes';
 
 export const NavItems = () => {
   const theme = useTheme();
@@ -16,15 +16,15 @@ export const NavItems = () => {
             <Logo color={theme.palette.action.active} />
           </S.WykopLogoContainer>
         }
-        to='/'>
+        to={ROUTE.MAIN}>
         Główna
       </NavItem>
 
-      <NavItem icon={<TravelExplore />} to='/wykopalisko'>
+      <NavItem icon={<TravelExplore />} to={ROUTE.UPCOMING}>
         Wykopalisko
       </NavItem>
 
-      <NavItem icon={<Whatshot />} to='/hity'>
+      <NavItem icon={<Whatshot />} to={ROUTE.HITS}>
         Hity
       </NavItem>
 
@@ -37,12 +37,12 @@ export const NavItems = () => {
             />
           </S.WykopLogoContainer>
         }
-        to='/mikroblog'>
+        to={ROUTE.MIKROBLOG}>
         Mikroblog
       </NavItem>
 
-      <NavItem icon={<InboxIcon />} to='/moj'>
-        Mój wykop'
+      <NavItem icon={<AccountCircle />} to='/moj'>
+        Mój wykop
       </NavItem>
     </List>
   );
