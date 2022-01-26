@@ -24,7 +24,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # vsc
-.vscode*
+.vscode/settings.json
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
@@ -46,3 +46,4 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+.vscode/settings.json
