@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { useMatch, Link as RouterLink } from 'react-router-dom';
 
 interface NavItemProps {
   children: ReactNode;
@@ -9,11 +9,15 @@ interface NavItemProps {
 }
 
 const NavItem = ({ children, icon, to }: NavItemProps) => {
+  const match = useMatch(to);
+
   return (
-    <ListItemButton component={NavLink} to={to}>
-      <ListItemIcon>{icon}</ListItemIcon>
-      <ListItemText>{children}</ListItemText>
-    </ListItemButton>
+    <li>
+      <ListItemButton selected={!!match} component={RouterLink} to={to}>
+        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemText>{children}</ListItemText>
+      </ListItemButton>
+    </li>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Box, Divider, Drawer, ListItemIcon } from '@mui/material';
+import { Divider, Drawer, ListItemIcon } from '@mui/material';
 import Logo from 'components/Logo/Logo';
 import { Link } from 'react-router-dom';
 import { ROUTE } from 'routes';
@@ -13,7 +13,7 @@ interface SideDrawerProps {
 const SideDrawer = ({ open, onBackdropClick }: SideDrawerProps) => {
   return (
     <Drawer open={open} onClose={onBackdropClick}>
-      <Box>
+      <nav>
         <ListItemIcon>
           <S.WykopMainLogoContainer>
             <Link to={ROUTE.MAIN}>
@@ -24,7 +24,7 @@ const SideDrawer = ({ open, onBackdropClick }: SideDrawerProps) => {
         <Divider />
         <NavItems />
         <Divider />
-      </Box>
+      </nav>
     </Drawer>
   );
 };
