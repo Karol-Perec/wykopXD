@@ -1,4 +1,4 @@
-import { MenuBook } from '@mui/icons-material';
+import { Menu as MenuIcon } from '@mui/icons-material';
 import {
   AppBar,
   Avatar,
@@ -55,7 +55,7 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
               size='large'
               onClick={onDrawerToggleClick}
               color='inherit'>
-              <MenuBook />
+              <MenuIcon />
             </IconButton>
           </Box>
 

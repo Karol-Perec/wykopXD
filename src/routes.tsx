@@ -1,4 +1,4 @@
-import { Main } from 'components/Layout/Layout.styles';
+import Main from 'containers/Main/Main';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 export enum ROUTE {
