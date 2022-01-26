@@ -1,39 +1,36 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import { Logo } from '../../Logo/Logo';
+import { MenuBook } from '@mui/icons-material';
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+import Logo from 'components/Logo/Logo';
+import { MouseEvent, MouseEventHandler, useState } from 'react';
+import ThemeToggler from './ThemeToggler/ThemeToggler';
 import * as S from './TopBar.styles';
-import { ThemeToggler } from './ThemeToggler/ThemeToggler';
 
 const pages = ['Główna', 'Wykopalisko', 'Hity', 'Mikroblog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 interface TopBarProps {
-  onDrawerToggleClick: React.MouseEventHandler<HTMLButtonElement>;
+  onDrawerToggleClick: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
@@ -58,32 +55,10 @@ export const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
               size='large'
               onClick={onDrawerToggleClick}
               color='inherit'>
-              <MenuIcon />
+              <MenuBook />
             </IconButton>
-            <Menu
-              id='menu-appbar'
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}>
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign='center'>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -97,11 +72,9 @@ export const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
 
           <Box sx={{ flexGrow: 0 }}>
             <ThemeToggler />
-            <Tooltip title='Open settings'>
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
-              </IconButton>
-            </Tooltip>
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+            </IconButton>
             <Menu
               sx={{ mt: '45px' }}
               id='menu-appbar'
@@ -129,3 +102,5 @@ export const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
     </AppBar>
   );
 };
+
+export default TopBar;

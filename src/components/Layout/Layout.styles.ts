@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material';
 
 export const Main = styled('main')(({ theme }) => ({
   boxSizing: 'border-box',

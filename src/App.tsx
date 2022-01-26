@@ -1,9 +1,9 @@
 import { GlobalStyles } from '@mui/material';
+import Layout from 'components/Layout/Layout';
+import { ThemeContextProvider } from 'contexts/ThemeContextProvider';
+import { globalStyles } from 'globalStyles';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { routes } from './routes';
-import { Layout } from './components/Layout/Layout';
-import { globalStyles } from './globalStyles';
-import { ThemeContextProvider } from './contexts/ThemeContextProvider';
+import { routes } from 'routes';
 
 const queryClient = new QueryClient();
 

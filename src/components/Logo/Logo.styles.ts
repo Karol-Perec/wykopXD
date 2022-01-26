@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { ReactComponent as SvgLogo } from '../../assets/images/logo.svg';
+import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 import { LogoProps } from './Logo';
 
 export const Logo = styled(SvgLogo)<LogoProps>(

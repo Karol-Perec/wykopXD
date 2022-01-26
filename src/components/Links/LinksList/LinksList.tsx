@@ -1,12 +1,13 @@
-import { Link } from '../../../types/Link.type';
-import { LinkAbstract } from '../LinkAbstract/LinkAbstract';
+
+import { Link } from 'types/Link.type';
+import LinkAbstract from '../LinkAbstract/LinkAbstract';
 import * as S from './LinksList.styles';
 
 interface LinksListProps {
   links: Link[] | undefined;
 }
 
-export const LinksList = ({ links }: LinksListProps) => {
+const LinksList = ({ links }: LinksListProps) => {
   return (
     <S.Container>
       {links?.map((link) => (
@@ -15,3 +16,5 @@ export const LinksList = ({ links }: LinksListProps) => {
     </S.Container>
   );
 };
+
+export default LinksList;

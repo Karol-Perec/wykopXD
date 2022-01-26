@@ -1,5 +1,5 @@
+import { Main } from 'components/Layout/Layout.styles';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Main } from './containers/Main/Main';
 
 export enum ROUTE {
   MAIN = '/',

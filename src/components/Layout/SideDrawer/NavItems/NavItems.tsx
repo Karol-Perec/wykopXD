@@ -1,11 +1,11 @@
-import { List, useTheme } from '@mui/material';
 import { AccountCircle, TravelExplore, Whatshot } from '@mui/icons-material';
-import { Logo } from '../../../Logo/Logo';
+import { List, useTheme } from '@mui/material';
+import Logo from 'components/Logo/Logo';
+import { ROUTE } from 'routes';
+import NavItem from './NavItem/NavItem';
 import * as S from './NavItems.styles';
-import { NavItem } from './NavItem/NavItem';
-import { ROUTE } from '../../../../routes';
 
-export const NavItems = () => {
+const NavItems = () => {
   const theme = useTheme();
 
   return (
@@ -47,3 +47,5 @@ export const NavItems = () => {
     </List>
   );
 };
+
+export default NavItems;

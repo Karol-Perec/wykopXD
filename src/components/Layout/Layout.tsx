@@ -1,14 +1,13 @@
 import { ReactNode, useState } from 'react';
-import { TopBar } from './TopBar/TopBar';
+import SideDrawer from './SideDrawer/SideDrawer';
+import TopBar from './TopBar/TopBar';
 import * as S from './Layout.styles';
-import { SideDrawer } from './SideDrawer/SideDrawer';
-import { useTheme } from '@mui/system';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-export const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
 
   const handleSideDrawerClose = () => {
@@ -30,3 +29,5 @@ export const Layout = ({ children }: LayoutProps) => {
     </>
   );
 };
+
+export default Layout;

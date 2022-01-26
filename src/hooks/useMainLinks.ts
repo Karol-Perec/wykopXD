@@ -7,9 +7,11 @@ const fetchMainLinks = async (pageNumber: number) => {
   return response.data;
 };
 
-export const useMainLinks = (pageNumber: number) =>
+const useMainLinks = (pageNumber: number) =>
   useQuery(['main-links', pageNumber], () => fetchMainLinks(pageNumber), {
     staleTime: 10000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,
   });
+
+export default useMainLinks;

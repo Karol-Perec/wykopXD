@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { ReactComponent as Logo } from '../../../../assets/images/logo.svg';
+import { ReactComponent as Logo } from 'assets/images/logo.svg';
 
 export const Container = styled('div')({
   display: 'inline-block',

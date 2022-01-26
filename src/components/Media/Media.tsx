@@ -1,7 +1,6 @@
 import { useRef } from 'react';
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
-
 import * as S from './Media.styles';
 
 interface MediaProps {
@@ -10,7 +9,7 @@ interface MediaProps {
   linkTo: string;
 }
 
-export const Media = ({ sourceUrl, preview, linkTo }: MediaProps) => {
+const Media = ({ sourceUrl, preview, linkTo }: MediaProps) => {
   const mediaContainerRef = useRef<HTMLDivElement>(null);
   const hqPreview = preview?.replace('w104h74', 'w207h139');
   const displayedPreview = hqPreview || preview;
@@ -44,3 +43,5 @@ function enlargeMediaContainer(
   mediaContainerRef.current.style.width = '100%';
   mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
 }
+
+export default Media;

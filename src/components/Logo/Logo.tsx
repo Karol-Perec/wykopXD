@@ -5,6 +5,8 @@ export interface LogoProps {
   transform?: string;
 }
 
-export const Logo = ({ color, transform }: LogoProps) => (
+const Logo = ({ color, transform }: LogoProps) => (
   <S.Logo color={color} transform={transform} />
 );
+
+export default Logo;

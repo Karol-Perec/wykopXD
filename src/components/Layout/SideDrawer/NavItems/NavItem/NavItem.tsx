@@ -1,6 +1,6 @@
+import { ReactNode } from 'react';
 import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import { ReactNode } from 'react';
 
 interface NavItemProps {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface NavItemProps {
   to: string;
 }
 
-export const NavItem = ({ children, icon, to }: NavItemProps) => {
+const NavItem = ({ children, icon, to }: NavItemProps) => {
   return (
     <ListItemButton component={NavLink} to={to}>
       <ListItemIcon>{icon}</ListItemIcon>
@@ -16,3 +16,5 @@ export const NavItem = ({ children, icon, to }: NavItemProps) => {
     </ListItemButton>
   );
 };
+
+export default NavItem;
