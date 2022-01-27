@@ -13,16 +13,16 @@
     },
     "categories": {
       "function": {
-        "main": {
-          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/main-3877504438386b674474-build.zip",
-          "apiKey": "482VSi3YyC",
-          "secret": "v8RO1EXXQZ",
-          "owmApiKey": "aNd401dAPp"
-        },
         "wykopxApiFunctionLayer": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
           "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersion282bdf5a-build.zip"
+        },
+        "promotedLinks": {
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "aNd401dAPp",
+          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+          "s3Key": "amplify-builds/promotedLinks-42554d686846756a416d-build.zip"
         }
       },
       "hosting": {

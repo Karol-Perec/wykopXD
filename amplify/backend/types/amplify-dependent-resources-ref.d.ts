@@ -3,7 +3,7 @@ export type AmplifyDependentResourcesAttributes = {
         "wykopxApiFunctionLayer": {
             "Arn": "string"
         },
-        "main": {
+        "promotedLinks": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -11,7 +11,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "api": {
-        "wykopxApi": {
+        "wykopXApi": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

@@ -16,10 +16,6 @@
     "s3Key": {
       "Type": "String"
     },
-    "functionwykopxApiFunctionLayerArn": {
-      "Type": "String",
-      "Default": "functionwykopxApiFunctionLayerArn"
-    },
     "apiKey": {
       "Type": "String"
     },
@@ -28,6 +24,10 @@
     },
     "owmApiKey": {
       "Type": "String"
+    },
+    "functionwykopxApiFunctionLayerArn": {
+      "Type": "String",
+      "Default": "functionwykopxApiFunctionLayerArn"
     }
   },
   "Conditions": {
@@ -60,12 +60,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "main",
+            "promotedLinks",
             {
               "Fn::Join": [
                 "",
                 [
-                  "main",
+                  "promotedLinks",
                   "-",
                   {
                     "Ref": "env"
@@ -115,12 +115,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "wykopxLambdaRole1668b0e7",
+            "wykopxLambdaRolebf2c275e",
             {
               "Fn::Join": [
                 "",
                 [
-                  "wykopxLambdaRole1668b0e7",
+                  "wykopxLambdaRolebf2c275e",
                   "-",
                   {
                     "Ref": "env"

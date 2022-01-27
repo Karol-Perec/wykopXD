@@ -15,7 +15,7 @@ const getAxiosInstance = (apiKey, secret, owmApiKey) => {
         config.baseURL +
         config.url +
         Object.values(config.data).join(",");
-      config.data = querystring.stringify(config.data);
+      config.data = new URLSearchParams(config.data);
       const apiSign = MD5(signContent).toString();
       config.headers["apisign"] = apiSign;
     } else {

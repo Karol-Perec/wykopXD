@@ -5,7 +5,7 @@
       "service": "LambdaLayer",
       "build": true
     },
-    "main": {
+    "promotedLinks": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
@@ -21,13 +21,13 @@
     }
   },
   "api": {
-    "wykopxApi": {
+    "wykopXApi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "main",
+          "resourceName": "promotedLinks",
           "attributes": [
             "Name",
             "Arn"

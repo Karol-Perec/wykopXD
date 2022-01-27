@@ -1,4 +1,5 @@
 {
+  "permissions": {},
   "lambdaLayers": [
     {
       "type": "ProjectLayer",
