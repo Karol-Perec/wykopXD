@@ -20,15 +20,15 @@
       },
       "function": {
         "getPromotedLinks": {
+          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+          "s3Key": "amplify-builds/getPromotedLinks-6d643061395568445933-build.zip",
           "apiKey": "482VSi3YyC",
           "secret": "v8RO1EXXQZ",
-          "owmApiKey": "aNd401dAPp",
-          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getPromotedLinks-6d643061395568445933-build.zip"
+          "owmApiKey": "aNd401dAPp"
         },
         "wykopxApiFunctionLayer": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersion7df2230b-build.zip"
+          "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersionf1bbb299-build.zip"
         }
       }
     }

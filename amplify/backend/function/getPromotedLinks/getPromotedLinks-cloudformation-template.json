@@ -16,6 +16,10 @@
     "s3Key": {
       "Type": "String"
     },
+    "functionwykopxApiFunctionLayerArn": {
+      "Type": "String",
+      "Default": "functionwykopxApiFunctionLayerArn"
+    },
     "apiKey": {
       "Type": "String"
     },
@@ -24,10 +28,6 @@
     },
     "owmApiKey": {
       "Type": "String"
-    },
-    "functionwykopxApiFunctionLayerArn": {
-      "Type": "String",
-      "Default": "functionwykopxApiFunctionLayerArn"
     }
   },
   "Conditions": {
