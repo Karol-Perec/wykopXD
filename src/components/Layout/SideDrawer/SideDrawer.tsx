@@ -1,5 +1,6 @@
 import { Divider, Drawer, ListItemIcon } from '@mui/material';
 import Logo from 'components/Logo/Logo';
+import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTE } from 'routes';
 import NavItems from './NavItems/NavItems';
@@ -7,22 +8,22 @@ import * as S from './SideDrawer.styles';
 
 interface SideDrawerProps {
   open: boolean;
-  onBackdropClick: any;
+  onClose: MouseEventHandler;
 }
 
-const SideDrawer = ({ open, onBackdropClick }: SideDrawerProps) => {
+const SideDrawer = ({ open, onClose }: SideDrawerProps) => {
   return (
-    <Drawer open={open} onClose={onBackdropClick}>
+    <Drawer open={open} onClose={onClose}>
       <nav>
         <ListItemIcon>
           <S.WykopMainLogoContainer>
-            <Link to={ROUTE.MAIN}>
+            <Link to={ROUTE.MAIN} onClick={onClose}>
               <Logo />
             </Link>
           </S.WykopMainLogoContainer>
         </ListItemIcon>
         <Divider />
-        <NavItems />
+        <NavItems onNavItemClick={onClose} />
         <Divider />
       </nav>
     </Drawer>

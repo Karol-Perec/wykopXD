@@ -23,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
       <TopBar onDrawerToggleClick={handleSideDrawerOpen} />
       <SideDrawer
         open={showSideDrawer}
-        onBackdropClick={handleSideDrawerClose}
+        onClose={handleSideDrawerClose}
       />
       <S.Main>{children}</S.Main>
     </>
