@@ -2,9 +2,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "axios": "^0.25.0",
     "crypto-js": "^4.1.1"
-  }
+  },
+  "devDependencies": {}
 }
