@@ -1,5 +1,3 @@
-const axios = require("axios");
-
 const mapEntries = (entries) =>
   entries?.map((e) => ({
     id: e.id,
@@ -10,7 +8,7 @@ const mapEntries = (entries) =>
     date: e.date,
     embed: e.embed,
     favourite: e.favourite,
-    status: "visible",
+    status: 'visible',
     userVote: e.user_vote,
     voteCount: e.vote_count,
     comments: e.comments?.map((c) => ({
