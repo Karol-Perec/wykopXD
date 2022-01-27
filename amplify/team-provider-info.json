@@ -12,23 +12,23 @@
       "AmplifyAppId": "d25ragnar7mkzl"
     },
     "categories": {
-      "function": {
-        "wykopxApiFunctionLayer": {
-          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersion282bdf5a-build.zip"
-        },
-        "promotedLinks": {
-          "apiKey": "482VSi3YyC",
-          "secret": "v8RO1EXXQZ",
-          "owmApiKey": "aNd401dAPp",
-          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/promotedLinks-42554d686846756a416d-build.zip"
-        }
-      },
       "hosting": {
         "amplifyhosting": {
           "appId": "d25ragnar7mkzl",
           "type": "cicd"
+        }
+      },
+      "function": {
+        "getPromotedLinks": {
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "aNd401dAPp",
+          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+          "s3Key": "amplify-builds/getPromotedLinks-6d643061395568445933-build.zip"
+        },
+        "wykopxApiFunctionLayer": {
+          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+          "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersion7df2230b-build.zip"
         }
       }
     }

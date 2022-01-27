@@ -20,19 +20,23 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersione5c847a0": {
+    "LambdaLayerVersion7df2230b": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs14.x"
-        ],
+        "CompatibleRuntimes": {
+          "Ref": "runtimes"
+        },
         "Content": {
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersione5c847a0-build.zip"
+          "S3Key": {
+            "Ref": "s3Key"
+          }
         },
-        "Description": "Updated layer version 2022-01-26T23:40:54.170Z",
+        "Description": {
+          "Ref": "description"
+        },
         "LayerName": {
           "Fn::Sub": [
             "wykopxApiFunctionLayer-${env}",
@@ -47,21 +51,21 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivatee5c847a0": {
+    "LambdaLayerPermissionPublic7df2230b": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:eu-central-1:783867341575:layer:wykopxApiFunctionLayer-dev:19",
-        "Principal": {
-          "Ref": "AWS::AccountId"
-        }
+        "LayerVersionArn": {
+          "Ref": "LambdaLayerVersion7df2230b"
+        },
+        "Principal": "*"
       }
     }
   },
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersione5c847a0"
+        "Ref": "LambdaLayerVersion7df2230b"
       }
     }
   }

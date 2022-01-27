@@ -60,12 +60,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "promotedLinks",
+            "getPromotedLinks",
             {
               "Fn::Join": [
                 "",
                 [
-                  "promotedLinks",
+                  "getPromotedLinks",
                   "-",
                   {
                     "Ref": "env"
@@ -115,12 +115,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "wykopxLambdaRolebf2c275e",
+            "wykopxLambdaRolea31edc90",
             {
               "Fn::Join": [
                 "",
                 [
-                  "wykopxLambdaRolebf2c275e",
+                  "wykopxLambdaRolea31edc90",
                   "-",
                   {
                     "Ref": "env"

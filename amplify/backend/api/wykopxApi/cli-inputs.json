@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/links/promoted": {
+      "name": "/links/promoted",
+      "lambdaFunction": "getPromotedLinks",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
