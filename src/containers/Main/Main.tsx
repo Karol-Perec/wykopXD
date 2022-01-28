@@ -7,10 +7,10 @@ const Main = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading, error } = usePromotedLinks(page);
 
-  if (isLoading) return <CircularProgress size={100} />;
+  // if (isLoading) return <CircularProgress size={100} />;
   if (error) return <p>{(error as Error)?.message}</p>;
 
-  return <LinksList links={data} />;
+  return <LinksList links={data} isLoading={isLoading} />;
 };
 
 export default Main;

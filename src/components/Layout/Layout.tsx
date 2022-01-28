@@ -10,21 +10,14 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
 
-  const handleSideDrawerClose = () => {
-    setShowSideDrawer(false);
-  };
-
-  const handleSideDrawerOpen = () => {
+  const toggleSideDrawer = () => {
     setShowSideDrawer((prevState) => !prevState);
   };
 
   return (
     <>
-      <TopBar onDrawerToggleClick={handleSideDrawerOpen} />
-      <SideDrawer
-        open={showSideDrawer}
-        onClose={handleSideDrawerClose}
-      />
+      <TopBar onDrawerToggleClick={toggleSideDrawer} />
+      <SideDrawer open={showSideDrawer} onClose={toggleSideDrawer} />
       <S.Main>{children}</S.Main>
     </>
   );
