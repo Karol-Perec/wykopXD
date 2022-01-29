@@ -1,5 +1,3 @@
-const { title } = require('process');
-
 const mapEntries = (entries) =>
   entries?.map((e) => ({
     id: e.id,
@@ -51,7 +49,7 @@ const mapLink = (l, withComments = false) => ({
 });
 
 const mapComments = (comments) =>
-  comments.map((c) => ({
+  comments?.map((c) => ({
     id: c.id,
     author: c.author,
     blocked: c.blocked,

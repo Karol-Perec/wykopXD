@@ -9,7 +9,7 @@ exports.handler = async (event) => {
     '/links/promoted/page/' + event.queryStringParameters.page
   );
 
-  const links = mapLinks(response.data.data);
+  const links = mapLinks(response.data.data, false);
 
   return {
     statusCode: 200,
