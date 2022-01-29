@@ -1,3 +1,4 @@
+import Link from 'containers/Link/Link';
 import Main from 'containers/Main/Main';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -8,6 +9,7 @@ export enum ROUTE {
   MIKROBLOG = '/mikroblog',
   MY_WYKOP = '/moj',
   ANY = '*',
+  LINK = '/link/:id',
 }
 
 export const routes = (
@@ -29,6 +31,7 @@ export const routes = (
     </Route> */}
 
     <Route path={ROUTE.MAIN} element={<Main />} />
+    <Route path={ROUTE.LINK} element={<Link />} />
     <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
   </Routes>
 );

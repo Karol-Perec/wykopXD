@@ -18,6 +18,20 @@
           ]
         }
       ]
+    },
+    "getLink": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -28,6 +42,14 @@
         {
           "category": "function",
           "resourceName": "getPromotedLinks",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getLink",
           "attributes": [
             "Name",
             "Arn"

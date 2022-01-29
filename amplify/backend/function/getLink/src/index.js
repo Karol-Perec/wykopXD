@@ -1,15 +1,13 @@
 const { getAxiosInstance } = require('/opt/axios');
-const { mapLinks } = require('/opt/utils');
 
 exports.handler = async (event) => {
   const { API_KEY, SECRET, OWM_API_KEY } = process.env;
   const axios = getAxiosInstance(API_KEY, SECRET, OWM_API_KEY);
-  
-  const response = axios.get(
-    '/links/promoted/page/' + event.queryStringParameters.page
-  );
 
-  const links = mapLinks(response.data.data);
+  const response = axios.get(
+    `/links/link/${event.pathParameters.id}/withcomments/true/`
+  );
+  console.log(response);
 
   return {
     statusCode: 200,
@@ -17,6 +15,6 @@ exports.handler = async (event) => {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
     },
-    body: JSON.stringify(links),
+    body: JSON.stringify(response.data),
   };
 };
