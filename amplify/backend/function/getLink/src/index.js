@@ -9,7 +9,7 @@ exports.handler = async (event) => {
     `/links/link/${event.pathParameters.id}/withcomments/true/`
   );
 
-  const link = mapLink(response.data.data);
+  const link = mapLink(response.data.data, true);
 
   return {
     statusCode: 200,
