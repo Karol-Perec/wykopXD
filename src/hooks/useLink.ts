@@ -3,7 +3,7 @@ import { Link } from '../types/Link.type';
 import axios from '../utils/axios';
 
 const getLink = async (id: number) => {
-  const response = await axios.get<Link[]>(`/link/${id}`);
+  const response = await axios.get<Link[]>(`/links/${id}`);
   return response.data;
 };
 

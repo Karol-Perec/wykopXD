@@ -1,3 +1,5 @@
+const { title } = require('process');
+
 const mapEntries = (entries) =>
   entries?.map((e) => ({
     id: e.id,
@@ -24,24 +26,45 @@ const mapEntries = (entries) =>
     })),
   }));
 
-const mapLinks = (links) =>
-  links.map((l) => ({
-    id: l.id,
-    author: l.author,
-    buryCount: l.bury_count,
-    canVote: l.can_vote,
-    commentsCount: l.comments_count,
-    date: l.date,
-    description: l.description,
-    isHot: l.is_hot,
-    plus18: l.plus18,
-    preview: l.preview,
-    relatedCount: l.related_count,
-    sourceUrl: l.source_url,
-    status: l.status,
-    tags: l.tags,
-    title: l.title,
-    voteCount: l.vote_count,
+const mapLinks = (links) => links.map(mapLink);
+
+const mapLink = (l, withComments = false) => ({
+  id: l.id,
+  author: l.author,
+  blocked: l.blocked,
+  canVote: l.can_vote,
+  date: l.date,
+  favourite: l.favourite,
+  linkId: l.link_id,
+  parentId: l.parentId,
+  plus18: l.plus18,
+  preview: l.preview,
+  relatedCount: l.related_count,
+  sourceUrl: l.source_url,
+  status: l.status,
+  tags: l.tags,
+  title: l.title,
+  userVote: l.user_vote,
+  voteCount: l.vote_count,
+  voteCountPlus: l.vote_count_plus,
+  ...(withComments && { comments: mapComments(l.comments) }),
+});
+
+const mapComments = (comments) =>
+  comments.map((c) => ({
+    id: c.id,
+    author: c.author,
+    blocked: c.blocked,
+    body: c.body,
+    canVote: c.can_vote,
+    date: c.date,
+    preview: c.preview,
+    relatedCount: c.related_count,
+    sourceUrl: c.source_url,
+    status: c.status,
+    tags: c.tags,
+    title: c.title,
+    voteCount: c.vote_count,
   }));
 
-module.exports = { mapEntries, mapLinks };
+module.exports = { mapEntries, mapLinks, mapLink };
