@@ -14,7 +14,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
     "isolatedModules": true
