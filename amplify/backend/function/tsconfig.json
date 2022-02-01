@@ -11,6 +11,7 @@
       "/opt/nodejs/*": ["wykopxApiFunctionLayer/lib/nodejs/*"]
     },
     "noImplicitUseStrict": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
