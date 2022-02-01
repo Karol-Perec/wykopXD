@@ -1,5 +1,5 @@
-const mapEntries = (entries) =>
-  entries?.map((e) => ({
+export const mapEntries = (entries: any) =>
+  entries?.map((e: any) => ({
     id: e.id,
     author: e.author,
     blocked: e.blocked,
@@ -11,7 +11,7 @@ const mapEntries = (entries) =>
     status: 'visible',
     userVote: e.user_vote,
     voteCount: e.vote_count,
-    comments: e.comments?.map((c) => ({
+    comments: e.comments?.map((c: any) => ({
       id: c.id,
       author: c.author,
       date: c.date,
@@ -24,9 +24,9 @@ const mapEntries = (entries) =>
     })),
   }));
 
-const mapLinks = (links) => links.map(mapLink);
+export const mapLinks = (links: any) => links.map(mapLink);
 
-const mapLink = (l, withComments = false) => ({
+export const mapLink = (l: any, withComments = false) => ({
   id: l.id,
   author: l.author,
   blocked: l.blocked,
@@ -52,8 +52,8 @@ const mapLink = (l, withComments = false) => ({
   ...(withComments && { comments: mapComments(l.comments) }),
 });
 
-const mapComments = (comments) =>
-  comments?.map((c) => ({
+export const mapComments = (comments: any) =>
+  comments?.map((c: any) => ({
     id: c.id,
     author: c.author,
     blocked: c.blocked,
@@ -68,5 +68,3 @@ const mapComments = (comments) =>
     title: c.title,
     voteCount: c.vote_count,
   }));
-
-module.exports = { mapEntries, mapLinks, mapLink };

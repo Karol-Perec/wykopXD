@@ -1,12 +1,16 @@
-const axios = require('axios');
-const { MD5 } = require('crypto-js');
+import axios from 'axios';
+import { MD5 } from 'crypto-js';
 
-const getAxiosInstance = (apiKey, secret, owmApiKey) => {
+export const getAxiosInstance = (
+  apiKey: string,
+  secret: string,
+  owmApiKey: string
+) => {
   const axiosInstance = axios.create({
     baseURL: 'https://a2.wykop.pl',
   });
 
-  axiosInstance.interceptors.request.use((config) => {
+  axiosInstance.interceptors.request.use((config: any) => {
     if (config.method === 'post') {
       config.url += '/appkey/' + apiKey;
       const signContent =
@@ -25,5 +29,3 @@ const getAxiosInstance = (apiKey, secret, owmApiKey) => {
 
   return axiosInstance;
 };
-
-module.exports = { getAxiosInstance };
