@@ -1,3 +1,5 @@
+import { WykopLink } from '../../../types/wykopLink.types';
+
 export const mapEntries = (entries: any) =>
   entries?.map((e: any) => ({
     id: e.id,
@@ -24,21 +26,18 @@ export const mapEntries = (entries: any) =>
     })),
   }));
 
-export const mapLinks = (links: any) => links.map(mapLink);
+export const mapLinks = (links: any) => links.map(mapLink, false);
 
-export const mapLink = (l: any, withComments = false) => ({
+export const mapLink = (l: WykopLink, withComments) => ({
   id: l.id,
   author: l.author,
-  blocked: l.blocked,
   buryCount: l.bury_count,
   canVote: l.can_vote,
   commentsCount: l.comments_count,
   date: l.date,
   description: l.description,
-  favourite: l.favourite,
+  userFavorite: l.user_favorite,
   isHot: l.is_hot,
-  linkId: l.link_id,
-  parentId: l.parentId,
   plus18: l.plus18,
   preview: l.preview,
   relatedCount: l.related_count,
@@ -48,7 +47,6 @@ export const mapLink = (l: any, withComments = false) => ({
   title: l.title,
   userVote: l.user_vote,
   voteCount: l.vote_count,
-  voteCountPlus: l.vote_count_plus,
   ...(withComments && { comments: mapComments(l.comments) }),
 });
 

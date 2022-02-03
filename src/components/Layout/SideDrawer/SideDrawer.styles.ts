@@ -1,10 +1,10 @@
-import { styled } from '@mui/material';
+import { styled } from "@mui/material";
 
-export const Container = styled('div')(({ theme }) => ({}));
+export const Container = styled("div")(({ theme }) => ({}));
 
-export const WykopMainLogoContainer = styled('div')(({ theme }) => ({
-  textAlign: 'center',
-  width: '100%',
+export const WykopMainLogoContainer = styled("div")(({ theme }) => ({
+  textAlign: "center",
+  width: "100%",
   height: 50,
   margin: theme.spacing(2),
 }));

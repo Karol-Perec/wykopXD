@@ -1,6 +1,6 @@
-import { useQuery } from 'react-query';
-import { Link } from '../types/Link.type';
-import axios from '../utils/axios';
+import { useQuery } from "react-query";
+import { Link } from "../types/Link.type";
+import axios from "../utils/axios";
 
 const getLink = async (id: number) => {
   const response = await axios.get<Link[]>(`/links/${id}`);
@@ -8,7 +8,7 @@ const getLink = async (id: number) => {
 };
 
 const useLink = (id: number) =>
-  useQuery(['link', id], () => getLink(id), {
+  useQuery(["link", id], () => getLink(id), {
     staleTime: 10000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,

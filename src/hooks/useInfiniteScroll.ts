@@ -1,11 +1,11 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from "react";
 
 const useInfiniteScroll = (scrollRef: any, dispatch: any) => {
   const scrollObserver = useCallback(
     (node) => {
       const options = {
         root: null,
-        rootMargin: '20px',
+        rootMargin: "20px",
         threshold: 0.9,
       };
       new IntersectionObserver((entries) => {

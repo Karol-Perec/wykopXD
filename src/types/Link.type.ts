@@ -1,6 +1,6 @@
-import { Author } from './Author.type';
+import { Author } from "./Author.type";
 
-export type LinkStatus = 'promoted';
+export type LinkStatus = "promoted";
 
 export interface Link {
   id: number;

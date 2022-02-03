@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { MD5 } from 'crypto-js';
+import axios from "axios";
+import { MD5 } from "crypto-js";
 
 export const getAxiosInstance = (
   apiKey: string,
@@ -7,21 +7,21 @@ export const getAxiosInstance = (
   owmApiKey: string
 ) => {
   const axiosInstance = axios.create({
-    baseURL: 'https://a2.wykop.pl',
+    baseURL: "https://a2.wykop.pl",
   });
 
   axiosInstance.interceptors.request.use((config: any) => {
-    if (config.method === 'post') {
-      config.url += '/appkey/' + apiKey;
+    if (config.method === "post") {
+      config.url += "/appkey/" + apiKey;
       const signContent =
         secret +
         config.baseURL +
         config.url +
-        Object.values(config.data).join(',');
+        Object.values(config.data).join(",");
       const apiSign = MD5(signContent).toString();
-      config.headers['apisign'] = apiSign;
+      config.headers["apisign"] = apiSign;
     } else {
-      config.url += '/appkey/' + owmApiKey;
+      config.url += "/appkey/" + owmApiKey;
     }
 
     return config;

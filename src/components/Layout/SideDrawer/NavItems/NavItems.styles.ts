@@ -1,6 +1,6 @@
-import { styled } from '@mui/material';
+import { styled } from "@mui/material";
 
-export const WykopLogoContainer = styled('div')({
+export const WykopLogoContainer = styled("div")({
   width: 24,
   height: 18,
 });

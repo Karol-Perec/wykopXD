@@ -36,6 +36,11 @@
           "owmApiKey": "aNd401dAPp",
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
           "s3Key": "amplify-builds/getLink-4a642b4a594e5a39524f-build.zip"
+        },
+        "getEntries": {
+          "apiKey": "482VSi3YyC",
+          "owmApiKey": "aNd401dAPp",
+          "secret": "v8RO1EXXQZ"
         }
       }
     }

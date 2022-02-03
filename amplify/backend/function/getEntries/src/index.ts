@@ -4,10 +4,9 @@ import {
   APIGatewayProxyResult,
 } from 'aws-lambda';
 import { AxiosResponse } from 'axios';
-import { WykopLink } from '../../types/wykopLink.types';
+import { WykopEntry } from '../../types/wykopEntry.types';
 import { WykopResponse } from '../../types/wykopResponse.types';
 import { getAxiosInstance } from '/opt/nodejs/axios';
-import { mapLink } from '/opt/nodejs/utils';
 
 export const handler: Handler<
   APIGatewayProxyEvent,
@@ -16,11 +15,11 @@ export const handler: Handler<
   const { API_KEY, SECRET, OWM_API_KEY } = process.env;
   const axios = getAxiosInstance(API_KEY!, SECRET!, OWM_API_KEY!);
 
-  const response: AxiosResponse<WykopResponse<WykopLink>> = await axios.get(
-    `/links/link/${event.pathParameters?.id}/withcomments/true/`
+  const response: AxiosResponse<WykopResponse<WykopEntry[]>> = await axios.get(
+    `/entries/hot/page/${event.queryStringParameters?.page}/return/comments/`
   );
 
-  const link = mapLink(response.data.data, true);
+  const link = response.data.data; //mapLink(response.data.data, true);
 
   return {
     statusCode: 200,

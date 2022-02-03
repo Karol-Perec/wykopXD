@@ -1,4 +1,4 @@
-type Sex = 'male' | 'female';
+type Sex = "male" | "female";
 
 export interface Author {
   avatar: string;

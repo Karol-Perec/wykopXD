@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"7.6.5\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "Lambda Function resource stack creation using Amplify CLI",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -16,18 +16,22 @@
     "s3Key": {
       "Type": "String"
     },
-    "functionwykopxApiFunctionLayerArn": {
-      "Type": "String",
-      "Default": "functionwykopxApiFunctionLayerArn"
-    },
+
     "apiKey": {
       "Type": "String"
     },
+
+    "owmApiKey": {
+      "Type": "String"
+    },
+
     "secret": {
       "Type": "String"
     },
-    "owmApiKey": {
-      "Type": "String"
+
+    "functionwykopxApiFunctionLayerArn": {
+      "Type": "String",
+      "Default": "functionwykopxApiFunctionLayerArn"
     }
   },
   "Conditions": {
@@ -60,12 +64,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "getPromotedLinks",
+            "getEntries",
             {
               "Fn::Join": [
                 "",
                 [
-                  "getPromotedLinks",
+                  "getEntries",
                   "-",
                   {
                     "Ref": "env"
@@ -77,32 +81,16 @@
         },
         "Environment": {
           "Variables": {
-            "ENV": {
-              "Ref": "env"
-            },
-            "REGION": {
-              "Ref": "AWS::Region"
-            },
-            "API_KEY": {
-              "Ref": "apiKey"
-            },
-            "SECRET": {
-              "Ref": "secret"
-            },
-            "OWM_API_KEY": {
-              "Ref": "owmApiKey"
-            }
+            "ENV": { "Ref": "env" },
+            "REGION": { "Ref": "AWS::Region" },
+            "API_KEY": { "Ref": "apiKey" },
+            "OWM_API_KEY": { "Ref": "owmApiKey" },
+            "SECRET": { "Ref": "secret" }
           }
         },
-        "Role": {
-          "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]
-        },
+        "Role": { "Fn::GetAtt": ["LambdaExecutionRole", "Arn"] },
         "Runtime": "nodejs14.x",
-        "Layers": [
-          {
-            "Ref": "functionwykopxApiFunctionLayerArn"
-          }
-        ],
+        "Layers": [{ "Ref": "functionwykopxApiFunctionLayerArn" }],
         "Timeout": 25
       }
     },
@@ -112,12 +100,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "wykopxLambdaRolea31edc90",
+            "wykopxLambdaRole693c86a5",
             {
               "Fn::Join": [
                 "",
                 [
-                  "wykopxLambdaRolea31edc90",
+                  "wykopxLambdaRole693c86a5",
                   "-",
                   {
                     "Ref": "env"
@@ -146,11 +134,7 @@
       "Type": "AWS::IAM::Policy",
       "Properties": {
         "PolicyName": "lambda-execution-policy",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
+        "Roles": [{ "Ref": "LambdaExecutionRole" }],
         "PolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
@@ -165,15 +149,9 @@
                 "Fn::Sub": [
                   "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*",
                   {
-                    "region": {
-                      "Ref": "AWS::Region"
-                    },
-                    "account": {
-                      "Ref": "AWS::AccountId"
-                    },
-                    "lambda": {
-                      "Ref": "LambdaFunction"
-                    }
+                    "region": { "Ref": "AWS::Region" },
+                    "account": { "Ref": "AWS::AccountId" },
+                    "lambda": { "Ref": "LambdaFunction" }
                   }
                 ]
               }
@@ -190,9 +168,7 @@
       }
     },
     "Arn": {
-      "Value": {
-        "Fn::GetAtt": ["LambdaFunction", "Arn"]
-      }
+      "Value": { "Fn::GetAtt": ["LambdaFunction", "Arn"] }
     },
     "Region": {
       "Value": {
