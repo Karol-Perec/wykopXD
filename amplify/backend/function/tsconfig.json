@@ -8,14 +8,10 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
+      "@wykop-types": ["types"],
+      "@wykopx-types": ["../../../src/types"],
       "/opt/nodejs/*": ["wykopxApiFunctionLayer/lib/nodejs/*"],
-      "aws-lambda": [
-        "wykopxApiFunctionLayer/lib/nodejs/node_modules/@types/aws-lambda"
-      ],
-      "axios": ["wykopxApiFunctionLayer/lib/nodejs/node_modules/axios"],
-      "crypto-js": [
-        "wykopxApiFunctionLayer/lib/nodejs/node_modules/@types/crypto-js"
-      ]
+      "aws-lambda": ["wykopxApiFunctionLayer/lib/nodejs/node_modules/@types/aws-lambda"]
     },
     "noImplicitUseStrict": true,
     "esModuleInterop": true,

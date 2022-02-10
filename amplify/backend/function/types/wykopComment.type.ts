@@ -1,5 +1,5 @@
-import { WykopEmbedContent } from './wykopEmbedContent.types';
-import { WykopAuthor } from './wykopProfile.types';
+import { WykopEmbedContent } from './wykopEmbedContent.type';
+import { WykopAuthor } from './wykopProfile.type';
 
 interface WykopComment {
   id: number;

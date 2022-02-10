@@ -1,10 +1,8 @@
-import { Author } from "./Author.type";
-
-export type LinkStatus = "promoted";
+import { User } from './User.type';
 
 export interface Link {
   id: number;
-  author: Author;
+  author: User;
   buryCount: number;
   canVote: boolean;
   commentsCount: number;
@@ -15,7 +13,6 @@ export interface Link {
   preview: string;
   relatedCount: number;
   sourceUrl: string;
-  status: LinkStatus;
   tags: string;
   title: string;
   voteCount: number;

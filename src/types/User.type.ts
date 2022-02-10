@@ -8,8 +8,9 @@ enum Color {
   MEDIA = 2001, //  blue media
 }
 
-export interface Author {
+export interface User {
   login: string;
-  color: Color;
-  avatar: string;
+  sex?: 'male' | 'female';
+  status: Color;
+  avatarUrl: string;
 }

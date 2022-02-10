@@ -4,7 +4,7 @@ export interface WykopResponse<T> {
     prev?: string;
     next?: string;
   };
-  error: WykopError;
+  error?: WykopError;
 }
 
 export interface WykopError {

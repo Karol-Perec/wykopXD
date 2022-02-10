@@ -1,33 +1,20 @@
-import {
-  Handler,
-  APIGatewayProxyEvent,
-  APIGatewayProxyResult,
-} from 'aws-lambda';
-import { AxiosResponse } from 'axios';
-import { WykopLink } from '../../types/wykopLink.types';
-import { WykopResponse } from '../../types/wykopResponse.types';
+import { Handler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { WykopLink, WykopResponse } from '@wykop-types';
 import { getAxiosInstance } from '/opt/nodejs/axios';
-import { mapLink } from '/opt/nodejs/utils';
+import { createResponse } from '/opt/nodejs/lambdaUtils';
+import { mapLink } from '/opt/nodejs/dataUtils';
 
-export const handler: Handler<
-  APIGatewayProxyEvent,
-  APIGatewayProxyResult
-> = async (event) => {
+export const handler: Handler<APIGatewayProxyEvent, APIGatewayProxyResult> = async (event) => {
   const { API_KEY, SECRET, OWM_API_KEY } = process.env;
   const axios = getAxiosInstance(API_KEY!, SECRET!, OWM_API_KEY!);
 
-  const response: AxiosResponse<WykopResponse<WykopLink>> = await axios.get(
+  const { data } = await axios.get<WykopResponse<WykopLink>>(
     `/links/link/${event.pathParameters?.id}/withcomments/true/`
   );
 
-  const link = mapLink(response.data.data, true);
+  if (data.error) return createResponse(data.error, 400);
 
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': '*',
-    },
-    body: JSON.stringify(link),
-  };
+  const link = mapLink(data.data, true);
+
+  return createResponse(link, 200);
 };

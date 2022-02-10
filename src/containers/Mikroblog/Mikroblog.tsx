@@ -1,15 +1,32 @@
 import { useState } from 'react';
 import { CircularProgress } from '@mui/material';
-import usePromotedLinks from 'hooks/usePromotedLinks';
+import useEntries from 'hooks/useEntries';
+import { useParams } from 'react-router-dom';
 
-const Mikroblog = () => {
+export enum MikroblogCategory {
+  NEW = 'najnowsze',
+  ACTIVE = 'aktywne',
+  HOT = 'hot',
+  FAVOURITE = 'ulubione',
+}
+
+interface MikroblogProps {
+  category?: MikroblogCategory;
+}
+
+const Mikroblog = ({ category }: MikroblogProps) => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, error } = usePromotedLinks(page);
+  const params = useParams();
+  console.log(params);
+
+  const { data, isLoading, error } = useEntries(page, category ?? MikroblogCategory.HOT);
 
   if (isLoading) return <CircularProgress size={100} />;
   if (error) return <p>{(error as Error)?.message}</p>;
 
-  return 'Mikroblog';
+  console.log(data);
+
+  return <div>Mikroblog</div>;
 };
 
 export default Mikroblog;

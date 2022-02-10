@@ -3,7 +3,7 @@ import { PaletteMode, PaletteOptions, ThemeOptions } from "@mui/material";
 const darkModePalette: PaletteOptions = {};
 
 const lightModePalette: PaletteOptions = {
-  background: { default: "#fdfdfd" },
+  background: { default: "#f9fbfa" },
 };
 
 export const getTheme = (mode: PaletteMode): ThemeOptions => ({

@@ -1,6 +1,7 @@
 import Link from 'containers/Link/Link';
 import Main from 'containers/Main/Main';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import Mikroblog, { MikroblogCategory } from './containers/Mikroblog/Mikroblog';
 
 export enum ROUTE {
   MAIN = '/',
@@ -30,8 +31,13 @@ export const routes = (
       <Link />
     </Route> */}
 
-    <Route path={ROUTE.MAIN} element={<Main />} />
+    <Route path={ROUTE.MIKROBLOG} element={<Mikroblog />}>
+      {Object.values(MikroblogCategory).map((category) => (
+        <Route path={category} element={<Mikroblog category={category} />} />
+      ))}
+    </Route>
     <Route path={ROUTE.LINK} element={<Link />} />
+    <Route path={ROUTE.MAIN} element={<Main />} />
     <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
   </Routes>
 );

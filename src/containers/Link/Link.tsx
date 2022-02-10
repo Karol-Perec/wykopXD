@@ -7,6 +7,8 @@ const Link = () => {
 
   if (error) return <p>{(error as Error)?.message}</p>;
 
+  console.log(data);
+
   return <>{JSON.stringify(data)}</>;
 };
 
