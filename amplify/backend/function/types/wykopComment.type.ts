@@ -28,7 +28,7 @@ export interface WykopEntryCommentFull extends WykopEntryComment {
 
 export interface WykopLinkComment extends WykopComment {
   link_id?: string;
-  vote_count_plus?: number;
+  vote_count_plus: number;
 }
 
 export interface WykopLinkCommentFull extends WykopLinkComment {

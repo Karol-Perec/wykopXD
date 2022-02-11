@@ -1,4 +1,3 @@
-import { Comment } from './Comment.type';
 import { Media } from './Media.type';
 import { User } from './User.type';
 
@@ -9,8 +8,16 @@ export interface Entry {
   user: User;
   body: string;
   date: Date;
-  likeCount: number;
+  voteCountPlus: number;
   commentsCount: number;
-  comments?: Comment[];
   media?: Media;
+  comments?: EntryComment[];
+}
+
+export interface EntryComment {
+  id: number;
+  user: User;
+  body: string;
+  date: Date;
+  voteCountPlus: number;
 }

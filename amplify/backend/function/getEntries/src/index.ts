@@ -9,7 +9,7 @@ export const handler: Handler<APIGatewayProxyEvent, APIGatewayProxyResult> = asy
   const axios = getAxiosInstance(API_KEY!, SECRET!, OWM_API_KEY!);
 
   const { data } = await axios.get<WykopResponse<WykopEntry[]>>(
-    `/entries/${event.queryStringParameters?.category}/page/${event.queryStringParameters?.page}/return/comments`
+    `/entries/${event.queryStringParameters?.category}/page/${event.queryStringParameters?.page}/return/comments/output/clear`
   );
 
   if (data.error) return createResponse(data.error, 400);

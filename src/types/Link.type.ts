@@ -1,19 +1,27 @@
 import { User } from './User.type';
-
 export interface Link {
   id: number;
-  author: User;
+  user: User;
   buryCount: number;
-  canVote: boolean;
   commentsCount: number;
   date: Date;
-  description: string;
+  body: string;
   isHot: boolean;
   plus18: boolean;
   preview: string;
   relatedCount: number;
   sourceUrl: string;
-  tags: string;
   title: string;
   voteCount: number;
+  comments?: LinkComment[];
+}
+
+export interface LinkComment {
+  id: number;
+  user: User;
+  body: string;
+  date: Date;
+  voteCountPlus: number;
+  voteCountMinus: number;
+  responses?: LinkComment[];
 }

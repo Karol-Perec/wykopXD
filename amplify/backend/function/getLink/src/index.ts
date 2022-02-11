@@ -9,12 +9,12 @@ export const handler: Handler<APIGatewayProxyEvent, APIGatewayProxyResult> = asy
   const axios = getAxiosInstance(API_KEY!, SECRET!, OWM_API_KEY!);
 
   const { data } = await axios.get<WykopResponse<WykopLink>>(
-    `/links/link/${event.pathParameters?.id}/withcomments/true/`
+    `/links/link/${event.pathParameters?.id}/withcomments/true/output/clear`
   );
 
   if (data.error) return createResponse(data.error, 400);
 
-  const link = mapLink(data.data, true);
+  const link = mapLink(data.data);
 
   return createResponse(link, 200);
 };
