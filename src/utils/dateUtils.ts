@@ -1,8 +1,8 @@
-export const calculateAprroximatedAge = (date) => {
+export const calculateAprroximatedAge = (date: Date) => {
   const startDate = new Date(date);
   const now = new Date();
 
-  const ageInSeconds = (now - startDate) / 1000;
+  const ageInSeconds = (now.getTime() - startDate.getTime()) / 1000;
   if (!ageInSeconds) {
     return '';
   }
@@ -19,15 +19,12 @@ export const calculateAprroximatedAge = (date) => {
   if (ageInDays < 7) return Math.floor(ageInDays) + ' dni';
 
   const ageInWeeks = ageInDays / 7;
-  if (ageInWeeks < 5)
-    return Math.floor(ageInDays) + (ageInWeeks < 2 ? 'tyg.' : ' tydz.');
+  if (ageInWeeks < 5) return Math.floor(ageInDays) + (ageInWeeks < 2 ? 'tyg.' : ' tydz.');
 
   const ageInMonths = ageInDays / 30;
   if (ageInMonths < 12) return Math.floor(ageInMonths) + ' mies.';
 
   const ageInYears = Math.floor(ageInMonths / 12);
   const monthsRest = ageInMonths - ageInYears * 12;
-  return (
-    ageInYears + (ageInYears < 2 ? ' rok ' : ' lat ') + monthsRest + ' mies.'
-  );
+  return ageInYears + (ageInYears < 2 ? ' rok ' : ' lat ') + monthsRest + ' mies.';
 };
