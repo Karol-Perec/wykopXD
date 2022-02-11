@@ -31,6 +31,8 @@
     "eject": "react-scripts eject",
     "amplify:getLink": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -",
     "amplify:getPromotedLinks": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -",
+    "amplify:getEntry": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -",
+    "amplify:getEntries": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -",
     "amplify:wykopxApiFunctionLayer": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -"
   },
   "eslintConfig": {

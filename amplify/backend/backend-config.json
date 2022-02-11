@@ -46,6 +46,20 @@
           ]
         }
       ]
+    },
+    "getEntry": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -72,6 +86,14 @@
         {
           "category": "function",
           "resourceName": "getEntries",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getEntry",
           "attributes": [
             "Name",
             "Arn"
