@@ -33,7 +33,7 @@ export const routes = (
 
     <Route path={ROUTE.MIKROBLOG} element={<Mikroblog />}>
       {Object.values(MikroblogCategory).map((category) => (
-        <Route path={category} element={<Mikroblog category={category} />} />
+        <Route path={category} element={<Mikroblog category={category} key={category} />} />
       ))}
     </Route>
     <Route path={ROUTE.LINK} element={<Link />} />

@@ -21,7 +21,7 @@ const NavItems = ({ onNavItemClick }: NavItemsProps) => {
 
   const myWykopPageIcon = (
     <S.WykopLogoContainer>
-      <Logo transform='rotate(180deg)' color={theme.palette.action.active} />
+      <Logo transform='rotate(180)' color={theme.palette.action.active} />
     </S.WykopLogoContainer>
   );
 

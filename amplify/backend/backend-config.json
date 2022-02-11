@@ -68,6 +68,14 @@
             "Name",
             "Arn"
           ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getEntries",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ]
     }
