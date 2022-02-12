@@ -22,8 +22,8 @@
         "setting": "open"
       }
     },
-    "/entry/{id}": {
-      "name": "/entry/{id}",
+    "/entries/{id}": {
+      "name": "/entries/{id}",
       "lambdaFunction": "getEntry",
       "permissions": {
         "setting": "open"

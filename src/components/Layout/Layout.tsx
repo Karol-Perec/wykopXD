@@ -10,10 +10,8 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
 
-  const toggleSideDrawer = () => {
-    setShowSideDrawer((prevState) => !prevState);
-  };
-
+  const toggleSideDrawer = () => setShowSideDrawer((prevState) => !prevState);
+  
   return (
     <>
       <TopBar onDrawerToggleClick={toggleSideDrawer} />

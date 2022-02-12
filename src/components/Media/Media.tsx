@@ -3,22 +3,23 @@ import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
 import * as S from './Media.styles';
 
+type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';
 interface MediaProps {
   sourceUrl: string;
-  preview: string;
+  previewUrl: string;
   linkTo: string;
+  previewQuality: ImageQuality;
 }
 
-const Media = ({ sourceUrl, preview, linkTo }: MediaProps) => {
+const Media = ({ sourceUrl, previewUrl, linkTo }: MediaProps) => {
   const mediaContainerRef = useRef<HTMLDivElement>(null);
-  const hqPreview = preview?.replace('w104h74', 'w207h139');
-  const displayedPreview = hqPreview || preview;
+  const displayedPreviewUrl = getDisplayedPreviewUrl(previewUrl, 'hq');
 
   const media = ReactPlayer.canPlay(sourceUrl) ? (
     <ReactPlayer
       url={sourceUrl}
       controls
-      light={displayedPreview}
+      light={displayedPreviewUrl}
       width='100%'
       height='100%'
       onClickPreview={() => enlargeMediaContainer(mediaContainerRef)}
@@ -26,9 +27,7 @@ const Media = ({ sourceUrl, preview, linkTo }: MediaProps) => {
   ) : (
     <Link to={linkTo}>
       {
-        displayedPreview ? (
-          <S.PreviewImg src={displayedPreview} alt={''} />
-        ) : null //<S.DefaultPreviewImg />
+        displayedPreviewUrl ? <S.PreviewImg src={displayedPreviewUrl} alt={''} /> : null //<S.DefaultPreviewImg />
       }
     </Link>
   );
@@ -36,12 +35,19 @@ const Media = ({ sourceUrl, preview, linkTo }: MediaProps) => {
   return <S.Container ref={mediaContainerRef}>{media}</S.Container>;
 };
 
-function enlargeMediaContainer(
-  mediaContainerRef: React.MutableRefObject<HTMLDivElement | null>
-) {
+function enlargeMediaContainer(mediaContainerRef: React.MutableRefObject<HTMLDivElement | null>) {
   if (!mediaContainerRef?.current) return;
   mediaContainerRef.current.style.width = '100%';
   mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
+}
+
+function getDisplayedPreviewUrl(previewUrl: string, quality: ImageQuality) {
+  const imageSizeRegExp = /,w[0-9]+(h[0-9]+)?/g;
+
+  if (quality === 'original') return previewUrl?.replace(imageSizeRegExp, '');
+  if (quality === 'hq') return previewUrl?.replace(imageSizeRegExp, ',w400');
+  if (quality === 'mq') return previewUrl?.replace(imageSizeRegExp, ',w300h223');
+  if (quality === 'lq') return previewUrl?.replace(imageSizeRegExp, ',w207h139');
 }
 
 export default Media;

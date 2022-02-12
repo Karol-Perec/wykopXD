@@ -8,7 +8,7 @@ export interface Link {
   body: string;
   isHot: boolean;
   plus18: boolean;
-  preview: string;
+  previewUrl: string;
   relatedCount: number;
   sourceUrl: string;
   title: string;

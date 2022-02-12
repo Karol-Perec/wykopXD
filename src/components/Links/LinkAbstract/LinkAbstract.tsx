@@ -11,7 +11,7 @@ const LinkAbstract = ({ link }: LinkAbstractProps) => {
   return (
     <S.Container>
       <Typography variant='h2'>{link.title}</Typography>
-      <Media sourceUrl={link.sourceUrl} preview={link.preview} linkTo={'/link/' + link.id} />
+      <Media sourceUrl={link.sourceUrl} previewUrl={link.previewUrl} linkTo={'/link/' + link.id} previewQuality='lq' />
       <Typography variant='body1'>{link.body}</Typography>
     </S.Container>
   );

@@ -76,7 +76,7 @@ export const mapLink = (l: WykopLink): Link => ({
   date: l.date,
   isHot: l.is_hot,
   plus18: l.plus18,
-  preview: l.preview,
+  previewUrl: l.preview,
   relatedCount: l.related_count,
   sourceUrl: l.source_url,
   title: l.title,
