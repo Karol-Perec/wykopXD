@@ -15,16 +15,16 @@
         "setting": "open"
       }
     },
-    "/entries": {
-      "name": "/entries",
-      "lambdaFunction": "getEntries",
+    "/entries/{id}": {
+      "name": "/entries/{id}",
+      "lambdaFunction": "getEntry",
       "permissions": {
         "setting": "open"
       }
     },
-    "/entries/entry/{id}": {
-      "name": "/entries/entry/{id}",
-      "lambdaFunction": "getEntry",
+    "/entries": {
+      "name": "/entries",
+      "lambdaFunction": "getEntries",
       "permissions": {
         "setting": "open"
       }
