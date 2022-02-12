@@ -1,11 +1,4 @@
-import {
-  WykopEntry,
-  WykopLink,
-  WykopEmbedContent,
-  WykopAuthor,
-  WykopEntryComment,
-  WykopLinkComment,
-} from '@wykop-types';
+import { WykopEntry, WykopLink, WykopEmbedContent, WykopAuthor, WykopEntryComment, WykopLinkComment } from 'types';
 import { Entry, Media, User, EntryComment, LinkComment, Link } from '@wykopx-types';
 
 const mapEntryComments = (comments: WykopEntryComment[]): EntryComment[] => {

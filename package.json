@@ -29,11 +29,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "amplify:getLink": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -",
-    "amplify:getPromotedLinks": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -",
-    "amplify:getEntry": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -",
-    "amplify:getEntries": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -",
-    "amplify:wykopxApiFunctionLayer": "cd amplify/backend/function && tsc -p ./tsconfig.json && cd -"
+    "amplify:wykopxApi": "cd amplify && tsc -p ./tsconfig.json && cd -",
+    "amplify:getLink": "cd amplify && tsc -p ./tsconfig.json && cd -",
+    "amplify:getPromotedLinks": "cd amplify && tsc -p ./tsconfig.json && cd -",
+    "amplify:getEntry": "cd amplify && tsc -p ./tsconfig.json && cd -",
+    "amplify:getEntries": "cd amplify && tsc -p ./tsconfig.json && cd -",
+    "amplify:wykopxApiFunctionLayer": "cd amplify && tsc -p ./tsconfig.json && cd -"
   },
   "eslintConfig": {
     "extends": [

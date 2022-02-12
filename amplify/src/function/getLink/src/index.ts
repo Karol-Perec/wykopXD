@@ -1,20 +1,20 @@
 import { Handler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { WykopEntry, WykopResponse } from '@wykop-types';
+import { WykopLink, WykopResponse } from 'types';
 import { getAxiosInstance } from '/opt/nodejs/axios';
 import { createResponse } from '/opt/nodejs/lambdaUtils';
-import { mapEntry } from '/opt/nodejs/dataUtils';
+import { mapLink } from '/opt/nodejs/dataUtils';
 
 export const handler: Handler<APIGatewayProxyEvent, APIGatewayProxyResult> = async (event) => {
   const { API_KEY, SECRET, OWM_API_KEY } = process.env;
   const axios = getAxiosInstance(API_KEY!, SECRET!, OWM_API_KEY!);
 
-  const { data } = await axios.get<WykopResponse<WykopEntry[]>>(
-    `/entries/${event.queryStringParameters?.category}/page/${event.queryStringParameters?.page}/return/comments/output/clear`
+  const { data } = await axios.get<WykopResponse<WykopLink>>(
+    `/links/link/${event.pathParameters?.id}/withcomments/true/output/clear`
   );
 
   if (data.error) return createResponse(data.error, 400);
 
-  const entries = data.data.map((e) => mapEntry(e));
+  const link = mapLink(data.data);
 
-  return createResponse(entries, 200);
+  return createResponse(link, 200);
 };

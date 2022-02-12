@@ -6,12 +6,10 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
-      "@wykop-types": ["types"],
-      "@wykopx-types": ["../../../src/types"],
-      "/opt/nodejs/*": ["wykopxApiFunctionLayer/lib/nodejs/*"],
-      "aws-lambda": ["wykopxApiFunctionLayer/lib/nodejs/node_modules/@types/aws-lambda"]
+      "@wykopx-types": ["../../src/types"],
+      "/opt/nodejs/*": ["function/wykopxApiFunctionLayer/lib/nodejs/*"]
     },
     "noImplicitUseStrict": true,
     "esModuleInterop": true,
@@ -19,6 +17,10 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
-    "isolatedModules": true
-  }
+    "isolatedModules": true,
+    "outDir": "./backend",
+    "rootDir": "./src"
+  },
+  "references": [{ "path": "../" }],
+  "include": ["./src"]
 }

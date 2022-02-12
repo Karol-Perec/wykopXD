@@ -1,5 +1,5 @@
 import { Handler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { WykopLink, WykopResponse } from '@wykop-types';
+import { WykopLink, WykopResponse } from 'types';
 import { getAxiosInstance } from '/opt/nodejs/axios';
 import { createResponse } from '/opt/nodejs/lambdaUtils';
 import { mapLink } from '/opt/nodejs/dataUtils';

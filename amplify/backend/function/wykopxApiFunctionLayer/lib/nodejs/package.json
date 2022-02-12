@@ -1,13 +1,8 @@
 {
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Layer for wykopX API",
   "dependencies": {
     "axios": "^0.25.0",
-    "crypto-js": "^4.1.1",
-    "@types/aws-lambda": "^8.10.92"
-  },
-  "devDependencies": {
-    "@types/crypto-js": "^4.1.0"
+    "crypto-js": "^4.1.1"
   }
 }
