@@ -21,13 +21,6 @@
       "permissions": {
         "setting": "open"
       }
-    },
-    "/entries/{id}": {
-      "name": "/entries/{id}",
-      "lambdaFunction": "getEntry",
-      "permissions": {
-        "setting": "open"
-      }
     }
   }
 }

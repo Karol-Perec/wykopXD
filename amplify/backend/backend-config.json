@@ -90,14 +90,6 @@
             "Name",
             "Arn"
           ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getEntry",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
         }
       ]
     }
