@@ -13,9 +13,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -27,9 +25,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -41,9 +37,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -55,9 +49,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     }
@@ -70,34 +62,22 @@
         {
           "category": "function",
           "resourceName": "getPromotedLinks",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
         },
         {
           "category": "function",
           "resourceName": "getLink",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
         },
         {
           "category": "function",
           "resourceName": "getEntries",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
         },
         {
           "category": "function",
           "resourceName": "getEntry",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
         }
       ]
     }

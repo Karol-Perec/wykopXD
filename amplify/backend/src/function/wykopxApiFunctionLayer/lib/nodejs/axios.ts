@@ -7,7 +7,8 @@ export const getAxiosInstance = (apiKey: string, secret: string, owmApiKey: stri
   axiosInstance.interceptors.request.use((config) => {
     if (config.method === 'POST') {
       config.url += `/appkey/${apiKey}`;
-      const signContent = secret + config.baseURL + config.url + Object.values(config.data).join(',');
+      const signContent =
+        secret + config.baseURL + config.url + Object.values(config.data).join(',');
       const apiSign = MD5(signContent).toString();
       config.headers = { ...config.headers, apisign: apiSign };
     } else {

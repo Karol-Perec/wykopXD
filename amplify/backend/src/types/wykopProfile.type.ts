@@ -42,10 +42,7 @@ export interface WykopProfile {
   ban?: any;
 }
 
-export type WykopAuthor = Pick<
-  WykopProfile,
-  'login' | 'sex' | 'color' | 'avatar'
->;
+export type WykopAuthor = Pick<WykopProfile, 'login' | 'sex' | 'color' | 'avatar'>;
 
 export type WykopAuthorFull = Pick<
   WykopProfile,

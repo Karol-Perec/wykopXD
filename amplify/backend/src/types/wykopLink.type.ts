@@ -39,8 +39,7 @@ interface WykopLinkInfoFull {
   body: 'string';
 }
 
-export interface WykopLinkFull
-  extends Omit<WykopLink, 'author' | 'info' | 'comments'> {
+export interface WykopLinkFull extends Omit<WykopLink, 'author' | 'info' | 'comments'> {
   author: WykopAuthorFull;
   has_own_content: boolean;
   info?: WykopLinkInfoFull;

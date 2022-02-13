@@ -11,7 +11,5 @@
       "StartCommand": "npm run start"
     }
   },
-  "providers": [
-    "awscloudformation"
-  ]
+  "providers": ["awscloudformation"]
 }

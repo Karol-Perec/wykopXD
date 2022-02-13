@@ -1,5 +1,16 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
-import { AppBar, Avatar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import Logo from 'components/Logo/Logo';
 import { MouseEvent, MouseEventHandler, useState } from 'react';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
@@ -47,7 +58,11 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
                 {page}
               </Button>
             ))}

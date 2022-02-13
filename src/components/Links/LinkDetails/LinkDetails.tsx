@@ -1,5 +1,3 @@
-const LinkDetails = () => {
-  return <div>linkDetails</div>;
-};
+const LinkDetails = () => <div>linkDetails</div>;
 
 export default LinkDetails;
