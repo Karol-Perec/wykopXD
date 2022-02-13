@@ -48,4 +48,4 @@ amplifytools.xcconfig
 #amplify-do-not-edit-end
 .vscode/settings.json
 
-!amplify/backend/src/*
+!amplify/backend/src/api/wykopxApi/*
