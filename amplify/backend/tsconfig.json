@@ -18,8 +18,9 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "isolatedModules": true,
-    "outDir": "./backend",
+    "outDir": ".",
     "rootDir": "./src"
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": []
 }
