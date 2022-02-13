@@ -1,9 +1,6 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState } from 'react';
 
-const useLocalStorage = <T>(
-  key: string,
-  defaultValue: T
-): [T, Dispatch<SetStateAction<T>>] => {
+const useLocalStorage = <T>(key: string, defaultValue: T): [T, Dispatch<SetStateAction<T>>] => {
   const [storedValue, setStoredValue] = useState<T>(() => {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : defaultValue;

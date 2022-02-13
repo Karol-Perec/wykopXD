@@ -1,6 +1,7 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Link from 'containers/Link/Link';
 import Main from 'containers/Main/Main';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import Entry from './containers/Entry/Entry';
 import Mikroblog, { MikroblogCategory } from './containers/Mikroblog/Mikroblog';
 
 export enum ROUTE {
@@ -11,6 +12,7 @@ export enum ROUTE {
   MY_WYKOP = '/moj',
   ANY = '*',
   LINK = '/link/:id',
+  ENTRY = '/link/:id',
 }
 
 export const routes = (
@@ -26,9 +28,6 @@ export const routes = (
     </Route>
     <Route path='/mikroblog/:category(aktywne|najnowsze|hot6h|hot12h|hot24h)?'>
       <Mikroblog />
-    </Route>
-    <Route path='/link/:id(\d+)'>
-      <Link />
     </Route> */}
 
     <Route path={ROUTE.MIKROBLOG} element={<Mikroblog />}>
@@ -37,6 +36,7 @@ export const routes = (
       ))}
     </Route>
     <Route path={ROUTE.LINK} element={<Link />} />
+    <Route path={ROUTE.ENTRY} element={<Entry />} />
     <Route path={ROUTE.MAIN} element={<Main />} />
     <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
   </Routes>

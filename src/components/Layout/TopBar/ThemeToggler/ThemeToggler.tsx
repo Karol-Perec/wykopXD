@@ -3,7 +3,7 @@ import {
   Brightness7 as LightModeIcon,
 } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import { ThemeModeContext } from 'contexts/themeModeContext';
+import { ThemeModeContext } from 'contexts/ThemeModeContext';
 import { useContext } from 'react';
 
 const ThemeToggler = () => {
