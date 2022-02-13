@@ -10,13 +10,8 @@
     "amplify/backend/**/dist": true,
     "amplify/backend/api/**/build": true,
     "amplify/function/api/**/build": true,
+    "src/aws-exports.js": true
   },
-  "typescript.preferences.quoteStyle": "single",
-  "javascript.preferences.quoteStyle": "single",
-  "prettier.jsxSingleQuote": true,
-  "prettier.singleQuote": true,
-  "scss.completion.completePropertyWithSemicolon": false,
-  "prettier.printWidth": 100,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
