@@ -1,16 +1,5 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
-import {
-  AppBar,
-  Avatar,
-  Box,
-  Button,
-  Container,
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import { AppBar, Avatar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
 import Logo from 'components/Logo/Logo';
 import { MouseEvent, MouseEventHandler, useState } from 'react';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
@@ -51,20 +40,14 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
           </S.LogoContainer>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size='large'
-              onClick={onDrawerToggleClick}
-              color='inherit'>
+            <IconButton size='large' onClick={onDrawerToggleClick} color='inherit'>
               <MenuIcon />
             </IconButton>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}>
+              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
                 {page}
               </Button>
             ))}
@@ -89,7 +72,8 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
                 horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}>
+              onClose={handleCloseUserMenu}
+            >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseNavMenu}>
                   <Typography textAlign='center'>{setting}</Typography>

@@ -31,10 +31,7 @@ const NavItems = ({ onNavItemClick }: NavItemsProps) => {
         Główna
       </NavItem>
 
-      <NavItem
-        onClick={onNavItemClick}
-        icon={<TravelExplore />}
-        to={ROUTE.UPCOMING}>
+      <NavItem onClick={onNavItemClick} icon={<TravelExplore />} to={ROUTE.UPCOMING}>
         Wykopalisko
       </NavItem>
 
@@ -42,17 +39,11 @@ const NavItems = ({ onNavItemClick }: NavItemsProps) => {
         Hity
       </NavItem>
 
-      <NavItem
-        onClick={onNavItemClick}
-        icon={myWykopPageIcon}
-        to={ROUTE.MIKROBLOG}>
+      <NavItem onClick={onNavItemClick} icon={myWykopPageIcon} to={ROUTE.MIKROBLOG}>
         Mikroblog
       </NavItem>
 
-      <NavItem
-        onClick={onNavItemClick}
-        icon={<AccountCircle />}
-        to={ROUTE.MY_WYKOP}>
+      <NavItem onClick={onNavItemClick} icon={<AccountCircle />} to={ROUTE.MY_WYKOP}>
         Mój wykop
       </NavItem>
     </List>
