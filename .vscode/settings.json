@@ -7,9 +7,9 @@
     "amplify/#current-cloud-backend": true,
     "amplify/backend/amplify-meta.json": true,
     "amplify/backend/awscloudformation": true,
-    "amplify/backend/function/**/*.js": true,
     "amplify/backend/**/dist": true,
-    "amplify/backend/**/build": true
+    "amplify/backend/api/**/build": true,
+    "amplify/function/api/**/build": true,
   },
   "typescript.preferences.quoteStyle": "single",
   "javascript.preferences.quoteStyle": "single",
