@@ -14,10 +14,10 @@ export interface WykopProfile {
   color: WykopProfileColor;
   avatar: string;
   signup_at: Date;
-  background?: string; //image url
+  background?: string; // image url
   is_verified: boolean;
-  is_observed: boolean; //is observed by current user
-  is_blocked: boolean; //is blocekd by current user
+  is_observed: boolean; // is observed by current user
+  is_blocked: boolean; // is blocekd by current user
   email: string;
   about: string;
   name: string;

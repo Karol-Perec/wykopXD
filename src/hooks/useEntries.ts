@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { Entry } from 'types';
-import { MikroblogCategory } from '../containers/Mikroblog/Mikroblog';
+import { MikroblogCategory } from '../containers/Mikroblog/mikroblog.types';
 import axios from '../utils/axios';
 
 // TO DO: add period

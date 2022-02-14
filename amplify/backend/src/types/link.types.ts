@@ -1,4 +1,14 @@
-import { User } from './user.type';
+import { User } from './user.types';
+
+export interface LinkComment {
+  id: number;
+  user: User;
+  body: string;
+  date: Date;
+  voteCountPlus: number;
+  voteCountMinus: number;
+  responses?: LinkComment[];
+}
 
 export interface Link {
   id: number;
@@ -15,14 +25,4 @@ export interface Link {
   title: string;
   voteCount: number;
   comments?: LinkComment[];
-}
-
-export interface LinkComment {
-  id: number;
-  user: User;
-  body: string;
-  date: Date;
-  voteCountPlus: number;
-  voteCountMinus: number;
-  responses?: LinkComment[];
 }

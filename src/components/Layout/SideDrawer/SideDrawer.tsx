@@ -11,23 +11,21 @@ interface SideDrawerProps {
   onClose: MouseEventHandler;
 }
 
-const SideDrawer = ({ open, onClose }: SideDrawerProps) => {
-  return (
-    <Drawer open={open} onClose={onClose}>
-      <nav>
-        <ListItemIcon>
-          <S.WykopMainLogoContainer>
-            <Link to={ROUTE.MAIN} onClick={onClose}>
-              <Logo />
-            </Link>
-          </S.WykopMainLogoContainer>
-        </ListItemIcon>
-        <Divider />
-        <NavItems onNavItemClick={onClose} />
-        <Divider />
-      </nav>
-    </Drawer>
-  );
-};
+const SideDrawer = ({ open, onClose }: SideDrawerProps) => (
+  <Drawer open={open} onClose={onClose}>
+    <nav>
+      <ListItemIcon>
+        <S.WykopMainLogoContainer>
+          <Link to={ROUTE.MAIN} onClick={onClose}>
+            <Logo />
+          </Link>
+        </S.WykopMainLogoContainer>
+      </ListItemIcon>
+      <Divider />
+      <NavItems onNavItemClick={onClose} />
+      <Divider />
+    </nav>
+  </Drawer>
+);
 
 export default SideDrawer;

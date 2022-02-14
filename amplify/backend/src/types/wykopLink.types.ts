@@ -1,5 +1,5 @@
-import { WykopLinkComment, WykopLinkCommentFull } from './wykopComment.type';
-import { WykopAuthor, WykopAuthorFull } from './wykopProfile.type';
+import { WykopLinkComment, WykopLinkCommentFull } from './wykopComment.types';
+import { WykopAuthor, WykopAuthorFull } from './wykopProfile.types';
 
 // wykop admistration info
 interface WykopLinkInfo {

@@ -1,4 +1,4 @@
-export const createResponse = (body: any, statusCode: number) => ({
+export const createResponse = (body: unknown, statusCode: number) => ({
   statusCode,
   headers: {
     'Access-Control-Allow-Origin': '*',

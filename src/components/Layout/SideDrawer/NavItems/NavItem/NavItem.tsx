@@ -13,8 +13,8 @@ const NavItem = ({ children, icon, to, onClick }: NavItemProps) => {
   const match = useMatch(to);
 
   return (
-    <li onClick={onClick}>
-      <ListItemButton selected={!!match} component={RouterLink} to={to}>
+    <li>
+      <ListItemButton selected={!!match} component={RouterLink} to={to} onClick={onClick}>
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText>{children}</ListItemText>
       </ListItemButton>

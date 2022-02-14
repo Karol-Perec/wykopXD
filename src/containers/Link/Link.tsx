@@ -1,7 +1,7 @@
 import useLink from 'hooks/useLink';
 import { useParams } from 'react-router-dom';
 
-const Link = () => {
+const LinkDetails = () => {
   const query = useParams();
   const { data, isLoading, error } = useLink(+query.id!);
 
@@ -9,7 +9,7 @@ const Link = () => {
 
   console.log(data);
 
-  return <>{JSON.stringify(data)}</>;
+  return <div>Link</div>;
 };
 
-export default Link;
+export default LinkDetails;

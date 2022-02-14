@@ -6,7 +6,11 @@ export interface ThemeModeContextInterface {
   themeMode: PaletteMode;
 }
 
-export const ThemeModeContext = createContext<ThemeModeContextInterface>({
-  toggleThemeMode: () => {},
+const ThemeModeContext = createContext<ThemeModeContextInterface>({
+  toggleThemeMode: () => {
+    /**/
+  },
   themeMode: 'dark',
 });
+
+export default ThemeModeContext;

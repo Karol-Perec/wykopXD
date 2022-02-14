@@ -2,13 +2,7 @@ import { useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import useEntries from 'hooks/useEntries';
 import { useParams } from 'react-router-dom';
-
-export enum MikroblogCategory {
-  NEW = 'najnowsze',
-  ACTIVE = 'aktywne',
-  HOT = 'hot',
-  FAVOURITE = 'ulubione',
-}
+import { MikroblogCategory } from './mikroblog.types';
 
 interface MikroblogProps {
   category?: MikroblogCategory;

@@ -1,5 +1,3 @@
-const EntriesList = () => {
-  return <div></div>;
-};
+const EntriesList = () => <div>EntriesList</div>;
 
 export default EntriesList;

@@ -1,15 +1,14 @@
-import { createTheme, ThemeProvider } from '@mui/material';
-import { PaletteMode } from '@mui/material';
+import { createTheme, ThemeProvider, PaletteMode } from '@mui/material';
 import { ReactNode, useMemo } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { getTheme } from '../theme';
-import { ThemeModeContext, ThemeModeContextInterface } from './ThemeModeContext';
+import ThemeModeContext, { ThemeModeContextInterface } from './ThemeModeContext';
 
 interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
+const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
   const [themeMode, setThemeMode] = useLocalStorage<PaletteMode>('themeMode', 'dark');
 
   const toggleThemeMode = useMemo<ThemeModeContextInterface>(
@@ -30,3 +29,5 @@ export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
     </ThemeModeContext.Provider>
   );
 };
+
+export default ThemeContextProvider;

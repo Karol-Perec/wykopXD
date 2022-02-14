@@ -2,7 +2,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Link from 'containers/Link/Link';
 import Main from 'containers/Main/Main';
 import Entry from './containers/Entry/Entry';
-import Mikroblog, { MikroblogCategory } from './containers/Mikroblog/Mikroblog';
+import Mikroblog from './containers/Mikroblog/Mikroblog';
+import { MikroblogCategory } from './containers/Mikroblog/mikroblog.types';
 
 export enum ROUTE {
   MAIN = '/',
@@ -12,7 +13,7 @@ export enum ROUTE {
   MY_WYKOP = '/moj',
   ANY = '*',
   LINK = '/link/:id',
-  ENTRY = '/link/:id',
+  ENTRY = '/entry/:id',
 }
 
 export const routes = (

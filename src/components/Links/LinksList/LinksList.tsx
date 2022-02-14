@@ -1,3 +1,5 @@
+import { FixedSizeList } from 'react-window';
+import InfiniteLoader from 'react-window-infinite-loader';
 import { Link } from 'types';
 import LinkAbstract from '../LinkAbstract/LinkAbstract';
 import LinkAbstractSkeleton from '../LinkAbstract/LinkAbstractSkeleton';
@@ -10,8 +12,10 @@ interface LinksListProps {
 
 const LinksList = ({ links, isLoading }: LinksListProps) => {
   const linkAbstractSkeletons = [...Array(links ? 2 : Math.floor(window.innerHeight / 166))].map(
-    (_, idx) => <LinkAbstractSkeleton key={idx} />
+    () => <LinkAbstractSkeleton />
   );
+
+  // return <InfiniteLoader></InfiniteLoader>;
 
   return (
     <S.Container>

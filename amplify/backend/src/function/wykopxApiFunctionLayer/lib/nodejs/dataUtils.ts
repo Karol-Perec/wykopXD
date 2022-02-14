@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   WykopEntry,
   WykopLink,
@@ -13,38 +14,6 @@ import {
   Link,
 } from 'types';
 
-const mapEntryComments = (comments: WykopEntryComment[]): EntryComment[] => {
-  return comments.map((c) => ({
-    id: c.id,
-    body: c.body,
-    date: c.date,
-    voteCountPlus: c.vote_count,
-    user: mapUser(c.author),
-  }));
-};
-
-const mapLinkComments = (comments: WykopLinkComment[]): LinkComment[] => {
-  return comments.reduce<LinkComment[]>((arr, comment) => {
-    if (comment.id === comment.parent_id) {
-      return [...arr, mapLinkComment(comment)];
-    } else {
-      const parentCommentIdx = arr.findIndex((c) => comment.parent_id === c.id);
-      arr[parentCommentIdx].responses?.push(mapLinkComment(comment));
-      return arr;
-    }
-  }, []);
-};
-
-const mapLinkComment = (c: WykopLinkComment): LinkComment => ({
-  id: c.id,
-  body: c.body,
-  date: c.date,
-  voteCountPlus: c.vote_count_plus,
-  voteCountMinus: c.vote_count - c.vote_count_plus,
-  user: mapUser(c.author),
-  ...(c.id === c.parent_id && { responses: [] }),
-});
-
 const mapMedia = (e: WykopEmbedContent): Media => ({
   type: e.type,
   url: e.url,
@@ -56,10 +25,39 @@ const mapMedia = (e: WykopEmbedContent): Media => ({
 
 const mapUser = (p: WykopAuthor): User => ({
   login: p.login,
-  status: 1, //p.color,
+  status: 1, // p.color,
   avatarUrl: p.avatar,
   sex: p.sex,
 });
+
+const mapEntryComments = (comments: WykopEntryComment[]): EntryComment[] =>
+  comments.map((c) => ({
+    id: c.id,
+    body: c.body,
+    date: c.date,
+    voteCountPlus: c.vote_count,
+    user: mapUser(c.author),
+  }));
+
+const mapLinkComment = (c: WykopLinkComment): LinkComment => ({
+  id: c.id,
+  body: c.body,
+  date: c.date,
+  voteCountPlus: c.vote_count_plus,
+  voteCountMinus: c.vote_count - c.vote_count_plus,
+  user: mapUser(c.author),
+  ...(c.id === c.parent_id && { responses: [] }),
+});
+
+const mapLinkComments = (comments: WykopLinkComment[]): LinkComment[] =>
+  comments.reduce<LinkComment[]>((arr, comment) => {
+    if (comment.id === comment.parent_id) {
+      return [...arr, mapLinkComment(comment)];
+    }
+    const parentCommentIdx = arr.findIndex((c) => comment.parent_id === c.id);
+    arr[parentCommentIdx].responses?.push(mapLinkComment(comment));
+    return arr;
+  }, []);
 
 export const mapEntry = (e: WykopEntry): Entry => ({
   id: e.id,

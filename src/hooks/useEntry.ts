@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { Entry } from '../types/Entry.type';
+import { Entry } from '../types/entry.types';
 import axios from '../utils/axios';
 
 const getEntry = async (id: number) => {
