@@ -23,6 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint src",
     "amplify:wykopxApi": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
     "amplify:getLink": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
     "amplify:getPromotedLinks": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
