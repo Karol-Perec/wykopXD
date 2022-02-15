@@ -2,7 +2,7 @@ import { AccountCircle, TravelExplore, Whatshot } from '@mui/icons-material';
 import { List, useTheme } from '@mui/material';
 import Logo from 'components/Logo/Logo';
 import { MouseEventHandler } from 'react';
-import { ROUTE } from 'routes';
+import { ROUTE } from 'Routes';
 import NavItem from './NavItem/NavItem';
 import * as S from './NavItems.styles';
 

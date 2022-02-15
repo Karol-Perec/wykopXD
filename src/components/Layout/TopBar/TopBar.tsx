@@ -17,7 +17,7 @@ import ThemeToggler from './ThemeToggler/ThemeToggler';
 import * as S from './TopBar.styles';
 
 const pages = ['Główna', 'Wykopalisko', 'Hity', 'Mikroblog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profil 1', 'Profil 2', 'Profil 3', 'Wyloguj'];
 
 interface TopBarProps {
   onDrawerToggleClick: MouseEventHandler<HTMLButtonElement>;

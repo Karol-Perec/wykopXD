@@ -16,7 +16,7 @@ export enum ROUTE {
   ENTRY = '/entry/:id',
 }
 
-export const routes = (
+const AppRoutes = (
   <Routes>
     {/* <Route path='/login'>
       <Login />
@@ -42,3 +42,5 @@ export const routes = (
     <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
   </Routes>
 );
+
+export default AppRoutes;

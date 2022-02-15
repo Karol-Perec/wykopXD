@@ -14,8 +14,6 @@
     "react-query": "^3.34.12",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "react-window": "^1.8.6",
-    "react-window-infinite-loader": "^1.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

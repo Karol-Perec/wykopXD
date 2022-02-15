@@ -14,6 +14,5 @@ export const globalStyles = (theme: Theme) => ({
   },
   'html, body, #root': {
     height: '100%',
-    overflow: 'hidden',
   },
 });

@@ -2,7 +2,7 @@ import { Divider, Drawer, ListItemIcon } from '@mui/material';
 import Logo from 'components/Logo/Logo';
 import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTE } from 'routes';
+import { ROUTE } from 'Routes';
 import NavItems from './NavItems/NavItems';
 import * as S from './SideDrawer.styles';
 

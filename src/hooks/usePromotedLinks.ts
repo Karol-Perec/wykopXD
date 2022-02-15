@@ -9,9 +9,9 @@ const getPromotedLinks: QueryFunction<Link[]> = async ({ pageParam = 1 }) => {
   return response.data;
 };
 
-const usePromotedLinks = (page: number) =>
+const usePromotedLinks = () =>
   useInfiniteQuery(['promoted-links'], getPromotedLinks, {
-    staleTime: 10000,
+    staleTime: 100000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,
     getNextPageParam: (_lastPage, pages) => pages.length + 1,
