@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import useEntry from 'hooks/useEntry';
 import { useParams } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ const Entry = () => {
 
   console.log(data);
 
-  return <>{JSON.stringify(data)}</>;
+  return <Typography>{JSON.stringify(data)}</Typography>;
 };
 
 export default Entry;

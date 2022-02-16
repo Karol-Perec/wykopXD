@@ -1,3 +1,5 @@
-const LinkDetails = () => <div>linkDetails</div>;
+import { Typography } from '@mui/material';
+
+const LinkDetails = () => <Typography>Link Details</Typography>;
 
 export default LinkDetails;

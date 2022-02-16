@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import Media from 'components/Media/Media';
 import { RefCallback } from 'react';
-import { Link } from 'types/link.types';
+import { Link } from 'types';
 import * as S from './LinkAbstract.styles';
 
 interface LinkAbstractProps {

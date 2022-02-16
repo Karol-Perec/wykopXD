@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import { CircularProgress } from '@mui/material';
 import useEntries from 'hooks/useEntries';
-import { useParams } from 'react-router-dom';
+import EntriesList from '../../components/Entries/EntriesList/EntriesList';
 import { MikroblogCategory } from './mikroblog.types';
 
 interface MikroblogProps {
@@ -9,18 +7,19 @@ interface MikroblogProps {
 }
 
 const Mikroblog = ({ category }: MikroblogProps) => {
-  const [page, setPage] = useState(1);
-  const params = useParams();
-  console.log(params);
+  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useEntries(
+    category ?? MikroblogCategory.HOT
+  );
 
-  const { data, isLoading, error } = useEntries(page, category ?? MikroblogCategory.HOT);
-
-  if (isLoading) return <CircularProgress size={100} />;
   if (error) return <p>{(error as Error)?.message}</p>;
 
-  console.log(data);
-
-  return <div>Mikroblog</div>;
+  return (
+    <EntriesList
+      entries={data?.pages.flat()}
+      isLoading={isLoading || isFetchingNextPage}
+      onInfiniteScroll={fetchNextPage}
+    />
+  );
 };
 
 export default Mikroblog;

@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import useLink from 'hooks/useLink';
 import { useParams } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ const LinkDetails = () => {
 
   console.log(data);
 
-  return <div>Link</div>;
+  return <Typography>{JSON.stringify(data)}</Typography>;
 };
 
 export default LinkDetails;
