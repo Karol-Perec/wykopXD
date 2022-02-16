@@ -1,20 +1,18 @@
+import { Typography } from '@mui/material';
 import LinksList from 'components/Links/LinksList/LinksList';
 import usePromotedLinks from 'hooks/usePromotedLinks';
 
 const Main = () => {
-  const { data, isLoading, error, fetchNextPage } = usePromotedLinks();
+  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = usePromotedLinks();
 
-  if (error) return <p>{(error as Error)?.message}</p>;
-
-  console.log(data);
+  if (error) return <Typography>{(error as Error)?.message}</Typography>;
 
   return (
-    <>
-      <button type='button' onClick={() => fetchNextPage()}>
-        xD
-      </button>
-      <LinksList links={data?.pages.flat()} isLoading={isLoading} />
-    </>
+    <LinksList
+      links={data?.pages.flat()}
+      isLoading={isLoading || isFetchingNextPage}
+      onInfiniteScroll={fetchNextPage}
+    />
   );
 };
 

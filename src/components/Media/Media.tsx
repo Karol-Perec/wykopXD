@@ -43,10 +43,11 @@ const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) =>
     />
   ) : (
     <Link to={linkTo}>
-      {
-        displayedPreviewUrl ? <S.PreviewImg src={displayedPreviewUrl} alt='' /> : null
-        // <S.DefaultPreviewImg />
-      }
+      {displayedPreviewUrl ? (
+        <S.PreviewImg src={displayedPreviewUrl} alt='' />
+      ) : (
+        <S.DefaultPreviewImg />
+      )}
     </Link>
   );
 

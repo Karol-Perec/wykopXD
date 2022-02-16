@@ -32,12 +32,9 @@ export const PreviewImg = styled('img')({
   objectFit: 'cover',
 });
 
-// export const DefaultPreviewImg = styled(Logo).attrs((props) => ({
-//   style: { fill: props.theme.ON_SURFACE_COLOR },
-//   height: '150px',
-//   width: '150px',
-// }))`
-//   display: inline-block;
-//   width: 100%;
-//   height: 100%;
-// `;
+export const DefaultPreviewImg = styled(Logo)(({ theme }) => ({
+  fill: theme.palette.text.primary,
+  height: '150px',
+  width: '150px',
+  display: 'inline-block',
+}));
