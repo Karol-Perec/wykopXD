@@ -1,4 +1,5 @@
 import { styled, alpha, InputBase } from '@mui/material';
+import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 
 export const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -40,10 +41,11 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export const LogoContainer = styled('div')(({ theme }) => ({
+export const Logo = styled(SvgLogo)(({ theme }) => ({
+  height: 40,
+  width: 100,
+  fill: theme.palette.mode === 'dark' ? theme.palette.primary.main : 'white',
   [theme.breakpoints.down('md')]: {
     display: 'none',
   },
-  height: 40,
-  width: 100,
 }));

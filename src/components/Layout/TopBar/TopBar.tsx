@@ -11,7 +11,6 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import Logo from 'components/Logo/Logo';
 import { MouseEvent, MouseEventHandler, useState } from 'react';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import * as S from './TopBar.styles';
@@ -46,9 +45,7 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
     <AppBar>
       <Container>
         <Toolbar disableGutters>
-          <S.LogoContainer>
-            <Logo />
-          </S.LogoContainer>
+          <S.Logo />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton size='large' onClick={onDrawerToggleClick} color='inherit'>

@@ -1,6 +1,5 @@
-import { AccountCircle, TravelExplore, Whatshot } from '@mui/icons-material';
-import { List, useTheme } from '@mui/material';
-import Logo from 'components/Logo/Logo';
+import { Whatshot as HitsIcon, AccountCircle as MyWykopIcon } from '@mui/icons-material';
+import { List } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { ROUTE } from 'Routes';
 import NavItem from './NavItem/NavItem';
@@ -10,44 +9,28 @@ interface NavItemsProps {
   onNavItemClick: MouseEventHandler;
 }
 
-const NavItems = ({ onNavItemClick }: NavItemsProps) => {
-  const theme = useTheme();
+const NavItems = ({ onNavItemClick }: NavItemsProps) => (
+  <List>
+    <NavItem onClick={onNavItemClick} icon={<S.MainIcon />} to={ROUTE.MAIN}>
+      Główna
+    </NavItem>
 
-  const mainPageIcon = (
-    <S.WykopLogoContainer>
-      <Logo color={theme.palette.action.active} />
-    </S.WykopLogoContainer>
-  );
+    <NavItem onClick={onNavItemClick} icon={<S.UpcomingIcon />} to={ROUTE.UPCOMING}>
+      Wykopalisko
+    </NavItem>
 
-  const myWykopPageIcon = (
-    <S.WykopLogoContainer>
-      <Logo transform='rotate(180)' color={theme.palette.action.active} />
-    </S.WykopLogoContainer>
-  );
+    <NavItem onClick={onNavItemClick} icon={<HitsIcon />} to={ROUTE.HITS}>
+      Hity
+    </NavItem>
 
-  return (
-    <List>
-      <NavItem onClick={onNavItemClick} icon={mainPageIcon} to={ROUTE.MAIN}>
-        Główna
-      </NavItem>
+    <NavItem onClick={onNavItemClick} icon={<S.MikroblogIcon />} to={ROUTE.MIKROBLOG}>
+      Mikroblog
+    </NavItem>
 
-      <NavItem onClick={onNavItemClick} icon={<TravelExplore />} to={ROUTE.UPCOMING}>
-        Wykopalisko
-      </NavItem>
-
-      <NavItem onClick={onNavItemClick} icon={<Whatshot />} to={ROUTE.HITS}>
-        Hity
-      </NavItem>
-
-      <NavItem onClick={onNavItemClick} icon={myWykopPageIcon} to={ROUTE.MIKROBLOG}>
-        Mikroblog
-      </NavItem>
-
-      <NavItem onClick={onNavItemClick} icon={<AccountCircle />} to={ROUTE.MY_WYKOP}>
-        Mój wykop
-      </NavItem>
-    </List>
-  );
-};
+    <NavItem onClick={onNavItemClick} icon={<MyWykopIcon />} to={ROUTE.MY_WYKOP}>
+      Mój wykop
+    </NavItem>
+  </List>
+);
 
 export default NavItems;

@@ -1,6 +1,15 @@
-import { LogoProps } from './Logo.interface';
-import * as S from './Logo.styles';
+import { styled } from '@mui/material';
+import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 
-const Logo = ({ color, transform }: LogoProps) => <S.Logo color={color} transform={transform} />;
+interface LogoProps {
+  style?: React.CSSProperties;
+}
+
+const Logo = styled(SvgLogo)<LogoProps>(({ theme, style }) => ({
+  ...style,
+  width: style?.width ?? '100%',
+  height: style?.height ?? '100%',
+  fill: style?.fill || theme.palette.primary.main,
+}));
 
 export default Logo;

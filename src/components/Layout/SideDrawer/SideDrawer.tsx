@@ -1,5 +1,4 @@
-import { Divider, Drawer, ListItemIcon } from '@mui/material';
-import Logo from 'components/Logo/Logo';
+import { Divider, Drawer } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTE } from 'Routes';
@@ -13,18 +12,16 @@ interface SideDrawerProps {
 
 const SideDrawer = ({ open, onClose }: SideDrawerProps) => (
   <Drawer open={open} onClose={onClose}>
-    <nav>
-      <ListItemIcon>
-        <S.WykopMainLogoContainer>
-          <Link to={ROUTE.MAIN} onClick={onClose}>
-            <Logo />
-          </Link>
-        </S.WykopMainLogoContainer>
-      </ListItemIcon>
+    <S.DrawerHeader>
+      <Link to={ROUTE.MAIN} onClick={onClose}>
+        <S.WykopLogo />
+      </Link>
+    </S.DrawerHeader>
+    <S.NavContainer>
       <Divider />
       <NavItems onNavItemClick={onClose} />
       <Divider />
-    </nav>
+    </S.NavContainer>
   </Drawer>
 );
 

@@ -1,10 +1,17 @@
+import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 import { styled } from '@mui/material';
 
-export const Container = styled('div')(({ theme }) => ({}));
+export const NavContainer = styled('nav')({
+  width: 230,
+});
 
-export const WykopMainLogoContainer = styled('div')(({ theme }) => ({
+export const DrawerHeader = styled('div')(({ theme }) => ({
   textAlign: 'center',
-  width: '100%',
   height: 50,
   margin: theme.spacing(2),
+}));
+
+export const WykopLogo = styled(SvgLogo)(({ theme }) => ({
+  height: '100%',
+  fill: theme.palette.primary.main,
 }));
