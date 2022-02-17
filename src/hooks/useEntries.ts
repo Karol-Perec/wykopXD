@@ -5,8 +5,6 @@ import axios from '../utils/axios';
 
 // TO DO: add period
 const getEntries = async (page: number, category: MikroblogCategory) => {
-  console.log('xd');
-
   const response = await axios.get<Entry[]>('/entries', {
     params: { page, category },
   });
