@@ -27,6 +27,7 @@
     "amplify:getPromotedLinks": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
     "amplify:getEntry": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
     "amplify:getEntries": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
+    "amplify:getHits": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
     "amplify:wykopxApiFunctionLayer": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -"
   },
   "browserslist": {

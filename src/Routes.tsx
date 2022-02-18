@@ -3,7 +3,9 @@ import Link from 'containers/Link/Link';
 import Main from 'containers/Main/Main';
 import Entry from './containers/Entry/Entry';
 import Mikroblog from './containers/Mikroblog/Mikroblog';
+import Hits from './containers/Hits/Hits';
 import { MikroblogCategory } from './containers/Mikroblog/mikroblog.types';
+import { HitsPeriod } from './containers/Hits/hits.types';
 
 export enum ROUTE {
   MAIN = '/',
@@ -21,9 +23,6 @@ const AppRoutes = (
     {/* <Route path='/login'>
       <Login />
     </Route>
-    <Route path='/hity/:category(dnia|tygodnia|miesiaca|roku)?'>
-      <Hits />
-    </Route>
     <Route path='/wykopalisko/:category(aktywne|najnowsze|wykopywane|komentowane)?'>
       <Wykopalisko />
     </Route>
@@ -31,6 +30,11 @@ const AppRoutes = (
       <Mikroblog />
     </Route> */}
 
+    <Route path={ROUTE.HITS}>
+      {Object.values(HitsPeriod).map((period) => (
+        <Route path={period} element={<Hits period={period} key={period} />} />
+      ))}
+    </Route>
     <Route path={ROUTE.MIKROBLOG} element={<Mikroblog />}>
       {Object.values(MikroblogCategory).map((category) => (
         <Route path={category} element={<Mikroblog category={category} key={category} />} />

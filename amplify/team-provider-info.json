@@ -46,6 +46,11 @@
           "apiKey": "482VSi3YyC",
           "secret": "v8RO1EXXQZ",
           "owmApiKey": "aNd401dAPp"
+        },
+        "getHits": {
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "aNd401dAPp"
         }
       }
     }
