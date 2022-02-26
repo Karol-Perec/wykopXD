@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Typography, Avatar } from '@mui/material';
 import Media from 'components/Media/Media';
 import { RefCallback } from 'react';
 import { Entry } from 'types';
@@ -10,20 +10,26 @@ interface EntryAbstractProps {
 }
 
 const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
-  const { media } = entry;
+  const { media, user, body } = entry;
 
   return (
-    <S.Container ref={containerRef}>
-      {media && (
-        <Media
-          sourceUrl={media.url}
-          previewUrl={media.previewUrl}
-          linkTo={`/entry/${entry.id}`}
-          previewQuality='lq'
-        />
-      )}
-      <Typography variant='body1'>{entry.body}</Typography>
-    </S.Container>
+    <S.CardContainer ref={containerRef}>
+      <S.AvatarContainer>
+        <Avatar alt={user.login} src={user.avatarUrl} />
+      </S.AvatarContainer>
+      <S.ContentContainer>
+        <Typography variant='subtitle1'>{user.login}</Typography>
+        {media && (
+          <Media
+            sourceUrl={media.url}
+            previewUrl={media.previewUrl}
+            linkTo={`/entry/${entry.id}`}
+            previewQuality='lq'
+          />
+        )}
+        <Typography variant='body1'>{entry.body}</Typography>
+      </S.ContentContainer>
+    </S.CardContainer>
   );
 };
 

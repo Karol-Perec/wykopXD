@@ -30,14 +30,14 @@ const AppRoutes = (
       <Mikroblog />
     </Route> */}
 
-    <Route path={ROUTE.HITS}>
+    <Route path={ROUTE.HITS} element={<Hits />}>
       {Object.values(HitsPeriod).map((period) => (
-        <Route path={period} element={<Hits period={period} key={period} />} />
+        <Route path={period} key={period} element={<Hits period={period} />} />
       ))}
     </Route>
     <Route path={ROUTE.MIKROBLOG} element={<Mikroblog />}>
       {Object.values(MikroblogCategory).map((category) => (
-        <Route path={category} element={<Mikroblog category={category} key={category} />} />
+        <Route path={category} key={category} element={<Mikroblog category={category} />} />
       ))}
     </Route>
     <Route path={ROUTE.LINK} element={<Link />} />
