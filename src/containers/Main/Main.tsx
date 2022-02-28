@@ -1,11 +1,11 @@
-import { Typography } from '@mui/material';
 import LinksList from 'components/Links/LinksList/LinksList';
 import usePromotedLinks from 'hooks/usePromotedLinks';
+import ErrorMessage from '../../components/UI/Error';
 
 const Main = () => {
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = usePromotedLinks();
 
-  if (error) return <Typography>{(error as Error)?.message}</Typography>;
+  if (error) return <ErrorMessage error={error} />;
 
   return (
     <LinksList

@@ -1,5 +1,6 @@
 import useEntries from 'hooks/useEntries';
 import EntriesList from '../../components/Entries/EntriesList/EntriesList';
+import ErrorMessage from '../../components/UI/Error';
 import { MikroblogCategory } from './mikroblog.types';
 
 interface MikroblogProps {
@@ -11,7 +12,7 @@ const Mikroblog = ({ category }: MikroblogProps) => {
     category ?? MikroblogCategory.HOT
   );
 
-  if (error) return <p>{(error as Error)?.message}</p>;
+  if (error) return <ErrorMessage error={error} />;
 
   return (
     <EntriesList

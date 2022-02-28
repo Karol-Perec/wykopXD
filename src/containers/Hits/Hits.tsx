@@ -1,4 +1,5 @@
 import LinksList from '../../components/Links/LinksList/LinksList';
+import ErrorMessage from '../../components/UI/Error';
 import useHits from '../../hooks/useHits';
 import { HitsPeriod } from './hits.types';
 
@@ -11,7 +12,7 @@ const Hits = ({ period }: HitsProps) => {
     period ?? HitsPeriod.WEEK
   );
 
-  if (error) return <p>{(error as Error)?.message}</p>;
+  if (error) return <ErrorMessage error={error} />;
 
   return (
     <LinksList
