@@ -15,6 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <TopBar onDrawerToggleClick={handleToggleSideDrawer} />
+      <S.Offset />
       <SideDrawer open={showSideDrawer} onClose={handleToggleSideDrawer} />
       <S.Main>{children}</S.Main>
     </>

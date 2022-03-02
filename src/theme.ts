@@ -22,6 +22,20 @@ export const getTheme = (mode: PaletteMode): ThemeOptions => ({
     },
     body1: {
       fontSize: 14,
+      textDecoration: 'none',
     },
+
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
 });

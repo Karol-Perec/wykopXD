@@ -34,7 +34,7 @@ export const PreviewImg = styled('img')({
 
 export const DefaultPreviewImg = styled(Logo)(({ theme }) => ({
   fill: theme.palette.text.primary,
-  height: '150px',
-  width: '150px',
+  height: 150,
+  width: 150,
   display: 'inline-block',
 }));

@@ -1,48 +1,30 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
 import {
-  AppBar,
-  Avatar,
   Box,
   Button,
+  ButtonGroup,
   Container,
   IconButton,
-  Menu,
-  MenuItem,
   Toolbar,
   Typography,
 } from '@mui/material';
-import { MouseEvent, MouseEventHandler, useState } from 'react';
+import { MouseEventHandler } from 'react';
+import { Link } from 'react-router-dom';
+import { ROUTE } from '../../../Routes';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import * as S from './TopBar.styles';
 
 const pages = ['Główna', 'Wykopalisko', 'Hity', 'Mikroblog'];
-const settings = ['Profil 1', 'Profil 2', 'Profil 3', 'Wyloguj'];
 
 interface TopBarProps {
   onDrawerToggleClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-
-  const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  let xd;
 
   return (
-    <AppBar>
+    <S.TopBar>
       <Container>
         <Toolbar disableGutters>
           <S.Logo />
@@ -52,14 +34,10 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
               <MenuIcon />
             </IconButton>
           </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          {/* sx={{ color: 'white', display: 'block' }} */}
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, color: 'white' }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
+              <Button key={page} component={Link} to={ROUTE.MIKROBLOG}>
                 {page}
               </Button>
             ))}
@@ -67,35 +45,10 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
 
           <Box sx={{ flexGrow: 0 }}>
             <ThemeToggler />
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt='Wykop' />
-            </IconButton>
-            <Menu
-              sx={{ mt: '45px' }}
-              id='menu-appbar'
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                  <Typography textAlign='center'>{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </S.TopBar>
   );
 };
 
