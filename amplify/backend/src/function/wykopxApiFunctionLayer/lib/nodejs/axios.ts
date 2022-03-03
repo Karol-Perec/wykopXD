@@ -1,16 +1,14 @@
 import axios from 'axios';
 import { MD5 } from 'crypto-js';
 
-export const getAxiosInstance = ({
-  apiKey,
-  secret,
-  owmApiKey,
-}: {
+interface ApiKeys {
   apiKey?: string;
   secret?: string;
   owmApiKey?: string;
-}) => {
-  if (!owmApiKey || !apiKey || !secret) throw new Error();
+}
+
+export const getAxiosInstance = ({ apiKey, secret, owmApiKey }: ApiKeys) => {
+  if (!owmApiKey || !apiKey || !secret) throw new Error('error.missingApiKeys');
   const axiosInstance = axios.create({ baseURL: 'https://a2.wykop.pl' });
 
   axiosInstance.interceptors.request.use((config) => {

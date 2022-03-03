@@ -65,6 +65,13 @@
       }
     ],
     "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": ["/opt/*"]
+      }
+    ],
+    "import/no-absolute-path": 0
   }
 }

@@ -1,14 +1,16 @@
-/* eslint-disable import/no-absolute-path */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
 /* eslint-disable import/no-extraneous-dependencies */
-import { Handler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+/* eslint-disable import/extensions */
+import { APIGatewayProxyHandler } from 'aws-lambda';
 import { WykopLink, WykopResponse } from 'types';
 import { getAxiosInstance } from '/opt/nodejs/axios';
 import { createResponse } from '/opt/nodejs/lambdaUtils';
 import { mapLink } from '/opt/nodejs/dataUtils';
 
-export const handler: Handler<APIGatewayProxyEvent, APIGatewayProxyResult> = async (event) => {
+export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
+  if (!pathParameters?.id) {
+    return createResponse('error.missingRequestParameters', 400);
+  }
+
   const axios = getAxiosInstance({
     apiKey: process.env.API_KEY,
     secret: process.env.SECRET,
@@ -16,10 +18,12 @@ export const handler: Handler<APIGatewayProxyEvent, APIGatewayProxyResult> = asy
   });
 
   const { data } = await axios.get<WykopResponse<WykopLink>>(
-    `/links/link/${event.pathParameters?.id}/withcomments/true/output/clear`
+    `/links/link/${pathParameters?.id}/withcomments/true/output/clear`
   );
 
-  if (data.error) return createResponse(data.error, 400);
+  if (data.error) {
+    return createResponse(data.error, 500);
+  }
 
   const link = mapLink(data.data);
 

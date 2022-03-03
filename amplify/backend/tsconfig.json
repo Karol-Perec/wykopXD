@@ -8,7 +8,6 @@
     "resolveJsonModule": true,
     "baseUrl": "src",
     "paths": {
-      "@wykopx-types": ["../../src/types"],
       "/opt/nodejs/*": ["function/wykopxApiFunctionLayer/lib/nodejs/*"]
     },
     "noImplicitUseStrict": true,

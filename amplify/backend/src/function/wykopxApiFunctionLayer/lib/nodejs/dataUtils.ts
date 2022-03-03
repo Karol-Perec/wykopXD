@@ -18,7 +18,6 @@ const mapMedia = (e: WykopEmbedContent): Media => ({
   type: e.type,
   url: e.url,
   previewUrl: e.preview,
-  // hqPreviewUrl: e.preview.replace('w104h74', 'w207h139'),
   plus18: e.plus18,
   ratio: e.ratio,
 });

@@ -1,4 +1,6 @@
-export const createResponse = (body: unknown, statusCode: number) => ({
+import { APIGatewayProxyResult } from 'aws-lambda';
+
+export const createResponse = (body: unknown, statusCode: number): APIGatewayProxyResult => ({
   statusCode,
   headers: {
     'Access-Control-Allow-Origin': '*',
