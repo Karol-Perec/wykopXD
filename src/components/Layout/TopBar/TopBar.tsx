@@ -1,16 +1,9 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Container,
-  IconButton,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Container, IconButton, Toolbar } from '@mui/material';
 import { MouseEventHandler } from 'react';
-import { Link } from 'react-router-dom';
+import { matchRoutes, useLocation } from 'react-router-dom';
 import { ROUTE } from '../../../Routes';
+import UnstyledRouterLink from '../../UI/UnstyledRouterLink';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import * as S from './TopBar.styles';
 
@@ -21,7 +14,12 @@ interface TopBarProps {
 }
 
 const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
-  let xd;
+  const location = useLocation();
+  const routeMatch = matchRoutes(
+    [{ path: '/' }, { path: '/hity' }, { path: '/mikroblog' }],
+    location
+  );
+  console.log(routeMatch);
 
   return (
     <S.TopBar>
@@ -34,10 +32,9 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
               <MenuIcon />
             </IconButton>
           </Box>
-          {/* sx={{ color: 'white', display: 'block' }} */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, color: 'white' }}>
             {pages.map((page) => (
-              <Button key={page} component={Link} to={ROUTE.MIKROBLOG}>
+              <Button key={page} component={UnstyledRouterLink} to={ROUTE.MIKROBLOG}>
                 {page}
               </Button>
             ))}

@@ -56,13 +56,15 @@
     "react/require-default-props": "off",
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
-    "no-param-reassign": [2, { "props": false }],
+    "no-param-reassign": ["error", { "props": false }],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
         "components": ["Link"],
         "aspects": ["invalidHref"]
       }
-    ]
+    ],
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-underscore-dangle": "off"
   }
 }
