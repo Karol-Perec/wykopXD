@@ -7,21 +7,21 @@ import * as S from './SideDrawer.styles';
 
 interface SideDrawerProps {
   open: boolean;
-  onClose: MouseEventHandler;
+  handleToggleSideDrawer: MouseEventHandler;
 }
 
-const SideDrawer = ({ open, onClose }: SideDrawerProps) => (
-  <Drawer open={open} onClose={onClose}>
+const SideDrawer = ({ open, handleToggleSideDrawer }: SideDrawerProps) => (
+  <Drawer open={open} onClose={handleToggleSideDrawer}>
     <S.DrawerHeader>
-      <Link to={ROUTE.MAIN} onClick={onClose}>
+      <Link to={ROUTE.MAIN} onClick={handleToggleSideDrawer}>
         <S.WykopLogo />
       </Link>
     </S.DrawerHeader>
+    <Divider />
     <S.NavContainer>
-      <Divider />
-      <NavItems onNavItemClick={onClose} />
-      <Divider />
+      <NavItems onNavItemClick={handleToggleSideDrawer} />
     </S.NavContainer>
+    <Divider />
   </Drawer>
 );
 

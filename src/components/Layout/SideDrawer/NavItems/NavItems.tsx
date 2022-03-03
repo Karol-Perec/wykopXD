@@ -3,7 +3,7 @@ import { List } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { ROUTE } from 'Routes';
 import NavItem from './NavItem/NavItem';
-import * as S from './NavItems.styles';
+import { MainIcon, MikroblogIcon, UpcomingIcon } from './NavItems.styles';
 
 interface NavItemsProps {
   onNavItemClick: MouseEventHandler;
@@ -11,24 +11,24 @@ interface NavItemsProps {
 
 const NavItems = ({ onNavItemClick }: NavItemsProps) => (
   <List>
-    <NavItem onClick={onNavItemClick} icon={<S.MainIcon />} to={ROUTE.MAIN}>
+    <NavItem to={ROUTE.MAIN} onClick={onNavItemClick} icon={<MainIcon />}>
       Główna
     </NavItem>
 
-    <NavItem onClick={onNavItemClick} icon={<S.UpcomingIcon />} to={ROUTE.UPCOMING}>
+    <NavItem to={ROUTE.UPCOMING} onClick={onNavItemClick} icon={<UpcomingIcon />}>
       Wykopalisko
     </NavItem>
 
-    <NavItem onClick={onNavItemClick} icon={<HitsIcon />} to={ROUTE.HITS}>
+    <NavItem to={ROUTE.HITS} onClick={onNavItemClick} icon={<HitsIcon />}>
       Hity
     </NavItem>
 
-    <NavItem onClick={onNavItemClick} icon={<S.MikroblogIcon />} to={ROUTE.MIKROBLOG}>
+    <NavItem to={ROUTE.MIKROBLOG} onClick={onNavItemClick} icon={<MikroblogIcon />}>
       Mikroblog
     </NavItem>
 
-    <NavItem onClick={onNavItemClick} icon={<MyWykopIcon />} to={ROUTE.MY_WYKOP}>
-      Mój wykop
+    <NavItem to={ROUTE.MY_WYKOP} onClick={onNavItemClick} icon={<MyWykopIcon />}>
+      Mój Wykop
     </NavItem>
   </List>
 );

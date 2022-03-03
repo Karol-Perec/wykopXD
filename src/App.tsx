@@ -3,7 +3,7 @@ import Layout from 'components/Layout/Layout';
 import ThemeContextProvider from 'contexts/ThemeContextProvider';
 import { globalStyles } from 'globalStyles';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Routes from 'Routes';
+import { routes } from 'Routes';
 
 const queryClient = new QueryClient();
 
@@ -11,7 +11,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeContextProvider>
       <GlobalStyles styles={globalStyles} />
-      <Layout>{Routes}</Layout>
+      <Layout>{routes}</Layout>
     </ThemeContextProvider>
   </QueryClientProvider>
 );

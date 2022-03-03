@@ -4,6 +4,9 @@ export const Card = styled(MuiCard)(({ theme }) => ({
   width: '100%',
   marginBottom: theme.spacing(2),
   transition: 'background-color 0.3s ease-out 0s',
+  '& a': {
+    textDecoration: 'none',
+  },
   ':hover': {
     cursor: 'pointer',
     backgroundColor:

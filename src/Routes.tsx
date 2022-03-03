@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes as RouterRoutes, Route, Navigate } from 'react-router-dom';
 import Link from 'containers/Link/Link';
 import Main from 'containers/Main/Main';
 import Entry from './containers/Entry/Entry';
@@ -18,8 +18,8 @@ export enum ROUTE {
   ENTRY = '/entry/:id',
 }
 
-const AppRoutes = (
-  <Routes>
+export const routes = (
+  <RouterRoutes>
     {/* <Route path='/login'>
       <Login />
     </Route>
@@ -44,7 +44,5 @@ const AppRoutes = (
     <Route path={ROUTE.ENTRY} element={<Entry />} />
     <Route path={ROUTE.MAIN} element={<Main />} />
     <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
-  </Routes>
+  </RouterRoutes>
 );
-
-export default AppRoutes;

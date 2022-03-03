@@ -24,7 +24,6 @@ export const getTheme = (mode: PaletteMode): ThemeOptions => ({
       fontSize: 14,
       textDecoration: 'none',
     },
-
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',
