@@ -30,9 +30,13 @@ const parseNode = (node: ChildNode) => {
       const linkNode = node as HTMLLinkElement;
       if (linkNode.href.endsWith(`#${linkNode.textContent}`)) {
         return (
-          <RouterLink to={`/tag/${node.textContent}`} onClick={(e) => e.stopPropagation()}>
+          <Link
+            to={`/tag/${node.textContent}`}
+            onClick={(e) => e.stopPropagation()}
+            component={RouterLink}
+          >
             #{node.textContent}
-          </RouterLink>
+          </Link>
         );
       }
       if (linkNode.href.startsWith('spoiler:')) {

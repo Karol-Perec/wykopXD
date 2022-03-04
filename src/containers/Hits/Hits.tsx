@@ -1,5 +1,5 @@
 import LinksList from '../../components/Links/LinksList/LinksList';
-import ErrorMessage from '../../components/UI/Error';
+import ErrorMessage from '../../components/ErrorBoundary/ErrorMessage';
 import useHits from '../../hooks/useHits';
 import { HitsPeriod } from './hits.types';
 

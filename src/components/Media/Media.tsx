@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import ReactPlayer from 'react-player';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import * as S from './Media.styles';
 
 type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';
@@ -43,13 +43,9 @@ const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) =>
       onClickPreview={enlargeMediaContainer}
     />
   ) : (
-    <Link to={linkTo}>
-      {displayedPreviewUrl ? (
-        <S.PreviewImg src={displayedPreviewUrl} alt='' />
-      ) : (
-        <S.DefaultPreviewImg />
-      )}
-    </Link>
+    <RouterLink to={linkTo} onClick={(e) => e.stopPropagation()}>
+      {displayedPreviewUrl ? <S.PreviewImg src={displayedPreviewUrl} /> : <S.DefaultPreviewImg />}
+    </RouterLink>
   );
 
   return <S.Container ref={mediaContainerRef}>{media}</S.Container>;

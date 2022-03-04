@@ -19,7 +19,6 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
     [{ path: '/' }, { path: '/hity' }, { path: '/mikroblog' }],
     location
   );
-  console.log(routeMatch);
 
   return (
     <S.TopBar>

@@ -1,6 +1,6 @@
 import useEntries from 'hooks/useEntries';
 import EntriesList from '../../components/Entries/EntriesList/EntriesList';
-import ErrorMessage from '../../components/UI/Error';
+import ErrorMessage from '../../components/ErrorBoundary/ErrorMessage';
 import { MikroblogCategory } from './mikroblog.types';
 
 interface MikroblogProps {

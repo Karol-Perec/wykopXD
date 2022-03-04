@@ -1,12 +1,14 @@
 import { Typography } from '@mui/material';
 import useEntry from 'hooks/useEntry';
 import { useParams } from 'react-router-dom';
-import ErrorMessage from '../../components/UI/Error';
+import EntryAbstractSkeleton from '../../components/Entries/EntryAbstract/EntryAbstractSkeleton';
+import ErrorMessage from '../../components/ErrorBoundary/ErrorMessage';
 
 const Entry = () => {
   const query = useParams();
   const { data, isLoading, error } = useEntry(+query.id!);
 
+  if (isLoading) return <EntryAbstractSkeleton />;
   if (error) return <ErrorMessage error={error} />;
 
   return <Typography>{JSON.stringify(data)}</Typography>;
