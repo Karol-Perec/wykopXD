@@ -24,6 +24,7 @@ export const UserSection = styled('div')(({ theme }) => ({
 }));
 
 export const ContentSection = styled('article')(({ theme }) => ({
+  width: '100%',
   display: 'inline-block',
   padding: theme.spacing(1),
   textAlign: 'left',

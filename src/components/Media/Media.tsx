@@ -27,7 +27,7 @@ const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) =>
   const displayedPreviewUrl = getDisplayedPreviewUrl(previewUrl, 'hq');
 
   const enlargeMediaContainer = (event: MouseEvent) => {
-    event.preventDefault();
+    event.stopPropagation();
     if (!mediaContainerRef?.current) return;
     mediaContainerRef.current.style.width = '100%';
     mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
@@ -40,7 +40,7 @@ const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) =>
       light={displayedPreviewUrl}
       width='100%'
       height='100%'
-      onClickPreview={(e: MouseEvent) => enlargeMediaContainer(e)}
+      onClickPreview={enlargeMediaContainer}
     />
   ) : (
     <Link to={linkTo}>
