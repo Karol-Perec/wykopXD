@@ -72,6 +72,7 @@
         "ignore": ["/opt/*"]
       }
     ],
-    "import/no-absolute-path": 0
+    "import/no-absolute-path": 0,
+    "react/destructuring-assignment": [1, "always", { "ignoreClassFields": true }]
   }
 }
