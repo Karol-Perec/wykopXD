@@ -1,35 +1,36 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 import ErrorMessage from './ErrorMessage';
 
-interface Props {
+interface ErrorBoundaryProps {
   children: ReactNode;
 }
 
-interface State {
+interface ErrorBoundaryState {
   hasError: boolean;
   error: unknown;
 }
 
-class ErrorBoundary extends Component<Props, State> {
-  constructor(props: Props) {
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false, error: null };
   }
 
-  public static getDerivedStateFromError(error: Error): State {
+  public static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error:', error, errorInfo);
+    console.error('Uncaught error: ', error, errorInfo);
   }
 
   public render() {
-    if (this.state.hasError) {
-      return <ErrorMessage error={this.state.error} />;
-    }
+    const { hasError, error } = this.state;
+    const { children } = this.props;
 
-    return this.props.children;
+    if (hasError) return <ErrorMessage error={error} />;
+
+    return children;
   }
 }
 
