@@ -1,6 +1,6 @@
 import { QueryFunction, useInfiniteQuery } from 'react-query';
-import { Link } from '../types/link.types';
-import axios from '../utils/axios';
+import { Link } from '../../types/link.types';
+import axios from '../../utils/axios';
 
 const getPromotedLinks: QueryFunction<Link[]> = async ({ pageParam = 1 }) => {
   const response = await axios.get<Link[]>('/links/promoted', {

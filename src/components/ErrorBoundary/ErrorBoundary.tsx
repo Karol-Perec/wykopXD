@@ -1,5 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from '../UI/ErrorMessage';
 
 interface ErrorBoundaryProps {
   children: ReactNode;

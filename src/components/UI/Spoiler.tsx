@@ -20,8 +20,10 @@ const Spoiler = ({ children }: SpoilerProps) => {
   const [showMessage, setShowMessage] = useState(false);
 
   const toggleSpoiler = (event: MouseEvent) => {
-    event.stopPropagation();
-    setShowMessage(true);
+    if (!showMessage) {
+      event.stopPropagation();
+      setShowMessage(true);
+    }
   };
 
   return (

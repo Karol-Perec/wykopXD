@@ -1,6 +1,6 @@
 import LinksList from '../../components/Links/LinksList/LinksList';
-import ErrorMessage from '../../components/ErrorBoundary/ErrorMessage';
-import useHits from '../../hooks/useHits';
+import ErrorMessage from '../../components/UI/ErrorMessage';
+import useHits from '../../hooks/api/useHits';
 import { HitsPeriod } from './hits.types';
 
 interface HitsProps {
@@ -9,7 +9,7 @@ interface HitsProps {
 
 const Hits = ({ period }: HitsProps) => {
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useHits(
-    period ?? HitsPeriod.WEEK
+    period || HitsPeriod.WEEK
   );
 
   if (error) return <ErrorMessage error={error} />;

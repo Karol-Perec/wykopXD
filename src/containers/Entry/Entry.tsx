@@ -1,8 +1,8 @@
 import { Typography } from '@mui/material';
-import useEntry from 'hooks/useEntry';
+import useEntry from 'hooks/api/useEntry';
 import { useParams } from 'react-router-dom';
 import EntryAbstractSkeleton from '../../components/Entries/EntryAbstract/EntryAbstractSkeleton';
-import ErrorMessage from '../../components/ErrorBoundary/ErrorMessage';
+import ErrorMessage from '../../components/UI/ErrorMessage';
 
 const Entry = () => {
   const query = useParams();

@@ -73,6 +73,7 @@
       }
     ],
     "import/no-absolute-path": 0,
-    "react/destructuring-assignment": [1, "always", { "ignoreClassFields": true }]
+    "react/destructuring-assignment": [1, "always", { "ignoreClassFields": true }],
+    "consistent-return": 0
   }
 }

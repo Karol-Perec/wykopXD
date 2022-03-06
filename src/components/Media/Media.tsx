@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { Link as RouterLink } from 'react-router-dom';
+import useIsOnScreen from '../../hooks/useIsOnScreen';
 import * as S from './Media.styles';
 
 type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';
@@ -24,6 +25,7 @@ export const getDisplayedPreviewUrl = (previewUrl: string, quality: ImageQuality
 
 const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) => {
   const mediaContainerRef = useRef<HTMLDivElement>(null);
+  const isOnScreen = useIsOnScreen(mediaContainerRef);
   const displayedPreviewUrl = getDisplayedPreviewUrl(previewUrl, 'hq');
 
   const enlargeMediaContainer = (event: MouseEvent) => {
@@ -41,6 +43,7 @@ const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) =>
       width='100%'
       height='100%'
       onClickPreview={enlargeMediaContainer}
+      playing={isOnScreen}
     />
   ) : (
     <RouterLink to={linkTo} onClick={(e) => e.stopPropagation()}>

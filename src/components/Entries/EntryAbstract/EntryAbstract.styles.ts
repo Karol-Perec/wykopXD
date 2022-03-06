@@ -1,18 +1,18 @@
-import { Card as MuiCard, darken, lighten, styled } from '@mui/material';
+import { Card as MuiCard, darken, lighten, styled, Typography } from '@mui/material';
 
 export const Card = styled(MuiCard)(({ theme }) => ({
   width: '100%',
   marginBottom: theme.spacing(2),
   transition: 'background-color 0.3s ease-out 0s',
-  '& a': {
-    textDecoration: 'none',
-  },
   ':hover': {
     cursor: 'pointer',
     backgroundColor:
       theme.palette.mode === 'dark'
         ? lighten(theme.palette.background.default, 0.05)
         : darken(theme.palette.background.default, 0.02),
+  },
+  [theme.breakpoints.down('sm')]: {
+    borderRadius: 0,
   },
 }));
 
@@ -23,9 +23,6 @@ export const UserSection = styled('div')(({ theme }) => ({
   paddingRight: theme.spacing(2),
 }));
 
-export const ContentSection = styled('article')(({ theme }) => ({
-  width: '100%',
-  display: 'inline-block',
+export const TextContent = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(1),
-  textAlign: 'left',
 }));
