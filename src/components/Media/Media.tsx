@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Link as RouterLink } from 'react-router-dom';
 import useIsOnScreen from '../../hooks/useIsOnScreen';
@@ -24,12 +24,14 @@ export const getDisplayedPreviewUrl = (previewUrl: string, quality: ImageQuality
 };
 
 const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) => {
+  const [isLargeVideo, setIsLargeVideo] = useState(false);
   const mediaContainerRef = useRef<HTMLDivElement>(null);
   const isOnScreen = useIsOnScreen(mediaContainerRef);
   const displayedPreviewUrl = getDisplayedPreviewUrl(previewUrl, 'hq');
 
-  const enlargeMediaContainer = (event: MouseEvent) => {
+  const enlargeVideo = (event: MouseEvent) => {
     event.stopPropagation();
+    setIsLargeVideo(true);
     if (!mediaContainerRef?.current) return;
     mediaContainerRef.current.style.width = '100%';
     mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
@@ -42,7 +44,7 @@ const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) =>
       light={displayedPreviewUrl}
       width='100%'
       height='100%'
-      onClickPreview={enlargeMediaContainer}
+      onClickPreview={enlargeVideo}
       playing={isOnScreen}
     />
   ) : (
@@ -51,7 +53,11 @@ const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) =>
     </RouterLink>
   );
 
-  return <S.Container ref={mediaContainerRef}>{media}</S.Container>;
+  return (
+    <S.Container ref={mediaContainerRef} maximizeWidth={isLargeVideo}>
+      {media}
+    </S.Container>
+  );
 };
 
 export default Media;

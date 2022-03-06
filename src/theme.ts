@@ -25,10 +25,10 @@ export const getTheme = (mode: PaletteMode): ThemeOptions => ({
       textDecoration: 'none',
     },
     fontFamily: [
+      'Roboto',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
-      'Roboto',
       '"Helvetica Neue"',
       'Arial',
       'sans-serif',
