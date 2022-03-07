@@ -7,9 +7,17 @@ interface HideableSpoilerProps {
 
 export const HideableSpoiler = styled('span', {
   shouldForwardProp: (prop) => prop !== 'showMessage',
-})<HideableSpoilerProps>(({ showMessage }) => ({
+})<HideableSpoilerProps>(({ showMessage, theme }) => ({
   filter: showMessage ? 'none' : 'blur(3px)',
   cursor: showMessage ? 'inherit' : 'pointer',
+  '*, *:hover': {
+    color: theme.palette.text.primary,
+    textDecoration: 'none',
+  },
+
+  // ':hover': {
+  //   textU,
+  // },
 }));
 
 interface SpoilerProps {
@@ -19,7 +27,7 @@ interface SpoilerProps {
 const Spoiler = ({ children }: SpoilerProps) => {
   const [showMessage, setShowMessage] = useState(false);
 
-  const toggleSpoiler = (event: MouseEvent) => {
+  const showSpoiler = (event: MouseEvent) => {
     if (!showMessage) {
       event.stopPropagation();
       setShowMessage(true);
@@ -27,7 +35,7 @@ const Spoiler = ({ children }: SpoilerProps) => {
   };
 
   return (
-    <HideableSpoiler onClick={toggleSpoiler} showMessage={showMessage}>
+    <HideableSpoiler onClick={showSpoiler} showMessage={showMessage}>
       {children}
     </HideableSpoiler>
   );

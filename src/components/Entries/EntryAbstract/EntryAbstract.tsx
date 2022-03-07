@@ -28,22 +28,24 @@ const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
         }
       }}
     >
-      <S.UserSection>
+      <S.EntryHeader>
         <Avatar alt={user.login} src={user.avatarUrl} variant='rounded' />
-        <div>
+        <S.EntryHeaderMeta>
           <Typography variant='subtitle1'>{user.login}</Typography>
-          <Typography>{calculateAprroximatedAge(date)}</Typography>
-        </div>
-      </S.UserSection>
-      <S.TextContent variant='body1'>{parseHtml(body)}</S.TextContent>
-      {media && (
-        <Media
-          sourceUrl={media.url}
-          previewUrl={media.previewUrl}
-          linkTo={`/entry/${id}`}
-          previewQuality='lq'
-        />
-      )}
+          <Typography variant='caption'>{calculateAprroximatedAge(date)}</Typography>
+        </S.EntryHeaderMeta>
+      </S.EntryHeader>
+      <S.EntryContent>
+        <S.TextContent variant='body1'>{parseHtml(body)}</S.TextContent>
+        {media && (
+          <Media
+            sourceUrl={media.url}
+            previewUrl={media.previewUrl}
+            linkTo={`/entry/${id}`}
+            previewQuality='lq'
+          />
+        )}
+      </S.EntryContent>
     </S.Card>
   );
 };

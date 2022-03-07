@@ -16,13 +16,29 @@ export const Card = styled(MuiCard)(({ theme }) => ({
   },
 }));
 
-export const UserSection = styled('div')(({ theme }) => ({
+export const EntryHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   paddingTop: theme.spacing(1.5),
   paddingLeft: theme.spacing(2),
   paddingRight: theme.spacing(2),
 }));
 
+export const EntryHeaderMeta = styled('div')(({ theme }) => ({
+  marginLeft: theme.spacing(1.5),
+}));
+
+export const EntryContent = styled(Typography)(({ theme }) => ({
+  marginLeft: theme.spacing(8.5),
+  [theme.breakpoints.down('sm')]: {
+    borderRadius: 0,
+    marginLeft: 0,
+  },
+}));
+
 export const TextContent = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(1),
+  paddingLeft: 0,
+  [theme.breakpoints.down('sm')]: {
+    paddingLeft: theme.spacing(1),
+  },
 }));

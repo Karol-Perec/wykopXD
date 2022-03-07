@@ -13,6 +13,49 @@ const parseText = (text: string | null) => {
   return text;
 };
 
+const parseSpoilerText = (text: string | null) =>
+  text?.split(' ').map((word) => {
+    if (word.startsWith('#')) {
+      return (
+        <Link
+          to={`/tag/${word.substring(1)}`}
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
+          component={RouterLink}
+          underline='hover'
+        >
+          {word}
+        </Link>
+      );
+    }
+    if (word.startsWith('@')) {
+      return (
+        <Link
+          to={`/ludzie/${word.substring(1)}`}
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
+          component={RouterLink}
+          underline='hover'
+        >
+          {word}
+        </Link>
+      );
+    }
+    if (word.startsWith('http')) {
+      return (
+        <Link
+          href={word}
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
+          underline='hover'
+        >
+          {word}
+        </Link>
+      );
+    }
+    return `${word} `;
+  });
+
 const parseElementNode = (node: ChildNode) => {
   switch (node.nodeName) {
     case 'BR':
@@ -46,7 +89,11 @@ const parseElementNode = (node: ChildNode) => {
         );
       }
       if (linkNode.href.startsWith('spoiler:')) {
-        return <Spoiler>{parseText(encodeUtf8(linkNode.href.replace('spoiler:', '')))}</Spoiler>;
+        return (
+          <Spoiler>
+            {parseSpoilerText(parseText(encodeUtf8(linkNode.href.replace('spoiler:', ''))))}
+          </Spoiler>
+        );
       }
       if (linkNode.href.startsWith('http')) {
         return (

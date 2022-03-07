@@ -54,7 +54,7 @@ const Media = ({ sourceUrl, previewUrl, linkTo, previewQuality }: MediaProps) =>
   );
 
   return (
-    <S.Container ref={mediaContainerRef} maximizeWidth={isLargeVideo}>
+    <S.Container ref={mediaContainerRef} unblockMaxWidth={isLargeVideo}>
       {media}
     </S.Container>
   );

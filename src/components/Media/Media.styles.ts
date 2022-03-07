@@ -2,10 +2,10 @@ import { styled } from '@mui/material/styles';
 import { ReactComponent as Logo } from 'assets/images/logo.svg';
 
 interface ContainerProps {
-  maximizeWidth: boolean;
+  unblockMaxWidth: boolean;
 }
 
-export const Container = styled('div')<ContainerProps>(({ theme, maximizeWidth }) => ({
+export const Container = styled('div')<ContainerProps>(({ theme, unblockMaxWidth }) => ({
   display: 'inline-block',
   boxSizing: 'border-box',
   width: '100%',
@@ -24,8 +24,8 @@ export const Container = styled('div')<ContainerProps>(({ theme, maximizeWidth }
       clear: 'both',
     },
   },
-  maxWidth: maximizeWidth ? undefined : 510,
-  maxHeight: 510,
+  maxWidth: unblockMaxWidth ? undefined : theme.breakpoints.values.sm,
+  maxHeight: (theme.breakpoints.values.sm * 16) / 9,
 
   [theme.breakpoints.down('sm')]: {
     width: '100%',
