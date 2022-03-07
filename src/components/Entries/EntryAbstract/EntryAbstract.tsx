@@ -16,8 +16,6 @@ const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
   const { media, user, body, id, date } = entry;
   const navigate = useNavigate();
 
-  console.log(parseHtml(body));
-
   return (
     <S.Card
       ref={containerRef}
@@ -43,6 +41,8 @@ const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
             previewUrl={media.previewUrl}
             linkTo={`/entry/${id}`}
             previewQuality='lq'
+            type={media.type}
+            aspectRatio={media.aspectRatio}
           />
         )}
       </S.EntryContent>

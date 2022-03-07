@@ -1,7 +1,8 @@
+export type MediaType = 'video' | 'image';
 export interface Media {
-  type: 'video' | 'image';
+  type: MediaType;
   url: string;
   previewUrl: string;
   plus18: boolean;
-  ratio: number;
+  aspectRatio: number;
 }

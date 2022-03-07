@@ -19,7 +19,7 @@ const mapMedia = (e: WykopEmbedContent): Media => ({
   url: e.url,
   previewUrl: e.preview,
   plus18: e.plus18,
-  ratio: e.ratio,
+  aspectRatio: e.ratio,
 });
 
 const mapUser = (p: WykopAuthor): User => ({
@@ -73,7 +73,8 @@ export const mapLink = (l: WykopLink): Link => ({
   id: l.id,
   user: mapUser(l.author),
   body: l.description,
-  buryCount: l.bury_count,
+  voteCountPlus: l.vote_count,
+  voteCountMinus: l.bury_count,
   commentsCount: l.comments_count,
   date: l.date,
   isHot: l.is_hot,
@@ -82,6 +83,5 @@ export const mapLink = (l: WykopLink): Link => ({
   relatedCount: l.related_count,
   sourceUrl: l.source_url,
   title: l.title,
-  voteCount: l.vote_count,
   comments: l.comments && mapLinkComments(l.comments),
 });

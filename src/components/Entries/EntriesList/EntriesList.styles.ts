@@ -1,7 +1,7 @@
 import { styled } from '@mui/material';
 
 export const Container = styled('div')(({ theme }) => ({
-  maxWidth: theme.breakpoints.values.md,
+  maxWidth: 700,
   marginLeft: 'auto',
   marginRight: 'auto',
   paddingLeft: theme.spacing(2),

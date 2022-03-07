@@ -10,6 +10,7 @@ export interface EntryComment {
   date: Date;
   voteCountPlus: number;
 }
+
 export interface Entry {
   id: number;
   user: User;

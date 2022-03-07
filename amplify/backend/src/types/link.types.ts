@@ -13,7 +13,8 @@ export interface LinkComment {
 export interface Link {
   id: number;
   user: User;
-  buryCount: number;
+  voteCountPlus: number;
+  voteCountMinus: number;
   commentsCount: number;
   date: Date;
   body: string;
@@ -23,6 +24,5 @@ export interface Link {
   relatedCount: number;
   sourceUrl: string;
   title: string;
-  voteCount: number;
   comments?: LinkComment[];
 }
