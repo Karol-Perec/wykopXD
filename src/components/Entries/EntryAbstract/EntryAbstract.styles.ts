@@ -27,7 +27,7 @@ export const EntryHeaderMeta = styled('div')(({ theme }) => ({
   marginLeft: theme.spacing(1.5),
 }));
 
-export const EntryContent = styled(Typography)(({ theme }) => ({
+export const EntryContent = styled('div')(({ theme }) => ({
   marginLeft: theme.spacing(8.5),
   [theme.breakpoints.down('sm')]: {
     borderRadius: 0,
@@ -36,8 +36,9 @@ export const EntryContent = styled(Typography)(({ theme }) => ({
 }));
 
 export const TextContent = styled(Typography)(({ theme }) => ({
-  padding: theme.spacing(1),
+  padding: theme.spacing(2),
   paddingLeft: 0,
+  paddingRight: 0,
   [theme.breakpoints.down('sm')]: {
     paddingLeft: theme.spacing(1),
   },

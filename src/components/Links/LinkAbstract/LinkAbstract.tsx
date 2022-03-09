@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
-import Media from 'components/Media/Media';
 import { RefCallback } from 'react';
 import { Link } from 'types';
+import LinkMedia from '../../LinkMedia/LinkMedia';
 import * as S from './LinkAbstract.styles';
 
 interface LinkAbstractProps {
@@ -12,11 +12,12 @@ interface LinkAbstractProps {
 const LinkAbstract = ({ link, containerRef }: LinkAbstractProps) => (
   <S.Container ref={containerRef}>
     <Typography variant='h2'>{link.title}</Typography>
-    <Media
+    <LinkMedia
       sourceUrl={link.sourceUrl}
-      previewUrl={link.previewUrl}
+      imageUrl={link.previewUrl}
       linkTo={`/link/${link.id}`}
       previewQuality='lq'
+      plus18={link.plus18}
     />
     <Typography variant='body1'>{link.body}</Typography>
   </S.Container>

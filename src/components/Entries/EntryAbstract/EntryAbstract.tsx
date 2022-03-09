@@ -38,10 +38,10 @@ const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
         {media && (
           <Media
             sourceUrl={media.url}
-            previewUrl={media.previewUrl}
-            linkTo={`/entry/${id}`}
+            imageUrl={media.previewUrl}
             previewQuality='lq'
             type={media.type}
+            plus18={media.plus18}
             aspectRatio={media.aspectRatio}
           />
         )}
