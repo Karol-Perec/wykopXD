@@ -8,7 +8,7 @@ interface ContainerProps {
 export const Container = styled('div', {
   shouldForwardProp: (prop) => !['aspectRatio', 'unblockMaxHeight'].includes(String(prop)),
 })<ContainerProps>(({ theme, aspectRatio, unblockMaxHeight }) => ({
-  maxHeight: 500,
+  // maxHeight: 500,
 
   [theme.breakpoints.up('sm')]: {
     marginRight: theme.spacing(2),

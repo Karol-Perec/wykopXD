@@ -5,7 +5,9 @@ interface ContainerProps {
   aspectRatio?: number;
 }
 
-export const Container = styled('div')<ContainerProps>(({ theme }) => ({
+export const Container = styled('div', {
+  shouldForwardProp: (prop) => prop !== 'aspectRatio',
+})<ContainerProps>(({ theme, aspectRatio }) => ({
   display: 'inline-block',
   boxSizing: 'border-box',
   width: '100%',

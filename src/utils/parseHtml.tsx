@@ -1,4 +1,6 @@
+/* eslint-disable react/no-array-index-key */
 import { Link } from '@mui/material';
+import { Fragment } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Spoiler from '../components/UI/Spoiler';
 
@@ -14,7 +16,7 @@ const parseText = (text: string | null) => {
 };
 
 const parseSpoilerText = (text: string | null) =>
-  text?.split(' ').map((word) => {
+  text?.split(' ').map((word, idx) => {
     if (word.startsWith('#')) {
       return (
         <Link
@@ -23,6 +25,7 @@ const parseSpoilerText = (text: string | null) =>
           onMouseDown={(e) => e.stopPropagation()}
           component={RouterLink}
           underline='hover'
+          key={idx}
         >
           {word}
         </Link>
@@ -36,6 +39,7 @@ const parseSpoilerText = (text: string | null) =>
           onMouseDown={(e) => e.stopPropagation()}
           component={RouterLink}
           underline='hover'
+          key={idx}
         >
           {word}
         </Link>
@@ -48,6 +52,7 @@ const parseSpoilerText = (text: string | null) =>
           onClick={(e) => e.stopPropagation()}
           onMouseDown={(e) => e.stopPropagation()}
           underline='hover'
+          key={idx}
         >
           {word}
         </Link>
@@ -128,5 +133,7 @@ export const parseHtml = (text: string) => {
   const parser = new DOMParser();
   const parsedText = parser.parseFromString(text, 'text/html');
 
-  return Array.from(parsedText.body.childNodes).map((node) => parseNode(node));
+  return Array.from(parsedText.body.childNodes).map((node, idx) => (
+    <Fragment key={idx}>{parseNode(node)}</Fragment>
+  ));
 };

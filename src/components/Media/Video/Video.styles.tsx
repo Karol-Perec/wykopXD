@@ -2,15 +2,14 @@ import { styled } from '@mui/material/styles';
 
 interface ContainerProps {
   aspectRatio?: number;
-  unblockMaxHeight: boolean;
+  expandedVideo: boolean;
 }
 
-export const Container = styled('div', {
-  shouldForwardProp: (prop) => !['aspectRatio', 'unblockMaxHeight'].includes(String(prop)),
-})<ContainerProps>(({ theme, aspectRatio, unblockMaxHeight }) => ({
-  maxHeight: 500,
-
-  aspectRatio: unblockMaxHeight && aspectRatio ? String(1 / aspectRatio) : '16 / 9',
+export const VideoWrapper = styled('div', {
+  shouldForwardProp: (prop) => !['aspectRatio', 'expandedVideo'].includes(String(prop)),
+})<ContainerProps>(({ aspectRatio, expandedVideo }) => ({
+  width: '100%',
+  aspectRatio: expandedVideo && aspectRatio ? String(1 / aspectRatio) : '16 / 9',
   '@supports not (aspect-ratio: 16 / 9)': {
     '::before': {
       float: 'left',
@@ -23,8 +22,16 @@ export const Container = styled('div', {
       clear: 'both',
     },
   },
+}));
 
+export const Container = styled('div')(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  maxHeight: 550,
   [theme.breakpoints.up('sm')]: {
     marginRight: theme.spacing(2),
+    maxHeight: 650,
+    borderRadius: 10,
+    overflow: 'hidden',
   },
 }));

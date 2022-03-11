@@ -1,4 +1,5 @@
-import { Typography, Avatar } from '@mui/material';
+import { ChatBubbleOutlineRounded as CommentsIcon } from '@mui/icons-material';
+import { Typography, Avatar, IconButton, Button } from '@mui/material';
 import Media from 'components/Media/Media';
 import { RefCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +14,7 @@ interface EntryAbstractProps {
 }
 
 const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
-  const { media, user, body, id, date } = entry;
+  const { media, user, body, id, date, commentsCount } = entry;
   const navigate = useNavigate();
 
   return (
@@ -46,6 +47,12 @@ const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
           />
         )}
       </S.EntryContent>
+      <S.Statistics>
+        <Button startIcon={<CommentsIcon />}>{commentsCount}</Button>
+        <IconButton color='primary'>
+          <CommentsIcon />
+        </IconButton>
+      </S.Statistics>
     </S.Card>
   );
 };

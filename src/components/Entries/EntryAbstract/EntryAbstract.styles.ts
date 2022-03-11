@@ -43,3 +43,10 @@ export const TextContent = styled(Typography)(({ theme }) => ({
     paddingLeft: theme.spacing(1),
   },
 }));
+
+export const Statistics = styled('div')(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-around',
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
+}));

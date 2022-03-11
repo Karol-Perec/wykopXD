@@ -34,7 +34,7 @@ const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, previewQuality }: Ima
       unblockMaxHeight={unblockMaxHeight}
     >
       <Link href={sourceUrl} onClick={(e) => e.preventDefault()}>
-        <S.Image src={displayedImageUrl} />
+        <S.Image src={displayedImageUrl} alt='' />
       </Link>
     </S.Container>
   );
