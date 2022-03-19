@@ -65,6 +65,8 @@ const parseElementNode = (node: ChildNode) => {
   switch (node.nodeName) {
     case 'BR':
       return <br />;
+    case 'STRONG':
+      return <strong>{parseText(node.textContent)}</strong>;
     case 'A': {
       const linkNode = node as HTMLLinkElement;
       if (linkNode.href.endsWith(`#${linkNode.textContent}`)) {
@@ -123,6 +125,10 @@ const parseNode = (node: ChildNode) => {
   if (node.nodeType === node.TEXT_NODE) {
     return parseText(node.textContent);
   }
+  if (node.nodeName === 'STRONG') {
+    console.log(node);
+  }
+
   return parseElementNode(node);
 };
 

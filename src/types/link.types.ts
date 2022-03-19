@@ -4,7 +4,7 @@ export interface LinkComment {
   id: number;
   user: User;
   body: string;
-  date: Date;
+  date: string;
   voteCountPlus: number;
   voteCountMinus: number;
   responses?: LinkComment[];
@@ -16,7 +16,7 @@ export interface Link {
   voteCountPlus: number;
   voteCountMinus: number;
   commentsCount: number;
-  date: Date;
+  date: string;
   body: string;
   isHot: boolean;
   plus18: boolean;

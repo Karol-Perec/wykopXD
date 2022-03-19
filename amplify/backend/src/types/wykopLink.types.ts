@@ -14,7 +14,7 @@ export interface WykopLink {
   bury_count: number;
   can_vote: boolean;
   comments_count: number;
-  date: Date;
+  date: string;
   description: string; // | { html: string; text: string };
   is_hot: boolean;
   info?: WykopLinkInfo;

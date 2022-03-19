@@ -1,4 +1,4 @@
-export const calculateAprroximatedAge = (date: Date) => {
+export const calculateAprroximatedAge = (date: string) => {
   const startDate = new Date(date);
   const now = new Date();
 

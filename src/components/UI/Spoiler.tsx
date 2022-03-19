@@ -8,16 +8,16 @@ interface HideableSpoilerProps {
 export const HideableSpoiler = styled('span', {
   shouldForwardProp: (prop) => prop !== 'showMessage',
 })<HideableSpoilerProps>(({ showMessage, theme }) => ({
-  filter: showMessage ? 'none' : 'blur(3px)',
-  cursor: showMessage ? 'inherit' : 'pointer',
+  ...(!showMessage && {
+    filter: 'blur(3px)',
+    cursor: 'pointer',
+    userSelect: 'none',
+    WebkitTapHighlightColor: 'transparent',
+  }),
   '*, *:hover': {
     color: theme.palette.text.primary,
     textDecoration: 'none',
   },
-
-  // ':hover': {
-  //   textU,
-  // },
 }));
 
 interface SpoilerProps {

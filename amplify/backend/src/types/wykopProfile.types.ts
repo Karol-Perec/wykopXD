@@ -13,7 +13,7 @@ export interface WykopProfile {
   sex?: 'male' | 'female';
   color: WykopProfileColor;
   avatar: string;
-  signup_at: Date;
+  signup_at: string;
   background?: string; // image url
   is_verified: boolean;
   is_observed: boolean; // is observed by current user

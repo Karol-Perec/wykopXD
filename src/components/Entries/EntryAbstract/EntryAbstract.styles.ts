@@ -28,25 +28,21 @@ export const EntryHeaderMeta = styled('div')(({ theme }) => ({
 }));
 
 export const EntryContent = styled('div')(({ theme }) => ({
-  marginLeft: theme.spacing(8.5),
-  [theme.breakpoints.down('sm')]: {
-    borderRadius: 0,
-    marginLeft: 0,
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(8.5),
   },
 }));
 
 export const TextContent = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(2),
-  paddingLeft: 0,
-  paddingRight: 0,
-  [theme.breakpoints.down('sm')]: {
-    paddingLeft: theme.spacing(1),
+  paddingLeft: theme.spacing(1),
+  paddingRight: theme.spacing(1),
+  [theme.breakpoints.up('sm')]: {
+    paddingLeft: 0,
   },
 }));
 
-export const Statistics = styled('div')(({ theme }) => ({
+export const Statistics = styled('div')({
   display: 'flex',
-  justifyContent: 'space-around',
-  paddingLeft: theme.spacing(2),
-  paddingRight: theme.spacing(2),
-}));
+  justifyContent: 'space-evenly',
+});

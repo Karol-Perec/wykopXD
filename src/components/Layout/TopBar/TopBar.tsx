@@ -33,7 +33,12 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, color: 'white' }}>
             {pages.map((page) => (
-              <Button key={page} component={UnstyledRouterLink} to={ROUTE.MIKROBLOG}>
+              <Button
+                key={page}
+                component={UnstyledRouterLink}
+                to={ROUTE.MIKROBLOG}
+                color='inherit'
+              >
                 {page}
               </Button>
             ))}

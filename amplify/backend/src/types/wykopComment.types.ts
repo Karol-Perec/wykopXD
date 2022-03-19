@@ -3,7 +3,7 @@ import { WykopAuthor } from './wykopProfile.types';
 
 interface WykopComment {
   id: number;
-  date: Date;
+  date: string;
   author: WykopAuthor;
   vote_count: number;
   body: string; // | { html: string; text: string };

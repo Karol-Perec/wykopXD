@@ -1,11 +1,15 @@
-import { ChatBubbleOutlineRounded as CommentsIcon } from '@mui/icons-material';
-import { Typography, Avatar, IconButton, Button } from '@mui/material';
+import {
+  ChatBubbleOutlineRounded as CommentsIcon,
+  ControlPoint as PlusIcon,
+} from '@mui/icons-material';
+import { Typography, Avatar, Button, Divider } from '@mui/material';
 import Media from 'components/Media/Media';
-import { RefCallback } from 'react';
+import { RefCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Entry } from 'types';
 import { calculateAprroximatedAge } from '../../../utils/dateUtils';
 import { parseHtml } from '../../../utils/parseHtml';
+import Comments from '../Comments/Comments';
 import * as S from './EntryAbstract.styles';
 
 interface EntryAbstractProps {
@@ -14,18 +18,23 @@ interface EntryAbstractProps {
 }
 
 const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
-  const { media, user, body, id, date, commentsCount } = entry;
+  const { media, user, body, id, date, commentsCount, voteCountPlus, comments } = entry;
   const navigate = useNavigate();
+  const [showComments, setShowComments] = useState(false);
 
   return (
     <S.Card
       ref={containerRef}
-      onClick={() => navigate(`/entry/${id}`)}
-      onMouseDown={(e) => {
-        if (e.button === 1) {
-          window.open(`/entry/${id}`, '_blank', 'noopener,noreferrer');
-        }
-      }}
+      // onClick={() => {
+      //   if (document.getSelection()?.isCollapsed) {
+      //     navigate(`/entry/${id}`);
+      //   }
+      // }}
+      // onMouseUp={(e) => {
+      //   if (e.button === 1) {
+      //     window.open(`/entry/${id}`, '_blank', 'noopener,noreferrer');
+      //   }
+      // }}
     >
       <S.EntryHeader>
         <Avatar alt={user.login} src={user.avatarUrl} variant='rounded' />
@@ -47,12 +56,24 @@ const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
           />
         )}
       </S.EntryContent>
+      <Divider />
       <S.Statistics>
-        <Button startIcon={<CommentsIcon />}>{commentsCount}</Button>
-        <IconButton color='primary'>
-          <CommentsIcon />
-        </IconButton>
+        <Button
+          startIcon={<CommentsIcon />}
+          color='inherit'
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowComments((prev) => !prev);
+          }}
+        >
+          <Typography>{commentsCount}</Typography>
+        </Button>
+        <Button startIcon={<PlusIcon />} color='inherit' onClick={(e) => e.stopPropagation()}>
+          <Typography>{voteCountPlus}</Typography>
+        </Button>
       </S.Statistics>
+      <Divider />
+      {comments?.length && showComments && <Comments comments={comments} />}
     </S.Card>
   );
 };

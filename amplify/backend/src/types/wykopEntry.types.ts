@@ -17,7 +17,7 @@ interface WykopSurvey {
 
 export interface WykopEntry {
   id: number;
-  date: Date;
+  date: string;
   body: string; // | { html: string; text: string };
   author: WykopAuthor;
   receiver?: WykopAuthor;
