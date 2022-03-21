@@ -13,6 +13,9 @@ export const HideableSpoiler = styled('span', {
     cursor: 'pointer',
     userSelect: 'none',
     WebkitTapHighlightColor: 'transparent',
+    a: {
+      pointerEvents: 'none',
+    },
   }),
   '*, *:hover': {
     color: theme.palette.text.primary,

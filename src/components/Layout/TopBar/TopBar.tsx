@@ -3,7 +3,7 @@ import { Box, Button, Container, IconButton, Toolbar } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { matchRoutes, useLocation } from 'react-router-dom';
 import { ROUTE } from '../../../Routes';
-import UnstyledRouterLink from '../../UI/UnstyledRouterLink';
+import { UnstyledRouterLink } from '../../UI/CustomLinks';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import * as S from './TopBar.styles';
 

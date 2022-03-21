@@ -1,7 +1,6 @@
 /* eslint-disable react/no-array-index-key */
-import { Link } from '@mui/material';
 import { Fragment } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { ExternalNoPropagationLink, RouterNoPropagationLink } from '../components/UI/CustomLinks';
 import Spoiler from '../components/UI/Spoiler';
 
 const encodeUtf8 = (message: string) => {
@@ -19,43 +18,23 @@ const parseSpoilerText = (text: string | null) =>
   text?.split(' ').map((word, idx) => {
     if (word.startsWith('#')) {
       return (
-        <Link
-          to={`/tag/${word.substring(1)}`}
-          onClick={(e) => e.stopPropagation()}
-          onMouseDown={(e) => e.stopPropagation()}
-          component={RouterLink}
-          underline='hover'
-          key={idx}
-        >
+        <RouterNoPropagationLink to={`/tag/${word.substring(1)}`} key={idx}>
           {word}
-        </Link>
+        </RouterNoPropagationLink>
       );
     }
     if (word.startsWith('@')) {
       return (
-        <Link
-          to={`/ludzie/${word.substring(1)}`}
-          onClick={(e) => e.stopPropagation()}
-          onMouseDown={(e) => e.stopPropagation()}
-          component={RouterLink}
-          underline='hover'
-          key={idx}
-        >
+        <RouterNoPropagationLink to={`/ludzie/${word.substring(1)}`} key={idx}>
           {word}
-        </Link>
+        </RouterNoPropagationLink>
       );
     }
     if (word.startsWith('http')) {
       return (
-        <Link
-          href={word}
-          onClick={(e) => e.stopPropagation()}
-          onMouseDown={(e) => e.stopPropagation()}
-          underline='hover'
-          key={idx}
-        >
+        <ExternalNoPropagationLink href={word} key={idx}>
           {word}
-        </Link>
+        </ExternalNoPropagationLink>
       );
     }
     return `${word} `;
@@ -71,28 +50,16 @@ const parseElementNode = (node: ChildNode) => {
       const linkNode = node as HTMLLinkElement;
       if (linkNode.href.endsWith(`#${linkNode.textContent}`)) {
         return (
-          <Link
-            to={`/tag/${node.textContent}`}
-            onClick={(e) => e.stopPropagation()}
-            onMouseDown={(e) => e.stopPropagation()}
-            component={RouterLink}
-            underline='hover'
-          >
+          <RouterNoPropagationLink to={`/tag/${node.textContent}`}>
             #{node.textContent}
-          </Link>
+          </RouterNoPropagationLink>
         );
       }
       if (linkNode.href.endsWith(`@${linkNode.textContent}`)) {
         return (
-          <Link
-            to={`/ludzie/${node.textContent}`}
-            onClick={(e) => e.stopPropagation()}
-            onMouseDown={(e) => e.stopPropagation()}
-            component={RouterLink}
-            underline='hover'
-          >
+          <RouterNoPropagationLink to={`/ludzie/${node.textContent}`}>
             @{node.textContent}
-          </Link>
+          </RouterNoPropagationLink>
         );
       }
       if (linkNode.href.startsWith('spoiler:')) {
@@ -104,14 +71,9 @@ const parseElementNode = (node: ChildNode) => {
       }
       if (linkNode.href.startsWith('http')) {
         return (
-          <Link
-            href={linkNode.href}
-            onClick={(e) => e.stopPropagation()}
-            onMouseDown={(e) => e.stopPropagation()}
-            underline='hover'
-          >
+          <ExternalNoPropagationLink href={linkNode.href}>
             {linkNode.textContent}
-          </Link>
+          </ExternalNoPropagationLink>
         );
       }
       return null;
@@ -124,9 +86,6 @@ const parseElementNode = (node: ChildNode) => {
 const parseNode = (node: ChildNode) => {
   if (node.nodeType === node.TEXT_NODE) {
     return parseText(node.textContent);
-  }
-  if (node.nodeName === 'STRONG') {
-    console.log(node);
   }
 
   return parseElementNode(node);

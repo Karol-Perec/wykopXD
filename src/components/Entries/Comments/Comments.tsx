@@ -42,7 +42,9 @@ const Comments = ({ comments }: CommentsProps) => {
         variant='standard'
       >
         {Object.entries(COMMENTS_ORDER).map(([orderKey, { label }]) => (
-          <MenuItem value={orderKey}>{label}</MenuItem>
+          <MenuItem value={orderKey} key={orderKey}>
+            {label}
+          </MenuItem>
         ))}
       </Select>
       {comments.sort(COMMENTS_ORDER[orderBy].comparator).map((c) => (

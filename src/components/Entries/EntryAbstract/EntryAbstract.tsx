@@ -2,13 +2,14 @@ import {
   ChatBubbleOutlineRounded as CommentsIcon,
   ControlPoint as PlusIcon,
 } from '@mui/icons-material';
-import { Typography, Avatar, Button, Divider } from '@mui/material';
+import { Typography, Avatar, Button, Divider, Link, Tooltip } from '@mui/material';
 import Media from 'components/Media/Media';
 import { RefCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Entry } from 'types';
 import { calculateAprroximatedAge } from '../../../utils/dateUtils';
 import { parseHtml } from '../../../utils/parseHtml';
+import { RouterNoPropagationLink, UnstyledRouterLink } from '../../UI/CustomLinks';
 import Comments from '../Comments/Comments';
 import * as S from './EntryAbstract.styles';
 
@@ -25,22 +26,28 @@ const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
   return (
     <S.Card
       ref={containerRef}
-      // onClick={() => {
-      //   if (document.getSelection()?.isCollapsed) {
-      //     navigate(`/entry/${id}`);
-      //   }
-      // }}
-      // onMouseUp={(e) => {
-      //   if (e.button === 1) {
-      //     window.open(`/entry/${id}`, '_blank', 'noopener,noreferrer');
-      //   }
-      // }}
+      onClick={() => {
+        if (document.getSelection()?.isCollapsed) {
+          navigate(`/entry/${id}`);
+        }
+      }}
+      onMouseUp={(e) => {
+        if (e.button === 1) {
+          window.open(`/entry/${id}`, '_blank', 'noopener,noreferrer');
+        }
+      }}
     >
       <S.EntryHeader>
-        <Avatar alt={user.login} src={user.avatarUrl} variant='rounded' />
+        <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
+          <Avatar alt={user.login} src={user.avatarUrl} variant='rounded' />
+        </RouterNoPropagationLink>
         <S.EntryHeaderMeta>
-          <Typography variant='subtitle1'>{user.login}</Typography>
-          <Typography variant='caption'>{calculateAprroximatedAge(date)}</Typography>
+          <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
+            <Typography variant='subtitle1'>{user.login}</Typography>
+          </RouterNoPropagationLink>
+          <Tooltip title={date}>
+            <Typography variant='caption'>{calculateAprroximatedAge(date)}</Typography>
+          </Tooltip>
         </S.EntryHeaderMeta>
       </S.EntryHeader>
       <S.EntryContent>
