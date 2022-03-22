@@ -1,4 +1,4 @@
-import { Link } from 'types';
+import { Link } from 'types/link.types';
 import useInfiniteScrolling from '../../../hooks/useInfiniteScrolling';
 import LinkAbstract from '../LinkAbstract/LinkAbstract';
 import LinkAbstractSkeleton from '../LinkAbstract/LinkAbstractSkeleton';

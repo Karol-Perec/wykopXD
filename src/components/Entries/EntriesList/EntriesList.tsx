@@ -1,5 +1,5 @@
-import { Entry } from 'types';
-import useInfiniteScrolling from '../../../hooks/useInfiniteScrolling';
+import { Entry } from 'types/entry.types';
+import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
 import EntryAbstract from '../EntryAbstract/EntryAbstract';
 import EntryAbstractSkeleton from '../EntryAbstract/EntryAbstractSkeleton';
 
@@ -20,9 +20,9 @@ const EntriesList = ({ entries, isLoading, onInfiniteScroll }: EntriesListProps)
   return (
     <>
       {entries?.map((entry) => (
-        <EntryAbstract entry={entry} key={entry.id} />
+        <EntryAbstract entry={entry} key={entry.id} listMode />
       ))}
-      {lastEntry && <EntryAbstract entry={lastEntry} containerRef={lastEntryRef} />}
+      {lastEntry && <EntryAbstract entry={lastEntry} containerRef={lastEntryRef} listMode />}
       {isLoading && entryAbstractSkeletons}
     </>
   );

@@ -1,10 +1,10 @@
 import { GlobalStyles } from '@mui/material';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import Layout from 'components/Layout/Layout';
+import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
 import ThemeContextProvider from 'contexts/ThemeContextProvider';
 import { globalStyles } from 'globalStyles';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { routes } from 'Routes';
-import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import { routes } from './Routes';
 
 const queryClient = new QueryClient();
 

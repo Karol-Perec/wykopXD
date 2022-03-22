@@ -2,40 +2,46 @@ import {
   ChatBubbleOutlineRounded as CommentsIcon,
   ControlPoint as PlusIcon,
 } from '@mui/icons-material';
-import { Typography, Avatar, Button, Divider, Link, Tooltip } from '@mui/material';
+import { Typography, Avatar, Button, Divider, Tooltip } from '@mui/material';
+import { MouseEventHandler, RefCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Media from 'components/Media/Media';
-import { RefCallback, useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Entry } from 'types';
-import { calculateAprroximatedAge } from '../../../utils/dateUtils';
-import { parseHtml } from '../../../utils/parseHtml';
-import { RouterNoPropagationLink, UnstyledRouterLink } from '../../UI/CustomLinks';
+import { Entry } from 'types/entry.types';
+import { calculateAprroximatedAge } from 'utils/dateUtils';
+import { parseHtml } from 'utils/parseHtml';
+import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import Comments from '../Comments/Comments';
 import * as S from './EntryAbstract.styles';
 
 interface EntryAbstractProps {
   entry: Entry;
+  listMode?: boolean;
   containerRef?: RefCallback<HTMLElement>;
 }
 
-const EntryAbstract = ({ entry, containerRef }: EntryAbstractProps) => {
+const EntryAbstract = ({ entry, listMode, containerRef }: EntryAbstractProps) => {
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments } = entry;
   const navigate = useNavigate();
   const [showComments, setShowComments] = useState(false);
 
+  const handleNavigateToEntryPage = () => {
+    if (document.getSelection()?.isCollapsed) {
+      navigate(`/entry/${id}`);
+    }
+  };
+
+  const handleOpenInNewTab: MouseEventHandler<HTMLElement> = (e) => {
+    if (e.button === 1) {
+      window.open(`/entry/${id}`, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <S.Card
       ref={containerRef}
-      onClick={() => {
-        if (document.getSelection()?.isCollapsed) {
-          navigate(`/entry/${id}`);
-        }
-      }}
-      onMouseUp={(e) => {
-        if (e.button === 1) {
-          window.open(`/entry/${id}`, '_blank', 'noopener,noreferrer');
-        }
-      }}
+      onClick={listMode ? handleNavigateToEntryPage : undefined}
+      onMouseUp={listMode ? handleOpenInNewTab : undefined}
+      listMode={listMode}
     >
       <S.EntryHeader>
         <RouterNoPropagationLink to={`/ludzie/${user.login}`}>

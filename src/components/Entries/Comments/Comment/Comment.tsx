@@ -1,8 +1,8 @@
 import { Tooltip, Typography } from '@mui/material';
-import { EntryComment } from '../../../../types';
-import { calculateAprroximatedAge } from '../../../../utils/dateUtils';
-import { parseHtml } from '../../../../utils/parseHtml';
-import { RouterNoPropagationLink } from '../../../UI/CustomLinks';
+import { EntryComment } from 'types/entry.types';
+import { calculateAprroximatedAge } from 'utils/dateUtils';
+import { parseHtml } from 'utils/parseHtml';
+import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import * as S from './Comment.styles';
 
 interface CommentProps {

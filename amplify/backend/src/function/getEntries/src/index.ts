@@ -1,7 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { WykopEntry, WykopResponse } from 'types';
+import { WykopEntry, WykopResponse } from '../../../types';
 import { getAxiosInstance } from '/opt/nodejs/axios';
 import { createResponse } from '/opt/nodejs/lambdaUtils';
 import { mapEntry } from '/opt/nodejs/dataUtils';

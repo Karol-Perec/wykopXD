@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player';
-import { MediaType } from '../../types';
+import { MediaType } from 'types/media.types';
 import Image from './Image/Image';
 import Video from './Video/Video';
 

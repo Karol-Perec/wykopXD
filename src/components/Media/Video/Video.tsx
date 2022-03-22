@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import useIsOnScreen from '../../../hooks/useIsOnScreen';
+import useIsOnScreen from 'hooks/useIsOnScreen';
 import * as S from './Video.styles';
 
 type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';

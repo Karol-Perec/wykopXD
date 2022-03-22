@@ -1,6 +1,6 @@
-import LinksList from '../../components/Links/LinksList/LinksList';
-import ErrorMessage from '../../components/UI/ErrorMessage';
-import useHits from '../../hooks/api/useHits';
+import LinksList from 'components/Links/LinksList/LinksList';
+import ErrorMessage from 'components/UI/ErrorMessage';
+import useHits from 'hooks/api/useHits';
 import { HitsPeriod } from './hits.types';
 
 interface HitsProps {

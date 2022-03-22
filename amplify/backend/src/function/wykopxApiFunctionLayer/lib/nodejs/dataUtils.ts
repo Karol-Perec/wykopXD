@@ -12,7 +12,7 @@ import {
   EntryComment,
   LinkComment,
   Link,
-} from 'types';
+} from '../../../../types';
 
 const mapMedia = (e: WykopEmbedContent): Media => ({
   type: e.type,

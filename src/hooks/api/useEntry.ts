@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
-import { Entry } from '../../types/entry.types';
-import axios from '../../utils/axios';
+import { Entry } from 'types/entry.types';
+import axios from 'utils/axios';
 
 const getEntry = async (id: number) => {
   const response = await axios.get<Entry>(`/entries/${id}`);

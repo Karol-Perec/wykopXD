@@ -1,11 +1,11 @@
 import { Routes as RouterRoutes, Route, Navigate } from 'react-router-dom';
 import Link from 'containers/Link/Link';
 import Main from 'containers/Main/Main';
-import Entry from './containers/Entry/Entry';
-import Mikroblog from './containers/Mikroblog/Mikroblog';
-import Hits from './containers/Hits/Hits';
-import { MikroblogCategory } from './containers/Mikroblog/mikroblog.types';
-import { HitsPeriod } from './containers/Hits/hits.types';
+import Entry from 'containers/Entry/Entry';
+import Mikroblog from 'containers/Mikroblog/Mikroblog';
+import Hits from 'containers/Hits/Hits';
+import { MikroblogCategory } from 'containers/Mikroblog/mikroblog.types';
+import { HitsPeriod } from 'containers/Hits/hits.types';
 
 export enum ROUTE {
   MAIN = '/',

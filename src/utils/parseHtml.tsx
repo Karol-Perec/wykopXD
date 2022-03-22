@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { Fragment } from 'react';
-import { ExternalNoPropagationLink, RouterNoPropagationLink } from '../components/UI/CustomLinks';
-import Spoiler from '../components/UI/Spoiler';
+import { ExternalNoPropagationLink, RouterNoPropagationLink } from 'components/UI/CustomLinks';
+import Spoiler from 'components/UI/Spoiler';
 
 const encodeUtf8 = (message: string) => {
   const query = new URLSearchParams(message);

@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider, PaletteMode } from '@mui/material';
 import { ReactNode, useMemo } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
-import { getTheme } from '../theme';
+import useLocalStorage from 'hooks/useLocalStorage';
+import { getTheme } from 'theme';
 import ThemeModeContext, { ThemeModeContextInterface } from './ThemeModeContext';
 
 interface ThemeProviderProps {

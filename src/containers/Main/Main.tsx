@@ -1,6 +1,6 @@
 import LinksList from 'components/Links/LinksList/LinksList';
 import usePromotedLinks from 'hooks/api/usePromotedLinks';
-import ErrorMessage from '../../components/UI/ErrorMessage';
+import ErrorMessage from 'components/UI/ErrorMessage';
 
 const Main = () => {
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = usePromotedLinks();
