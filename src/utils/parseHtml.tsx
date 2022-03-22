@@ -5,7 +5,7 @@ import Spoiler from 'components/UI/Spoiler';
 
 const encodeUtf8 = (message: string) => {
   const query = new URLSearchParams(message);
-  return Array.from(query).join();
+  return Array.from(query)?.[0].join(' ');
 };
 
 const parseText = (text: string | null) => {
@@ -18,23 +18,28 @@ const parseSpoilerText = (text: string | null) =>
   text?.split(' ').map((word, idx) => {
     if (word.startsWith('#')) {
       return (
-        <RouterNoPropagationLink to={`/tag/${word.substring(1)}`} key={idx}>
-          {word}
-        </RouterNoPropagationLink>
+        <Fragment key={idx}>
+          <RouterNoPropagationLink to={`/tag/${word.substring(1)}`}>{word}</RouterNoPropagationLink>
+          {` `}
+        </Fragment>
       );
     }
     if (word.startsWith('@')) {
       return (
-        <RouterNoPropagationLink to={`/ludzie/${word.substring(1)}`} key={idx}>
-          {word}
-        </RouterNoPropagationLink>
+        <Fragment key={idx}>
+          <RouterNoPropagationLink to={`/ludzie/${word.substring(1)}`}>
+            {word}
+          </RouterNoPropagationLink>
+          {` `}
+        </Fragment>
       );
     }
     if (word.startsWith('http')) {
       return (
-        <ExternalNoPropagationLink href={word} key={idx}>
-          {word}
-        </ExternalNoPropagationLink>
+        <Fragment key={idx}>
+          <ExternalNoPropagationLink href={word}>{word}</ExternalNoPropagationLink>
+          {` `}
+        </Fragment>
       );
     }
     return `${word} `;
@@ -51,22 +56,20 @@ const parseElementNode = (node: ChildNode) => {
       if (linkNode.href.endsWith(`#${linkNode.textContent}`)) {
         return (
           <RouterNoPropagationLink to={`/tag/${node.textContent}`}>
-            #{node.textContent}
+            {`#${node.textContent}`}
           </RouterNoPropagationLink>
         );
       }
       if (linkNode.href.endsWith(`@${linkNode.textContent}`)) {
         return (
           <RouterNoPropagationLink to={`/ludzie/${node.textContent}`}>
-            @{node.textContent}
+            {`@${node.textContent}`}
           </RouterNoPropagationLink>
         );
       }
       if (linkNode.href.startsWith('spoiler:')) {
         return (
-          <Spoiler>
-            {parseSpoilerText(parseText(encodeUtf8(linkNode.href.replace('spoiler:', ''))))}
-          </Spoiler>
+          <Spoiler>{parseSpoilerText(encodeUtf8(linkNode.href.replace('spoiler:', '')))}</Spoiler>
         );
       }
       if (linkNode.href.startsWith('http')) {

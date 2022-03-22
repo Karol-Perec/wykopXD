@@ -7,7 +7,7 @@ interface HideableSpoilerProps {
 
 export const HideableSpoiler = styled('span', {
   shouldForwardProp: (prop) => prop !== 'showMessage',
-})<HideableSpoilerProps>(({ showMessage, theme }) => ({
+})<HideableSpoilerProps>(({ showMessage }) => ({
   ...(!showMessage && {
     filter: 'blur(3px)',
     cursor: 'pointer',
@@ -17,10 +17,6 @@ export const HideableSpoiler = styled('span', {
       pointerEvents: 'none',
     },
   }),
-  '*, *:hover': {
-    color: theme.palette.text.primary,
-    textDecoration: 'none',
-  },
 }));
 
 interface SpoilerProps {

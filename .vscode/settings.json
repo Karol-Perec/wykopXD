@@ -22,5 +22,6 @@
   },
   "[xml]": {
     "editor.defaultFormatter": "DotJoshJohnson.xml"
-  }
+  },
+  "prettier.printWidth": 100
 }
