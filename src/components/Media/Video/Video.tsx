@@ -1,34 +1,23 @@
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import useIsOnScreen from 'hooks/useIsOnScreen';
+import { getDisplayedImageUrl } from 'utils/imageUtils';
 import * as S from './Video.styles';
 
-type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';
 interface VideoProps {
   sourceUrl: string;
   imageUrl: string;
   plus18: boolean;
   aspectRatio?: number;
-  previewQuality: ImageQuality;
+  listMode?: boolean;
 }
 
-export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) => {
-  const qualityResoultionMap: Record<ImageQuality, string> = {
-    hq: ',w400',
-    mq: ',w300h223',
-    lq: ',w207h139',
-    original: '',
-  };
-
-  return imageUrl?.replace(/,w[0-9]+(h[0-9]+)?/g, qualityResoultionMap[quality]);
-};
-
-const Video = ({ sourceUrl, imageUrl, plus18, aspectRatio, previewQuality }: VideoProps) => {
+const Video = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: VideoProps) => {
   const [expandedVideo, setExpandedVideo] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isOnScreen = useIsOnScreen(wrapperRef);
   const [enableAutostop, setEnableAutostop] = useState(false);
-  const displayedImageUrl = getDisplayedImageUrl(imageUrl, 'hq');
+  const displayedImageUrl = getDisplayedImageUrl(imageUrl, listMode ? 'mq' : 'original');
 
   const expandVideo = (event: MouseEvent) => {
     event.stopPropagation();

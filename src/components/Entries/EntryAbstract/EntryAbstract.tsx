@@ -62,10 +62,10 @@ const EntryAbstract = ({ entry, listMode, containerRef }: EntryAbstractProps) =>
           <Media
             sourceUrl={media.url}
             imageUrl={media.previewUrl}
-            previewQuality='lq'
             type={media.type}
             plus18={media.plus18}
             aspectRatio={media.aspectRatio}
+            listMode={listMode}
           />
         )}
       </S.EntryContent>

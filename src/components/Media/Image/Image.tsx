@@ -1,30 +1,19 @@
 import { Link } from '@mui/material';
 import { useRef, useState } from 'react';
+import { getDisplayedImageUrl } from 'utils/imageUtils';
 import * as S from './Image.styles';
 
-type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';
 interface ImageProps {
   sourceUrl: string;
   imageUrl: string;
   plus18: boolean;
   aspectRatio?: number;
-  previewQuality: ImageQuality;
+  listMode?: boolean;
 }
 
-export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) => {
-  const qualityResoultionMap: Record<ImageQuality, string> = {
-    hq: ',w400',
-    mq: ',w300h223',
-    lq: ',w207h139',
-    original: '',
-  };
-
-  return imageUrl?.replace(/,w[0-9]+(h[0-9]+)?/g, qualityResoultionMap[quality]);
-};
-
-const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, previewQuality }: ImageProps) => {
+const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProps) => {
   const mediaContainerRef = useRef<HTMLDivElement>(null);
-  const displayedImageUrl = getDisplayedImageUrl(imageUrl, 'hq');
+  const displayedImageUrl = getDisplayedImageUrl(imageUrl, listMode ? 'hq' : 'original');
   const [unblockMaxHeight, setUnblockMaxHeight] = useState(false);
 
   return (

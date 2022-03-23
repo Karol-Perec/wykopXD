@@ -3,17 +3,16 @@ import { MediaType } from 'types/media.types';
 import Image from './Image/Image';
 import Video from './Video/Video';
 
-type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';
 interface MediaProps {
   type?: MediaType;
   sourceUrl: string;
   imageUrl: string;
   plus18: boolean;
   aspectRatio?: number;
-  previewQuality: ImageQuality;
+  listMode?: boolean;
 }
 
-const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, previewQuality }: MediaProps) => {
+const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, listMode }: MediaProps) => {
   const isVideo = type === 'video' || ReactPlayer.canPlay(sourceUrl);
 
   if (isVideo)
@@ -23,7 +22,7 @@ const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, previewQuality 
         imageUrl={imageUrl}
         plus18={plus18}
         aspectRatio={aspectRatio}
-        previewQuality={previewQuality}
+        listMode={listMode}
       />
     );
   return (
@@ -32,7 +31,7 @@ const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, previewQuality 
       imageUrl={imageUrl}
       plus18={plus18}
       aspectRatio={aspectRatio}
-      previewQuality={previewQuality}
+      listMode={listMode}
     />
   );
 };

@@ -8,7 +8,8 @@ interface ContainerProps {
 export const Container = styled('div', {
   shouldForwardProp: (prop) => !['aspectRatio', 'unblockMaxHeight'].includes(String(prop)),
 })<ContainerProps>(({ theme, aspectRatio, unblockMaxHeight }) => ({
-  // maxHeight: 500,
+  display: 'flex',
+  justifyContent: 'center',
 
   [theme.breakpoints.up('sm')]: {
     marginRight: theme.spacing(2),
@@ -16,9 +17,11 @@ export const Container = styled('div', {
 }));
 
 export const Image = styled('img')(({ theme }) => ({
+  borderRadius: 10,
   width: '100%',
 
+  maxHeight: 550,
   [theme.breakpoints.up('sm')]: {
-    borderRadius: 10,
+    maxHeight: 650,
   },
 }));
