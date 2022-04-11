@@ -2,12 +2,14 @@ import useEntries from 'hooks/api/useEntries';
 import EntriesList from 'components/Entries/EntriesList/EntriesList';
 import ErrorMessage from 'components/UI/ErrorMessage';
 import { MikroblogCategory } from './mikroblog.types';
+import useTitle from '../../hooks/useTitle';
 
 interface MikroblogProps {
   category?: MikroblogCategory;
 }
 
 const Mikroblog = ({ category }: MikroblogProps) => {
+  useTitle(`Mikroblog | WykopX`);
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useEntries(
     category || MikroblogCategory.HOT
   );

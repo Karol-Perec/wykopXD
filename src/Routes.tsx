@@ -18,6 +18,25 @@ export enum ROUTE {
   ENTRY = '/entry/:id',
 }
 
+// const ROUTES: Record<string, Page> = {
+//   MAIN_PAGE: {
+//     label: "Strona Główna",
+//     path: "/",
+//   },
+//   ABOUT_US: {
+//     label: "O Nas",
+//     path: "/o-nas",
+//   },
+//   OFFER: {
+//     label: "Oferta",
+//     path: "/oferta"
+//   },
+//   CONTACT: {
+//     label: "Kontakt",
+//     path: "/kontakt",
+//   },
+// };
+
 export const routes = (
   <RouterRoutes>
     {/* <Route path='/login'>

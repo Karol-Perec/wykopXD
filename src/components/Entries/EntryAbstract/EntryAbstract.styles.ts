@@ -29,6 +29,7 @@ export const EntryHeader = styled('div')(({ theme }) => ({
 
 export const EntryHeaderMeta = styled('div')(({ theme }) => ({
   marginLeft: theme.spacing(1.5),
+  height: 40,
 }));
 
 export const EntryContent = styled('div')(({ theme }) => ({
@@ -46,7 +47,8 @@ export const TextContent = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const Statistics = styled('div')({
+export const Statistics = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-evenly',
-});
+  margin: theme.spacing(1),
+}));

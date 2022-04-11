@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom';
 import EntryAbstract from 'components/Entries/EntryAbstract/EntryAbstract';
 import EntryAbstractSkeleton from 'components/Entries/EntryAbstract/EntryAbstractSkeleton';
 import ErrorMessage from 'components/UI/ErrorMessage';
+import useTitle from '../../hooks/useTitle';
 
 const Entry = () => {
   const query = useParams();
   const { data, isLoading, error } = useEntry(+query.id!);
+  useTitle(data && `${data.user.login} na WykopX: ${data.body}`);
 
   if (isLoading) return <EntryAbstractSkeleton />;
   if (error) return <ErrorMessage error={error} />;
