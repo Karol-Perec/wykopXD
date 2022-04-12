@@ -1,4 +1,3 @@
-import { CircularProgress } from '@mui/material';
 import useEntry from 'hooks/api/useEntry';
 import { useParams } from 'react-router-dom';
 import EntryAbstract from 'components/Entries/EntryAbstract/EntryAbstract';

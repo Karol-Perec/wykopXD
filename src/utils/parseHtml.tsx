@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable react/no-array-index-key */
 import { Fragment } from 'react';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from 'components/UI/CustomLinks';
@@ -8,7 +9,7 @@ const encodeUtf8 = (message: string) => {
   return Array.from(query)?.[0].join(' ');
 };
 
-const parseText = (text: string | null) => {
+const parseTextNode = (text: string | null) => {
   if (!text || text === '\\n') return null;
   if (text.endsWith('#') || text.endsWith('@')) return text.slice(0, -1);
   return text;
@@ -20,7 +21,6 @@ const parseSpoilerText = (text: string | null) =>
       return (
         <Fragment key={idx}>
           <RouterNoPropagationLink to={`/tag/${word.substring(1)}`}>{word}</RouterNoPropagationLink>
-          {` `}
         </Fragment>
       );
     }
@@ -30,7 +30,6 @@ const parseSpoilerText = (text: string | null) =>
           <RouterNoPropagationLink to={`/ludzie/${word.substring(1)}`}>
             {word}
           </RouterNoPropagationLink>
-          {` `}
         </Fragment>
       );
     }
@@ -38,7 +37,6 @@ const parseSpoilerText = (text: string | null) =>
       return (
         <Fragment key={idx}>
           <ExternalNoPropagationLink href={word}>{word}</ExternalNoPropagationLink>
-          {` `}
         </Fragment>
       );
     }
@@ -49,8 +47,24 @@ const parseElementNode = (node: ChildNode) => {
   switch (node.nodeName) {
     case 'BR':
       return <br />;
+    case 'CITE':
+      return (
+        <cite>
+          {node.childNodes.length ? parseNodes(node.childNodes) : parseTextNode(node.textContent)}
+        </cite>
+      );
     case 'STRONG':
-      return <strong>{parseText(node.textContent)}</strong>;
+      return (
+        <strong>
+          {node.childNodes.length ? parseNodes(node.childNodes) : parseTextNode(node.textContent)}
+        </strong>
+      );
+    case 'EM':
+      return (
+        <em>
+          {node.childNodes.length ? parseNodes(node.childNodes) : parseTextNode(node.textContent)}
+        </em>
+      );
     case 'A': {
       const linkNode = node as HTMLLinkElement;
       if (linkNode.href.endsWith(`#${linkNode.textContent}`)) {
@@ -86,22 +100,18 @@ const parseElementNode = (node: ChildNode) => {
   }
 };
 
-const parseNode = (node: ChildNode) => {
-  if (node.nodeType === node.TEXT_NODE) {
-    return parseText(node.textContent);
-  }
-
-  return parseElementNode(node);
-};
+const parseNodes = (nodes: NodeListOf<ChildNode>) =>
+  Array.from(nodes).map((node, idx) => (
+    <Fragment key={idx}>
+      {node.nodeType === node.TEXT_NODE ? parseTextNode(node.textContent) : parseElementNode(node)}
+    </Fragment>
+  ));
 
 export const parseHtml = (text: string) => {
-  if (!text) {
-    return null;
-  }
+  if (!text) return null;
+
   const parser = new DOMParser();
   const parsedText = parser.parseFromString(text, 'text/html');
 
-  return Array.from(parsedText.body.childNodes).map((node, idx) => (
-    <Fragment key={idx}>{parseNode(node)}</Fragment>
-  ));
+  return parseNodes(parsedText.body.childNodes);
 };
