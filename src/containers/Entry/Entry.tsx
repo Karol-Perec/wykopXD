@@ -1,16 +1,17 @@
+import { CircularProgress } from '@mui/material';
 import useEntry from 'hooks/api/useEntry';
 import { useParams } from 'react-router-dom';
 import EntryAbstract from 'components/Entries/EntryAbstract/EntryAbstract';
-import EntryAbstractSkeleton from 'components/Entries/EntryAbstract/EntryAbstractSkeleton';
 import ErrorMessage from 'components/UI/ErrorMessage';
 import useTitle from '../../hooks/useTitle';
+import Loading from '../../components/UI/Loading';
 
 const Entry = () => {
   const query = useParams();
   const { data, isLoading, error } = useEntry(+query.id!);
-  useTitle(data && `${data.user.login} na WykopX: ${data.body}`);
+  useTitle(data && `@${data.user.login}: ${data.body} | WykopX`);
 
-  if (isLoading) return <EntryAbstractSkeleton />;
+  if (isLoading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;
   if (!data) return <ErrorMessage error='Nie znaleziono' />;
 

@@ -17,7 +17,7 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters })
   });
 
   const { data } = await axios.get<WykopResponse<WykopLink[]>>(
-    `/links/promoted/page/${queryStringParameters.page}/output/clear`
+    `/links/promoted/page/${queryStringParameters.page}`
   );
 
   if (data.error) {

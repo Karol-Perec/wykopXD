@@ -7,6 +7,7 @@ export const TopBar = styled(AppBar)(({ theme }) => ({
     theme.palette.mode === 'dark' ? theme.palette.background.default : theme.palette.primary.main,
     0.8
   ),
+  transition: 'background-color 0.3s ease-out 0s',
 }));
 
 export const Logo = styled(SvgLogo)(({ theme }) => ({

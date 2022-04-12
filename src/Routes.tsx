@@ -15,7 +15,7 @@ export enum ROUTE {
   MY_WYKOP = '/moj',
   ANY = '*',
   LINK = '/link/:id',
-  ENTRY = '/entry/:id',
+  ENTRY = '/wpis/:id',
 }
 
 // const ROUTES: Record<string, Page> = {

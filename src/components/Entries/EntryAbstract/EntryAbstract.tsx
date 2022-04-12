@@ -22,17 +22,17 @@ interface EntryAbstractProps {
 const EntryAbstract = ({ entry, listMode, containerRef }: EntryAbstractProps) => {
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments } = entry;
   const navigate = useNavigate();
-  const [showComments, setShowComments] = useState(false);
+  const [showComments, setShowComments] = useState(!listMode);
 
   const handleNavigateToEntryPage = () => {
     if (document.getSelection()?.isCollapsed) {
-      navigate(`/entry/${id}`);
+      navigate(`/wpis/${id}`);
     }
   };
 
   const handleOpenInNewTab: MouseEventHandler<HTMLElement> = (e) => {
     if (e.button === 1) {
-      window.open(`/entry/${id}`, '_blank', 'noopener,noreferrer');
+      window.open(`/wpis/${id}`, '_blank', 'noopener,noreferrer');
     }
   };
 

@@ -1,17 +1,13 @@
 import { Link } from 'types/link.types';
 import useInfiniteScrolling from '../../../hooks/useInfiniteScrolling';
+import Loading from '../../UI/Loading';
 import LinkAbstract from '../LinkAbstract/LinkAbstract';
-import LinkAbstractSkeleton from '../LinkAbstract/LinkAbstractSkeleton';
 
 interface LinksListProps {
   links?: Link[];
   isLoading: boolean;
   onInfiniteScroll: () => void;
 }
-
-const linkAbstractSkeletons = [...Array(Math.floor(window.innerHeight / 166))].map((_, idx) => (
-  <LinkAbstractSkeleton key={`skeleton-${idx + 1}`} />
-));
 
 const LinksList = ({ links, isLoading, onInfiniteScroll }: LinksListProps) => {
   const lastLinkRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
@@ -23,7 +19,7 @@ const LinksList = ({ links, isLoading, onInfiniteScroll }: LinksListProps) => {
         <LinkAbstract link={link} key={link.id} />
       ))}
       {lastLink && <LinkAbstract link={lastLink} containerRef={lastLinkRef} />}
-      {isLoading && linkAbstractSkeletons}
+      {isLoading && <Loading />}
     </>
   );
 };
