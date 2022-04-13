@@ -8,8 +8,8 @@ interface VideoProps {
   sourceUrl: string;
   imageUrl: string;
   plus18: boolean;
-  aspectRatio?: number;
   listMode?: boolean;
+  aspectRatio?: number;
 }
 
 const Video = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: VideoProps) => {

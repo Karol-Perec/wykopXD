@@ -1,20 +1,38 @@
 import { Link } from '@mui/material';
 import { useRef, useState } from 'react';
-import { getDisplayedImageUrl } from 'utils/imageUtils';
+import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
 import * as S from './Image.styles';
 
 interface ImageProps {
   sourceUrl: string;
   imageUrl: string;
   plus18: boolean;
+  listMode: boolean;
   aspectRatio?: number;
-  listMode?: boolean;
 }
 
 const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProps) => {
-  const mediaContainerRef = useRef<HTMLDivElement>(null);
-  const displayedImageUrl = getDisplayedImageUrl(imageUrl, listMode ? 'hq' : 'original');
   const [unblockMaxHeight, setUnblockMaxHeight] = useState(false);
+  const [blurImage, setBlurImage] = useState(plus18);
+
+  const mediaContainerRef = useRef<HTMLDivElement>(null);
+  const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, blurImage));
+
+  const image = blurImage ? (
+    <S.Image
+      src={displayedImageUrl}
+      blur={blurImage}
+      alt=''
+      onClick={(e) => {
+        e.stopPropagation();
+        setBlurImage(false);
+      }}
+    />
+  ) : (
+    <Link href={sourceUrl} onClick={(e) => e.preventDefault()}>
+      <S.Image src={displayedImageUrl} blur={blurImage} alt='' />
+    </Link>
+  );
 
   return (
     <S.Container
@@ -22,9 +40,7 @@ const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProp
       aspectRatio={aspectRatio}
       unblockMaxHeight={unblockMaxHeight}
     >
-      <Link href={sourceUrl} onClick={(e) => e.preventDefault()}>
-        <S.Image src={displayedImageUrl} alt='' />
-      </Link>
+      {image}
     </S.Container>
   );
 };

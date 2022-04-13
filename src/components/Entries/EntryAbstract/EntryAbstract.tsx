@@ -19,7 +19,7 @@ interface EntryAbstractProps {
   containerRef?: RefCallback<HTMLElement>;
 }
 
-const EntryAbstract = ({ entry, listMode, containerRef }: EntryAbstractProps) => {
+const EntryAbstract = ({ entry, listMode = false, containerRef }: EntryAbstractProps) => {
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments } = entry;
   const navigate = useNavigate();
   const [showComments, setShowComments] = useState(!listMode);

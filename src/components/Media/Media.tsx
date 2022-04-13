@@ -8,8 +8,8 @@ interface MediaProps {
   sourceUrl: string;
   imageUrl: string;
   plus18: boolean;
+  listMode: boolean;
   aspectRatio?: number;
-  listMode?: boolean;
 }
 
 const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, listMode }: MediaProps) => {
