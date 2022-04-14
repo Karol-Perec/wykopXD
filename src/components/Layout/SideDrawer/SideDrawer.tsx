@@ -1,4 +1,4 @@
-import { Divider, Drawer } from '@mui/material';
+import { alpha, Divider, Drawer, useTheme } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTE } from 'Routes';
@@ -10,19 +10,32 @@ interface SideDrawerProps {
   handleToggleSideDrawer: MouseEventHandler;
 }
 
-const SideDrawer = ({ open, handleToggleSideDrawer }: SideDrawerProps) => (
-  <Drawer open={open} onClose={handleToggleSideDrawer}>
-    <S.DrawerHeader>
-      <Link to={ROUTE.MAIN} onClick={handleToggleSideDrawer}>
-        <S.WykopLogo />
-      </Link>
-    </S.DrawerHeader>
-    <Divider />
-    <S.NavContainer>
-      <NavItems onNavItemClick={handleToggleSideDrawer} />
-    </S.NavContainer>
-    <Divider />
-  </Drawer>
-);
+const SideDrawer = ({ open, handleToggleSideDrawer }: SideDrawerProps) => {
+  const theme = useTheme();
+
+  return (
+    <Drawer
+      open={open}
+      onClose={handleToggleSideDrawer}
+      PaperProps={{
+        style: {
+          backdropFilter: 'blur(10px)',
+          backgroundColor: alpha(theme.palette.background.default, 0.7),
+        },
+      }}
+    >
+      <S.DrawerHeader>
+        <Link to={ROUTE.MAIN} onClick={handleToggleSideDrawer}>
+          <S.WykopLogo />
+        </Link>
+      </S.DrawerHeader>
+      <Divider />
+      <S.NavContainer>
+        <NavItems onNavItemClick={handleToggleSideDrawer} />
+      </S.NavContainer>
+      <Divider />
+    </Drawer>
+  );
+};
 
 export default SideDrawer;

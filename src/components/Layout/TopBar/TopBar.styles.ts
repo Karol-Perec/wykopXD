@@ -2,7 +2,7 @@ import { styled, alpha, AppBar, Button } from '@mui/material';
 import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 
 export const TopBar = styled(AppBar)(({ theme }) => ({
-  backdropFilter: 'blur(12px)',
+  backdropFilter: 'blur(10px)',
   backgroundColor: alpha(
     theme.palette.mode === 'dark' ? theme.palette.background.default : theme.palette.primary.main,
     0.8
