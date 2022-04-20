@@ -5,6 +5,7 @@ export const Card = styled(MuiCard, { shouldForwardProp: (prop) => prop !== 'lis
 }>(({ theme, listMode }) => ({
   width: '100%',
   marginBottom: theme.spacing(2),
+  WebkitTapHighlightColor: 'transparent',
   transition: 'background-color 0.3s ease-out 0s',
   ...(listMode && {
     ':hover': {

@@ -8,6 +8,7 @@ interface HideableSpoilerProps {
 export const HideableSpoiler = styled('span', {
   shouldForwardProp: (prop) => prop !== 'showMessage',
 })<HideableSpoilerProps>(({ showMessage }) => ({
+  display: 'inline-block',
   ...(!showMessage && {
     filter: 'blur(3px)',
     cursor: 'pointer',
