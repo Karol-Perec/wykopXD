@@ -8,7 +8,7 @@ import Loading from '../../components/UI/Loading';
 const LinkDetails = () => {
   const query = useParams();
   const { data, isLoading, error } = useLink(+query.id!);
-  useTitle(data && `${data.title} | WykopX`);
+  useTitle(data?.title);
 
   if (isLoading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;

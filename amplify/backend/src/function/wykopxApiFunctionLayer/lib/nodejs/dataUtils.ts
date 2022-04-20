@@ -14,6 +14,8 @@ import {
   Link,
 } from '../../../../types';
 
+const getOptimizedAvatarUrl = (originalUrl: string) => originalUrl?.replace(',q150.', ',q40.');
+
 const mapMedia = (e: WykopEmbedContent): Media => ({
   type: e.type,
   url: e.url,
@@ -25,7 +27,7 @@ const mapMedia = (e: WykopEmbedContent): Media => ({
 const mapUser = (p: WykopAuthor): User => ({
   login: p.login,
   status: 1, // p.color,
-  avatarUrl: p.avatar,
+  avatarUrl: getOptimizedAvatarUrl(p.avatar),
   sex: p.sex,
 });
 

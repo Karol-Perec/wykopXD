@@ -8,7 +8,7 @@ import Loading from '../../components/UI/Loading';
 const Entry = () => {
   const query = useParams();
   const { data, isLoading, error } = useEntry(+query.id!);
-  useTitle(data && `@${data.user.login}: ${data.body} | WykopX`);
+  useTitle(data && `@${data.user.login}: ${data.body}`);
 
   if (isLoading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;

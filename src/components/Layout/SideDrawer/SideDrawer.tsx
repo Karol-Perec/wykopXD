@@ -20,7 +20,7 @@ const SideDrawer = ({ open, handleToggleSideDrawer }: SideDrawerProps) => {
       PaperProps={{
         style: {
           backdropFilter: 'blur(10px)',
-          backgroundColor: alpha(theme.palette.background.default, 0.7),
+          backgroundColor: alpha(theme.palette.background.default, 0.6),
         },
       }}
     >

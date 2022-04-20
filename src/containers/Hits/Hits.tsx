@@ -12,7 +12,7 @@ const Hits = ({ period }: HitsProps) => {
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useHits(
     period || HitsPeriod.WEEK
   );
-  useTitle('Hity | WykopX');
+  useTitle('Hity');
 
   if (error) return <ErrorMessage error={error} />;
 
