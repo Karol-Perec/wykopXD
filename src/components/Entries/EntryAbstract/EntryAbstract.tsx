@@ -2,7 +2,7 @@ import {
   ChatBubbleOutlineRounded as CommentsIcon,
   ControlPoint as PlusIcon,
 } from '@mui/icons-material';
-import { Typography, Avatar, Button, Divider, Tooltip } from '@mui/material';
+import { Typography, Button, Divider, Tooltip } from '@mui/material';
 import { MouseEventHandler, RefCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Media from 'components/Media/Media';
@@ -10,6 +10,7 @@ import { Entry } from 'types/entry.types';
 import { calculateAprroximatedAge } from 'utils/dateUtils';
 import { parseHtml } from 'utils/parseHtml';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
+import Avatar from 'components/UI/Avatar';
 import Comments from '../Comments/Comments';
 import * as S from './EntryAbstract.styles';
 
@@ -45,7 +46,7 @@ const EntryAbstract = ({ entry, listMode = false, containerRef }: EntryAbstractP
     >
       <S.EntryHeader>
         <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-          <Avatar alt={user.login} src={user.avatarUrl} variant='rounded' />
+          <Avatar url={user.avatarUrl} size={40} />
         </RouterNoPropagationLink>
         <S.EntryHeaderMeta>
           <RouterNoPropagationLink to={`/ludzie/${user.login}`}>

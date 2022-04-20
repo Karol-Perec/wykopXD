@@ -12,5 +12,5 @@ export interface User {
   login: string;
   sex?: 'male' | 'female';
   status: Color;
-  avatarUrl: string;
+  avatarUrl?: string;
 }

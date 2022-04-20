@@ -3,6 +3,7 @@ import { EntryComment } from 'types/entry.types';
 import { calculateAprroximatedAge } from 'utils/dateUtils';
 import { parseHtml } from 'utils/parseHtml';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
+import Avatar from 'components/UI/Avatar';
 import * as S from './Comment.styles';
 
 interface CommentProps {
@@ -15,7 +16,7 @@ const Comment = ({ comment }: CommentProps) => {
   return (
     <div>
       <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-        <S.AuthorAvatar alt={user.login} src={user.avatarUrl} variant='rounded' />
+        <Avatar url={user.avatarUrl} size={32} />
       </RouterNoPropagationLink>
       <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
         <Typography>{user.login}</Typography>
