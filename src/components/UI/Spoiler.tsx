@@ -1,4 +1,4 @@
-import { MouseEvent, ReactNode, useState } from 'react';
+import { MouseEvent, PropsWithChildren, ReactNode, useState } from 'react';
 import { styled } from '@mui/material';
 
 interface HideableSpoilerProps {
@@ -20,11 +20,7 @@ export const HideableSpoiler = styled('span', {
   }),
 }));
 
-interface SpoilerProps {
-  children: ReactNode;
-}
-
-const Spoiler = ({ children }: SpoilerProps) => {
+const Spoiler = ({ children }: PropsWithChildren<unknown>) => {
   const [showMessage, setShowMessage] = useState(false);
 
   const showSpoiler = (event: MouseEvent) => {

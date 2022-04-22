@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/no-array-index-key */
 import { Fragment } from 'react';
@@ -20,7 +21,7 @@ const parseSpoilerText = (text: string | null) =>
     if (word.startsWith('#')) {
       return (
         <Fragment key={idx}>
-          <RouterNoPropagationLink to={`/tag/${word.substring(1)}`}>{word}</RouterNoPropagationLink>
+          <RouterNoPropagationLink to={`/tag/${word.substring(1)}`}>{word}</RouterNoPropagationLink>{' '}
         </Fragment>
       );
     }
@@ -29,14 +30,14 @@ const parseSpoilerText = (text: string | null) =>
         <Fragment key={idx}>
           <RouterNoPropagationLink to={`/ludzie/${word.substring(1)}`}>
             {word}
-          </RouterNoPropagationLink>
+          </RouterNoPropagationLink>{' '}
         </Fragment>
       );
     }
     if (word.startsWith('http')) {
       return (
         <Fragment key={idx}>
-          <ExternalNoPropagationLink href={word}>{word}</ExternalNoPropagationLink>
+          <ExternalNoPropagationLink href={word}>{word}</ExternalNoPropagationLink>{' '}
         </Fragment>
       );
     }

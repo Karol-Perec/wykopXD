@@ -1,15 +1,14 @@
-import { MouseEventHandler, ReactNode } from 'react';
+import { MouseEventHandler, PropsWithChildren, ReactNode } from 'react';
 import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { useMatch, Link as RouterLink } from 'react-router-dom';
 
 interface NavItemProps {
-  children: ReactNode;
   icon: ReactNode;
   to: string;
   onClick: MouseEventHandler;
 }
 
-const NavItem = ({ children, icon, to, onClick }: NavItemProps) => {
+const NavItem = ({ children, icon, to, onClick }: PropsWithChildren<NavItemProps>) => {
   const match = useMatch(to);
 
   return (

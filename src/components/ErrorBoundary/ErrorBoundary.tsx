@@ -1,9 +1,7 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, PropsWithChildren } from 'react';
 import ErrorMessage from 'components/UI/ErrorMessage';
 
-interface ErrorBoundaryProps {
-  children: ReactNode;
-}
+type ErrorBoundaryProps = PropsWithChildren<unknown>;
 
 interface ErrorBoundaryState {
   hasError: boolean;

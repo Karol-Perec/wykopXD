@@ -1,5 +1,5 @@
 import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
-import { styled, Drawer } from '@mui/material';
+import { styled } from '@mui/material';
 
 export const NavContainer = styled('nav')({
   width: 230,

@@ -1,13 +1,9 @@
-import { ReactNode, useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 import SideDrawer from './SideDrawer/SideDrawer';
 import TopBar from './TopBar/TopBar';
 import * as S from './Layout.styles';
 
-interface LayoutProps {
-  children: ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: PropsWithChildren<unknown>) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
 
   const handleToggleSideDrawer = () => setShowSideDrawer((prevState) => !prevState);

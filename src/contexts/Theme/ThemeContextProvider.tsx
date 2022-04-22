@@ -1,14 +1,10 @@
 import { createTheme, ThemeProvider, PaletteMode } from '@mui/material';
-import { ReactNode, useMemo } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
 import useLocalStorage from 'hooks/useLocalStorage';
 import { getTheme } from 'theme';
 import ThemeModeContext, { ThemeModeContextInterface } from './ThemeModeContext';
 
-interface ThemeProviderProps {
-  children: ReactNode;
-}
-
-const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
+const ThemeContextProvider = ({ children }: PropsWithChildren<unknown>) => {
   const [themeMode, setThemeMode] = useLocalStorage<PaletteMode>('themeMode', 'dark');
 
   const toggleThemeMode = useMemo<ThemeModeContextInterface>(
