@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, PropsWithChildren } from 'react';
+import { Component, PropsWithChildren } from 'react';
 import ErrorMessage from 'components/UI/ErrorMessage';
 
 type ErrorBoundaryProps = PropsWithChildren<unknown>;
@@ -16,11 +16,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   public static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error };
-  }
-
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    console.error('Error: ', error, errorInfo);
   }
 
   public render() {

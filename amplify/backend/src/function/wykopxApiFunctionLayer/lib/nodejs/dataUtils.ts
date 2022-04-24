@@ -89,6 +89,6 @@ export const mapLink = (l: WykopLink): Link => ({
   previewUrl: l.preview,
   relatedCount: l.related_count,
   sourceUrl: l.source_url,
-  title: l.title,
+  title: l.title.replace(/&quot;/g, '"'),
   comments: l.comments && mapLinkComments(l.comments),
 });

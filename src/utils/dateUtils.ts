@@ -3,8 +3,6 @@ export const calculateAprroximatedAge = (date: string) => {
   const now = new Date();
 
   const ageInSeconds = (now.getTime() - startDate.getTime()) / 1000;
-  if (!ageInSeconds) return '';
-
   if (ageInSeconds < 60) return `${Math.floor(ageInSeconds)} sek.`;
 
   const ageInMinutes = ageInSeconds / 60;
@@ -26,5 +24,6 @@ export const calculateAprroximatedAge = (date: string) => {
   const ageInYears = Math.floor(ageInMonths / 12);
   const monthsRest = ageInMonths - ageInYears * 12;
   const yearPostfix = ageInYears < 2 ? 'rok' : 'lat';
+
   return `${ageInYears} ${yearPostfix} ${monthsRest} mies.`;
 };

@@ -2,7 +2,7 @@ import LinksList from 'components/Links/LinksList/LinksList';
 import usePromotedLinks from 'hooks/api/usePromotedLinks';
 import ErrorMessage from 'components/UI/ErrorMessage';
 
-const Main = () => {
+const Home = () => {
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = usePromotedLinks();
 
   if (error) return <ErrorMessage error={error} />;
@@ -16,4 +16,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Home;

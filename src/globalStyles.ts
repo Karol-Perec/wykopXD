@@ -1,17 +1,4 @@
-import { Theme } from '@mui/material';
-
-export const globalStyles = (theme: Theme) => ({
-  '&::-webkit-scrollbar': {
-    width: '0.4em',
-    height: '100%',
-  },
-  '&::-webkit-scrollbar-track': {
-    boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-    webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-  },
-  '&::-webkit-scrollbar-thumb': {
-    backgroundColor: theme.palette.primary.main,
-  },
+export const globalStyles = {
   'html, body, #root': {
     height: '100%',
     margin: 0,
@@ -20,4 +7,4 @@ export const globalStyles = (theme: Theme) => ({
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
   },
-});
+};
