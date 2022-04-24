@@ -9,10 +9,10 @@ interface HitsProps {
 }
 
 const Hits = ({ period }: HitsProps) => {
+  useTitle('Hity');
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useHits(
     period || HitsPeriod.WEEK
   );
-  useTitle('Hity');
 
   if (error) return <ErrorMessage error={error} />;
 

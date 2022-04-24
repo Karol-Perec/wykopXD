@@ -11,7 +11,7 @@ interface NavItemsProps {
 
 const NavItems = ({ onNavItemClick }: NavItemsProps) => (
   <List>
-    <NavItem to={ROUTE.MAIN} onClick={onNavItemClick} icon={<MainIcon />}>
+    <NavItem to={ROUTE.HOME} onClick={onNavItemClick} icon={<MainIcon />}>
       Główna
     </NavItem>
 

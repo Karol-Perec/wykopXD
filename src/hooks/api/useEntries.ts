@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from 'react-query';
 import { Entry } from 'types/entry.types';
-import { MikroblogCategory } from 'containers/Mikroblog/mikroblog.types';
+import { MikroblogCategory } from 'pages/Mikroblog/mikroblog.types';
 import axios from 'utils/axios';
 
 // TO DO: add period

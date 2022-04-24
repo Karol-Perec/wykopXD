@@ -9,7 +9,7 @@ interface MikroblogProps {
 }
 
 const Mikroblog = ({ category }: MikroblogProps) => {
-  useTitle(`Mikroblog`);
+  useTitle('Mikroblog');
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useEntries(
     category || MikroblogCategory.HOT
   );

@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from 'react-query';
 import { Link } from 'types/link.types';
-import { HitsPeriod } from 'containers/Hits/hits.types';
+import { HitsPeriod } from 'pages/Hits/hits.types';
 import axios from 'utils/axios';
 
 // TO DO: add period

@@ -1,14 +1,14 @@
 import { Routes as RouterRoutes, Route, Navigate } from 'react-router-dom';
-import Link from 'containers/Link/Link';
-import Main from 'containers/Main/Main';
-import Entry from 'containers/Entry/Entry';
-import Mikroblog from 'containers/Mikroblog/Mikroblog';
-import Hits from 'containers/Hits/Hits';
-import { MikroblogCategory } from 'containers/Mikroblog/mikroblog.types';
-import { HitsPeriod } from 'containers/Hits/hits.types';
+import Link from 'pages/Link/Link';
+import Main from 'pages/Home/Home';
+import Entry from 'pages/Entry/Entry';
+import Mikroblog from 'pages/Mikroblog/Mikroblog';
+import Hits from 'pages/Hits/Hits';
+import { MikroblogCategory } from 'pages/Mikroblog/mikroblog.types';
+import { HitsPeriod } from 'pages/Hits/hits.types';
 
 export enum ROUTE {
-  MAIN = '/',
+  HOME = '/',
   UPCOMING = '/wykopalisko',
   HITS = '/hity',
   MIKROBLOG = '/mikroblog',
@@ -61,7 +61,7 @@ export const routes = (
     </Route>
     <Route path={ROUTE.LINK} element={<Link />} />
     <Route path={ROUTE.ENTRY} element={<Entry />} />
-    <Route path={ROUTE.MAIN} element={<Main />} />
+    <Route path={ROUTE.HOME} element={<Main />} />
     <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
   </RouterRoutes>
 );

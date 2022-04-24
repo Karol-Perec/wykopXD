@@ -25,7 +25,7 @@ const SideDrawer = ({ open, handleToggleSideDrawer }: SideDrawerProps) => {
       }}
     >
       <S.DrawerHeader>
-        <Link to={ROUTE.MAIN} onClick={handleToggleSideDrawer}>
+        <Link to={ROUTE.HOME} onClick={handleToggleSideDrawer}>
           <S.WykopLogo />
         </Link>
       </S.DrawerHeader>

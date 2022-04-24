@@ -7,7 +7,6 @@ import Loading from '../../components/UI/Loading';
 
 const Entry = () => {
   const { id } = useParams();
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { data, isLoading, error } = useEntry(id!);
   useTitle(data && `@${data.user.login}: ${data.body}`);
 
