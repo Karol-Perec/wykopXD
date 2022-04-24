@@ -22,10 +22,10 @@ const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProp
     <S.Image
       src={displayedImageUrl}
       blur={blurImage}
-      alt=''
+      alt='image'
       onClick={(e) => {
         e.stopPropagation();
-        setBlurImage(false);
+        if (blurImage) setBlurImage(false);
       }}
     />
   ) : (

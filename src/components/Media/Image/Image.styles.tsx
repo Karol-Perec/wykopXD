@@ -24,7 +24,8 @@ export const Image = styled('img', {
   shouldForwardProp: (prop) => prop !== 'blur',
 })<ImageProps>(({ theme, blur }) => ({
   borderRadius: 10,
-  width: '100%',
+
+  maxWidth: '100%',
   ...(blur && { filter: 'blur(10px)' }),
 
   maxHeight: 550,

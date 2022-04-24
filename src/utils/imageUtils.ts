@@ -1,10 +1,11 @@
-type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';
+type ImageQuality = 'original' | 'hd' | 'hq' | 'mq' | 'lq';
 
 export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) => {
   const qualityResoultionMap: Record<ImageQuality, string> = {
+    hd: ',w600',
     hq: ',w400',
-    mq: ',w300h223',
-    lq: ',w207h139',
+    mq: ',w300',
+    lq: ',w207',
     original: '',
   };
 
@@ -13,5 +14,5 @@ export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) =>
 
 export const getImageQuality = (listMode: boolean, blur: boolean): ImageQuality => {
   if (blur) return 'lq';
-  return listMode ? 'hq' : 'original';
+  return listMode ? 'hq' : 'hd';
 };

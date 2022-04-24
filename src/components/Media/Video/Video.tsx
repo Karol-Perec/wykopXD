@@ -17,7 +17,7 @@ const Video = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: VideoProp
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isOnScreen = useIsOnScreen(wrapperRef);
   const [enableAutostop, setEnableAutostop] = useState(false);
-  const displayedImageUrl = getDisplayedImageUrl(imageUrl, listMode ? 'mq' : 'original');
+  const displayedImageUrl = getDisplayedImageUrl(imageUrl, listMode ? 'mq' : 'hq');
 
   const expandVideo = (event: MouseEvent) => {
     event.stopPropagation();
