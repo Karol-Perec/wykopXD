@@ -5,7 +5,7 @@ import ScrollToTop from 'components/UI/ScrollToTop';
 import App from './App';
 
 const container = document.getElementById('root');
-const root = createRoot(container!);
+const root = createRoot(container!); // eslint-disable-line
 root.render(
   <StrictMode>
     <BrowserRouter basename={process.env.PUBLIC_URL}>

@@ -74,6 +74,7 @@
     ],
     "import/no-absolute-path": 0,
     "react/destructuring-assignment": [1, "always", { "ignoreClassFields": true }],
-    "consistent-return": 0
+    "consistent-return": 0,
+    "@typescript-eslint/no-non-null-assertion": 0
   }
 }

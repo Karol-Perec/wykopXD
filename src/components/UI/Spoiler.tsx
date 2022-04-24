@@ -1,4 +1,4 @@
-import { MouseEvent, PropsWithChildren, ReactNode, useState } from 'react';
+import { MouseEvent, PropsWithChildren, useState } from 'react';
 import { styled } from '@mui/material';
 
 interface HideableSpoilerProps {

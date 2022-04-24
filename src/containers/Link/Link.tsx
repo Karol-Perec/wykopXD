@@ -6,8 +6,9 @@ import useTitle from '../../hooks/useTitle';
 import Loading from '../../components/UI/Loading';
 
 const LinkDetails = () => {
-  const query = useParams();
-  const { data, isLoading, error } = useLink(+query.id!);
+  const { id } = useParams();
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const { data, isLoading, error } = useLink(id!);
   useTitle(data?.title);
 
   if (isLoading) return <Loading />;

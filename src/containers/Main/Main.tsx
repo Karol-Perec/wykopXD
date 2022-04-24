@@ -4,7 +4,6 @@ import ErrorMessage from 'components/UI/ErrorMessage';
 
 const Main = () => {
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = usePromotedLinks();
-  console.log(data);
 
   if (error) return <ErrorMessage error={error} />;
 

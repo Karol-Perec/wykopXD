@@ -6,8 +6,9 @@ import useTitle from '../../hooks/useTitle';
 import Loading from '../../components/UI/Loading';
 
 const Entry = () => {
-  const query = useParams();
-  const { data, isLoading, error } = useEntry(+query.id!);
+  const { id } = useParams();
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const { data, isLoading, error } = useEntry(id!);
   useTitle(data && `@${data.user.login}: ${data.body}`);
 
   if (isLoading) return <Loading />;

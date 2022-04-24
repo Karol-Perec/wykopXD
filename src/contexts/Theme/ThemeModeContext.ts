@@ -7,8 +7,7 @@ export interface ThemeModeContextInterface {
 }
 
 const ThemeModeContext = createContext<ThemeModeContextInterface>({
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  toggleThemeMode: () => {},
+  toggleThemeMode: () => {}, // eslint-disable-line
   themeMode: 'dark',
 });
 

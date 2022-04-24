@@ -19,7 +19,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error: ', error, errorInfo);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    console.error('Error: ', error, errorInfo);
   }
 
   public render() {

@@ -1,29 +1,20 @@
 import axios from 'axios';
 import { MD5 } from 'crypto-js';
 
-interface ApiKeys {
-  apiKey?: string;
-  secret?: string;
-  owmApiKey?: string;
-}
+const wykopAxiosInstance = axios.create({ baseURL: 'https://a2.wykop.pl' });
 
-export const getAxiosInstance = ({ apiKey, secret, owmApiKey }: ApiKeys) => {
-  if (!owmApiKey || !apiKey || !secret) throw new Error('error.missingApiKeys');
-  const axiosInstance = axios.create({ baseURL: 'https://a2.wykop.pl' });
+wykopAxiosInstance.interceptors.request.use((config) => {
+  if (config.method === 'POST') {
+    config.url += `/appkey/${process.env.API_KEY}`;
+    const signContent =
+      process.env.SECRET! + config.baseURL + config.url + Object.values(config.data).join(',');
+    const apiSign = MD5(signContent).toString();
+    config.headers = { ...config.headers, apisign: apiSign };
+  } else {
+    config.url += `/appkey/${process.env.OWM_API_KEY!}`;
+  }
 
-  axiosInstance.interceptors.request.use((config) => {
-    if (config.method === 'POST') {
-      config.url += `/appkey/${apiKey}`;
-      const signContent =
-        secret + config.baseURL + config.url + Object.values(config.data).join(',');
-      const apiSign = MD5(signContent).toString();
-      config.headers = { ...config.headers, apisign: apiSign };
-    } else {
-      config.url += `/appkey/${owmApiKey}`;
-    }
+  return config;
+});
 
-    return config;
-  });
-
-  return axiosInstance;
-};
+export default wykopAxiosInstance;
