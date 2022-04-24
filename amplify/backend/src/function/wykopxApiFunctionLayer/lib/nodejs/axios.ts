@@ -11,7 +11,7 @@ wykopAxiosInstance.interceptors.request.use((config) => {
     const apiSign = MD5(signContent).toString();
     config.headers = { ...config.headers, apisign: apiSign };
   } else {
-    config.url += `/appkey/${process.env.OWM_API_KEY!}`;
+    config.url += `/appkey/${process.env.OWM_API_KEY}`;
   }
 
   return config;
