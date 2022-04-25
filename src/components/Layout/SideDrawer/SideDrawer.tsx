@@ -1,7 +1,7 @@
 import { alpha, Divider, Drawer, useTheme } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTE } from 'Routes';
+import { NavRoute } from 'Routes';
 import NavItems from './NavItems/NavItems';
 import * as S from './SideDrawer.styles';
 
@@ -25,7 +25,7 @@ const SideDrawer = ({ open, handleToggleSideDrawer }: SideDrawerProps) => {
       }}
     >
       <S.DrawerHeader>
-        <Link to={ROUTE.HOME} onClick={handleToggleSideDrawer}>
+        <Link to={NavRoute.HOME} onClick={handleToggleSideDrawer}>
           <S.WykopLogo />
         </Link>
       </S.DrawerHeader>

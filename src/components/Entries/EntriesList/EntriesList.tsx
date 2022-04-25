@@ -10,15 +10,18 @@ interface EntriesListProps {
 }
 
 const EntriesList = ({ entries, isLoading, onInfiniteScroll }: EntriesListProps) => {
-  const lastEntryRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
-  const lastEntry = entries?.pop();
+  const infiniteScrollingTriggerRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
 
   return (
     <>
-      {entries?.map((entry) => (
-        <EntryAbstract entry={entry} key={entry.id} listMode />
+      {entries?.map((entry, idx) => (
+        <EntryAbstract
+          entry={entry}
+          key={entry.id}
+          listMode
+          containerRef={idx + 2 === entries.length ? infiniteScrollingTriggerRef : undefined}
+        />
       ))}
-      {lastEntry && <EntryAbstract entry={lastEntry} containerRef={lastEntryRef} listMode />}
       {isLoading && <Loading />}
     </>
   );

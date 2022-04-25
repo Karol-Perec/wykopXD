@@ -2,12 +2,10 @@ import { Menu as MenuIcon } from '@mui/icons-material';
 import { Box, Button, Container, IconButton, Toolbar } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { matchRoutes, useLocation } from 'react-router-dom';
-import { ROUTE } from 'Routes';
 import { UnstyledRouterLink } from 'components/UI/CustomLinks';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import * as S from './TopBar.styles';
-
-const pages = ['Główna', 'Wykopalisko', 'Hity', 'Mikroblog'];
+import { navItems } from '../SideDrawer/NavItems/NavItems';
 
 interface TopBarProps {
   onDrawerToggleClick: MouseEventHandler<HTMLButtonElement>;
@@ -32,14 +30,9 @@ const TopBar = ({ onDrawerToggleClick }: TopBarProps) => {
             </IconButton>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, color: 'white' }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                component={UnstyledRouterLink}
-                to={ROUTE.MIKROBLOG}
-                color='inherit'
-              >
-                {page}
+            {navItems.map((nav) => (
+              <Button component={UnstyledRouterLink} to={nav.path} color='inherit' key={nav.path}>
+                {nav.label}
               </Button>
             ))}
           </Box>

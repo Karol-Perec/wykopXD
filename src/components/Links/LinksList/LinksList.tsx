@@ -10,15 +10,17 @@ interface LinksListProps {
 }
 
 const LinksList = ({ links, isLoading, onInfiniteScroll }: LinksListProps) => {
-  const lastLinkRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
-  const lastLink = links?.pop();
+  const infiniteScrollingTriggerRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
 
   return (
     <>
-      {links?.map((link) => (
-        <LinkAbstract link={link} key={link.id} />
+      {links?.map((link, idx) => (
+        <LinkAbstract
+          link={link}
+          key={link.id}
+          containerRef={idx + 2 === links.length ? infiniteScrollingTriggerRef : undefined}
+        />
       ))}
-      {lastLink && <LinkAbstract link={lastLink} containerRef={lastLinkRef} />}
       {isLoading && <Loading />}
     </>
   );
