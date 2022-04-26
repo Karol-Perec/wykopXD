@@ -2,6 +2,7 @@ import { Link } from '@mui/material';
 import { useRef, useState } from 'react';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
 import * as S from './Image.styles';
+import ImageViewer from './ImageViewer/ImageViewer';
 
 interface ImageProps {
   sourceUrl: string;
@@ -13,6 +14,7 @@ interface ImageProps {
 
 const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProps) => {
   const [unblockMaxHeight, setUnblockMaxHeight] = useState(false);
+  const [viewerOpened, setViewerOpened] = useState(false);
   const [blurImage, setBlurImage] = useState(plus18);
 
   const mediaContainerRef = useRef<HTMLDivElement>(null);
@@ -22,26 +24,39 @@ const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProp
     <S.Image
       src={displayedImageUrl}
       blur={blurImage}
-      alt='image'
+      alt=''
       onClick={(e) => {
         e.stopPropagation();
-        if (blurImage) setBlurImage(false);
+        setBlurImage(false);
       }}
     />
   ) : (
-    <Link href={sourceUrl} onClick={(e) => e.preventDefault()}>
+    <Link
+      href={sourceUrl}
+      onClick={(e) => {
+        e.preventDefault();
+        setViewerOpened(true);
+      }}
+    >
       <S.Image src={displayedImageUrl} blur={blurImage} alt='' />
     </Link>
   );
 
   return (
-    <S.Container
-      ref={mediaContainerRef}
-      aspectRatio={aspectRatio}
-      unblockMaxHeight={unblockMaxHeight}
-    >
-      {image}
-    </S.Container>
+    <>
+      <ImageViewer
+        imageUrl={imageUrl}
+        handleClose={() => setViewerOpened(false)}
+        open={viewerOpened}
+      />
+      <S.Container
+        ref={mediaContainerRef}
+        aspectRatio={aspectRatio}
+        unblockMaxHeight={unblockMaxHeight}
+      >
+        {image}
+      </S.Container>
+    </>
   );
 };
 

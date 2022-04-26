@@ -32,6 +32,7 @@ const EntryAbstract = ({ entry, listMode = false, containerRef }: EntryAbstractP
   };
 
   const handleOpenInNewTab: MouseEventHandler<HTMLElement> = (e) => {
+    e.stopPropagation();
     if (e.button === 1) {
       window.open(`/wpis/${id}`, '_blank', 'noopener,noreferrer');
     }
@@ -87,7 +88,7 @@ const EntryAbstract = ({ entry, listMode = false, containerRef }: EntryAbstractP
         </Button>
       </S.Statistics>
       <Divider />
-      {comments?.length && showComments && <Comments comments={comments} />}
+      {showComments && comments?.length && <Comments comments={comments} />}
     </S.Card>
   );
 };
