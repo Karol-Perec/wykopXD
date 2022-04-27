@@ -14,7 +14,7 @@ interface ImageProps {
 
 const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProps) => {
   const [unblockMaxHeight, setUnblockMaxHeight] = useState(false);
-  const [viewerOpened, setViewerOpened] = useState(false);
+  // const [viewerOpened, setViewerOpened] = useState(false);
   const [blurImage, setBlurImage] = useState(plus18);
 
   const mediaContainerRef = useRef<HTMLDivElement>(null);
@@ -35,7 +35,7 @@ const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProp
       href={sourceUrl}
       onClick={(e) => {
         e.preventDefault();
-        setViewerOpened(true);
+        // setViewerOpened(true);
       }}
     >
       <S.Image src={displayedImageUrl} blur={blurImage} alt='' />
@@ -44,11 +44,11 @@ const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProp
 
   return (
     <>
-      <ImageViewer
+      {/* <ImageViewer
         imageUrl={imageUrl}
         handleClose={() => setViewerOpened(false)}
         open={viewerOpened}
-      />
+      /> */}
       <S.Container
         ref={mediaContainerRef}
         aspectRatio={aspectRatio}

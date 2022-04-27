@@ -4,11 +4,11 @@ import ThemeModeContext from 'contexts/Theme/ThemeModeContext';
 import { useContext } from 'react';
 
 const ThemeToggler = () => {
-  const colorMode = useContext(ThemeModeContext);
+  const themeContext = useContext(ThemeModeContext);
 
   return (
-    <IconButton onClick={colorMode.toggleThemeMode} color='inherit'>
-      {colorMode.themeMode === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
+    <IconButton onClick={themeContext.toggleThemeMode} color='inherit'>
+      {themeContext.themeMode === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
     </IconButton>
   );
 };

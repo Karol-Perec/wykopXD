@@ -1,11 +1,11 @@
 import { Whatshot as HitsIcon, AccountCircle as MyWykopIcon } from '@mui/icons-material';
-import { List } from '@mui/material';
+import { Box, List } from '@mui/material';
 import { MouseEventHandler, ReactNode } from 'react';
 import { NavRoute } from 'Routes';
-import NavItem from './NavItem/NavItem';
+import { NavItem, MobileNavItem } from './NavItem/NavItem';
 import { MainIcon, MikroblogIcon, UpcomingIcon } from './NavItems.styles';
 
-interface NavItemsProps {
+interface MobileNavItemsProps {
   onNavItemClick: MouseEventHandler;
 }
 
@@ -43,14 +43,22 @@ export const navItems: Page[] = [
   },
 ];
 
-const NavItems = ({ onNavItemClick }: NavItemsProps) => (
+export const MobileNavItems = ({ onNavItemClick }: MobileNavItemsProps) => (
   <List>
     {navItems.map((nav) => (
-      <NavItem to={nav.path} onClick={onNavItemClick} icon={nav.icon} key={nav.path}>
+      <MobileNavItem to={nav.path} onClick={onNavItemClick} icon={nav.icon} key={nav.path}>
         {nav.label}
-      </NavItem>
+      </MobileNavItem>
     ))}
   </List>
 );
 
-export default NavItems;
+export const NavItems = () => (
+  <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+    {navItems.map((nav) => (
+      <NavItem to={nav.path} key={nav.path}>
+        {nav.label}
+      </NavItem>
+    ))}
+  </Box>
+);
