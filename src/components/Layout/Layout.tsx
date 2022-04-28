@@ -1,18 +1,25 @@
 import { PropsWithChildren, useState } from 'react';
-import SideDrawer from './SideDrawer/SideDrawer';
+import LeftDrawer from './LeftDrawer/LeftDrawer';
+import RightDrawer from './RightDrawer/RightDrawer';
 import TopBar from './TopBar/TopBar';
 import * as S from './Layout.styles';
 
 const Layout = ({ children }: PropsWithChildren<unknown>) => {
-  const [showSideDrawer, setShowSideDrawer] = useState(false);
+  const [showLeftDrawer, setShowLeftDrawer] = useState(false);
+  const [showRightDrawer, setShowRightDrawer] = useState(false);
 
-  const handleToggleSideDrawer = () => setShowSideDrawer((prevState) => !prevState);
+  const handleToggleLeftDrawer = () => setShowLeftDrawer((prevState) => !prevState);
+  const handleToggleRightDrawer = () => setShowRightDrawer((prevState) => !prevState);
 
   return (
     <>
-      <TopBar onDrawerToggleClick={handleToggleSideDrawer} />
+      <TopBar
+        onLeftDrawerToggleClick={handleToggleLeftDrawer}
+        onRightDrawerToggleClick={handleToggleRightDrawer}
+      />
       <S.Offset />
-      <SideDrawer open={showSideDrawer} handleToggleSideDrawer={handleToggleSideDrawer} />
+      <LeftDrawer open={showLeftDrawer} handleToggleDrawer={handleToggleLeftDrawer} />
+      <RightDrawer open={showRightDrawer} handleToggleDrawer={handleToggleRightDrawer} />
       <S.Main>
         <S.MainContentContainer>{children}</S.MainContentContainer>
       </S.Main>

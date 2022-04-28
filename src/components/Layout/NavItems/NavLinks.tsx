@@ -2,11 +2,11 @@ import { Whatshot as HitsIcon, AccountCircle as MyWykopIcon } from '@mui/icons-m
 import { Box, List } from '@mui/material';
 import { MouseEventHandler, ReactNode } from 'react';
 import { NavRoute } from 'Routes';
-import { NavItem, MobileNavItem } from './NavItem/NavItem';
-import { MainIcon, MikroblogIcon, UpcomingIcon } from './NavItems.styles';
+import { NavLink, MobileNavLink } from './NavLink/NavLink';
+import { MainIcon, MikroblogIcon, UpcomingIcon } from './NavLinks.styles';
 
-interface MobileNavItemsProps {
-  onNavItemClick: MouseEventHandler;
+interface MobileNavLinksProps {
+  onNavLinkClick: MouseEventHandler;
 }
 
 interface Page {
@@ -15,7 +15,7 @@ interface Page {
   icon: ReactNode;
 }
 
-export const navItems: Page[] = [
+export const navLinks: Page[] = [
   {
     label: 'Główna',
     path: NavRoute.HOME,
@@ -43,22 +43,22 @@ export const navItems: Page[] = [
   },
 ];
 
-export const MobileNavItems = ({ onNavItemClick }: MobileNavItemsProps) => (
+export const MobileNavLinks = ({ onNavLinkClick }: MobileNavLinksProps) => (
   <List>
-    {navItems.map((nav) => (
-      <MobileNavItem to={nav.path} onClick={onNavItemClick} icon={nav.icon} key={nav.path}>
+    {navLinks.map((nav) => (
+      <MobileNavLink to={nav.path} onClick={onNavLinkClick} icon={nav.icon} key={nav.path}>
         {nav.label}
-      </MobileNavItem>
+      </MobileNavLink>
     ))}
   </List>
 );
 
-export const NavItems = () => (
+export const NavLinks = () => (
   <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-    {navItems.map((nav) => (
-      <NavItem to={nav.path} key={nav.path}>
+    {navLinks.map((nav) => (
+      <NavLink to={nav.path} key={nav.path}>
         {nav.label}
-      </NavItem>
+      </NavLink>
     ))}
   </Box>
 );

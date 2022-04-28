@@ -47,7 +47,7 @@ const EntryAbstract = ({ entry, listMode = false, containerRef }: EntryAbstractP
     >
       <S.EntryHeader>
         <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-          <Avatar url={user.avatarUrl} size={40} />
+          <Avatar src={user.avatarUrl} size={40} />
         </RouterNoPropagationLink>
         <S.EntryHeaderMeta>
           <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
@@ -71,7 +71,7 @@ const EntryAbstract = ({ entry, listMode = false, containerRef }: EntryAbstractP
           />
         )}
       </S.EntryContent>
-      <Divider />
+      <Divider variant='middle' />
       <S.Statistics>
         <Button
           startIcon={<CommentsIcon />}
@@ -87,7 +87,7 @@ const EntryAbstract = ({ entry, listMode = false, containerRef }: EntryAbstractP
           <Typography>{voteCountPlus}</Typography>
         </Button>
       </S.Statistics>
-      <Divider />
+      <Divider variant='middle' />
       {showComments && comments?.length && <Comments comments={comments} />}
     </S.Card>
   );

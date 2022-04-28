@@ -2,21 +2,21 @@ import { alpha, Divider, Drawer, useTheme } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 import { NavRoute } from 'Routes';
-import { MobileNavItems } from '../NavItems/NavItems';
-import * as S from './SideDrawer.styles';
+import { MobileNavLinks } from '../NavItems/NavLinks';
+import * as S from './LeftDrawer.styles';
 
-interface SideDrawerProps {
+interface LeftDrawerProps {
   open: boolean;
-  handleToggleSideDrawer: MouseEventHandler;
+  handleToggleDrawer: MouseEventHandler;
 }
 
-const SideDrawer = ({ open, handleToggleSideDrawer }: SideDrawerProps) => {
+const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
   const theme = useTheme();
 
   return (
     <Drawer
       open={open}
-      onClose={handleToggleSideDrawer}
+      onClose={handleToggleDrawer}
       PaperProps={{
         style: {
           backdropFilter: 'blur(10px)',
@@ -25,17 +25,17 @@ const SideDrawer = ({ open, handleToggleSideDrawer }: SideDrawerProps) => {
       }}
     >
       <S.DrawerHeader>
-        <Link to={NavRoute.HOME} onClick={handleToggleSideDrawer}>
+        <Link to={NavRoute.HOME} onClick={handleToggleDrawer}>
           <S.WykopLogo />
         </Link>
       </S.DrawerHeader>
-      <Divider />
+      <Divider variant='middle' />
       <S.NavContainer>
-        <MobileNavItems onNavItemClick={handleToggleSideDrawer} />
+        <MobileNavLinks onNavLinkClick={handleToggleDrawer} />
       </S.NavContainer>
-      <Divider />
+      <Divider variant='middle' />
     </Drawer>
   );
 };
 
-export default SideDrawer;
+export default LeftDrawer;

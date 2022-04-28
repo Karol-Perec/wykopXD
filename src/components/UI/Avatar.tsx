@@ -1,19 +1,21 @@
 import { Avatar as MuiAvatar, styled } from '@mui/material';
+import { MouseEventHandler } from 'react';
 
 interface AvatarProps {
-  url?: string;
   size: number;
+  src?: string;
+  onClick?: MouseEventHandler;
 }
 
 const StyledAvatar = styled(MuiAvatar)<AvatarProps>(({ theme, size }) => ({
   backgroundColor: theme.palette.primary.light,
   width: size,
   height: size,
-  // border: '1px solid #73AD21',
+  ':hover': { cursor: 'pointer' },
 }));
 
-const Avatar = ({ url, size }: AvatarProps) => (
-  <StyledAvatar src={url} alt='avatar' variant='rounded' size={size} />
+const Avatar = ({ src, size, onClick }: AvatarProps) => (
+  <StyledAvatar src={src} alt='avatar' variant='rounded' size={size} onClick={onClick} />
 );
 
 export default Avatar;

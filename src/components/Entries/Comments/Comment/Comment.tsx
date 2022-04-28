@@ -16,7 +16,7 @@ const Comment = ({ comment }: CommentProps) => {
   return (
     <div>
       <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-        <Avatar url={user.avatarUrl} size={32} />
+        <Avatar src={user.avatarUrl} size={32} />
       </RouterNoPropagationLink>
       <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
         <Typography>{user.login}</Typography>
