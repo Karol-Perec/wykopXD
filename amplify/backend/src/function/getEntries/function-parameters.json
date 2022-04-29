@@ -8,19 +8,5 @@
       "version": "Always choose latest version",
       "isLatestVersionSelected": true
     }
-  ],
-  "environmentVariableList": [
-    {
-      "cloudFormationParameterName": "apiKey",
-      "environmentVariableName": "API_KEY"
-    },
-    {
-      "cloudFormationParameterName": "owmApiKey",
-      "environmentVariableName": "OWM_API_KEY"
-    },
-    {
-      "cloudFormationParameterName": "secret",
-      "environmentVariableName": "SECRET"
-    }
   ]
 }

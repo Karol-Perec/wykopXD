@@ -73,10 +73,7 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "API_KEY": { "Ref": "apiKey" },
-            "SECRET": { "Ref": "secret" },
-            "OWM_API_KEY": { "Ref": "owmApiKey" }
+            }
           }
         },
         "Role": {
