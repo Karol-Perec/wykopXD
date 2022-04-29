@@ -7,7 +7,9 @@ wykopAxiosInstance.interceptors.request.use((config) => {
   // if (config.method === 'POST') {
   config.url += `/appkey/${process.env.API_KEY}`;
   const signContent =
-    process.env.SECRET! + config.baseURL + config.url + Object.values(config.data).join(',');
+    process.env.SECRET! + config.baseURL + config.url + config.data
+      ? Object.values(config.data).join(',')
+      : '';
   const apiSign = MD5(signContent).toString();
   config.headers = { ...config.headers, apisign: apiSign };
   // } else {
