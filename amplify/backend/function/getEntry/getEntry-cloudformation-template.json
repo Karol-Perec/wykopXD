@@ -70,7 +70,10 @@
         "Environment": {
           "Variables": {
             "ENV": { "Ref": "env" },
-            "REGION": { "Ref": "AWS::Region" }
+            "REGION": { "Ref": "AWS::Region" },
+            "API_KEY": { "Ref": "apiKey" },
+            "SECRET": { "Ref": "secret" },
+            "OWM_API_KEY": { "Ref": "owmApiKey" }
           }
         },
         "Role": { "Fn::GetAtt": ["LambdaExecutionRole", "Arn"] },
