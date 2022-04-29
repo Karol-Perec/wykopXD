@@ -21,37 +21,19 @@
       "function": {
         "getPromotedLinks": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getPromotedLinks-717a2b3679434e77576b-build.zip",
-          "apiKey": "482VSi3YyC",
-          "secret": "v8RO1EXXQZ",
-          "owmApiKey": "aNd401dAPp"
+          "s3Key": "amplify-builds/getPromotedLinks-717a2b3679434e77576b-build.zip"
         },
         "wykopxApiFunctionLayer": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
           "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersionaee70588-build.zip"
         },
         "getLink": {
-          "apiKey": "482VSi3YyC",
-          "secret": "v8RO1EXXQZ",
-          "owmApiKey": "aNd401dAPp",
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
           "s3Key": "amplify-builds/getLink-4a642b4a594e5a39524f-build.zip"
         },
-        "getEntries": {
-          "apiKey": "482VSi3YyC",
-          "owmApiKey": "aNd401dAPp",
-          "secret": "v8RO1EXXQZ"
-        },
-        "getEntry": {
-          "apiKey": "482VSi3YyC",
-          "secret": "v8RO1EXXQZ",
-          "owmApiKey": "aNd401dAPp"
-        },
-        "getHits": {
-          "apiKey": "482VSi3YyC",
-          "secret": "v8RO1EXXQZ",
-          "owmApiKey": "aNd401dAPp"
-        }
+        "getEntries": {},
+        "getEntry": {},
+        "getHits": {}
       }
     }
   }
