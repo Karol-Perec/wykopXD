@@ -15,7 +15,7 @@ export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
   );
 
   if (data.error) {
-    return createResponse(data.error, 500);
+    return createResponse(data.error.message_en, 500);
   }
 
   const entry = mapEntry(data.data);
