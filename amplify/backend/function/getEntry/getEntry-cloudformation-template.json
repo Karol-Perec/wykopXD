@@ -17,18 +17,6 @@
       "Type": "String"
     },
 
-    "apiKey": {
-      "Type": "String"
-    },
-
-    "secret": {
-      "Type": "String"
-    },
-
-    "owmApiKey": {
-      "Type": "String"
-    },
-
     "functionwykopxApiFunctionLayerArn": {
       "Type": "String",
       "Default": "functionwykopxApiFunctionLayerArn"
@@ -82,10 +70,7 @@
         "Environment": {
           "Variables": {
             "ENV": { "Ref": "env" },
-            "REGION": { "Ref": "AWS::Region" },
-            "API_KEY": { "Ref": "apiKey" },
-            "SECRET": { "Ref": "secret" },
-            "OWM_API_KEY": { "Ref": "owmApiKey" }
+            "REGION": { "Ref": "AWS::Region" }
           }
         },
         "Role": { "Fn::GetAtt": ["LambdaExecutionRole", "Arn"] },

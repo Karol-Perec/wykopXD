@@ -16,15 +16,6 @@
     "s3Key": {
       "Type": "String"
     },
-    "apiKey": {
-      "Type": "String"
-    },
-    "secret": {
-      "Type": "String"
-    },
-    "owmApiKey": {
-      "Type": "String"
-    },
     "functionwykopxApiFunctionLayerArn": {
       "Type": "String",
       "Default": "functionwykopxApiFunctionLayerArn"
@@ -82,15 +73,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "API_KEY": {
-              "Ref": "apiKey"
-            },
-            "SECRET": {
-              "Ref": "secret"
-            },
-            "OWM_API_KEY": {
-              "Ref": "owmApiKey"
             }
           }
         },
