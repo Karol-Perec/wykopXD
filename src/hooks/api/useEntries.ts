@@ -13,6 +13,7 @@ const getEntries = async (page: number, category: MikroblogCategory) => {
 
 const useEntries = (category: MikroblogCategory) =>
   useInfiniteQuery(['entries', category], ({ pageParam = 1 }) => getEntries(pageParam, category), {
+    retry: false,
     staleTime: 100000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,

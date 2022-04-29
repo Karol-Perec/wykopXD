@@ -13,6 +13,7 @@ const getHits = async (page: number, period: HitsPeriod) => {
 
 const useHits = (period: HitsPeriod) =>
   useInfiniteQuery(['hits', period], ({ pageParam = 1 }) => getHits(pageParam, period), {
+    retry: false,
     staleTime: 100000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,

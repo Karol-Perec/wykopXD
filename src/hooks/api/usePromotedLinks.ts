@@ -11,6 +11,7 @@ const getPromotedLinks: QueryFunction<Link[]> = async ({ pageParam = 1 }) => {
 
 const usePromotedLinks = () =>
   useInfiniteQuery(['promoted-links'], getPromotedLinks, {
+    retry: false,
     staleTime: 100000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,

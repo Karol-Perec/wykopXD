@@ -9,6 +9,7 @@ const getEntry = async (id: string) => {
 
 const useEntry = (id: string) =>
   useQuery(['entry', id], () => getEntry(id), {
+    retry: false,
     staleTime: 10000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,

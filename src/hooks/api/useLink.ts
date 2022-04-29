@@ -9,6 +9,7 @@ const getLink = async (id: string) => {
 
 const useLink = (id: string) =>
   useQuery(['link', id], () => getLink(id), {
+    retry: false,
     staleTime: 10000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,
