@@ -21,14 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "compile-ts": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
-    "amplify:wykopxApi": "npm run compile-ts",
-    "amplify:getLink": "npm run compile-ts",
-    "amplify:getPromotedLinks": "npm run compile-ts",
-    "amplify:getEntry": "npm run compile-ts",
-    "amplify:getEntries": "npm run compile-ts",
-    "amplify:getHits": "npm run compile-ts",
-    "amplify:wykopxApiFunctionLayer": "npm run compile-ts"
+    "compile-ts": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -"
   },
   "browserslist": {
     "production": [
@@ -45,11 +38,11 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^14.1.1",
-    "@types/jest": "^27.5.0",
-    "@types/node": "^17.0.32",
+    "@testing-library/user-event": "^14.2.0",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.33",
     "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.3",
+    "@types/react-dom": "^18.0.4",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "eslint": "^8.15.0",
