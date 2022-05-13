@@ -7,11 +7,11 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.7.0",
-    "axios": "^0.26.1",
+    "axios": "^0.27.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-player": "^2.10.1",
-    "react-query": "^4.0.0-beta.7",
+    "react-query": "^4.0.0-beta.10",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1"
   },
@@ -21,14 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "compile-ts": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
-    "amplify:wykopxApi": "npm run compile-ts",
-    "amplify:getLink": "npm run compile-ts",
-    "amplify:getPromotedLinks": "npm run compile-ts",
-    "amplify:getEntry": "npm run compile-ts",
-    "amplify:getEntries": "npm run compile-ts",
-    "amplify:getHits": "npm run compile-ts",
-    "amplify:wykopxApiFunctionLayer": "npm run compile-ts"
+    "compile-ts": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -"
   },
   "browserslist": {
     "production": [
