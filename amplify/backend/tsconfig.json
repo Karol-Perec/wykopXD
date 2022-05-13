@@ -6,9 +6,8 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "baseUrl": "src",
     "paths": {
-      "/opt/nodejs/*": ["function/wykopxApiFunctionLayer/lib/nodejs/*"]
+      "/opt/nodejs/*": ["./function/wykopxApiFunctionLayer/lib/nodejs/*"]
     },
     "noImplicitUseStrict": true,
     "esModuleInterop": true,
@@ -18,8 +17,8 @@
     "strictNullChecks": true,
     "isolatedModules": true,
     "outDir": ".",
-    "rootDir": "./src"
+    "rootDir": "./"
   },
-  "include": ["./src"],
+  "include": ["./"],
   "exclude": []
 }

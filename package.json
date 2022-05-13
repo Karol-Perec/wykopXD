@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "compile-ts": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && cd -",
+    "compile-ts": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && find function/ -name '*.ts' -exec rm {} \\; && cd -",
     "amplify:wykopxApi": "npm run compile-ts",
     "amplify:getLink": "npm run compile-ts",
     "amplify:getPromotedLinks": "npm run compile-ts",
