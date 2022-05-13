@@ -21,7 +21,10 @@
       "function": {
         "getPromotedLinks": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getPromotedLinks-526e4f4c335a74313074-build.zip"
+          "s3Key": "amplify-builds/getPromotedLinks-526e4f4c335a74313074-build.zip",
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "d99b6pFK8f"
         },
         "wykopxApiFunctionLayer": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
@@ -29,19 +32,31 @@
         },
         "getLink": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getLink-6b73474649686a755032-build.zip"
+          "s3Key": "amplify-builds/getLink-6b73474649686a755032-build.zip",
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "d99b6pFK8f"
         },
         "getEntries": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getEntries-58744a6f545842354550-build.zip"
+          "s3Key": "amplify-builds/getEntries-58744a6f545842354550-build.zip",
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "d99b6pFK8f"
         },
         "getEntry": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getEntry-537839417743464e7562-build.zip"
+          "s3Key": "amplify-builds/getEntry-537839417743464e7562-build.zip",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "d99b6pFK8f",
+          "apiKey": "482VSi3YyC"
         },
         "getHits": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getHits-714d767376615a364469-build.zip"
+          "s3Key": "amplify-builds/getHits-714d767376615a364469-build.zip",
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "d99b6pFK8f"
         }
       }
     }

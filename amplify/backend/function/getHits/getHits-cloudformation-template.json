@@ -19,6 +19,15 @@
     "functionwykopxApiFunctionLayerArn": {
       "Type": "String",
       "Default": "functionwykopxApiFunctionLayerArn"
+    },
+    "apiKey": {
+      "Type": "String"
+    },
+    "secret": {
+      "Type": "String"
+    },
+    "owmApiKey": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -73,6 +82,15 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "API_KEY": {
+              "Ref": "apiKey"
+            },
+            "SECRET": {
+              "Ref": "secret"
+            },
+            "OWM_API_KEY": {
+              "Ref": "owmApiKey"
             }
           }
         },
