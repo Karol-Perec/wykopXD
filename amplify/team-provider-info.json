@@ -21,19 +21,28 @@
       "function": {
         "getPromotedLinks": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getPromotedLinks-717a2b3679434e77576b-build.zip"
+          "s3Key": "amplify-builds/getPromotedLinks-526e4f4c335a74313074-build.zip"
         },
         "wykopxApiFunctionLayer": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersionaee70588-build.zip"
+          "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersion080c91b4-build.zip"
         },
         "getLink": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getLink-4a642b4a594e5a39524f-build.zip"
+          "s3Key": "amplify-builds/getLink-6b73474649686a755032-build.zip"
         },
-        "getEntries": {},
-        "getEntry": {},
-        "getHits": {}
+        "getEntries": {
+          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+          "s3Key": "amplify-builds/getEntries-58744a6f545842354550-build.zip"
+        },
+        "getEntry": {
+          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+          "s3Key": "amplify-builds/getEntry-537839417743464e7562-build.zip"
+        },
+        "getHits": {
+          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
+          "s3Key": "amplify-builds/getHits-714d767376615a364469-build.zip"
+        }
       }
     }
   }
