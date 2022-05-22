@@ -16,17 +16,25 @@
     "s3Key": {
       "Type": "String"
     },
+    "apiwykopxApiApiName": {
+      "Type": "String",
+      "Default": "apiwykopxApiApiName"
+    },
+    "apiwykopxApiApiId": {
+      "Type": "String",
+      "Default": "apiwykopxApiApiId"
+    },
     "functionwykopxApiFunctionLayerArn": {
       "Type": "String",
       "Default": "functionwykopxApiFunctionLayerArn"
+    },
+    "apiKey": {
+      "Type": "String"
     },
     "secret": {
       "Type": "String"
     },
     "owmApiKey": {
-      "Type": "String"
-    },
-    "apiKey": {
       "Type": "String"
     }
   },
@@ -60,12 +68,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "getEntry",
+            "getTag",
             {
               "Fn::Join": [
                 "",
                 [
-                  "getEntry",
+                  "getTag",
                   "-",
                   {
                     "Ref": "env"
@@ -83,14 +91,20 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
+            "API_WYKOPXAPI_APINAME": {
+              "Ref": "apiwykopxApiApiName"
+            },
+            "API_WYKOPXAPI_APIID": {
+              "Ref": "apiwykopxApiApiId"
+            },
+            "API_KEY": {
+              "Ref": "apiKey"
+            },
             "SECRET": {
               "Ref": "secret"
             },
             "OWM_API_KEY": {
               "Ref": "owmApiKey"
-            },
-            "API_KEY": {
-              "Ref": "apiKey"
             }
           }
         },
@@ -112,12 +126,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "wykopxLambdaRolef2b74628",
+            "wykopxLambdaRole7563bc38",
             {
               "Fn::Join": [
                 "",
                 [
-                  "wykopxLambdaRolef2b74628",
+                  "wykopxLambdaRole7563bc38",
                   "-",
                   {
                     "Ref": "env"
@@ -173,6 +187,45 @@
                   }
                 ]
               }
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": ["LambdaExecutionRole"],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": ["apigateway:GET", "apigateway:HEAD", "apigateway:OPTIONS"],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      "::/restapis/",
+                      {
+                        "Ref": "apiwykopxApiApiName"
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }

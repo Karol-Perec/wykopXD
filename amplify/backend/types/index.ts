@@ -4,6 +4,7 @@ export * from './wykopEntry.types';
 export * from './wykopLink.types';
 export * from './wykopProfile.types';
 export * from './wykopResponse.types';
+export * from './wykopMulti.types';
 export * from './entry.types';
 export * from './link.types';
 export * from './media.types';

@@ -28,6 +28,27 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/tags/{tag}": {
+      "name": "/tags/{tag}",
+      "lambdaFunction": "getTag",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/profiles/{username}/actions": {
+      "name": "/profiles/{username}/actions",
+      "lambdaFunction": "getProfileActions",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/profiles/{username}": {
+      "name": "/profiles/{username}",
+      "lambdaFunction": "getProfile",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

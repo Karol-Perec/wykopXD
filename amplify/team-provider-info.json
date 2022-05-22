@@ -57,6 +57,21 @@
           "apiKey": "482VSi3YyC",
           "secret": "v8RO1EXXQZ",
           "owmApiKey": "d99b6pFK8f"
+        },
+        "getTag": {
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "d99b6pFK8f"
+        },
+        "getProfileActions": {
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "d99b6pFK8f"
+        },
+        "getProfile": {
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "d99b6pFK8f"
         }
       }
     }

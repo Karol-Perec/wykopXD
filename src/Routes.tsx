@@ -6,6 +6,8 @@ import Mikroblog from 'pages/Mikroblog/Mikroblog';
 import Hits from 'pages/Hits/Hits';
 import { MikroblogCategory } from 'pages/Mikroblog/mikroblog.types';
 import { HitsPeriod } from 'pages/Hits/hits.types';
+import Tag from 'pages/Tag/Tag';
+import Profile from 'pages/Profile/Profile';
 
 export enum NavRoute {
   HOME = '/',
@@ -16,6 +18,8 @@ export enum NavRoute {
   ANY = '*',
   LINK = '/link/:id',
   ENTRY = '/wpis/:id',
+  TAG = '/tag/:tag',
+  PROFILE = '/ludzie/:username',
 }
 
 export const routes = (
@@ -32,6 +36,8 @@ export const routes = (
     </Route>
     <Route path={NavRoute.LINK} element={<Link />} />
     <Route path={NavRoute.ENTRY} element={<Entry />} />
+    <Route path={NavRoute.TAG} element={<Tag />} />
+    <Route path={NavRoute.PROFILE} element={<Profile />} />
     <Route path={NavRoute.HOME} element={<Main />} />
     <Route path={NavRoute.ANY} element={<Navigate to='/' />} />
   </RouterRoutes>

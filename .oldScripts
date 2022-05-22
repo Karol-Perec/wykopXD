@@ -1,9 +1,0 @@
-{
-  "amplify:wykopxApi": "npm run compile-ts",
-  "amplify:getLink": "npm run compile-ts",
-  "amplify:getPromotedLinks": "npm run compile-ts",
-  "amplify:getEntry": "npm run compile-ts",
-  "amplify:getEntries": "npm run compile-ts",
-  "amplify:getHits": "npm run compile-ts",
-  "amplify:wykopxApiFunctionLayer": "npm run compile-ts"
-}

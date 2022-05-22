@@ -16,18 +16,32 @@
     "s3Key": {
       "Type": "String"
     },
-    "functionwykopxApiFunctionLayerArn": {
-      "Type": "String",
-      "Default": "functionwykopxApiFunctionLayerArn"
+
+    "apiKey": {
+      "Type": "String"
     },
+
     "secret": {
       "Type": "String"
     },
+
     "owmApiKey": {
       "Type": "String"
     },
-    "apiKey": {
-      "Type": "String"
+
+    "apiwykopxApiApiName": {
+      "Type": "String",
+      "Default": "apiwykopxApiApiName"
+    },
+
+    "apiwykopxApiApiId": {
+      "Type": "String",
+      "Default": "apiwykopxApiApiId"
+    },
+
+    "functionwykopxApiFunctionLayerArn": {
+      "Type": "String",
+      "Default": "functionwykopxApiFunctionLayerArn"
     }
   },
   "Conditions": {
@@ -60,12 +74,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "getEntry",
+            "getProfileActions",
             {
               "Fn::Join": [
                 "",
                 [
-                  "getEntry",
+                  "getProfileActions",
                   "-",
                   {
                     "Ref": "env"
@@ -77,32 +91,18 @@
         },
         "Environment": {
           "Variables": {
-            "ENV": {
-              "Ref": "env"
-            },
-            "REGION": {
-              "Ref": "AWS::Region"
-            },
-            "SECRET": {
-              "Ref": "secret"
-            },
-            "OWM_API_KEY": {
-              "Ref": "owmApiKey"
-            },
-            "API_KEY": {
-              "Ref": "apiKey"
-            }
+            "ENV": { "Ref": "env" },
+            "REGION": { "Ref": "AWS::Region" },
+            "API_WYKOPXAPI_APINAME": { "Ref": "apiwykopxApiApiName" },
+            "API_WYKOPXAPI_APIID": { "Ref": "apiwykopxApiApiId" },
+            "API_KEY": { "Ref": "apiKey" },
+            "SECRET": { "Ref": "secret" },
+            "OWM_API_KEY": { "Ref": "owmApiKey" }
           }
         },
-        "Role": {
-          "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]
-        },
+        "Role": { "Fn::GetAtt": ["LambdaExecutionRole", "Arn"] },
         "Runtime": "nodejs14.x",
-        "Layers": [
-          {
-            "Ref": "functionwykopxApiFunctionLayerArn"
-          }
-        ],
+        "Layers": [{ "Ref": "functionwykopxApiFunctionLayerArn" }],
         "Timeout": 25
       }
     },
@@ -112,12 +112,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "wykopxLambdaRolef2b74628",
+            "wykopxLambdaRoled9c241a6",
             {
               "Fn::Join": [
                 "",
                 [
-                  "wykopxLambdaRolef2b74628",
+                  "wykopxLambdaRoled9c241a6",
                   "-",
                   {
                     "Ref": "env"
@@ -146,11 +146,7 @@
       "Type": "AWS::IAM::Policy",
       "Properties": {
         "PolicyName": "lambda-execution-policy",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
+        "Roles": [{ "Ref": "LambdaExecutionRole" }],
         "PolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
@@ -161,18 +157,43 @@
                 "Fn::Sub": [
                   "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*",
                   {
-                    "region": {
-                      "Ref": "AWS::Region"
-                    },
-                    "account": {
-                      "Ref": "AWS::AccountId"
-                    },
-                    "lambda": {
-                      "Ref": "LambdaFunction"
-                    }
+                    "region": { "Ref": "AWS::Region" },
+                    "account": { "Ref": "AWS::AccountId" },
+                    "lambda": { "Ref": "LambdaFunction" }
                   }
                 ]
               }
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": ["LambdaExecutionRole"],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [{ "Ref": "LambdaExecutionRole" }],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": ["apigateway:GET", "apigateway:HEAD", "apigateway:OPTIONS"],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:apigateway:",
+                      { "Ref": "AWS::Region" },
+                      "::/restapis/",
+                      { "Ref": "apiwykopxApiApiName" },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -186,9 +207,7 @@
       }
     },
     "Arn": {
-      "Value": {
-        "Fn::GetAtt": ["LambdaFunction", "Arn"]
-      }
+      "Value": { "Fn::GetAtt": ["LambdaFunction", "Arn"] }
     },
     "Region": {
       "Value": {
