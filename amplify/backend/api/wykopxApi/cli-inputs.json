@@ -36,16 +36,16 @@
         "setting": "open"
       }
     },
-    "/profiles/{username}/actions": {
-      "name": "/profiles/{username}/actions",
-      "lambdaFunction": "getProfileActions",
+    "/profiles/{username}": {
+      "name": "/profiles/{username}",
+      "lambdaFunction": "getProfile",
       "permissions": {
         "setting": "open"
       }
     },
-    "/profiles/{username}": {
-      "name": "/profiles/{username}",
-      "lambdaFunction": "getProfile",
+    "/profiles/{username}/actions": {
+      "name": "/profiles/{username}/actions",
+      "lambdaFunction": "getProfileActions",
       "permissions": {
         "setting": "open"
       }

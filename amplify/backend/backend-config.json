@@ -81,14 +81,6 @@
       "service": "Lambda",
       "dependsOn": [
         {
-          "category": "api",
-          "resourceName": "wykopxApi",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        },
-        {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
           "attributes": [
@@ -103,14 +95,6 @@
       "service": "Lambda",
       "dependsOn": [
         {
-          "category": "api",
-          "resourceName": "wykopxApi",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        },
-        {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
           "attributes": [
@@ -124,14 +108,6 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
-        {
-          "category": "api",
-          "resourceName": "wykopxApi",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        },
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
@@ -174,6 +150,30 @@
         {
           "category": "function",
           "resourceName": "getEntries",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getTag",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getProfile",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getProfileActions",
           "attributes": [
             "Name",
             "Arn"

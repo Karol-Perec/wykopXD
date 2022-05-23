@@ -16,14 +16,6 @@
     "s3Key": {
       "Type": "String"
     },
-    "apiwykopxApiApiName": {
-      "Type": "String",
-      "Default": "apiwykopxApiApiName"
-    },
-    "apiwykopxApiApiId": {
-      "Type": "String",
-      "Default": "apiwykopxApiApiId"
-    },
     "functionwykopxApiFunctionLayerArn": {
       "Type": "String",
       "Default": "functionwykopxApiFunctionLayerArn"
@@ -90,12 +82,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "API_WYKOPXAPI_APINAME": {
-              "Ref": "apiwykopxApiApiName"
-            },
-            "API_WYKOPXAPI_APIID": {
-              "Ref": "apiwykopxApiApiId"
             },
             "API_KEY": {
               "Ref": "apiKey"
@@ -200,51 +186,6 @@
                   }
                 ]
               }
-            }
-          ]
-        }
-      }
-    },
-    "AmplifyResourcesPolicy": {
-      "DependsOn": [
-        "LambdaExecutionRole"
-      ],
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "amplify-lambda-execution-policy",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "apigateway:GET",
-                "apigateway:HEAD",
-                "apigateway:OPTIONS"
-              ],
-              "Resource": [
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      "::/restapis/",
-                      {
-                        "Ref": "apiwykopxApiApiName"
-                      },
-                      "/*"
-                    ]
-                  ]
-                }
-              ]
             }
           ]
         }

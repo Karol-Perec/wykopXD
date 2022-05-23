@@ -1,11 +1,5 @@
 {
-  "permissions": {
-    "api": {
-      "wykopxApi": [
-        "read"
-      ]
-    }
-  },
+  "permissions": {},
   "lambdaLayers": [
     {
       "type": "ProjectLayer",
