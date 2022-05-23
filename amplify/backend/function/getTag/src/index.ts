@@ -2,7 +2,7 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import { WykopTagMeta, WykopMulti, WykopPaginated, WykopResponse } from '../../../types';
 import { mapEntry, mapLink } from '/opt/nodejs/dataUtils';
-import WykopApiClient, { createResponse } from '/opt/nodejs/wykopApiClient';
+import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 
 type GetTagReponse = WykopResponse<WykopMulti[], WykopTagMeta> & WykopPaginated;
 
@@ -14,7 +14,7 @@ export const handler: APIGatewayProxyHandler = async ({
     return createResponse('error.missingRequestParameters', 400);
   }
 
-  return WykopApiClient.get<GetTagReponse>(
+  return get<GetTagReponse>(
     `/tags/index/${pathParameters.tag}/page/${queryStringParameters.page}/return/comments`,
     ({ data, meta }) => ({
       items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry))),

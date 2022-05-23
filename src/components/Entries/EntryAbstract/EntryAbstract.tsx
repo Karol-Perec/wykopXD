@@ -6,7 +6,7 @@ import { Typography, Button, Divider, Tooltip } from '@mui/material';
 import { MouseEventHandler, RefCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Media from 'components/Media/Media';
-import { Entry } from 'types/entry.types';
+import { Entry } from 'types';
 import { calculateAprroximatedAge } from 'utils/dateUtils';
 import { parseHtml } from 'utils/parseHtml';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';

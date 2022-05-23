@@ -1,6 +1,6 @@
 import { MenuItem, Select } from '@mui/material';
 import { useState } from 'react';
-import { EntryComment } from 'types/entry.types';
+import { EntryComment } from 'types';
 import Comment from './Comment/Comment';
 import * as S from './Comments.styles';
 

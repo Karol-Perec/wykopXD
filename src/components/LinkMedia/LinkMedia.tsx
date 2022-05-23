@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { Link as RouterLink } from 'react-router-dom';
 import useIsOnScreen from 'hooks/useIsOnScreen';
-import { MediaType } from 'types/media.types';
+import { MediaType } from 'types';
 import * as S from './LinkMedia.styles';
 
 type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';

@@ -1,6 +1,5 @@
 import { useInfiniteQuery } from 'react-query';
-import { Entry } from 'types/entry.types';
-import { Collection } from 'types/api.types';
+import { Entry, Collection } from 'types';
 import { MikroblogCategory } from 'pages/Mikroblog/mikroblog.types';
 import axios from 'utils/axios';
 

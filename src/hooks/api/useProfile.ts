@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { Link } from 'types/link.types';
+import { Link } from 'types';
 import axios from 'utils/axios';
 
 const getProfile = async (username: string) => {

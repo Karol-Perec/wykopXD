@@ -1,11 +1,9 @@
 import { useInfiniteQuery } from 'react-query';
-import { Entry } from 'types/entry.types';
-import { Collection } from 'types/api.types';
+import { Entry, Collection, Link, TagMeta } from 'types';
 import axios from 'utils/axios';
-import { Link } from '../../types/link.types';
 
 const getTag = async (page: number, tag: string) => {
-  const { data } = await axios.get<Collection<Entry | Link> & { meta: any }>(`/tags/${tag}`, {
+  const { data } = await axios.get<Collection<Entry | Link> & { meta: TagMeta }>(`/tags/${tag}`, {
     params: { page },
   });
   return data.items;

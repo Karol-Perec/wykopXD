@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import { WykopProfile, WykopResponse } from '../../../types';
-import WykopApiClient, { createResponse } from '/opt/nodejs/wykopApiClient';
+import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 
 type GetProfileResponse = WykopResponse<WykopProfile>;
 
@@ -10,7 +10,7 @@ export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
     return createResponse('error.missingRequestParameters', 400);
   }
 
-  return WykopApiClient.get<GetProfileResponse>(
+  return get<GetProfileResponse>(
     `/profiles/${pathParameters.username}`,
     ({ data }) => data
   );

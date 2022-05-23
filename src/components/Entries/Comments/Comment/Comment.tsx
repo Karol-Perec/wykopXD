@@ -1,5 +1,5 @@
 import { Tooltip, Typography } from '@mui/material';
-import { EntryComment } from 'types/entry.types';
+import { EntryComment } from 'types';
 import { calculateAprroximatedAge } from 'utils/dateUtils';
 import { parseHtml } from 'utils/parseHtml';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';

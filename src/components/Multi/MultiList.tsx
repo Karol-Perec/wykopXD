@@ -1,6 +1,5 @@
-import { Entry } from 'types/entry.types';
+import { Entry, Link } from 'types';
 import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
-import { Link } from '../../types/link.types';
 import Loading from '../UI/Loading';
 import EntryAbstract from '../Entries/EntryAbstract/EntryAbstract';
 import LinkAbstract from '../Links/LinkAbstract/LinkAbstract';
