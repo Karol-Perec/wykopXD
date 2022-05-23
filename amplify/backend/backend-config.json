@@ -165,7 +165,7 @@
         },
         {
           "category": "function",
-          "resourceName": "getEntries",
+          "resourceName": "getEntry",
           "attributes": [
             "Name",
             "Arn"
@@ -173,7 +173,7 @@
         },
         {
           "category": "function",
-          "resourceName": "getEntry",
+          "resourceName": "getEntries",
           "attributes": [
             "Name",
             "Arn"
