@@ -1,13 +1,14 @@
 import { useInfiniteQuery } from 'react-query';
 import { Entry } from 'types/entry.types';
+import { Collection } from 'types/api.types';
 import axios from 'utils/axios';
 import { Link } from '../../types/link.types';
 
 const getProfileActions = async (page: number, username: string) => {
-  const response = await axios.get<(Entry | Link)[]>(`/profiles/${username}/actions`, {
+  const { data } = await axios.get<Collection<Entry | Link>>(`/profiles/${username}/actions`, {
     params: { page },
   });
-  return response.data;
+  return data.items;
 };
 
 const useProfileActions = (username: string) =>

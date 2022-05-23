@@ -1,14 +1,15 @@
 import { useInfiniteQuery } from 'react-query';
 import { Entry } from 'types/entry.types';
+import { Collection } from 'types/api.types';
 import { MikroblogCategory } from 'pages/Mikroblog/mikroblog.types';
 import axios from 'utils/axios';
 
 // TO DO: add period
 const getEntries = async (page: number, category: MikroblogCategory) => {
-  const response = await axios.get<Entry[]>('/entries', {
+  const { data } = await axios.get<Collection<Entry>>('/entries', {
     params: { page, category },
   });
-  return response.data;
+  return data.items;
 };
 
 const useEntries = (category: MikroblogCategory) =>

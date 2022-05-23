@@ -3,8 +3,8 @@ import { Link } from 'types/link.types';
 import axios from 'utils/axios';
 
 const getProfile = async (username: string) => {
-  const response = await axios.get<Link>(`/profiles/${username}`);
-  return response.data;
+  const { data } = await axios.get<Link>(`/profiles/${username}`);
+  return data;
 };
 
 const useProfile = (username: string) =>

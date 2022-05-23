@@ -1,13 +1,14 @@
 import { useInfiniteQuery } from 'react-query';
 import { Entry } from 'types/entry.types';
+import { Collection } from 'types/api.types';
 import axios from 'utils/axios';
 import { Link } from '../../types/link.types';
 
 const getTag = async (page: number, tag: string) => {
-  const response = await axios.get<(Entry | Link)[]>(`/tags/${tag}`, {
+  const { data } = await axios.get<Collection<Entry | Link> & { meta: any }>(`/tags/${tag}`, {
     params: { page },
   });
-  return response.data;
+  return data.items;
 };
 
 const useTag = (tag: string) =>

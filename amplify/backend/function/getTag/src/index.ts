@@ -1,9 +1,10 @@
 /* eslint-disable import/extensions */
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { WykopMulti, WykopResponse } from '../../../types';
-import axios from '/opt/nodejs/axios';
-import { createResponse } from '/opt/nodejs/lambdaUtils';
+import { WykopTagMeta, WykopMulti, WykopPaginated, WykopResponse } from '../../../types';
 import { mapEntry, mapLink } from '/opt/nodejs/dataUtils';
+import WykopApiClient, { createResponse } from '/opt/nodejs/wykopApiClient';
+
+type GetTagReponse = WykopResponse<WykopMulti[], WykopTagMeta> & WykopPaginated;
 
 export const handler: APIGatewayProxyHandler = async ({
   pathParameters,
@@ -13,15 +14,21 @@ export const handler: APIGatewayProxyHandler = async ({
     return createResponse('error.missingRequestParameters', 400);
   }
 
-  const { data } = await axios.get<WykopResponse<WykopMulti[]>>(
-    `/tags/index/${pathParameters.tag}/page/${queryStringParameters.page}/return/comments`
+  return WykopApiClient.get<GetTagReponse>(
+    `/tags/index/${pathParameters.tag}/page/${queryStringParameters.page}/return/comments`,
+    ({ data, meta }) => ({
+      items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry))),
+      meta: {
+        isObserved: meta.is_observed,
+        isBlocked: meta.is_blocked,
+        // isOwn: meta.is_own,
+        // owner: meta.owner ? mapUser(meta.owner) : undefined,
+        description: meta.description || undefined,
+        backgroundUrl: meta.background || undefined,
+        totalCount: meta.counters.total,
+        entriesCount: meta.counters.entries,
+        linksCount: meta.counters.links,
+      },
+    })
   );
-
-  if (data.error) {
-    return createResponse(data.error.message_en, 500);
-  }
-
-  const content = data.data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry)));
-
-  return createResponse(content, 200);
 };

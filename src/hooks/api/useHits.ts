@@ -1,14 +1,15 @@
 import { useInfiniteQuery } from 'react-query';
 import { Link } from 'types/link.types';
+import { Collection } from 'types/api.types';
 import { HitsPeriod } from 'pages/Hits/hits.types';
 import axios from 'utils/axios';
 
 // TO DO: add period
 const getHits = async (page: number, period: HitsPeriod) => {
-  const response = await axios.get<Link[]>('/hits', {
+  const { data } = await axios.get<Collection<Link>>('/hits', {
     params: { page, period },
   });
-  return response.data;
+  return data.items;
 };
 
 const useHits = (period: HitsPeriod) =>

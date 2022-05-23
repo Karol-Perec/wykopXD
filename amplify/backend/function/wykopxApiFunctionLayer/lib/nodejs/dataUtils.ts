@@ -19,17 +19,17 @@ const WYKOP_DEFAULT_AVATAR_URL = 'https://www.wykop.pl/cdn/c3397992/avatar_def,q
 const getOptimizedAvatarUrl = (originalUrl: string) => originalUrl?.replace(',q150.', ',q40.');
 
 const mapMedia = (e: WykopEmbedContent): Media => ({
-  type: e.type,
-  url:
-    e.source === 'gfycat.com'
-      ? `https://thumbs.gfycat.com/${e.url.split('/').slice(-1)}-mobile.mp4`
-      : e.url,
+  type: e.source === 'gfycat.com' ? 'gfycat' : e.type,
+  url: e.url,
+  // e.source === 'gfycat.com'
+  //   ? `https://thumbs.gfycat.com/${e.url.split('/').slice(-1)}-mobile.mp4`
+  //   : e.url,
   previewUrl: e.preview,
   plus18: e.plus18,
   aspectRatio: e.ratio,
 });
 
-const mapUser = (p: WykopAuthor): User => ({
+export const mapUser = (p: WykopAuthor): User => ({
   login: p.login,
   status: 1, // p.color,
   avatarUrl: p.avatar !== WYKOP_DEFAULT_AVATAR_URL ? getOptimizedAvatarUrl(p.avatar) : undefined,

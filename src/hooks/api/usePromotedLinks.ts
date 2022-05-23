@@ -1,12 +1,13 @@
 import { QueryFunction, useInfiniteQuery } from 'react-query';
 import { Link } from 'types/link.types';
+import { Collection } from 'types/api.types';
 import axios from 'utils/axios';
 
 const getPromotedLinks: QueryFunction<Link[]> = async ({ pageParam = 1 }) => {
-  const response = await axios.get<Link[]>('/links/promoted', {
+  const { data } = await axios.get<Collection<Link>>('/links/promoted', {
     params: { page: pageParam },
   });
-  return response.data;
+  return data.items;
 };
 
 const usePromotedLinks = () =>

@@ -3,8 +3,8 @@ import { Entry } from 'types/entry.types';
 import axios from 'utils/axios';
 
 const getEntry = async (id: string) => {
-  const response = await axios.get<Entry>(`/entries/${id}`);
-  return response.data;
+  const { data } = await axios.get<Entry>(`/entries/${id}`);
+  return data;
 };
 
 const useEntry = (id: string) =>
