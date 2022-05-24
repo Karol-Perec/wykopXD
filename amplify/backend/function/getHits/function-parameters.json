@@ -21,5 +21,6 @@
       "cloudFormationParameterName": "owmApiKey",
       "environmentVariableName": "OWM_API_KEY"
     }
-  ]
+  ],
+  "permissions": {}
 }

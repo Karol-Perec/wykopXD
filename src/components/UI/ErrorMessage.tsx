@@ -1,8 +1,9 @@
-import { Typography, styled } from '@mui/material';
+import { Typography, styled, Button } from '@mui/material';
 import { ReactComponent as FeelsBadMan } from 'assets/images/feelsBadMan.svg';
 
 const StyledContainer = styled('div')(({ theme }) => ({
   display: 'flex',
+  gap: theme.spacing(1),
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
@@ -20,6 +21,9 @@ const ErrorMessage = ({ error }: ErrorMessageProps) => (
     <Typography variant='h6'>
       {error instanceof Error ? error.message : JSON.stringify(error)}
     </Typography>
+    <Button href='/' variant='outlined'>
+      Powrót na stronę główną
+    </Button>
   </StyledContainer>
 );
 

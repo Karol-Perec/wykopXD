@@ -178,6 +178,14 @@
             "Name",
             "Arn"
           ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getHits",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ]
     }

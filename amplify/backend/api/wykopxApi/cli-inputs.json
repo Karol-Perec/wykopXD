@@ -49,6 +49,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/hits": {
+      "name": "/hits",
+      "lambdaFunction": "getHits",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }
