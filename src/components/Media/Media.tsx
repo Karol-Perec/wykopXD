@@ -1,5 +1,6 @@
 import ReactPlayer from 'react-player';
 import { MediaType } from 'types';
+import useGfycat from '../../hooks/api/useGfycat';
 import Image from './Image/Image';
 import Video from './Video/Video';
 
@@ -13,6 +14,9 @@ interface MediaProps {
 }
 
 const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, listMode }: MediaProps) => {
+  const { data } = useGfycat(sourceUrl);
+  console.log(data);
+
   const isVideo = type === 'video' || ReactPlayer.canPlay(sourceUrl);
 
   if (isVideo)
