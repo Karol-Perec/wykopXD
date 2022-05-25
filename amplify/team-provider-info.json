@@ -19,13 +19,6 @@
         }
       },
       "function": {
-        "getPromotedLinks": {
-          "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
-          "s3Key": "amplify-builds/getPromotedLinks-526e4f4c335a74313074-build.zip",
-          "apiKey": "482VSi3YyC",
-          "secret": "v8RO1EXXQZ",
-          "owmApiKey": "d99b6pFK8f"
-        },
         "wykopxApiFunctionLayer": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
           "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersion7b3021ce-build.zip"
@@ -75,6 +68,11 @@
         "getProfile": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
           "s3Key": "amplify-builds/getProfile-766f47567168336b4a54-build.zip",
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ",
+          "owmApiKey": "d99b6pFK8f"
+        },
+        "getLinks": {
           "apiKey": "482VSi3YyC",
           "secret": "v8RO1EXXQZ",
           "owmApiKey": "d99b6pFK8f"

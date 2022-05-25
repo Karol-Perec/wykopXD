@@ -5,20 +5,6 @@
       "service": "LambdaLayer",
       "build": true
     },
-    "getPromotedLinks": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    },
     "getLink": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -116,6 +102,20 @@
           ]
         }
       ]
+    },
+    "getLinks": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -123,14 +123,6 @@
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "getPromotedLinks",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
         {
           "category": "function",
           "resourceName": "getLink",
@@ -182,6 +174,14 @@
         {
           "category": "function",
           "resourceName": "getHits",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getLinks",
           "attributes": [
             "Name",
             "Arn"

@@ -10,8 +10,5 @@ export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
     return createResponse('error.missingRequestParameters', 400);
   }
 
-  return get<GetProfileResponse>(
-    `/profiles/${pathParameters.username}`,
-    ({ data }) => data
-  );
+  return get<GetProfileResponse>(`/profiles/${pathParameters.username}`, ({ data }) => data);
 };

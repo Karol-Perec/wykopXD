@@ -1,13 +1,6 @@
 {
   "version": 1,
   "paths": {
-    "/links/promoted": {
-      "name": "/links/promoted",
-      "lambdaFunction": "getPromotedLinks",
-      "permissions": {
-        "setting": "open"
-      }
-    },
     "/links/{id}": {
       "name": "/links/{id}",
       "lambdaFunction": "getLink",
@@ -53,6 +46,13 @@
     "/hits": {
       "name": "/hits",
       "lambdaFunction": "getHits",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/links": {
+      "name": "/links",
+      "lambdaFunction": "getLinks",
       "permissions": {
         "setting": "open"
       }

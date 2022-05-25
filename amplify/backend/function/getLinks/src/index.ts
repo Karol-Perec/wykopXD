@@ -4,15 +4,15 @@ import { WykopLink, WykopPaginated, WykopResponse } from '../../../types';
 import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 import { mapLink } from '/opt/nodejs/dataUtils';
 
-type GetPromotedLinksResponse = WykopResponse<WykopLink[]> & WykopPaginated;
+type GetLinksResponse = WykopResponse<WykopLink[]> & WykopPaginated;
 
 export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
-  if (!queryStringParameters?.page) {
+  if (!queryStringParameters?.page || !queryStringParameters?.category) {
     return createResponse('error.missingRequestParameters', 400);
   }
 
-  return get<GetPromotedLinksResponse>(
-    `/links/promoted/page/${queryStringParameters.page}`,
+  return get<GetLinksResponse>(
+    `/links/${queryStringParameters.category}/page/${queryStringParameters.page}`,
     ({ data }) => ({ items: data.map((l) => mapLink(l)) })
   );
 };

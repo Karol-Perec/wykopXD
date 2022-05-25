@@ -11,8 +11,7 @@ export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
     return createResponse('error.missingRequestParameters', 400);
   }
 
-  return get<GetLinkResponse>(
-    `/links/link/${pathParameters?.id}/withcomments/true`,
-    ({ data }) => mapLink(data)
+  return get<GetLinkResponse>(`/links/link/${pathParameters?.id}/withcomments/true`, ({ data }) =>
+    mapLink(data)
   );
 };

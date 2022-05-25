@@ -1,6 +1,7 @@
 export enum HitsPeriod {
-  DAY = 'dnia',
-  WEEK = 'tygodnia',
-  MONTH = 'miesiaca',
-  YEAR = 'roku',
+  POPULAR = 'popular',
+  DAY = 'day',
+  WEEK = 'week',
+  MONTH = 'month',
+  YEAR = 'year',
 }
