@@ -1,4 +1,8 @@
 {
-  "queryStringParameters": { "page": 1 },
-  "pathParameters": { "username": "a__s" }
+  "queryStringParameters": {
+    "page": 1
+  },
+  "pathParameters": {
+    "username": "a__s"
+  }
 }

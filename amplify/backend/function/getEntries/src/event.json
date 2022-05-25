@@ -1,3 +1,6 @@
 {
-  "queryStringParameters": { "page": 1, "category": "promoted" }
+  "queryStringParameters": {
+    "page": 1,
+    "category": "promoted"
+  }
 }

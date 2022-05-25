@@ -1,3 +1,5 @@
 {
-  "pathParameters": { "username": "a__s" }
+  "pathParameters": {
+    "username": "a__s"
+  }
 }

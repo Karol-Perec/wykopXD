@@ -1,3 +1,5 @@
 {
-  "queryStringParameters": { "redirectUrl": "https://www.wykop.pl/" }
+  "queryStringParameters": {
+    "redirectUrl": "https://www.wykop.pl/"
+  }
 }
