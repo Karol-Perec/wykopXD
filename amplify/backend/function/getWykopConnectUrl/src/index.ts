@@ -11,7 +11,7 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters })
   let url = `https://a2.wykop.pl/login/connect/appkey/${process.env.API_KEY}`;
 
   url += `/redirect/${encodeURIComponent(
-    Buffer.from(queryStringParameters.redirectUrl, 'base64').toString()
+    Buffer.from(queryStringParameters.redirectUrl).toString('base64')
   )}`;
   url += `/secure/${MD5(process.env.SECRET + queryStringParameters.redirectUrl)}`;
 
