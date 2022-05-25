@@ -14,3 +14,12 @@ export interface User {
   status: Color;
   avatarUrl?: string;
 }
+
+export interface UserFull extends User {
+  signupAt: string;
+  linksAddedCount: number;
+  linksPublishedCount: number;
+  commentsCount: number;
+  rank: number;
+  followers: number;
+}

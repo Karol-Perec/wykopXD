@@ -9,18 +9,20 @@ import { HitsPeriod } from 'pages/Hits/hits.types';
 import Tag from 'pages/Tag/Tag';
 import Profile from 'pages/Profile/Profile';
 import Upcoming from 'pages/Upcoming/Upcoming';
+import Login from 'pages/Login/Login';
 
 export enum NavRoute {
+  ANY = '*',
   HOME = '/',
   UPCOMING = '/wykopalisko',
   HITS = '/hity',
   MIKROBLOG = '/mikroblog',
   MY_WYKOP = '/moj',
-  ANY = '*',
   LINK = '/link/:id',
   ENTRY = '/wpis/:id',
   TAG = '/tag/:tag',
   PROFILE = '/ludzie/:username',
+  LOGIN = '/zaloguj',
 }
 
 export const routes = (
@@ -41,6 +43,7 @@ export const routes = (
     <Route path={NavRoute.PROFILE} element={<Profile />} />
     <Route path={NavRoute.HOME} element={<Main />} />
     <Route path={NavRoute.UPCOMING} element={<Upcoming />} />
+    <Route path={NavRoute.LOGIN} element={<Login />} />
     <Route path={NavRoute.ANY} element={<Navigate to='/' />} />
   </RouterRoutes>
 );

@@ -1,11 +1,12 @@
 import { createContext } from 'react';
+import { UserFull } from 'types';
 
 export interface AuthContextInterface {
-  token: string | null;
+  token?: string;
+  accountKey?: string;
+  profile?: UserFull;
 }
 
-const AuthContext = createContext<AuthContextInterface>({
-  token: null,
-});
+const AuthContext = createContext<AuthContextInterface>({});
 
 export default AuthContext;

@@ -1,49 +1,50 @@
-export const xd = 'xd';
+import { useEffect } from 'react';
+import Loading from 'components/UI/Loading';
+import ErrorMessage from '../../components/UI/ErrorMessage';
+import useConnectUrl from '../../hooks/api/useConnectUrl';
 
-// import React, { useEffect } from 'react';
-// import { Route, useLocation, Redirect } from 'react-router';
-// import { useSelector, useDispatch } from 'react-redux';
-// import * as authActions from '../../../store/Auth/actions';
-// import Spinner from '../../../components/UI/Spinner/Spinner';
+const Login = () => {
+  const { data, isLoading, error } = useConnectUrl(window.location.href, !!process.env.PUBLIC_URL);
+  const connectUrl = process.env.CONNECT_URL || data;
 
-// function useQuery() {
-//   return new URLSearchParams(useLocation().search);
-// }
+  if (connectUrl) window.location.href = connectUrl;
 
-// const Login = () => {
-//   const connectData = useQuery().get('connectData');
-//   const wykopConnectUrl = useSelector((state) => state.auth.wykopConnectUrl);
-//   const loading = useSelector((state) => state.auth.loading);
-//   const isAuthenticated = useSelector((state) => state.auth.token !== null);
-//   const dispatch = useDispatch();
+  if (isLoading) return <Loading />;
+  if (error) return <ErrorMessage error={error} />;
+  if (!data) return <ErrorMessage error='Błąd logowania' />;
 
-//   useEffect(() => {
-//     if (!wykopConnectUrl && !isAuthenticated && !connectData) {
-//       dispatch(authActions.connect());
-//     }
-//   }, [dispatch]);
+  const loading = false;
+  // const connectData = useQuery().get('connectData');
+  // const wykopConnectUrl = useSelector((state) => state.auth.wykopConnectUrl);
+  // const loading = useSelector((state) => state.auth.loading);
+  // const isAuthenticated = useSelector((state) => state.auth.token !== null);
+  // const dispatch = useDispatch();
 
-//   useEffect(() => {
-//     if (connectData && !isAuthenticated) {
-//       dispatch(authActions.authenticate(connectData));
-//     }
-//   }, [dispatch, connectData]);
+  // useEffect(() => {
+  //   if (!wykopConnectUrl && !isAuthenticated && !connectData) {
+  //     dispatch(authActions.connect());
+  //   }
+  // }, [dispatch]);
 
-//   let redirect = null;
-//   if (wykopConnectUrl && !connectData && !isAuthenticated) {
-//     redirect = (
-//       <Route path='/' render={() => (window.location = wykopConnectUrl)} />
-//     );
-//   } else if (isAuthenticated) {
-//     redirect = <Redirect to='/' />;
-//   }
+  // useEffect(() => {
+  //   if (connectData && !isAuthenticated) {
+  //     dispatch(authActions.authenticate(connectData));
+  //   }
+  // }, [dispatch, connectData]);
 
-//   return (
-//     <>
-//       {redirect}
-//       {loading && <Spinner />}
-//     </>
-//   );
-// };
+  const redirect = null;
+  // if (wykopConnectUrl && !connectData && !isAuthenticated) {
+  //   redirect = <Route path='/' render={() => (window.location = wykopConnectUrl)} />;
+  // } else if (isAuthenticated) {
+  //   redirect = <Redirect to='/' />;
+  // }
 
-// export default Login;
+  return (
+    <>
+      {redirect}
+      {loading && <Loading />}
+    </>
+  );
+};
+
+export default Login;

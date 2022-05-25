@@ -1,6 +1,8 @@
-import { alpha, Divider, Drawer, useTheme } from '@mui/material';
+import { alpha, Divider, Drawer, List, useTheme } from '@mui/material';
+import { Login as LoginIcon } from '@mui/icons-material';
 import { MouseEventHandler } from 'react';
 import Avatar from '../../UI/Avatar';
+import { MobileNavLink } from '../NavItems/NavLink/NavLink';
 import * as S from './RightDrawer.styles';
 
 interface LeftDrawerProps {
@@ -28,7 +30,11 @@ const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
         <Avatar src={undefined} size={50} />
       </S.DrawerHeader>
       <Divider variant='middle' />
-      xD
+      <List>
+        <MobileNavLink to='/zaloguj' onClick={handleToggleDrawer} icon={<LoginIcon />}>
+          Zaloguj
+        </MobileNavLink>
+      </List>
       <Divider variant='middle' />
     </Drawer>
   );

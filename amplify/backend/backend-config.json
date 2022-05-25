@@ -116,6 +116,20 @@
           ]
         }
       ]
+    },
+    "getWykopConnectUrl": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -182,6 +196,14 @@
         {
           "category": "function",
           "resourceName": "getLinks",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getWykopConnectUrl",
           "attributes": [
             "Name",
             "Arn"
