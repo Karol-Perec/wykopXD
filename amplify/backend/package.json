@@ -7,9 +7,9 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@aws-amplify/cli-extensibility-helper": "^2.3.27",
+    "@aws-amplify/cli-extensibility-helper": "^2.3.25",
     "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1143.0",
+    "aws-sdk": "^2.1135.0",
     "axios": "^0.27.2",
     "crypto-js": "^4.1.1"
   },
