@@ -5,7 +5,7 @@ import useConnectUrl from '../../hooks/api/useConnectUrl';
 
 const Login = () => {
   const { data, isLoading, error } = useConnectUrl(window.location.href, !process.env.PUBLIC_URL);
-  const connectUrl = process.env.CONNECT_URL || data;
+  const connectUrl = process.env.REACT_APP_CONNECT_URL || data;
 
   console.log(connectUrl);
   
