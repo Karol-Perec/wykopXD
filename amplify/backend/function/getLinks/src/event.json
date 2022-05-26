@@ -1,6 +1,3 @@
 {
-  "queryStringParameters": {
-    "page": 1,
-    "category": "hot"
-  }
+  "queryStringParameters": { "page": 1, "category": "hot" }
 }
