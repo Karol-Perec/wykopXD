@@ -32,7 +32,7 @@ const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
       <Divider variant='middle' />
       <List>
         <MobileNavLink to='/zaloguj' onClick={handleToggleDrawer} icon={<LoginIcon />}>
-          Zaloguj
+          Zaloguj się
         </MobileNavLink>
       </List>
       <Divider variant='middle' />

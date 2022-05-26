@@ -56,6 +56,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/auth/connect-url": {
+      "name": "/auth/connect-url",
+      "lambdaFunction": "getConnectUrl",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

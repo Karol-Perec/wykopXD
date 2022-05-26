@@ -13,7 +13,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -25,7 +27,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -37,7 +41,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -49,7 +55,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -61,7 +69,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -73,7 +83,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -85,7 +97,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -97,7 +111,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -109,7 +125,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     }
@@ -122,42 +140,74 @@
         {
           "category": "function",
           "resourceName": "getLink",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         },
         {
           "category": "function",
           "resourceName": "getEntry",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         },
         {
           "category": "function",
           "resourceName": "getEntries",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         },
         {
           "category": "function",
           "resourceName": "getTag",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         },
         {
           "category": "function",
           "resourceName": "getProfile",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         },
         {
           "category": "function",
           "resourceName": "getProfileActions",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         },
         {
           "category": "function",
           "resourceName": "getHits",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         },
         {
           "category": "function",
           "resourceName": "getLinks",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getConnectUrl",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ]
     }

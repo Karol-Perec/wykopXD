@@ -4,9 +4,11 @@ import ErrorMessage from '../../components/UI/ErrorMessage';
 import useConnectUrl from '../../hooks/api/useConnectUrl';
 
 const Login = () => {
-  const { data, isLoading, error } = useConnectUrl(window.location.href, !!process.env.PUBLIC_URL);
+  const { data, isLoading, error } = useConnectUrl(window.location.href, !process.env.PUBLIC_URL);
   const connectUrl = process.env.CONNECT_URL || data;
 
+  console.log(connectUrl);
+  
   if (connectUrl) window.location.href = connectUrl;
 
   if (isLoading) return <Loading />;
