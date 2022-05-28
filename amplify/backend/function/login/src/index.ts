@@ -17,7 +17,7 @@ interface ConnectData {
 }
 
 export const handler: APIGatewayProxyHandler = async ({ body }) => {
-  const connectData: string = body && JSON.parse(body)?.connectData;
+  const connectData: string = (body as any)?.connectData;
   if (connectData) {
     return createResponse('Missing connect data', 400);
   }
