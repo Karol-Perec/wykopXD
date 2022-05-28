@@ -7,12 +7,14 @@ import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 type GetEntriesResponse = WykopResponse<WykopEntry[]>;
 
 export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
-  if (!queryStringParameters?.category || !queryStringParameters?.page) {
-    return createResponse('error.missingRequestParameters', 400);
+  if (!queryStringParameters?.category) {
+    return createResponse('Missing category', 400);
   }
 
   return get<GetEntriesResponse>(
-    `/entries/${queryStringParameters.category}/page/${queryStringParameters.page}/return/comments`,
+    `/entries/${queryStringParameters.category}/page/${
+      queryStringParameters.page || 1
+    }/return/comments`,
     ({ data }) => ({ items: data.map((e) => mapEntry(e)) })
   );
 };

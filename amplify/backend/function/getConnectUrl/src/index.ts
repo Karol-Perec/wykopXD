@@ -5,7 +5,7 @@ import { createResponse } from '/opt/nodejs/wykopApiUtils';
 
 export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
   if (!queryStringParameters?.redirectUrl) {
-    return createResponse('error.missingRequestParameters', 400);
+    return createResponse('Missing redirectUrl', 400);
   }
 
   let url = `https://a2.wykop.pl/login/connect/appkey/${process.env.API_KEY}`;

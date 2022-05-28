@@ -10,12 +10,14 @@ export const handler: APIGatewayProxyHandler = async ({
   pathParameters,
   queryStringParameters,
 }) => {
-  if (!pathParameters?.username || !queryStringParameters?.page) {
-    return createResponse('error.missingRequestParameters', 400);
+  if (!pathParameters?.username) {
+    return createResponse('Missing username', 400);
   }
 
   return get<GetProfileActionsResponse>(
-    `/profiles/actions/${pathParameters.username}/page/${queryStringParameters.page}/return/comments`,
+    `/profiles/actions/${pathParameters.username}/page/${
+      queryStringParameters?.page || 1
+    }/return/comments`,
     ({ data }) => ({
       items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry))),
     })

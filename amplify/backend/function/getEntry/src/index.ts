@@ -8,7 +8,7 @@ type GetEntryResponse = WykopResponse<WykopEntry>;
 
 export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
   if (!pathParameters?.id) {
-    return createResponse('error.missingRequestParameters', 400);
+    return createResponse('Missing entry ID', 400);
   }
 
   return get<GetEntryResponse>(`/entries/entry/${pathParameters.id}`, ({ data }) => mapEntry(data));

@@ -1,7 +1,7 @@
 import { Whatshot as HitsIcon, AccountCircle as MyWykopIcon } from '@mui/icons-material';
 import { Box, List } from '@mui/material';
 import { MouseEventHandler, ReactNode } from 'react';
-import { NavRoute } from 'Routes';
+import { ROUTE } from 'routes';
 import { NavLink, MobileNavLink } from './NavLink/NavLink';
 import { MainIcon, MikroblogIcon, UpcomingIcon } from './NavLinks.styles';
 
@@ -11,34 +11,34 @@ interface MobileNavLinksProps {
 
 interface Page {
   label: string;
-  path: NavRoute;
+  path: ROUTE;
   icon: ReactNode;
 }
 
 export const navLinks: Page[] = [
   {
     label: 'Główna',
-    path: NavRoute.HOME,
+    path: ROUTE.HOME,
     icon: <MainIcon />,
   },
   {
     label: 'Wykopalisko',
-    path: NavRoute.UPCOMING,
+    path: ROUTE.UPCOMING,
     icon: <UpcomingIcon />,
   },
   {
     label: 'Hity',
-    path: NavRoute.HITS,
+    path: ROUTE.HITS,
     icon: <HitsIcon />,
   },
   {
     label: 'Mikroblog',
-    path: NavRoute.MIKROBLOG,
+    path: ROUTE.MIKROBLOG,
     icon: <MikroblogIcon />,
   },
   {
     label: 'Mój Wykop',
-    path: NavRoute.MY_WYKOP,
+    path: ROUTE.MY_WYKOP,
     icon: <MyWykopIcon />,
   },
 ];

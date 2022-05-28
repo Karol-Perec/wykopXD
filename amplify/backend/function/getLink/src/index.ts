@@ -8,10 +8,10 @@ type GetLinkResponse = WykopResponse<WykopLink>;
 
 export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
   if (!pathParameters?.id) {
-    return createResponse('error.missingRequestParameters', 400);
+    return createResponse('Missing link ID', 400);
   }
 
-  return get<GetLinkResponse>(`/links/link/${pathParameters?.id}/withcomments/true`, ({ data }) =>
+  return get<GetLinkResponse>(`/links/link/${pathParameters.id}/withcomments/true`, ({ data }) =>
     mapLink(data)
   );
 };

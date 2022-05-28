@@ -1,7 +1,7 @@
 import { alpha, Divider, Drawer, useTheme } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
-import { NavRoute } from 'Routes';
+import { ROUTE } from 'routes';
 import { MobileNavLinks } from '../NavItems/NavLinks';
 import * as S from './LeftDrawer.styles';
 
@@ -25,7 +25,7 @@ const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
       }}
     >
       <S.DrawerHeader>
-        <Link to={NavRoute.HOME} onClick={handleToggleDrawer}>
+        <Link to={ROUTE.HOME} onClick={handleToggleDrawer}>
           <S.WykopLogo />
         </Link>
       </S.DrawerHeader>

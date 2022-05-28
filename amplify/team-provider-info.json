@@ -80,6 +80,10 @@
         "getConnectUrl": {
           "apiKey": "482VSi3YyC",
           "secret": "v8RO1EXXQZ"
+        },
+        "login": {
+          "apiKey": "482VSi3YyC",
+          "secret": "v8RO1EXXQZ"
         }
       }
     }

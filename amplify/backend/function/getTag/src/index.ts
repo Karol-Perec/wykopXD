@@ -10,12 +10,12 @@ export const handler: APIGatewayProxyHandler = async ({
   pathParameters,
   queryStringParameters,
 }) => {
-  if (!pathParameters?.tag || !queryStringParameters?.page) {
-    return createResponse('error.missingRequestParameters', 400);
+  if (!pathParameters?.tag) {
+    return createResponse('Missing tag', 400);
   }
 
   return get<GetTagReponse>(
-    `/tags/index/${pathParameters.tag}/page/${queryStringParameters.page}/return/comments`,
+    `/tags/index/${pathParameters.tag}/page/${queryStringParameters?.page || 1}/return/comments`,
     ({ data, meta }) => ({
       items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry))),
       meta: {

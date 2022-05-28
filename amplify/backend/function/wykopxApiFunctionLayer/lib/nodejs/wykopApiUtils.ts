@@ -41,3 +41,17 @@ export const get = async <D>(url: string, dataMapper: (responseData: D) => unkno
 
   return createResponse(dataMapper(data as D), 200);
 };
+
+export const post = async <D>(
+  url: string,
+  body: unknown,
+  dataMapper?: (responseData: D) => unknown
+) => {
+  const { data } = await wykopAxiosInstance.post<D | WykopErrorResponse>(url, body);
+
+  if ((data as WykopErrorResponse).error) {
+    return createResponse((data as WykopErrorResponse).error.message_en, 500);
+  }
+
+  return createResponse(dataMapper ? dataMapper(data as D) : data, 200);
+};

@@ -1,11 +1,11 @@
 import { PropsWithChildren, useMemo } from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import AuthContext from './AuthContext';
+import AuthContext, { AuthContextInterface } from './AuthContext';
 
 const AuthContextProvider = ({ children }: PropsWithChildren<unknown>) => {
-  const [token, setToken] = useLocalStorage<string>('token', '');
+  const [authData, setToken] = useLocalStorage<AuthContextInterface>('auth', {});
 
-  const value = useMemo(() => ({ token }), [token]);
+  const value = useMemo(() => authData, [authData]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
