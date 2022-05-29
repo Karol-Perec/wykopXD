@@ -16,7 +16,7 @@ export const createResponse = (body: unknown, statusCode: number): APIGatewayPro
 const wykopAxiosInstance = axios.create({ baseURL: 'https://a2.wykop.pl' });
 
 wykopAxiosInstance.interceptors.request.use((config) => {
-  if (config.method === 'post' || !process.env.OWM_API_KEY) {
+  if (config.method === 'post' || config.method === 'POST' || !process.env.OWM_API_KEY) {
     config.url += `/appkey/${process.env.API_KEY}`;
     const signContent =
       process.env.SECRET! +
