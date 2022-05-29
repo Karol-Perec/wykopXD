@@ -32,6 +32,7 @@
     "amplify:getProfile": "npm run compile-ts",
     "amplify:getProfileActions": "npm run compile-ts",
     "amplify:getConnectUrl": "npm run compile-ts",
+    "amplify:login": "npm run compile-ts",
     "amplify:wykopxApiFunctionLayer": "npm run compile-ts"
   },
   "browserslist": {

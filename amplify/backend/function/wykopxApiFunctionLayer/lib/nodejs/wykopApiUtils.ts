@@ -17,16 +17,21 @@ const wykopAxiosInstance = axios.create({ baseURL: 'https://a2.wykop.pl' });
 
 wykopAxiosInstance.interceptors.request.use((config) => {
   if (config.method === 'POST' || !process.env.OWM_API_KEY) {
+    console.log(1);
     config.url += `/appkey/${process.env.API_KEY}`;
+    console.log(config.baseURL! + config.url!);
     const signContent =
       process.env.SECRET! +
       config.baseURL +
       config.url +
       (config.data ? Object.values(config.data).join(',') : '');
-    Object.assign(config.headers, {
+    console.log(signContent);
+    config.headers = {
+      ...config.headers,
       apisign: MD5(signContent).toString(),
-    });
+    };
   } else {
+    console.log(2);
     config.url += `/appkey/${process.env.OWM_API_KEY}`;
   }
 
