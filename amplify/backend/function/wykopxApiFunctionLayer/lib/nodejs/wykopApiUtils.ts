@@ -16,14 +16,16 @@ export const createResponse = (body: unknown, statusCode: number): APIGatewayPro
 const wykopAxiosInstance = axios.create({ baseURL: 'https://a2.wykop.pl' });
 
 wykopAxiosInstance.interceptors.request.use((config) => {
-  if (config.method === 'POST' || !process.env.OWM_API_KEY) {
+  if (config.method === 'POST') {
     config.url += `/appkey/${process.env.API_KEY}`;
     const signContent =
       process.env.SECRET! +
+      config.baseURL +
       config.url +
       (config.data ? Object.values(config.data).join(',') : '');
-    const apiSign = MD5(signContent).toString();
-    config.headers = { ...config.headers, apisign: apiSign };
+    Object.assign(config.headers, {
+      apisign: MD5(signContent).toString(),
+    });
   } else {
     config.url += `/appkey/${process.env.OWM_API_KEY}`;
   }
