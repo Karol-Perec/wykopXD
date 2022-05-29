@@ -175,6 +175,11 @@
           "category": "function",
           "resourceName": "getConnectUrl",
           "attributes": ["Name", "Arn"]
+        },
+        {
+          "category": "function",
+          "resourceName": "login",
+          "attributes": ["Name", "Arn"]
         }
       ]
     }

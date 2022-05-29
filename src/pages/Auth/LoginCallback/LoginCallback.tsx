@@ -19,13 +19,15 @@ const LoginCallback = () => {
   // }, [connectData, navigate]);
 
   const loading = false;
-  
+
   // if (!connectData) navigate('/');
-  const { data } = useLogin(connectData!);
+  const { data, error } = useLogin(connectData!);
   console.log('connectData');
   console.log(connectData);
   console.log('data');
   console.log(data);
+  console.log('error');
+  console.log(error);
 
   // const isAuthenticated = useSelector((state) => state.auth.token !== null);
   // const dispatch = useDispatch();
