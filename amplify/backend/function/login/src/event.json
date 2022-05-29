@@ -1,5 +1,3 @@
 {
-  "body": {
-    "connectData": "connectData"
-  }
+  "body": "{\"connectData\":\"connectData\"}"
 }

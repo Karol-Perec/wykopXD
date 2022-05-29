@@ -21,13 +21,10 @@ const LoginCallback = () => {
   const loading = false;
 
   // if (!connectData) navigate('/');
-  const { data, error } = useLogin(connectData!);
-  console.log('connectData');
-  console.log(connectData);
-  console.log('data');
-  console.log(data);
-  console.log('error');
-  console.log(error);
+  const { data, error, mutate: login } = useLogin();
+  useEffect(() => {
+    if (connectData) login(connectData);
+  }, [connectData, login]);
 
   // const isAuthenticated = useSelector((state) => state.auth.token !== null);
   // const dispatch = useDispatch();
