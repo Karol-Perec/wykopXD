@@ -20,7 +20,6 @@ wykopAxiosInstance.interceptors.request.use((config) => {
     config.url += `/appkey/${process.env.API_KEY}`;
     const signContent =
       process.env.SECRET! +
-      config.baseURL +
       config.url +
       (config.data ? Object.values(config.data).join(',') : '');
     const apiSign = MD5(signContent).toString();
