@@ -5,6 +5,7 @@ import ErrorMessage from 'components/UI/ErrorMessage';
 import useConnectUrl from 'hooks/api/useConnectUrl';
 import AuthContext from 'contexts/Auth/AuthContext';
 import { isInIframe } from 'utils/windowUtils';
+import useLogin from '../../../hooks/api/useLogin';
 
 const LoginCallback = () => {
   const auth = useContext(AuthContext);
@@ -18,6 +19,13 @@ const LoginCallback = () => {
   // }, [connectData, navigate]);
 
   const loading = false;
+  
+  // if (!connectData) navigate('/');
+  const { data } = useLogin(connectData!);
+  console.log('connectData');
+  console.log(connectData);
+  console.log('data');
+  console.log(data);
 
   // const isAuthenticated = useSelector((state) => state.auth.token !== null);
   // const dispatch = useDispatch();
