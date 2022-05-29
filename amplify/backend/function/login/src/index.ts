@@ -1,12 +1,13 @@
 /* eslint-disable import/extensions */
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import { MD5 } from 'crypto-js';
-import { WykopResponse } from '../../../types';
+import { WykopProfile, WykopResponse } from '../../../types';
+import { mapUser } from '../../wykopxApiFunctionLayer/lib/nodejs/dataUtils';
 import { createResponse, post } from '/opt/nodejs/wykopApiUtils';
 
 type LoginResponse = WykopResponse<{
-  profile: string;
-  token: string;
+  profile: WykopProfile;
+  userkey: string;
 }>;
 
 interface ConnectData {
@@ -39,6 +40,10 @@ export const handler: APIGatewayProxyHandler = async ({ body }) => {
       login,
       accountkey: token,
     },
-    (d) => d.data
+    (d) => ({
+      profile: mapUser(d.data.profile),
+      userkey: d.data.userkey,
+      accountkey: token,
+    })
   );
 };
