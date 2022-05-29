@@ -16,7 +16,9 @@ export const createResponse = (body: unknown, statusCode: number): APIGatewayPro
 const wykopAxiosInstance = axios.create({ baseURL: 'https://a2.wykop.pl' });
 
 wykopAxiosInstance.interceptors.request.use((config) => {
-  if (config.method === 'post' || config.method === 'POST' || !process.env.OWM_API_KEY) {
+  const isPost = config.method === 'post' || config.method === 'POST';
+
+  if (isPost || !process.env.OWM_API_KEY) {
     config.url += `/appkey/${process.env.API_KEY}`;
     const signContent =
       process.env.SECRET! +
@@ -29,6 +31,10 @@ wykopAxiosInstance.interceptors.request.use((config) => {
     };
   } else {
     config.url += `/appkey/${process.env.OWM_API_KEY}`;
+  }
+
+  if (isPost) {
+    config.data = new URLSearchParams(config.data);
   }
 
   return config;
