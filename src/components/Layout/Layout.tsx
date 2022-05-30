@@ -3,7 +3,6 @@ import LeftDrawer from './LeftDrawer/LeftDrawer';
 import RightDrawer from './RightDrawer/RightDrawer';
 import TopBar from './TopBar/TopBar';
 import * as S from './Layout.styles';
-import { isInIframe } from '../../utils/windowUtils';
 
 const Layout = ({ children }: PropsWithChildren<unknown>) => {
   const [showLeftDrawer, setShowLeftDrawer] = useState(false);
@@ -14,12 +13,10 @@ const Layout = ({ children }: PropsWithChildren<unknown>) => {
 
   return (
     <>
-      {!isInIframe() && (
-        <TopBar
-          onLeftDrawerToggleClick={handleToggleLeftDrawer}
-          onRightDrawerToggleClick={handleToggleRightDrawer}
-        />
-      )}
+      <TopBar
+        onLeftDrawerToggleClick={handleToggleLeftDrawer}
+        onRightDrawerToggleClick={handleToggleRightDrawer}
+      />
       <S.Offset />
       <LeftDrawer open={showLeftDrawer} handleToggleDrawer={handleToggleLeftDrawer} />
       <RightDrawer open={showRightDrawer} handleToggleDrawer={handleToggleRightDrawer} />

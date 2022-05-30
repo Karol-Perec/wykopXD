@@ -1,5 +1,5 @@
 import useTitle from 'hooks/useTitle';
-import { Card, Container, Link, Typography } from '@mui/material';
+import { Card, Container, Typography } from '@mui/material';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from '../components/UI/CustomLinks';
 
 const AppInfo = () => {
@@ -16,11 +16,12 @@ const AppInfo = () => {
         <Typography variant='h2'>WykopX</Typography>
         <br />
         <Typography variant='h2'>
-          Autor:{' '}
+          {'Autor: '}
           <RouterNoPropagationLink to='/ludzie/Commandos'>@Commandos</RouterNoPropagationLink>
         </Typography>
         <Typography variant='h2'>
-          Obserwuj tag: <RouterNoPropagationLink to='/tag/wykopx'>#wykopx</RouterNoPropagationLink>
+          {'Obserwuj tag: '}
+          <RouterNoPropagationLink to='/tag/wykopx'>#wykopx</RouterNoPropagationLink>
         </Typography>
         <br />
 

@@ -1,6 +1,6 @@
 import { Entry } from 'types';
 import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
-import EntryAbstract from '../EntryAbstract/EntryAbstract';
+import EntryDetails from '../EntryDetails/EntryDetails';
 import Loading from '../../UI/Loading';
 
 interface EntriesListProps {
@@ -15,8 +15,8 @@ const EntriesList = ({ entries, isLoading, onInfiniteScroll }: EntriesListProps)
   return (
     <>
       {entries?.map((entry, idx) => (
-        <EntryAbstract
-          entry={entry}
+        <EntryDetails
+          data={entry}
           key={entry.id}
           listMode
           containerRef={idx + 2 === entries.length ? infiniteScrollingTriggerRef : undefined}

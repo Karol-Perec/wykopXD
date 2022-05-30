@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import EntryAbstract from 'components/Entries/EntryAbstract/EntryAbstract';
+import EntryDetails from 'components/Entries/EntryDetails/EntryDetails';
 import ErrorMessage from 'components/UI/ErrorMessage';
 import Loading from 'components/UI/Loading';
 import useTitle from 'hooks/useTitle';
@@ -14,7 +14,7 @@ const Entry = () => {
   if (error) return <ErrorMessage error={error} />;
   if (!data) return <ErrorMessage error='Nie znaleziono' />;
 
-  return <EntryAbstract entry={data} />;
+  return <EntryDetails data={data} />;
 };
 
 export default Entry;

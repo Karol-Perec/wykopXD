@@ -2,7 +2,6 @@ import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loading from 'components/UI/Loading';
 import ErrorMessage from 'components/UI/ErrorMessage';
-import IFrame from 'components/UI/IFrame';
 import useConnectUrl from 'hooks/api/useConnectUrl';
 import useTitle from 'hooks/useTitle';
 import AuthContext from 'contexts/Auth/AuthContext';
@@ -28,7 +27,11 @@ const Login = () => {
   if (error) return <ErrorMessage error={error} />;
   if (!connectUrl) return <ErrorMessage error='Błąd logowania' />;
 
-  return <IFrame title='Wykop Connect' src={connectUrl} />;
+  if (connectUrl) window.location.href = connectUrl;
+
+  return null;
+
+  // return <IFrame title='Wykop Connect' src={connectUrl} />;
 };
 
 export default Login;

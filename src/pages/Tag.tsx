@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import MultiList from 'components/Multi/MultiList';
+import ContentList from 'components/ContentList/ContentList';
 import ErrorMessage from 'components/UI/ErrorMessage';
 import useTitle from 'hooks/useTitle';
 import useTag from 'hooks/api/useTag';
@@ -12,7 +12,7 @@ const Tag = () => {
   if (error) return <ErrorMessage error={error} />;
 
   return (
-    <MultiList
+    <ContentList
       data={data?.pages.flat()}
       isLoading={isLoading || isFetchingNextPage}
       onInfiniteScroll={fetchNextPage}
