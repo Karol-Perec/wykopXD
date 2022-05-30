@@ -1,8 +1,8 @@
-import useEntries from 'hooks/api/useEntries';
 import EntriesList from 'components/Entries/EntriesList/EntriesList';
 import ErrorMessage from 'components/UI/ErrorMessage';
-import { MikroblogCategory } from './mikroblog.types';
-import useTitle from '../../hooks/useTitle';
+import useTitle from 'hooks/useTitle';
+import useEntries from 'hooks/api/useEntries';
+import { MikroblogCategory } from 'types';
 
 interface MikroblogProps {
   category?: MikroblogCategory;

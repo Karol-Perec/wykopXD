@@ -1,6 +1,6 @@
 import { styled } from '@mui/material';
 
-export const WykopLoginFrame = styled('iframe')(({ theme }) => ({
+export const StyledIFrame = styled('iframe')(({ theme }) => ({
   height: 'calc(100vh - 100px)',
   maxHeight: 870,
   width: '100%',
@@ -16,3 +16,12 @@ export const WykopLoginFrame = styled('iframe')(({ theme }) => ({
     borderRadius: 4,
   },
 }));
+
+interface IFrameProps {
+  title: string;
+  src: string;
+}
+
+const IFrame = ({ title, src }: IFrameProps) => <StyledIFrame title={title} src={src} />;
+
+export default IFrame;

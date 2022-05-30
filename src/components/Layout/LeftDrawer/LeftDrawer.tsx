@@ -20,7 +20,10 @@ const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
       PaperProps={{
         style: {
           backdropFilter: 'blur(10px)',
-          backgroundColor: alpha(theme.palette.background.default, 0.6),
+          backgroundColor: alpha(
+            theme.palette.background.default,
+            theme.palette.mode === 'dark' ? 0.6 : 0.8
+          ),
         },
       }}
     >

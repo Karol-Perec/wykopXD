@@ -1,9 +1,9 @@
-import useEntry from 'hooks/api/useEntry';
 import { useParams } from 'react-router-dom';
 import EntryAbstract from 'components/Entries/EntryAbstract/EntryAbstract';
 import ErrorMessage from 'components/UI/ErrorMessage';
-import useTitle from '../../hooks/useTitle';
-import Loading from '../../components/UI/Loading';
+import Loading from 'components/UI/Loading';
+import useTitle from 'hooks/useTitle';
+import useEntry from 'hooks/api/useEntry';
 
 const Entry = () => {
   const { id } = useParams();

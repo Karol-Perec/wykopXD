@@ -9,6 +9,8 @@ export enum ROUTE {
   ENTRY = '/wpis/:id',
   TAG = '/tag/:tag',
   PROFILE = '/ludzie/:username',
+  SETTINGS = '/ustawienia',
+  APP_INFO = '/o-aplikacji',
   LOGIN = '/zaloguj',
   LOGIN_CALLBACK = '/zaloguj/callback',
 }

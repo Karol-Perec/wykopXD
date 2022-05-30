@@ -1,7 +1,7 @@
 import LinksList from 'components/Links/LinksList/LinksList';
-import useLinks from 'hooks/api/useLinks';
 import ErrorMessage from 'components/UI/ErrorMessage';
-import useTitle from '../../hooks/useTitle';
+import useLinks from 'hooks/api/useLinks';
+import useTitle from 'hooks/useTitle';
 
 const Upcoming = () => {
   useTitle('Wykopalisko');

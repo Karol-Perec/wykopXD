@@ -8,8 +8,8 @@ export interface SortContextInterface {
 }
 
 const SortContext = createContext<SortContextInterface>({
-  setOptions: (newOptions: string[]) => {}, // eslint-disable-line
-  setActiveOption: (activeOption: string) => {}, // eslint-disable-line
+  setOptions: () => {}, // eslint-disable-line
+  setActiveOption: () => {}, // eslint-disable-line
   options: [],
 });
 

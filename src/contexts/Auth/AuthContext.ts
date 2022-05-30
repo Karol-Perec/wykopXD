@@ -2,11 +2,17 @@ import { createContext } from 'react';
 import { UserFull } from 'types';
 
 export interface AuthContextInterface {
-  token?: string;
-  accountKey?: string;
-  profile?: UserFull;
+  saveAuthData: (authData: any) => void;
+  authData: {
+    userKey?: string;
+    accountKey?: string;
+    profile?: UserFull;
+  };
 }
 
-const AuthContext = createContext<AuthContextInterface>({});
+const AuthContext = createContext<AuthContextInterface>({
+  saveAuthData: () => {}, // eslint-disable-line
+  authData: {},
+});
 
 export default AuthContext;

@@ -9,9 +9,7 @@ const ThemeContextProvider = ({ children }: PropsWithChildren<unknown>) => {
 
   const toggleThemeMode = useMemo<ThemeModeContextInterface>(
     () => ({
-      toggleThemeMode: () => {
-        setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
+      toggleThemeMode: () => setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light')),
       themeMode,
     }),
     [themeMode, setThemeMode]

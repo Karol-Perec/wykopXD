@@ -13,6 +13,7 @@ export const getTheme = (mode: PaletteMode): ThemeOptions => ({
     primary: { main: '#1d9bf0' }, // #328efe #4283af
     secondary: { main: '#fea232' }, // #fea232 #42afa4
     text: { secondary: '#bbb' },
+    action: { active: mode === 'dark' ? '#fff' : 'rgb(15, 20, 25)' },
   },
   typography: {
     h2: {

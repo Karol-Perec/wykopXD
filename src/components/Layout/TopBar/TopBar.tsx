@@ -1,12 +1,12 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { Box, Container, IconButton, Toolbar } from '@mui/material';
-import { MouseEventHandler } from 'react';
-import { useTheme } from '@emotion/react';
+import { MouseEventHandler, useContext } from 'react';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import * as S from './TopBar.styles';
 import { NavLinks } from '../NavItems/NavLinks';
 import SortButton from './SortButton/SortButton';
 import Avatar from '../../UI/Avatar';
+import AuthContext from '../../../contexts/Auth/AuthContext';
 
 interface TopBarProps {
   onLeftDrawerToggleClick: MouseEventHandler<HTMLElement>;
@@ -14,7 +14,7 @@ interface TopBarProps {
 }
 
 const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarProps) => {
-  const theme = useTheme();
+  const { authData } = useContext(AuthContext);
 
   return (
     <S.TopBar>
@@ -32,7 +32,7 @@ const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarPro
 
           <SortButton />
           <ThemeToggler />
-          <Avatar onClick={onRightDrawerToggleClick} size={40} />
+          <Avatar onClick={onRightDrawerToggleClick} size={40} src={authData.profile?.avatarUrl} />
         </Toolbar>
       </Container>
     </S.TopBar>

@@ -22,7 +22,7 @@ export const calculateAprroximatedAge = (date: string) => {
   if (ageInMonths < 12) return `${Math.floor(ageInMonths)} mies.`;
 
   const ageInYears = Math.floor(ageInMonths / 12);
-  const monthsRest = ageInMonths - ageInYears * 12;
+  const monthsRest = Math.floor(ageInMonths - ageInYears * 12);
   const yearPostfix = ageInYears < 2 ? 'rok' : 'lat';
 
   return `${ageInYears} ${yearPostfix} ${monthsRest} mies.`;

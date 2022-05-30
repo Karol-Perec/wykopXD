@@ -1,27 +1,29 @@
 import { useContext, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import Loading from 'components/UI/Loading';
-import ErrorMessage from 'components/UI/ErrorMessage';
-import useConnectUrl from 'hooks/api/useConnectUrl';
 import AuthContext from 'contexts/Auth/AuthContext';
 import { isInIframe } from 'utils/windowUtils';
-import useLogin from '../../../hooks/api/useLogin';
+import useLogin from 'hooks/api/useLogin';
 
 const LoginCallback = () => {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
   const connectData = useSearchParams()[0].get('connectData');
 
   if (isInIframe()) window.top!.location.href = window.location.href;
 
-  // useEffect(() => {
-  //   if (connectData) navigate('/');
-  // }, [connectData, navigate]);
 
   const loading = false;
 
+  const handleLogin = (data: any) => {
+    authContext.saveAuthData(data);
+    navigate('/');
+  };
+
   // if (!connectData) navigate('/');
-  const { data, error, mutate: login } = useLogin();
+  const { mutate: login } = useLogin(handleLogin);
+
   useEffect(() => {
     if (connectData) login(connectData);
   }, [connectData, login]);

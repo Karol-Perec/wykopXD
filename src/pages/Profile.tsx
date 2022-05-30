@@ -1,13 +1,15 @@
+import { useParams } from 'react-router-dom';
 import MultiList from 'components/Multi/MultiList';
 import ErrorMessage from 'components/UI/ErrorMessage';
-import { useParams } from 'react-router-dom';
 import useTitle from 'hooks/useTitle';
-import useTag from 'hooks/api/useTag';
+import useProfileActions from 'hooks/api/useProfileActions';
 
-const Tag = () => {
-  const { tag } = useParams();
-  useTitle(`#${tag}`);
-  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useTag(tag!);
+const Profile = () => {
+  const { username } = useParams();
+  useTitle(`@${username}`);
+  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useProfileActions(
+    username!
+  );
 
   if (error) return <ErrorMessage error={error} />;
 
@@ -20,4 +22,4 @@ const Tag = () => {
   );
 };
 
-export default Tag;
+export default Profile;

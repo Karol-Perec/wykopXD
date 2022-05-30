@@ -1,9 +1,9 @@
 import { Typography } from '@mui/material';
-import useLink from 'hooks/api/useLink';
 import { useParams } from 'react-router-dom';
 import ErrorMessage from 'components/UI/ErrorMessage';
-import useTitle from '../../hooks/useTitle';
-import Loading from '../../components/UI/Loading';
+import Loading from 'components/UI/Loading';
+import useTitle from 'hooks/useTitle';
+import useLink from 'hooks/api/useLink';
 
 const LinkDetails = () => {
   const { id } = useParams();
