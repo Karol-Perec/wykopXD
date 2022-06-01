@@ -1,4 +1,3 @@
-import ReactPlayer from 'react-player';
 import { MediaType } from 'types';
 import useGfycat from '../../hooks/api/useGfycat';
 import Image from './Image/Image';
@@ -14,21 +13,30 @@ interface MediaProps {
 }
 
 const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, listMode }: MediaProps) => {
-  const { data } = useGfycat(sourceUrl);
-  console.log(data);
+  const { data: gfycatSourceUrl } = useGfycat(sourceUrl, type === 'gfycat');
 
-  const isVideo = type === 'video' || ReactPlayer.canPlay(sourceUrl);
-
-  if (isVideo)
+  if (type === 'video')
     return (
       <Video
-        sourceUrl={sourceUrl}
+        sourceUrl="https://www.wykop.pl/cdn/c3201142/comment_1653760475D4pL4cX7rIrc5SEyC0uy5b"
         imageUrl={imageUrl}
         plus18={plus18}
         aspectRatio={aspectRatio}
         listMode={listMode}
       />
     );
+
+  if (type === 'gfycat')
+    return (
+      <Video
+        sourceUrl={gfycatSourceUrl!}
+        imageUrl={imageUrl}
+        plus18={plus18}
+        aspectRatio={aspectRatio}
+        listMode={listMode}
+      />
+    );
+
   return (
     <Image
       sourceUrl={sourceUrl}

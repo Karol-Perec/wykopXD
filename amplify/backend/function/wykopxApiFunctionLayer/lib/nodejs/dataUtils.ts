@@ -21,9 +21,7 @@ const getOptimizedAvatarUrl = (originalUrl: string) => originalUrl?.replace(',q1
 const mapMedia = (e: WykopEmbedContent): Media => ({
   type: e.source === 'gfycat.com' ? 'gfycat' : e.type,
   url: e.url,
-  // e.source === 'gfycat.com'
-  //   ? `https://thumbs.gfycat.com/${e.url.split('/').slice(-1)}-mobile.mp4`
-  //   : e.url,
+  // TODO add support for gifs that are not from gfycat -> animated: true; type: "image"
   previewUrl: e.preview,
   plus18: e.plus18,
   aspectRatio: e.ratio,

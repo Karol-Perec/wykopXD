@@ -11,10 +11,10 @@ import { calculateAprroximatedAge } from 'utils/dateUtils';
 import { parseHtml } from 'utils/parseHtml';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import Avatar from 'components/UI/Avatar';
+import { openInNewTab, stopPropagation, stopPropagationHandler } from 'utils/windowUtils';
 import Comments from '../Comments/Comments';
 import * as S from './EntryDetails.styles';
 import { Card } from '../../UI/Card';
-import { openInNewTab } from '../../../utils/windowUtils';
 
 interface EntryDetailsProps {
   data: Entry;
@@ -26,6 +26,8 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments } = data;
   const navigate = useNavigate();
   const [showComments, setShowComments] = useState(!listMode);
+
+  const toggleShowComments = stopPropagation(() => setShowComments((prev) => !prev));
 
   const handleNavigateToEntryPage = () => {
     if (document.getSelection()?.isCollapsed) {
@@ -68,17 +70,10 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
       </S.EntryContent>
       <Divider variant='middle' />
       <S.Statistics>
-        <Button
-          startIcon={<CommentsIcon />}
-          color='inherit'
-          onClick={(e) => {
-            e.stopPropagation();
-            setShowComments((prev) => !prev);
-          }}
-        >
+        <Button startIcon={<CommentsIcon />} color='inherit' onClick={toggleShowComments}>
           <Typography>{commentsCount}</Typography>
         </Button>
-        <Button startIcon={<PlusIcon />} color='inherit' onClick={(e) => e.stopPropagation()}>
+        <Button startIcon={<PlusIcon />} color='inherit' onClick={stopPropagationHandler}>
           <Typography>{voteCountPlus}</Typography>
         </Button>
       </S.Statistics>

@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
+import { MouseEventHandler, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import useIsOnScreen from 'hooks/useIsOnScreen';
 import { getDisplayedImageUrl } from 'utils/imageUtils';
 import * as S from './Video.styles';
+import { stopPropagation } from '../../../utils/windowUtils';
 
 interface VideoProps {
   sourceUrl: string;
@@ -16,13 +17,12 @@ const Video = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: VideoProp
   const [expandedVideo, setExpandedVideo] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isOnScreen = useIsOnScreen(wrapperRef);
-  const [enableAutostop, setEnableAutostop] = useState(false);
+  const [autostopEnabled, setAutostopEnabled] = useState(false);
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, listMode ? 'mq' : 'hq');
 
-  const expandVideo = (event: MouseEvent) => {
-    event.stopPropagation();
-    setExpandedVideo(true);
-  };
+  const expandVideo = stopPropagation(() => setExpandedVideo(true));
+  const enableAutostop = () => setAutostopEnabled(true);
+  const disableAutostop = () => setAutostopEnabled(false);
 
   return (
     <S.Container>
@@ -34,9 +34,9 @@ const Video = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: VideoProp
           width='100%'
           height='100%'
           onClickPreview={expandVideo}
-          onPlay={() => setEnableAutostop(true)}
-          onPause={() => setEnableAutostop(false)}
-          playing={enableAutostop ? isOnScreen : undefined}
+          onPlay={enableAutostop}
+          onPause={disableAutostop}
+          playing={autostopEnabled ? isOnScreen : undefined}
         />
       </S.VideoWrapper>
     </S.Container>

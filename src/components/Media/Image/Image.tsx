@@ -1,6 +1,7 @@
 import { Link } from '@mui/material';
 import { useRef, useState } from 'react';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
+import { stopPropagation } from '../../../utils/windowUtils';
 import * as S from './Image.styles';
 import ImageViewer from './ImageViewer/ImageViewer';
 
@@ -25,10 +26,7 @@ const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProp
       src={displayedImageUrl}
       blur={blurImage}
       alt=''
-      onClick={(e) => {
-        e.stopPropagation();
-        setBlurImage(false);
-      }}
+      onClick={stopPropagation(() => setBlurImage(false))}
     />
   ) : (
     <Link

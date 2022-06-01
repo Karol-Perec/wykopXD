@@ -11,19 +11,23 @@ interface CommentProps {
 }
 
 const Comment = ({ comment }: CommentProps) => {
-  const { id, body, user, date, voteCountPlus } = comment;
+  const { body, user, date, voteCountPlus } = comment;
 
   return (
     <div>
-      <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-        <Avatar src={user.avatarUrl} size={32} />
-      </RouterNoPropagationLink>
-      <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-        <Typography>{user.login}</Typography>
-      </RouterNoPropagationLink>
-      <Tooltip title={date}>
-        <Typography variant='caption'>{calculateAprroximatedAge(date)}</Typography>
-      </Tooltip>
+      <S.CommentHeader>
+        <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
+          <Avatar src={user.avatarUrl} size={30} />
+        </RouterNoPropagationLink>
+        <S.CommentHeaderMeta>
+          <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
+            <Typography variant='subtitle1'>{user.login}</Typography>
+          </RouterNoPropagationLink>
+          <Tooltip title={date}>
+            <Typography variant='caption'>{calculateAprroximatedAge(date)}</Typography>
+          </Tooltip>
+        </S.CommentHeaderMeta>
+      </S.CommentHeader>
       <Typography>{parseHtml(body)}</Typography>
     </div>
   );
