@@ -16,18 +16,15 @@ interface ImageProps {
 const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProps) => {
   const [unblockMaxHeight, setUnblockMaxHeight] = useState(false);
   // const [viewerOpened, setViewerOpened] = useState(false);
-  const [blurImage, setBlurImage] = useState(plus18);
+  const [isBlurred, setIsBlurred] = useState(plus18);
 
   const mediaContainerRef = useRef<HTMLDivElement>(null);
-  const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, blurImage));
+  const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, isBlurred));
 
-  const image = blurImage ? (
-    <S.Image
-      src={displayedImageUrl}
-      blur={blurImage}
-      alt=''
-      onClick={stopPropagation(() => setBlurImage(false))}
-    />
+  const handleUnblurImage = stopPropagation(() => setIsBlurred(false));
+
+  const image = isBlurred ? (
+    <S.Image src={displayedImageUrl} blur={isBlurred} alt='+18 image' onClick={handleUnblurImage} />
   ) : (
     <Link
       href={sourceUrl}
@@ -36,25 +33,18 @@ const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProp
         // setViewerOpened(true);
       }}
     >
-      <S.Image src={displayedImageUrl} blur={blurImage} alt='' />
+      <S.Image src={displayedImageUrl} blur={isBlurred} alt='' />
     </Link>
   );
 
   return (
-    <>
-      {/* <ImageViewer
-        imageUrl={imageUrl}
-        handleClose={() => setViewerOpened(false)}
-        open={viewerOpened}
-      /> */}
-      <S.Container
-        ref={mediaContainerRef}
-        aspectRatio={aspectRatio}
-        unblockMaxHeight={unblockMaxHeight}
-      >
-        {image}
-      </S.Container>
-    </>
+    <S.Container
+      ref={mediaContainerRef}
+      aspectRatio={aspectRatio}
+      unblockMaxHeight={unblockMaxHeight}
+    >
+      {image}
+    </S.Container>
   );
 };
 

@@ -7,16 +7,16 @@ import * as S from './LeftDrawer.styles';
 
 interface LeftDrawerProps {
   open: boolean;
-  handleToggleDrawer: MouseEventHandler;
+  onUserAction: MouseEventHandler;
 }
 
-const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
+const LeftDrawer = ({ open, onUserAction }: LeftDrawerProps) => {
   const theme = useTheme();
 
   return (
     <Drawer
       open={open}
-      onClose={handleToggleDrawer}
+      onClose={onUserAction}
       PaperProps={{
         style: {
           backdropFilter: 'blur(10px)',
@@ -28,13 +28,13 @@ const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
       }}
     >
       <S.DrawerHeader>
-        <Link to={ROUTE.HOME} onClick={handleToggleDrawer}>
+        <Link to={ROUTE.HOME} onClick={onUserAction}>
           <S.WykopLogo />
         </Link>
       </S.DrawerHeader>
       <Divider variant='middle' />
       <S.NavContainer>
-        <MobileNavLinks onNavLinkClick={handleToggleDrawer} />
+        <MobileNavLinks onNavLinkClick={onUserAction} />
       </S.NavContainer>
       <Divider variant='middle' />
     </Drawer>

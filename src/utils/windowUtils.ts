@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 
-export const stopPropagationHandler: MouseEventHandler = (e) => e.stopPropagation();
+export const handleStopPropagation: MouseEventHandler = (e) => e.stopPropagation();
 
 export const stopPropagation =
   (handler: MouseEventHandler): MouseEventHandler =>

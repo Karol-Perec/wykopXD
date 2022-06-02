@@ -1,9 +1,9 @@
-import { MouseEventHandler, useRef } from 'react';
+import { useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { Link as RouterLink } from 'react-router-dom';
 import useIsOnScreen from 'hooks/useIsOnScreen';
 import { MediaType } from 'types';
-import { stopPropagation, stopPropagationHandler } from 'utils/windowUtils';
+import { stopPropagation, handleStopPropagation } from 'utils/windowUtils';
 import * as S from './LinkMedia.styles';
 
 type ImageQuality = 'original' | 'hq' | 'mq' | 'lq';
@@ -43,7 +43,7 @@ const LinkMedia = ({
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, 'hq');
   const isVideo = type === 'video' || ReactPlayer.canPlay(sourceUrl);
 
-  const enlargeVideo = stopPropagation(() => {
+  const handleEnlargeVideo = stopPropagation(() => {
     if (!mediaContainerRef?.current) return;
     mediaContainerRef.current.style.width = '100%';
     mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
@@ -56,11 +56,11 @@ const LinkMedia = ({
       light={displayedImageUrl}
       width='100%'
       height='100%'
-      onClickPreview={enlargeVideo}
+      onClickPreview={handleEnlargeVideo}
       playing={isOnScreen}
     />
   ) : (
-    <RouterLink to={linkTo} onClick={stopPropagationHandler}>
+    <RouterLink to={linkTo} onClick={handleStopPropagation}>
       {displayedImageUrl ? <S.Image src={displayedImageUrl} /> : <S.DefaultImage />}
     </RouterLink>
   );

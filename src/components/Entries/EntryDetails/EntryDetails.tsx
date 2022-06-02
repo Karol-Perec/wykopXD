@@ -1,9 +1,9 @@
+import { RefCallback, useMemo, useState } from 'react';
 import {
   ChatBubbleOutlineRounded as CommentsIcon,
   ControlPoint as PlusIcon,
 } from '@mui/icons-material';
 import { Typography, Button, Divider, Tooltip } from '@mui/material';
-import { RefCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Media from 'components/Media/Media';
 import { Entry } from 'types';
@@ -11,7 +11,7 @@ import { calculateAprroximatedAge } from 'utils/dateUtils';
 import { parseHtml } from 'utils/parseHtml';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import Avatar from 'components/UI/Avatar';
-import { openInNewTab, stopPropagation, stopPropagationHandler } from 'utils/windowUtils';
+import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/windowUtils';
 import Comments from '../Comments/Comments';
 import * as S from './EntryDetails.styles';
 import { Card } from '../../UI/Card';
@@ -25,21 +25,30 @@ interface EntryDetailsProps {
 const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProps) => {
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments } = data;
   const navigate = useNavigate();
-  const [showComments, setShowComments] = useState(!listMode);
+  const [isShowingComments, setIsShowingComments] = useState(!listMode);
+  const [didToggleComments, setDidToggleComments] = useState(!listMode);
+  const parsedBody = useMemo(() => parseHtml(body), [body]);
 
-  const toggleShowComments = stopPropagation(() => setShowComments((prev) => !prev));
+  const handleToggleComments = stopPropagation(() => {
+    setIsShowingComments((prev) => !prev);
+    setDidToggleComments(true);
+  });
 
-  const handleNavigateToEntryPage = () => {
-    if (document.getSelection()?.isCollapsed) {
-      navigate(`/wpis/${id}`);
-    }
-  };
+  const handleNavigateToEntry = listMode
+    ? () => {
+        if (document.getSelection()?.isCollapsed) {
+          navigate(`/wpis/${id}`);
+        }
+      }
+    : undefined;
+
+  const handleOpenEntryInNewTab = listMode ? openInNewTab(`/link/${id}`) : undefined;
 
   return (
     <Card
       ref={containerRef}
-      onClick={listMode ? handleNavigateToEntryPage : undefined}
-      onMouseUp={listMode ? openInNewTab(`/wpis/${id}`) : undefined}
+      onClick={handleNavigateToEntry}
+      onMouseUp={handleOpenEntryInNewTab}
       listMode={listMode}
     >
       <S.EntryHeader>
@@ -56,7 +65,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
         </S.EntryHeaderMeta>
       </S.EntryHeader>
       <S.EntryContent>
-        <S.TextContent variant='body1'>{parseHtml(body)}</S.TextContent>
+        <S.TextContent variant='body1'>{parsedBody}</S.TextContent>
         {media && (
           <Media
             sourceUrl={media.url}
@@ -70,15 +79,17 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
       </S.EntryContent>
       <Divider variant='middle' />
       <S.Statistics>
-        <Button startIcon={<CommentsIcon />} color='inherit' onClick={toggleShowComments}>
+        <Button startIcon={<CommentsIcon />} color='inherit' onClick={handleToggleComments}>
           <Typography>{commentsCount}</Typography>
         </Button>
-        <Button startIcon={<PlusIcon />} color='inherit' onClick={stopPropagationHandler}>
+        <Button startIcon={<PlusIcon />} color='inherit' onClick={handleStopPropagation}>
           <Typography>{voteCountPlus}</Typography>
         </Button>
       </S.Statistics>
       <Divider variant='middle' />
-      {showComments && comments?.length && <Comments comments={comments} />}
+      {didToggleComments && comments?.length && (
+        <Comments comments={comments} visible={isShowingComments} />
+      )}
     </Card>
   );
 };

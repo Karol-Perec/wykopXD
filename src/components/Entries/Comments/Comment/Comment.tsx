@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Tooltip, Typography } from '@mui/material';
 import { EntryComment } from 'types';
 import { calculateAprroximatedAge } from 'utils/dateUtils';
@@ -11,7 +12,8 @@ interface CommentProps {
 }
 
 const Comment = ({ comment }: CommentProps) => {
-  const { body, user, date, voteCountPlus } = comment;
+  const { body, user, date } = comment;
+  const parsedBody = useMemo(() => parseHtml(body), [body]);
 
   return (
     <div>
@@ -28,7 +30,7 @@ const Comment = ({ comment }: CommentProps) => {
           </Tooltip>
         </S.CommentHeaderMeta>
       </S.CommentHeader>
-      <Typography>{parseHtml(body)}</Typography>
+      <Typography>{parsedBody}</Typography>
     </div>
   );
 };

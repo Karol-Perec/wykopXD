@@ -5,7 +5,6 @@ import { Link } from 'types';
 import { openInNewTab } from 'utils/windowUtils';
 import LinkMedia from '../../LinkMedia/LinkMedia';
 import { Card } from '../../UI/Card';
-import * as S from './LinkDetails.styles';
 
 interface LinkDetailsProps {
   data: Link;
@@ -17,17 +16,21 @@ const LinkDetails = ({ data, listMode, containerRef }: LinkDetailsProps) => {
   const { id, body, plus18, previewUrl, sourceUrl, title } = data;
   const navigate = useNavigate();
 
-  const handleNavigateToLinkPage = () => {
-    if (document.getSelection()?.isCollapsed) {
-      navigate(`/link/${id}`);
-    }
-  };
+  const handleNavigateToLink = listMode
+    ? () => {
+        if (document.getSelection()?.isCollapsed) {
+          navigate(`/link/${id}`);
+        }
+      }
+    : undefined;
+
+  const handleOpenLinkInNewTab = listMode ? openInNewTab(`/link/${id}`) : undefined;
 
   return (
     <Card
       ref={containerRef}
-      onClick={listMode ? handleNavigateToLinkPage : undefined}
-      onMouseUp={listMode ? openInNewTab(`/link/${id}`) : undefined}
+      onClick={handleNavigateToLink}
+      onMouseUp={handleOpenLinkInNewTab}
       listMode={listMode}
     >
       <Typography variant='h2'>{title}</Typography>

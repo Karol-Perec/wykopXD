@@ -1,7 +1,7 @@
-import { Button, MenuItem, Select } from '@mui/material';
 import { useState } from 'react';
+import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { EntryComment } from 'types';
-import { stopPropagation, stopPropagationHandler } from 'utils/windowUtils';
+import { stopPropagation, handleStopPropagation } from 'utils/windowUtils';
 import Comment from './Comment/Comment';
 import * as S from './Comments.styles';
 
@@ -29,25 +29,25 @@ const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
 
 interface CommentsProps {
   comments: EntryComment[];
+  visible: boolean;
 }
 
-const Comments = ({ comments }: CommentsProps) => {
+const Comments = ({ comments, visible }: CommentsProps) => {
   const [orderBy, setOrderBy] = useState<OrderKey>('OLDEST');
   const [page, setPage] = useState(1);
 
-  const handleLoadMore = stopPropagation(() => {
-    setPage((p) => (p * 10 < comments.length ? p + 1 : p));
-  });
+  const handleSelectOrderBy = (e: SelectChangeEvent<OrderKey>) =>
+    setOrderBy(e.target.value as OrderKey);
+
+  const handleLoadMore = stopPropagation(() =>
+    setPage((p) => (p * 10 < comments.length ? p + 1 : p))
+  );
 
   return (
-    <S.Container>
-      <Select
-        value={orderBy}
-        onChange={(e) => setOrderBy(e.target.value as OrderKey)}
-        variant='standard'
-      >
+    <S.Container visible={visible}>
+      <Select value={orderBy} onChange={handleSelectOrderBy} variant='standard'>
         {Object.entries(COMMENTS_ORDER).map(([orderKey, { label }]) => (
-          <MenuItem value={orderKey} key={orderKey} onClick={stopPropagationHandler}>
+          <MenuItem value={orderKey} key={orderKey} onClick={handleStopPropagation}>
             {label}
           </MenuItem>
         ))}
@@ -58,9 +58,7 @@ const Comments = ({ comments }: CommentsProps) => {
         .map((c) => (
           <Comment key={c.id} comment={c} />
         ))}
-      {page * 10 <= comments.length && (
-        <Button onClick={handleLoadMore}>Load moar</Button>
-      )}
+      {page * 10 <= comments.length && <Button onClick={handleLoadMore}>Załaduj więcej</Button>}
     </S.Container>
   );
 };

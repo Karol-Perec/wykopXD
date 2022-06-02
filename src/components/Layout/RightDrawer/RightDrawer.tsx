@@ -7,24 +7,23 @@ import {
   Info as AppInfoIcon,
 } from '@mui/icons-material';
 import AuthContext from 'contexts/Auth/AuthContext';
-import AppInfo from 'pages/AppInfo';
 import Avatar from '../../UI/Avatar';
 import { MobileNavLink } from '../NavItems/NavLink/NavLink';
 import * as S from './RightDrawer.styles';
 
 interface LeftDrawerProps {
   open: boolean;
-  handleToggleDrawer: MouseEventHandler;
+  onUserAction: MouseEventHandler;
 }
 
-const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
+const LeftDrawer = ({ open, onUserAction }: LeftDrawerProps) => {
   const theme = useTheme();
   const { authData, saveAuthData } = useContext(AuthContext);
 
   return (
     <Drawer
       open={open}
-      onClose={handleToggleDrawer}
+      onClose={onUserAction}
       PaperProps={{
         style: {
           backdropFilter: 'blur(10px)',
@@ -44,7 +43,7 @@ const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
       <Divider variant='middle' />
       <List>
         {!authData.userKey && (
-          <MobileNavLink to='/zaloguj' onClick={handleToggleDrawer} icon={<LoginIcon />}>
+          <MobileNavLink to='/zaloguj' onClick={onUserAction} icon={<LoginIcon />}>
             Zaloguj się
           </MobileNavLink>
         )}
@@ -52,16 +51,16 @@ const LeftDrawer = ({ open, handleToggleDrawer }: LeftDrawerProps) => {
           to='/x'
           onClick={(e) => {
             saveAuthData({});
-            handleToggleDrawer(e);
+            onUserAction(e);
           }}
           icon={<LogoutIcon />}
         >
           Wyloguj się
         </MobileNavLink>
-        <MobileNavLink to='/ustawienia' onClick={handleToggleDrawer} icon={<SettingsIcon />}>
+        <MobileNavLink to='/ustawienia' onClick={onUserAction} icon={<SettingsIcon />}>
           Ustawienia
         </MobileNavLink>
-        <MobileNavLink to='/o-aplikacji' onClick={handleToggleDrawer} icon={<AppInfoIcon />}>
+        <MobileNavLink to='/o-aplikacji' onClick={onUserAction} icon={<AppInfoIcon />}>
           O aplikacji
         </MobileNavLink>
       </List>
