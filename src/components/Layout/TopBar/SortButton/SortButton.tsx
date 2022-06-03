@@ -1,6 +1,6 @@
 import { Sort as SortIcon } from '@mui/icons-material';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SortButton = () => {
@@ -10,9 +10,8 @@ const SortButton = () => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+
+  const handleClose = () => setAnchorEl(null);
 
   return (
     <>

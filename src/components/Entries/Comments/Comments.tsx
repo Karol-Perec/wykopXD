@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { EntryComment } from 'types';
 import { stopPropagation, handleStopPropagation } from 'utils/windowUtils';
@@ -30,14 +30,26 @@ const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
 interface CommentsProps {
   comments: EntryComment[];
   visible: boolean;
+  enablePagination: boolean;
 }
 
-const Comments = ({ comments, visible }: CommentsProps) => {
+const Comments = ({ comments, visible, enablePagination }: CommentsProps) => {
   const [orderBy, setOrderBy] = useState<OrderKey>('OLDEST');
   const [page, setPage] = useState(1);
 
-  const handleSelectOrderBy = (e: SelectChangeEvent<OrderKey>) =>
+  const commentsList = useMemo(
+    () =>
+      comments
+        .sort(COMMENTS_ORDER[orderBy].comparator)
+        .slice(0, enablePagination ? page * 10 - 1 : undefined)
+        .map((c) => <Comment key={c.id} comment={c} />),
+    [comments, enablePagination, orderBy, page]
+  );
+
+  const handleSelectOrderBy = (e: SelectChangeEvent<OrderKey>) => {
     setOrderBy(e.target.value as OrderKey);
+    if (enablePagination) setPage(1);
+  };
 
   const handleLoadMore = stopPropagation(() =>
     setPage((p) => (p * 10 < comments.length ? p + 1 : p))
@@ -52,12 +64,7 @@ const Comments = ({ comments, visible }: CommentsProps) => {
           </MenuItem>
         ))}
       </Select>
-      {comments
-        .sort(COMMENTS_ORDER[orderBy].comparator)
-        .slice(0, page * 10 - 1)
-        .map((c) => (
-          <Comment key={c.id} comment={c} />
-        ))}
+      {commentsList}
       {page * 10 <= comments.length && <Button onClick={handleLoadMore}>Załaduj więcej</Button>}
     </S.Container>
   );

@@ -20,6 +20,11 @@ const LeftDrawer = ({ open, onUserAction }: LeftDrawerProps) => {
   const theme = useTheme();
   const { authData, saveAuthData } = useContext(AuthContext);
 
+  const handleLogout: MouseEventHandler = (e) => {
+    saveAuthData({});
+    onUserAction(e);
+  };
+
   return (
     <Drawer
       open={open}
@@ -47,14 +52,7 @@ const LeftDrawer = ({ open, onUserAction }: LeftDrawerProps) => {
             Zaloguj się
           </MobileNavLink>
         )}
-        <MobileNavLink
-          to='/x'
-          onClick={(e) => {
-            saveAuthData({});
-            onUserAction(e);
-          }}
-          icon={<LogoutIcon />}
-        >
+        <MobileNavLink to='/x' onClick={handleLogout} icon={<LogoutIcon />}>
           Wyloguj się
         </MobileNavLink>
         <MobileNavLink to='/ustawienia' onClick={onUserAction} icon={<SettingsIcon />}>
