@@ -25,3 +25,19 @@ export const LinkButton = styled(Button)(({ theme }) => ({
     display: 'none',
   },
 }));
+
+export const NavContainer = styled('nav')(({ theme }) => ({
+  display: 'none',
+  [theme.breakpoints.up('md')]: {
+    display: 'flex',
+    flexGrow: 1,
+  },
+}));
+
+export const MenuTogglerContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexGrow: 1,
+  [theme.breakpoints.up('md')]: {
+    display: 'none',
+  },
+}));

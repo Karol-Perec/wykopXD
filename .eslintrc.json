@@ -75,15 +75,6 @@
     "import/no-absolute-path": 0,
     "react/destructuring-assignment": [1, "always", { "ignoreClassFields": true }],
     "consistent-return": 0,
-    "@typescript-eslint/no-non-null-assertion": 0,
-    "react/jsx-handler-names": [
-      1,
-      {
-        "eventHandlerPrefix": "(handle|on)",
-        "eventHandlerPropPrefix": "on",
-        "checkLocalVariables": true,
-        "checkInlineFunction": false
-      }
-    ]
+    "@typescript-eslint/no-non-null-assertion": 0
   }
 }

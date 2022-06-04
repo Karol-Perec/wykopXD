@@ -1,9 +1,9 @@
-import { Whatshot as HitsIcon, AccountCircle as MyWykopIcon } from '@mui/icons-material';
-import { Box, List } from '@mui/material';
 import { MouseEventHandler, ReactNode } from 'react';
+import { List } from '@mui/material';
+import { Whatshot as HitsIcon, AccountCircle as MyWykopIcon } from '@mui/icons-material';
 import { ROUTE } from 'routes';
 import { NavLink, MobileNavLink } from './NavLink/NavLink';
-import { MainIcon, MikroblogIcon, UpcomingIcon } from './NavLinks.styles';
+import * as S from './NavLinks.styles';
 
 interface MobileNavLinksProps {
   onNavLinkClick: MouseEventHandler;
@@ -19,12 +19,12 @@ export const navLinks: Page[] = [
   {
     label: 'Główna',
     path: ROUTE.HOME,
-    icon: <MainIcon />,
+    icon: <S.MainIcon />,
   },
   {
     label: 'Wykopalisko',
     path: ROUTE.UPCOMING,
-    icon: <UpcomingIcon />,
+    icon: <S.UpcomingIcon />,
   },
   {
     label: 'Hity',
@@ -34,7 +34,7 @@ export const navLinks: Page[] = [
   {
     label: 'Mikroblog',
     path: ROUTE.MIKROBLOG,
-    icon: <MikroblogIcon />,
+    icon: <S.MikroblogIcon />,
   },
   {
     label: 'Mój Wykop',
@@ -54,11 +54,11 @@ export const MobileNavLinks = ({ onNavLinkClick }: MobileNavLinksProps) => (
 );
 
 export const NavLinks = () => (
-  <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+  <>
     {navLinks.map((nav) => (
       <NavLink to={nav.path} key={nav.path}>
         {nav.label}
       </NavLink>
     ))}
-  </Box>
+  </>
 );

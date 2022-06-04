@@ -86,9 +86,8 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
           <Typography>{voteCountPlus}</Typography>
         </Button>
       </S.Statistics>
-      <Divider variant='middle' />
       {didToggleComments && comments?.length && (
-        <Comments comments={comments} visible={isShowingComments} enablePagination={listMode}/>
+        <Comments comments={comments} visible={isShowingComments} enablePagination={listMode} />
       )}
     </Card>
   );

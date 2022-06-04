@@ -11,12 +11,12 @@ import Avatar from '../../UI/Avatar';
 import { MobileNavLink } from '../NavItems/NavLink/NavLink';
 import * as S from './RightDrawer.styles';
 
-interface LeftDrawerProps {
+interface RightDrawerProps {
   open: boolean;
   onUserAction: MouseEventHandler;
 }
 
-const LeftDrawer = ({ open, onUserAction }: LeftDrawerProps) => {
+const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
   const theme = useTheme();
   const { authData, saveAuthData } = useContext(AuthContext);
 
@@ -67,4 +67,4 @@ const LeftDrawer = ({ open, onUserAction }: LeftDrawerProps) => {
   );
 };
 
-export default LeftDrawer;
+export default RightDrawer;

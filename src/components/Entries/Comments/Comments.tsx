@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { Button, Divider, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { EntryComment } from 'types';
 import { stopPropagation, handleStopPropagation } from 'utils/windowUtils';
 import Comment from './Comment/Comment';
@@ -57,15 +57,18 @@ const Comments = ({ comments, visible, enablePagination }: CommentsProps) => {
 
   return (
     <S.Container visible={visible}>
-      <Select value={orderBy} onChange={handleSelectOrderBy} variant='standard'>
-        {Object.entries(COMMENTS_ORDER).map(([orderKey, { label }]) => (
-          <MenuItem value={orderKey} key={orderKey} onClick={handleStopPropagation}>
-            {label}
-          </MenuItem>
-        ))}
-      </Select>
-      {commentsList}
-      {page * 10 <= comments.length && <Button onClick={handleLoadMore}>Załaduj więcej</Button>}
+      <Divider variant='middle' />
+      <S.CommentsListContainer>
+        <Select value={orderBy} onChange={handleSelectOrderBy} variant='standard'>
+          {Object.entries(COMMENTS_ORDER).map(([orderKey, { label }]) => (
+            <MenuItem value={orderKey} key={orderKey} onClick={handleStopPropagation}>
+              {label}
+            </MenuItem>
+          ))}
+        </Select>
+        {commentsList}
+        {page * 10 <= comments.length && <Button onClick={handleLoadMore}>Załaduj więcej</Button>}
+      </S.CommentsListContainer>
     </S.Container>
   );
 };

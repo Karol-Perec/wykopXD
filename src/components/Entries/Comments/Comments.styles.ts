@@ -6,8 +6,11 @@ interface ContainerProps {
 
 export const Container = styled('div', {
   shouldForwardProp: (prop) => prop !== 'visible',
-})<ContainerProps>(({ theme, visible }) => ({
+})<ContainerProps>(({ visible }) => ({
   display: visible ? 'block' : 'none',
+}));
+
+export const CommentsListContainer = styled('div')(({ theme }) => ({
   marginLeft: theme.spacing(4),
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(8.5),
