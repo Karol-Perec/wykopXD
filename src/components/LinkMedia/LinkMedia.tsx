@@ -49,7 +49,7 @@ const LinkMedia = ({
   });
 
   const media =
-    type === 'video' ? (
+    type === 'video' || ReactPlayer.canPlay(sourceUrl) ? (
       <ReactPlayer
         url={sourceUrl}
         controls

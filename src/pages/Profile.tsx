@@ -11,13 +11,19 @@ const Profile = () => {
     username!
   );
 
+  const handleInititeScroll = () => {
+    if (data?.pages[data.pages.length - 1].length === 25) {
+      fetchNextPage();
+    }
+  };
+
   if (error) return <ErrorMessage error={error} />;
 
   return (
     <ContentList
       data={data?.pages.flat()}
       isLoading={isLoading || isFetchingNextPage}
-      onInfiniteScroll={fetchNextPage}
+      onInfiniteScroll={handleInititeScroll}
     />
   );
 };
