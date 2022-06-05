@@ -1,9 +1,9 @@
 import { RefObject, useEffect, useState } from 'react';
 
 const useIsOnScreen = (ref: RefObject<HTMLElement>) => {
-  const [isIntersecting, setIntersecting] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
-  const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
+  const observer = new IntersectionObserver(([entry]) => setIsIntersecting(entry.isIntersecting));
 
   useEffect(() => {
     if (!ref.current) return;

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const SortButton = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const isOpened = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -20,16 +19,10 @@ const SortButton = () => {
       </IconButton>
       <Menu
         anchorEl={anchorEl}
-        open={isOpened}
+        open={!!anchorEl}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
         <MenuItem onClick={handleClose} component={Link} to='/xd'>
           xd

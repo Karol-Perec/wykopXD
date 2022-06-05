@@ -41,7 +41,6 @@ const LinkMedia = ({
   const mediaContainerRef = useRef<HTMLDivElement>(null);
   const isOnScreen = useIsOnScreen(mediaContainerRef);
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, 'hq');
-  const isVideo = type === 'video' || ReactPlayer.canPlay(sourceUrl);
 
   const handleEnlargeVideo = stopPropagation(() => {
     if (!mediaContainerRef?.current) return;
@@ -49,21 +48,22 @@ const LinkMedia = ({
     mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
   });
 
-  const media = isVideo ? (
-    <ReactPlayer
-      url={sourceUrl}
-      controls
-      light={displayedImageUrl}
-      width='100%'
-      height='100%'
-      onClickPreview={handleEnlargeVideo}
-      playing={isOnScreen}
-    />
-  ) : (
-    <RouterLink to={linkTo} onClick={handleStopPropagation}>
-      {displayedImageUrl ? <S.Image src={displayedImageUrl} /> : <S.DefaultImage />}
-    </RouterLink>
-  );
+  const media =
+    type === 'video' ? (
+      <ReactPlayer
+        url={sourceUrl}
+        controls
+        light={displayedImageUrl}
+        width='100%'
+        height='100%'
+        onClickPreview={handleEnlargeVideo}
+        playing={isOnScreen}
+      />
+    ) : (
+      <RouterLink to={linkTo} onClick={handleStopPropagation}>
+        {displayedImageUrl ? <S.Image src={displayedImageUrl} /> : <S.DefaultImage />}
+      </RouterLink>
+    );
 
   return (
     <S.Container ref={mediaContainerRef} aspectRatio={aspectRatio}>
