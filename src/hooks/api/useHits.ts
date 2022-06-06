@@ -1,4 +1,3 @@
-import { BackdropProps } from '@mui/material';
 import { useInfiniteQuery } from 'react-query';
 import { Link, Collection, HitsPeriod } from 'types';
 import axios from 'utils/axios';
