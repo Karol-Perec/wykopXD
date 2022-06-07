@@ -5,26 +5,26 @@ import EntryDetails from '../Entries/EntryDetails/EntryDetails';
 import LinkDetails from '../Links/LinkDetails/LinkDetails';
 
 interface MultiListProps {
-  data?: (Link | Entry)[];
+  contents?: (Link | Entry)[];
   isLoading: boolean;
   onInfiniteScroll: () => void;
 }
 
-const isLink = (multi: Entry | Link): multi is Link => !!(multi as Link).title;
+const isLink = (content: Entry | Link): content is Link => !!(content as Link).title;
 
-const ContentList = ({ data, isLoading, onInfiniteScroll }: MultiListProps) => {
+const ContentList = ({ contents, isLoading, onInfiniteScroll }: MultiListProps) => {
   const infiniteScrollingTriggerRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
 
   return (
     <>
-      {data?.map((multi, idx) => {
-        const ContentComponent = isLink(multi) ? LinkDetails : EntryDetails;
+      {contents?.map((content, idx) => {
+        const ContentComponent = isLink(content) ? LinkDetails : EntryDetails;
         return (
           <ContentComponent
-            data={multi as any}
-            key={multi.id}
+            data={content as any}
+            key={content.id}
             listMode
-            containerRef={idx + 2 === data.length ? infiniteScrollingTriggerRef : undefined}
+            containerRef={idx + 2 === contents.length ? infiniteScrollingTriggerRef : undefined}
           />
         );
       })}

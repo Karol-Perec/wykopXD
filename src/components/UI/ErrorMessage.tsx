@@ -1,5 +1,6 @@
 import { Typography, styled, Button } from '@mui/material';
 import { ReactComponent as FeelsBadMan } from 'assets/images/feelsBadMan.svg';
+import { AxiosError } from 'axios';
 
 const StyledContainer = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -14,8 +15,10 @@ const StyledContainer = styled('div')(({ theme }) => ({
 }));
 
 const renderError = (error: unknown) => {
+  if (error instanceof AxiosError) return error.response?.data || error.message;
   if (error instanceof Error) return error.message;
   if (typeof error === 'string') return error;
+
   return JSON.stringify(error);
 };
 

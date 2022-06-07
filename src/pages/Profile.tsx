@@ -21,7 +21,7 @@ const Profile = () => {
 
   return (
     <ContentList
-      data={data?.pages.flat()}
+      contents={data?.pages.flat()}
       isLoading={isLoading || isFetchingNextPage}
       onInfiniteScroll={handleInititeScroll}
     />
