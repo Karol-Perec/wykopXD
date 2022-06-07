@@ -51,7 +51,8 @@ const LinkMedia = ({
   const media =
     type === 'video' || ReactPlayer.canPlay(sourceUrl) ? (
       <ReactPlayer
-        url={sourceUrl}
+        // eslint-disable-next-line react/jsx-curly-brace-presence
+        url={'https://www.youtube.com/watch?v=601iBRtxntU'}
         controls
         light={displayedImageUrl}
         width='100%'

@@ -6,13 +6,14 @@ import { parseHtml } from 'utils/parseHtml';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import Avatar from 'components/UI/Avatar';
 import * as S from './Comment.styles';
+import Media from '../../../Media/Media';
 
 interface CommentProps {
   comment: EntryComment;
 }
 
 const Comment = ({ comment }: CommentProps) => {
-  const { body, user, date } = comment;
+  const { body, user, date, media } = comment;
   const parsedBody = useMemo(() => parseHtml(body), [body]);
 
   return (
@@ -31,6 +32,16 @@ const Comment = ({ comment }: CommentProps) => {
         </S.CommentHeaderMeta>
       </S.CommentHeader>
       <Typography>{parsedBody}</Typography>
+      {media && (
+          <Media
+            sourceUrl={media.url}
+            imageUrl={media.previewUrl}
+            type={media.type}
+            plus18={media.plus18}
+            ratio={media.ratio}
+            listMode={false}
+          />
+        )}
     </div>
   );
 };

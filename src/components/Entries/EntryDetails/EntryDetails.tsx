@@ -42,7 +42,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
       }
     : undefined;
 
-  const handleOpenEntryInNewTab = listMode ? openInNewTab(`/link/${id}`) : undefined;
+  const handleOpenEntryInNewTab = listMode ? openInNewTab(`/wpis/${id}`) : undefined;
 
   return (
     <Card

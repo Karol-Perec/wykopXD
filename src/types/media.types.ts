@@ -1,4 +1,4 @@
-export type MediaType = 'video' | 'image' | 'gfycat';
+export type MediaType = 'video' | 'image' | 'gif' | 'gfycat';
 
 export interface Media {
   type: MediaType;

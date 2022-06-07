@@ -1,5 +1,6 @@
 import { MediaType } from 'types';
 import useGfycat from '../../hooks/api/useGfycat';
+import Gif from './Gif/Gif';
 import Image from './Image/Image';
 import Video from './Video/Video';
 
@@ -15,10 +16,22 @@ interface MediaProps {
 const Media = ({ type, sourceUrl, imageUrl, plus18, ratio, listMode }: MediaProps) => {
   const { data: gfycatSourceUrl } = useGfycat(sourceUrl, type === 'gfycat');
 
+  if (type === 'gif') {
+    return (
+      <Gif
+        sourceUrl={sourceUrl}
+        imageUrl={imageUrl}
+        plus18={plus18}
+        ratio={ratio}
+        listMode={listMode}
+      />
+    );
+  }
+
   if (type === 'video')
     return (
       <Video
-        sourceUrl="https://www.wykop.pl/cdn/c3201142/comment_1653760475D4pL4cX7rIrc5SEyC0uy5b"
+        sourceUrl={sourceUrl}
         imageUrl={imageUrl}
         plus18={plus18}
         ratio={ratio}

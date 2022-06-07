@@ -23,13 +23,17 @@ const mapMediaType = (e: WykopEmbedContent): MediaType => {
   return e.type;
 };
 
-const mapMedia = (e: WykopEmbedContent): Media => ({
-  type: mapMediaType(e),
-  url: e.url,
-  previewUrl: e.preview,
-  plus18: e.plus18,
-  ratio: e.ratio,
-});
+const mapMedia = (e: WykopEmbedContent): Media => {
+  const type = mapMediaType(e);
+
+  return {
+    type,
+    url: type === 'gif' ? e.url.replace('.jpg', 'gif') : e.url,
+    previewUrl: e.preview,
+    plus18: e.plus18,
+    ratio: e.ratio,
+  };
+};
 
 export const mapUser = (p: WykopAuthor): User => ({
   login: p.login,
