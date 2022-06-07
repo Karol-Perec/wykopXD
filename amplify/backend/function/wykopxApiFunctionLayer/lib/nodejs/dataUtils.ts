@@ -28,7 +28,7 @@ const mapMedia = (e: WykopEmbedContent): Media => {
 
   return {
     type,
-    url: type === 'gif' ? e.url.replace('.jpg', 'gif') : e.url,
+    url: type === 'gif' ? e.url.replace('.jpg', '.gif') : e.url,
     previewUrl: e.preview,
     plus18: e.plus18,
     ratio: e.ratio,
