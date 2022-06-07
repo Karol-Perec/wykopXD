@@ -53,16 +53,15 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
     >
       <S.EntryHeader>
         <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-          <Avatar src={user.avatarUrl} size={40} />
+          <Avatar src={user.avatarUrl} size={25} />
         </RouterNoPropagationLink>
-        <S.EntryHeaderMeta>
-          <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-            <Typography variant='subtitle1'>{user.login}</Typography>
-          </RouterNoPropagationLink>
-          <Tooltip title={date}>
-            <Typography variant='caption'>{calculateAprroximatedAge(date)}</Typography>
-          </Tooltip>
-        </S.EntryHeaderMeta>
+        <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
+          <Typography variant='subtitle1'>{user.login}</Typography>
+        </RouterNoPropagationLink>
+        {' · '}
+        <Tooltip title={date} >
+          <Typography variant='caption'>{calculateAprroximatedAge(date)}</Typography>
+        </Tooltip>
       </S.EntryHeader>
       <S.EntryContent>
         <S.TextContent variant='body1'>{parsedBody}</S.TextContent>
@@ -72,7 +71,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
             imageUrl={media.previewUrl}
             type={media.type}
             plus18={media.plus18}
-            aspectRatio={media.aspectRatio}
+            ratio={media.ratio}
             listMode={listMode}
           />
         )}

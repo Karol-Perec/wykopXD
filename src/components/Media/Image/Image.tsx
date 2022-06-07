@@ -3,17 +3,17 @@ import { useRef, useState } from 'react';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
 import { stopPropagation } from '../../../utils/windowUtils';
 import * as S from './Image.styles';
-import ImageViewer from './ImageViewer/ImageViewer';
+// import ImageViewer from './ImageViewer/ImageViewer';
 
 interface ImageProps {
   sourceUrl: string;
   imageUrl: string;
   plus18: boolean;
   listMode: boolean;
-  aspectRatio?: number;
+  ratio?: number;
 }
 
-const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProps) => {
+const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => {
   const [unblockMaxHeight, setUnblockMaxHeight] = useState(false);
   // const [viewerOpened, setViewerOpened] = useState(false);
   const [isBlurred, setIsBlurred] = useState(plus18);
@@ -40,7 +40,7 @@ const Image = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: ImageProp
   return (
     <S.Container
       ref={mediaContainerRef}
-      aspectRatio={aspectRatio}
+      ratio={ratio}
       unblockMaxHeight={unblockMaxHeight}
     >
       {image}

@@ -12,25 +12,30 @@ import {
   EntryComment,
   LinkComment,
   Link,
+  MediaType,
 } from '../../../../types';
 
 const WYKOP_DEFAULT_AVATAR_URL = 'https://www.wykop.pl/cdn/c3397992/avatar_def,q150.png';
 
-const getOptimizedAvatarUrl = (originalUrl: string) => originalUrl?.replace(',q150.', ',q40.');
+const mapMediaType = (e: WykopEmbedContent): MediaType => {
+  if (e.source === 'gfycat.com') return 'gfycat';
+  if (e.animated && e.type === 'image') return 'gif';
+  return e.type;
+};
 
 const mapMedia = (e: WykopEmbedContent): Media => ({
-  type: e.source === 'gfycat.com' ? 'gfycat' : e.type,
+  type: mapMediaType(e),
   url: e.url,
-  // TODO add support for gifs that are not from gfycat -> animated: true; type: "image"
   previewUrl: e.preview,
   plus18: e.plus18,
-  aspectRatio: e.ratio,
+  ratio: e.ratio,
 });
 
 export const mapUser = (p: WykopAuthor): User => ({
   login: p.login,
-  status: 1, // p.color,
-  avatarUrl: p.avatar !== WYKOP_DEFAULT_AVATAR_URL ? getOptimizedAvatarUrl(p.avatar) : undefined,
+  status: p.color,
+  avatarUrl:
+    p.avatar !== WYKOP_DEFAULT_AVATAR_URL ? p.avatar.replace(',q150.', ',q40.') : undefined,
   sex: p.sex,
 });
 
@@ -41,6 +46,7 @@ const mapEntryComments = (comments: WykopEntryComment[]): EntryComment[] =>
     date: c.date,
     voteCountPlus: c.vote_count,
     user: mapUser(c.author),
+    media: c.embed && mapMedia(c.embed),
   }));
 
 const mapLinkComment = (c: WykopLinkComment): LinkComment => ({
@@ -50,17 +56,18 @@ const mapLinkComment = (c: WykopLinkComment): LinkComment => ({
   voteCountPlus: c.vote_count_plus,
   voteCountMinus: c.vote_count - c.vote_count_plus,
   user: mapUser(c.author),
-  ...(c.id === c.parent_id && { responses: [] }),
+  responses: c.id === c.parent_id ? [] : undefined,
 });
 
 const mapLinkComments = (comments: WykopLinkComment[]): LinkComment[] =>
-  comments.reduce<LinkComment[]>((arr, comment) => {
+  comments.reduce<LinkComment[]>((acc, comment) => {
     if (comment.id === comment.parent_id) {
-      return [...arr, mapLinkComment(comment)];
+      acc.push(mapLinkComment(comment));
+      return acc;
     }
-    const parentCommentIdx = arr.findIndex((c) => comment.parent_id === c.id);
-    arr[parentCommentIdx].responses?.push(mapLinkComment(comment));
-    return arr;
+    const parentCommentIdx = acc.findIndex((c) => comment.parent_id === c.id);
+    acc[parentCommentIdx].responses?.push(mapLinkComment(comment));
+    return acc;
   }, []);
 
 export const mapEntry = (e: WykopEntry): Entry => ({
@@ -77,7 +84,7 @@ export const mapEntry = (e: WykopEntry): Entry => ({
 export const mapLink = (l: WykopLink): Link => ({
   id: l.id,
   user: mapUser(l.author),
-  body: l.description,
+  body: l.description.replace('&quot;', '"'),
   voteCountPlus: l.vote_count,
   voteCountMinus: l.bury_count,
   commentsCount: l.comments_count,
@@ -87,6 +94,6 @@ export const mapLink = (l: WykopLink): Link => ({
   previewUrl: l.preview,
   relatedCount: l.related_count,
   sourceUrl: l.source_url,
-  title: l.title.replace(/&quot;/g, '"'),
+  title: l.title.replace('&quot;', '"'),
   comments: l.comments && mapLinkComments(l.comments),
 });

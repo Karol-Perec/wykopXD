@@ -1,14 +1,13 @@
 import { Media } from './media.types';
 import { User } from './user.types';
 
-export type EntriesSort = 'active' | 'hot' | 'favourite';
-
 export interface EntryComment {
   id: number;
   user: User;
   body: string;
   date: string;
   voteCountPlus: number;
+  media?: Media;
 }
 
 export interface Entry {

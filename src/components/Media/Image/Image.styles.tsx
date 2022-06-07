@@ -1,13 +1,13 @@
 import { styled } from '@mui/material/styles';
 
 interface ContainerProps {
-  aspectRatio?: number;
+  ratio?: number;
   unblockMaxHeight: boolean;
 }
 
 export const Container = styled('div', {
-  shouldForwardProp: (prop) => prop !== 'aspectRatio' && prop !== 'unblockMaxHeight',
-})<ContainerProps>(({ theme, aspectRatio, unblockMaxHeight }) => ({
+  shouldForwardProp: (prop) => prop !== 'ratio' && prop !== 'unblockMaxHeight',
+})<ContainerProps>(({ theme, ratio, unblockMaxHeight }) => ({
   display: 'flex',
   justifyContent: 'center',
 

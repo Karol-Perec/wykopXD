@@ -1,17 +1,9 @@
-enum WykopProfileColor {
-  GREEN = 0,
-  ORANGE = 1,
-  RED = 2,
-  ADMIN = 5, // ?
-  BANNED = 1001, // ?
-  DELETED = 1002, // gray overlined
-  MEDIA = 2001, // blue media
-}
+import { ProfileStatus } from './user.types';
 
 export interface WykopProfile {
   login: string;
   sex?: 'male' | 'female';
-  color: WykopProfileColor;
+  color: ProfileStatus;
   avatar: string;
   signup_at: string;
   background?: string; // image url

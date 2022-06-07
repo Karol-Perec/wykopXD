@@ -10,10 +10,10 @@ interface VideoProps {
   imageUrl: string;
   plus18: boolean;
   listMode?: boolean;
-  aspectRatio?: number;
+  ratio?: number;
 }
 
-const Video = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: VideoProps) => {
+const Video = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: VideoProps) => {
   const [expandedVideo, setExpandedVideo] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isOnScreen = useIsOnScreen(wrapperRef);
@@ -26,7 +26,7 @@ const Video = ({ sourceUrl, imageUrl, plus18, aspectRatio, listMode }: VideoProp
 
   return (
     <S.Container>
-      <S.VideoWrapper ref={wrapperRef} aspectRatio={aspectRatio} expandedVideo={expandedVideo}>
+      <S.VideoWrapper ref={wrapperRef} ratio={ratio} expandedVideo={expandedVideo}>
         <ReactPlayer
           url={sourceUrl}
           controls

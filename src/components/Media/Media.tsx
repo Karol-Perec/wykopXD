@@ -9,10 +9,10 @@ interface MediaProps {
   imageUrl: string;
   plus18: boolean;
   listMode: boolean;
-  aspectRatio?: number;
+  ratio?: number;
 }
 
-const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, listMode }: MediaProps) => {
+const Media = ({ type, sourceUrl, imageUrl, plus18, ratio, listMode }: MediaProps) => {
   const { data: gfycatSourceUrl } = useGfycat(sourceUrl, type === 'gfycat');
 
   if (type === 'video')
@@ -21,7 +21,7 @@ const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, listMode }: Med
         sourceUrl="https://www.wykop.pl/cdn/c3201142/comment_1653760475D4pL4cX7rIrc5SEyC0uy5b"
         imageUrl={imageUrl}
         plus18={plus18}
-        aspectRatio={aspectRatio}
+        ratio={ratio}
         listMode={listMode}
       />
     );
@@ -32,7 +32,7 @@ const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, listMode }: Med
         sourceUrl={gfycatSourceUrl!}
         imageUrl={imageUrl}
         plus18={plus18}
-        aspectRatio={aspectRatio}
+        ratio={ratio}
         listMode={listMode}
       />
     );
@@ -42,7 +42,7 @@ const Media = ({ type, sourceUrl, imageUrl, plus18, aspectRatio, listMode }: Med
       sourceUrl={sourceUrl}
       imageUrl={imageUrl}
       plus18={plus18}
-      aspectRatio={aspectRatio}
+      ratio={ratio}
       listMode={listMode}
     />
   );

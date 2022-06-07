@@ -2,12 +2,12 @@ import { styled } from '@mui/material/styles';
 import { ReactComponent as Logo } from 'assets/images/logo.svg';
 
 interface ContainerProps {
-  aspectRatio?: number;
+  ratio?: number;
 }
 
 export const Container = styled('div', {
-  shouldForwardProp: (prop) => prop !== 'aspectRatio',
-})<ContainerProps>(({ theme, aspectRatio }) => ({
+  shouldForwardProp: (prop) => prop !== 'ratio',
+})<ContainerProps>(({ theme, ratio }) => ({
   display: 'inline-block',
   boxSizing: 'border-box',
   width: '100%',

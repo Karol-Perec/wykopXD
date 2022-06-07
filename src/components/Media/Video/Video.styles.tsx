@@ -1,15 +1,15 @@
 import { styled } from '@mui/material/styles';
 
 interface ContainerProps {
-  aspectRatio?: number;
+  ratio?: number;
   expandedVideo: boolean;
 }
 
 export const VideoWrapper = styled('div', {
-  shouldForwardProp: (prop) => !['aspectRatio', 'expandedVideo'].includes(String(prop)),
-})<ContainerProps>(({ aspectRatio, expandedVideo }) => ({
+  shouldForwardProp: (prop) => !['ratio', 'expandedVideo'].includes(String(prop)),
+})<ContainerProps>(({ ratio, expandedVideo }) => ({
   width: '100%',
-  aspectRatio: expandedVideo && aspectRatio ? String(1 / aspectRatio) : '16 / 9',
+  aspectRatio: expandedVideo && ratio ? String(1 / ratio) : '16 / 9',
   '@supports not (aspect-ratio: 16 / 9)': {
     '::before': {
       float: 'left',

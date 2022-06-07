@@ -14,7 +14,7 @@ interface LinkMediaProps {
   imageUrl: string;
   linkTo: string;
   plus18: boolean;
-  aspectRatio?: number;
+  ratio?: number;
   previewQuality: ImageQuality;
 }
 
@@ -35,7 +35,7 @@ const LinkMedia = ({
   imageUrl,
   linkTo,
   plus18,
-  aspectRatio,
+  ratio,
   previewQuality,
 }: LinkMediaProps) => {
   const mediaContainerRef = useRef<HTMLDivElement>(null);
@@ -66,7 +66,7 @@ const LinkMedia = ({
     );
 
   return (
-    <S.Container ref={mediaContainerRef} aspectRatio={aspectRatio}>
+    <S.Container ref={mediaContainerRef} ratio={ratio}>
       {media}
     </S.Container>
   );
