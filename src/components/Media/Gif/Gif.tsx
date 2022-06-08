@@ -1,4 +1,3 @@
-import { Link } from '@mui/material';
 import { useRef, useState } from 'react';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
 import { stopPropagation } from '../../../utils/windowUtils';
@@ -15,34 +14,37 @@ interface GifProps {
 const Gif = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: GifProps) => {
   const [unblockMaxHeight, setUnblockMaxHeight] = useState(false);
   const [isBlurred, setIsBlurred] = useState(plus18);
-  const [isPlaying, setIsPlaying] = useState(plus18);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const mediaContainerRef = useRef<HTMLDivElement>(null);
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, isBlurred));
 
   const handleUnblurImage = stopPropagation(() => {
     setIsBlurred(false);
-    setIsPlaying(true);
+    setIsPlaying((prev) => !prev);
   });
 
-  const handleStopGif = stopPropagation(() => setIsPlaying(false));
+  const handleStopGif = stopPropagation(() => setIsPlaying((prev) => !prev));
 
-  const image = isBlurred ? (
-    <S.Image
-      src={isPlaying ? displayedImageUrl : sourceUrl}
+  const gif = isBlurred ? (
+    <S.Gif
+      src={isPlaying ? sourceUrl : getDisplayedImageUrl(imageUrl, 'lq')}
       blur={isBlurred}
       alt='+18 image'
       onClick={handleUnblurImage}
     />
   ) : (
-    <Link href={sourceUrl} onClick={handleStopGif}>
-      <S.Image src={isPlaying ? displayedImageUrl : sourceUrl} blur={isBlurred} alt='' />
-    </Link>
+    <S.Gif
+      src={isPlaying ? sourceUrl : displayedImageUrl}
+      blur={isBlurred}
+      alt=''
+      onClick={handleStopGif}
+    />
   );
 
   return (
     <S.Container ref={mediaContainerRef} ratio={ratio} unblockMaxHeight={unblockMaxHeight}>
-      {image}
+      {listMode ? gif : <a href={sourceUrl}>{gif}</a>}
     </S.Container>
   );
 };

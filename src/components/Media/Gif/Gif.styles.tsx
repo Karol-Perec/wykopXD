@@ -16,13 +16,13 @@ export const Container = styled('div', {
   },
 }));
 
-interface ImageProps {
+interface GifProps {
   blur: boolean;
 }
 
-export const Image = styled('img', {
+export const Gif = styled('img', {
   shouldForwardProp: (prop) => prop !== 'blur',
-})<ImageProps>(({ theme, blur }) => ({
+})<GifProps>(({ theme, blur }) => ({
   borderRadius: 10,
 
   maxWidth: '100%',

@@ -1,7 +1,6 @@
-import { Link } from '@mui/material';
 import { useRef, useState } from 'react';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
-import { handleStopPropagation, stopPropagation } from '../../../utils/windowUtils';
+import { stopPropagation } from '../../../utils/windowUtils';
 import * as S from './Image.styles';
 
 interface ImageProps {
@@ -22,16 +21,19 @@ const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => 
   const handleUnblurImage = stopPropagation(() => setIsBlurred(false));
 
   const image = isBlurred ? (
-    <S.Image src={displayedImageUrl} blur={isBlurred} alt='+18 image' onClick={handleUnblurImage} />
+    <S.Image
+      src={getDisplayedImageUrl(imageUrl, 'lq')}
+      blur={isBlurred}
+      alt='+18 image'
+      onClick={handleUnblurImage}
+    />
   ) : (
-    <Link href={sourceUrl} onClick={handleStopPropagation}>
-      <S.Image src={displayedImageUrl} blur={isBlurred} alt='' />
-    </Link>
+    <S.Image src={displayedImageUrl} blur={isBlurred} alt='' />
   );
 
   return (
     <S.Container ref={mediaContainerRef} ratio={ratio} unblockMaxHeight={unblockMaxHeight}>
-      {image}
+      {listMode ? image : <a href={sourceUrl}>{image}</a>}
     </S.Container>
   );
 };
