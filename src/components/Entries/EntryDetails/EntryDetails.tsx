@@ -12,6 +12,8 @@ import { parseHtml } from 'utils/parseHtml';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import Avatar from 'components/UI/Avatar';
 import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/windowUtils';
+import { USER_COLOR } from 'constants/userColor.constat';
+import { TEXT_SEPARATOR } from 'constants/texts.constant';
 import Comments from '../Comments/Comments';
 import * as S from './EntryDetails.styles';
 import { Card } from '../../UI/Card';
@@ -53,14 +55,18 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
     >
       <S.EntryHeader>
         <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-          <Avatar src={user.avatarUrl} size={25} />
+          <Avatar src={user.avatarUrl} size={24} />
         </RouterNoPropagationLink>
         <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-          <Typography variant='subtitle1'>{user.login}</Typography>
+          <Typography variant='subtitle2' component='span' color={USER_COLOR[user.status]}>
+            {user.login}
+          </Typography>
         </RouterNoPropagationLink>
-        {' · '}
-        <Tooltip title={date} >
-          <Typography variant='caption'>{calculateAprroximatedAge(date)}</Typography>
+        {TEXT_SEPARATOR}
+        <Tooltip title={date}>
+          <Typography variant='caption' component='span'>
+            {calculateAprroximatedAge(date)}
+          </Typography>
         </Tooltip>
       </S.EntryHeader>
       <S.EntryContent>
