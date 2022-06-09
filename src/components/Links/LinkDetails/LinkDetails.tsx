@@ -1,8 +1,8 @@
 import { RefCallback, useState } from 'react';
-import { Button, Divider, Tooltip, Typography } from '@mui/material';
+import { Button, Divider, Tooltip, Typography, IconButton, useTheme } from '@mui/material';
 import {
-  ChatBubbleOutlineRounded as CommentsIcon,
-  ControlPoint as PlusIcon,
+  Message as CommentsIcon,
+  Share as ShareIcon,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'types';
@@ -11,6 +11,7 @@ import { TEXT_SEPARATOR } from 'constants/texts.constant';
 import { USER_COLOR } from 'constants/userColor.constat';
 import { calculateAprroximatedAge } from 'utils/dateUtils';
 import ReactPlayer from 'react-player';
+import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
 import Avatar from '../../UI/Avatar';
 import { Card } from '../../UI/Card';
 import { RouterNoPropagationLink } from '../../UI/CustomLinks';
@@ -38,6 +39,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
     commentsCount,
     voteCountPlus,
   } = data;
+  const theme = useTheme();
   const navigate = useNavigate();
   const [isShowingComments, setIsShowingComments] = useState(!listMode);
   const [didToggleComments, setDidToggleComments] = useState(!listMode);
@@ -56,6 +58,14 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
     : undefined;
 
   const handleOpenLinkInNewTab = listMode ? openInNewTab(`/link/${id}`) : undefined;
+
+  const handleShare = stopPropagation(() =>
+    navigator
+      .share({
+        url: `${window.location.origin}/link/${id}`,
+      })
+      .catch(() => undefined)
+  );
 
   return (
     <Card
@@ -97,12 +107,23 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
 
       <Divider variant='middle' />
       <S.Statistics>
+        <Button
+          startIcon={<WykopIcon height={18} fill={theme.palette.action.active} />}
+          onClick={handleStopPropagation}
+          color='inherit'
+        >
+          <Typography>{voteCountPlus}</Typography>
+        </Button>
+
         <Button startIcon={<CommentsIcon />} color='inherit' onClick={handleToggleComments}>
           <Typography>{commentsCount}</Typography>
         </Button>
-        <Button startIcon={<PlusIcon />} color='inherit' onClick={handleStopPropagation}>
-          <Typography>{voteCountPlus}</Typography>
-        </Button>
+
+        {Boolean(navigator.share) && (
+          <IconButton onClick={handleShare}>
+            <ShareIcon />
+          </IconButton>
+        )}
       </S.Statistics>
       {didToggleComments && comments?.length && (
         <Comments comments={comments} visible={isShowingComments} enablePagination={listMode} />

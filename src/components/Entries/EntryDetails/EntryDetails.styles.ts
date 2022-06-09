@@ -27,5 +27,4 @@ export const TextContent = styled(Typography)(({ theme }) => ({
 export const Statistics = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-evenly',
-  margin: theme.spacing(1),
 }));

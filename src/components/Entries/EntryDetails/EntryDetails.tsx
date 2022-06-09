@@ -1,9 +1,10 @@
 import { RefCallback, useMemo, useState } from 'react';
 import {
-  ChatBubbleOutlineRounded as CommentsIcon,
-  ControlPoint as PlusIcon,
+  Message as CommentsIcon,
+  AddBox as PlusIcon,
+  Share as ShareIcon,
 } from '@mui/icons-material';
-import { Typography, Button, Divider, Tooltip } from '@mui/material';
+import { Typography, Button, Divider, Tooltip, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Media from 'components/Media/Media';
 import { Entry } from 'types';
@@ -46,6 +47,14 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
 
   const handleOpenEntryInNewTab = listMode ? openInNewTab(`/wpis/${id}`) : undefined;
 
+  const handleShare = stopPropagation(() =>
+    navigator
+      .share({
+        url: `${window.location.origin}/wpis/${id}`,
+      })
+      .catch(() => undefined)
+  );
+
   return (
     <Card
       ref={containerRef}
@@ -84,12 +93,19 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
       </S.EntryContent>
       <Divider variant='middle' />
       <S.Statistics>
-        <Button startIcon={<CommentsIcon />} color='inherit' onClick={handleToggleComments}>
-          <Typography>{commentsCount}</Typography>
-        </Button>
         <Button startIcon={<PlusIcon />} color='inherit' onClick={handleStopPropagation}>
           <Typography>{voteCountPlus}</Typography>
         </Button>
+
+        <Button startIcon={<CommentsIcon />} color='inherit' onClick={handleToggleComments}>
+          <Typography>{commentsCount}</Typography>
+        </Button>
+
+        {Boolean(navigator.share) && (
+          <IconButton onClick={handleShare}>
+            <ShareIcon />
+          </IconButton>
+        )}
       </S.Statistics>
       {didToggleComments && comments?.length && (
         <Comments comments={comments} visible={isShowingComments} enablePagination={listMode} />
