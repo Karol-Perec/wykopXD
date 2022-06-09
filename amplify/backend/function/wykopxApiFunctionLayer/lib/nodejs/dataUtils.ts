@@ -88,7 +88,7 @@ export const mapEntry = (e: WykopEntry): Entry => ({
 export const mapLink = (l: WykopLink): Link => ({
   id: l.id,
   user: mapUser(l.author),
-  body: l.description.replace('&quot;', '"'),
+  body: l.description.replace(/&quot;/g, '"'),
   voteCountPlus: l.vote_count,
   voteCountMinus: l.bury_count,
   commentsCount: l.comments_count,
@@ -98,6 +98,6 @@ export const mapLink = (l: WykopLink): Link => ({
   previewUrl: l.preview,
   relatedCount: l.related_count,
   sourceUrl: l.source_url,
-  title: l.title.replace('&quot;', '"'),
+  title: l.title.replace(/&quot;/g, '"'),
   comments: l.comments && mapLinkComments(l.comments),
 });
