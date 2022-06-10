@@ -6,7 +6,7 @@ export const EntryHeader = styled('div')(({ theme }) => ({
   paddingLeft: theme.spacing(2),
   paddingRight: theme.spacing(2),
   gap: theme.spacing(1),
-  alignItems: 'center'
+  alignItems: 'center',
 }));
 
 export const EntryContent = styled('div')(({ theme }) => ({
@@ -24,7 +24,7 @@ export const TextContent = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const Statistics = styled('div')(({ theme }) => ({
+export const Statistics = styled('div')({
   display: 'flex',
   justifyContent: 'space-evenly',
-}));
+});

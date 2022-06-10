@@ -1,9 +1,6 @@
 import { RefCallback, useState } from 'react';
 import { Button, Divider, Tooltip, Typography, IconButton, useTheme } from '@mui/material';
-import {
-  Message as CommentsIcon,
-  Share as ShareIcon,
-} from '@mui/icons-material';
+import { Message as CommentsIcon, Share as ShareIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'types';
 import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
