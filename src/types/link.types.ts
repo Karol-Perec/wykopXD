@@ -1,14 +1,5 @@
+import { ExtendedComment } from './comment.types';
 import { User } from './user.types';
-
-export interface LinkComment {
-  id: number;
-  user: User;
-  body: string;
-  date: string;
-  voteCountPlus: number;
-  voteCountMinus: number;
-  responses?: LinkComment[];
-}
 
 export interface Link {
   id: number;
@@ -24,5 +15,5 @@ export interface Link {
   relatedCount: number;
   sourceUrl: string;
   title: string;
-  comments?: LinkComment[];
+  comments?: ExtendedComment[];
 }

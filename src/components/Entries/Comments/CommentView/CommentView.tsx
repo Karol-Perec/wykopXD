@@ -1,20 +1,20 @@
 import { useMemo } from 'react';
 import { Tooltip, Typography } from '@mui/material';
-import { EntryComment } from 'types';
+import { Comment } from 'types';
 import { calculateAprroximatedAge } from 'utils/dateUtils';
 import { parseHtml } from 'utils/parseHtml';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import Avatar from 'components/UI/Avatar';
 import { USER_COLOR } from 'constants/userColor.constat';
 import { TEXT_SEPARATOR } from 'constants/texts.constant';
-import * as S from './Comment.styles';
+import * as S from './CommentView.styles';
 import Media from '../../../Media/Media';
 
 interface CommentProps {
-  comment: EntryComment;
+  comment: Comment;
 }
 
-const Comment = ({ comment }: CommentProps) => {
+const CommentView = ({ comment }: CommentProps) => {
   const { body, user, date, media } = comment;
   const parsedBody = useMemo(() => parseHtml(body), [body]);
 
@@ -58,4 +58,4 @@ const Comment = ({ comment }: CommentProps) => {
   );
 };
 
-export default Comment;
+export default CommentView;

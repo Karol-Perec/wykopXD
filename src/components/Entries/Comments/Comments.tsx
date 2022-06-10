@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react';
 import { Button, Divider, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import { EntryComment } from 'types';
+import { Comment } from 'types';
 import { stopPropagation, handleStopPropagation } from 'utils/windowUtils';
-import Comment from './Comment/Comment';
+import CommentView from './CommentView/CommentView';
 import * as S from './Comments.styles';
 
 type OrderKey = 'NEWEST' | 'OLDEST' | 'BEST';
 
 interface CommentOrder {
   label: string;
-  comparator: (c1: EntryComment, c2: EntryComment) => number;
+  comparator: (c1: Comment, c2: Comment) => number;
 }
 
 const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
@@ -28,7 +28,7 @@ const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
 };
 
 interface CommentsProps {
-  comments: EntryComment[];
+  comments: Comment[];
   visible: boolean;
   enablePagination: boolean;
 }
@@ -42,7 +42,7 @@ const Comments = ({ comments, visible, enablePagination }: CommentsProps) => {
       comments
         .sort(COMMENTS_ORDER[orderBy].comparator)
         .slice(0, enablePagination ? page * 10 - 1 : undefined)
-        .map((c) => <Comment key={c.id} comment={c} />),
+        .map((c) => <CommentView key={c.id} comment={c} />),
     [comments, enablePagination, orderBy, page]
   );
 

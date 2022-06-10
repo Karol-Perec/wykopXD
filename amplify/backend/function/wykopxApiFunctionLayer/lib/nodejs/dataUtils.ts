@@ -9,8 +9,8 @@ import {
   Entry,
   Media,
   User,
-  EntryComment,
-  LinkComment,
+  Comment,
+  ExtendedComment,
   Link,
   MediaType,
 } from '../../../../types';
@@ -43,34 +43,31 @@ export const mapUser = (p: WykopAuthor): User => ({
   sex: p.sex,
 });
 
-const mapEntryComments = (comments: WykopEntryComment[]): EntryComment[] =>
-  comments.map((c) => ({
-    id: c.id,
-    body: c.body,
-    date: c.date,
-    voteCountPlus: c.vote_count,
-    user: mapUser(c.author),
-    media: c.embed && mapMedia(c.embed),
-  }));
-
-const mapLinkComment = (c: WykopLinkComment): LinkComment => ({
+const mapComment = (c: WykopEntryComment | WykopLinkComment): Comment => ({
   id: c.id,
   body: c.body,
   date: c.date,
-  voteCountPlus: c.vote_count_plus,
-  voteCountMinus: c.vote_count - c.vote_count_plus,
+  voteCountPlus: c.vote_count,
   user: mapUser(c.author),
+  media: c.embed && mapMedia(c.embed),
+});
+
+const mapExtendedComment = (c: WykopLinkComment): ExtendedComment => ({
+  ...mapComment(c),
+  voteCountMinus: c.vote_count - c.vote_count_plus,
   responses: c.id === c.parent_id ? [] : undefined,
 });
 
-const mapLinkComments = (comments: WykopLinkComment[]): LinkComment[] =>
-  comments.reduce<LinkComment[]>((acc, comment) => {
+const mapExtendedComments = (comments: WykopLinkComment[]): ExtendedComment[] =>
+  comments.reduce<ExtendedComment[]>((acc, comment) => {
     if (comment.id === comment.parent_id) {
-      acc.push(mapLinkComment(comment));
+      acc.push(mapExtendedComment(comment));
       return acc;
     }
-    const parentCommentIdx = acc.findIndex((c) => comment.parent_id === c.id);
-    acc[parentCommentIdx].responses?.push(mapLinkComment(comment));
+
+    const parentCommentIdx = acc.findIndex((parent) => comment.parent_id === parent.id);
+    acc[parentCommentIdx].responses!.push(mapExtendedComment(comment));
+
     return acc;
   }, []);
 
@@ -82,7 +79,7 @@ export const mapEntry = (e: WykopEntry): Entry => ({
   voteCountPlus: e.vote_count,
   media: e.embed && mapMedia(e.embed),
   commentsCount: e.comments_count,
-  comments: e.comments && mapEntryComments(e.comments),
+  comments: e.comments.map((c) => mapComment(c)),
 });
 
 export const mapLink = (l: WykopLink): Link => ({
@@ -99,5 +96,5 @@ export const mapLink = (l: WykopLink): Link => ({
   relatedCount: l.related_count,
   sourceUrl: l.source_url,
   title: l.title.replace(/&quot;/g, '"'),
-  comments: l.comments && mapLinkComments(l.comments),
+  comments: l.comments && mapExtendedComments(l.comments),
 });
