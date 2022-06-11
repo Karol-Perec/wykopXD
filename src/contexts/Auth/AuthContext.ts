@@ -1,18 +1,13 @@
 import { createContext } from 'react';
-import { UserFull } from 'types';
+import { AuthData } from 'hooks/api/useLogin';
 
 export interface AuthContextInterface {
-  saveAuthData: (authData: any) => void;
-  authData: {
-    userKey?: string;
-    accountKey?: string;
-    profile?: UserFull;
-  };
+  saveAuthData: (authData: AuthData | undefined) => void;
+  authData?: AuthData;
 }
 
 const AuthContext = createContext<AuthContextInterface>({
   saveAuthData: () => {}, // eslint-disable-line
-  authData: {},
 });
 
 export default AuthContext;

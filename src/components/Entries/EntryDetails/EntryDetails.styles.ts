@@ -1,14 +1,5 @@
 import { styled, Typography } from '@mui/material';
 
-export const EntryHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  paddingTop: theme.spacing(1.5),
-  paddingLeft: theme.spacing(2),
-  paddingRight: theme.spacing(2),
-  gap: theme.spacing(1),
-  alignItems: 'center',
-}));
-
 export const EntryContent = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(6),

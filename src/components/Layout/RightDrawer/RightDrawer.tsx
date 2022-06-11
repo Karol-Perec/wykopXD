@@ -21,7 +21,7 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
   const { authData, saveAuthData } = useContext(AuthContext);
 
   const handleLogout: MouseEventHandler = (e) => {
-    saveAuthData({});
+    saveAuthData(undefined);
     onUserAction(e);
   };
 
@@ -42,19 +42,21 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
       anchor='right'
     >
       <S.DrawerHeader>
-        <Avatar src={authData.profile?.avatarUrl} size={60} />
-        <Typography variant='h6'>{authData.profile?.login}</Typography>
+        <Avatar src={authData?.profile.avatarUrl} size={60} />
+        <Typography variant='h6'>{authData?.profile.login}</Typography>
       </S.DrawerHeader>
       <Divider variant='middle' />
       <List>
-        {!authData.userKey && (
+        {!authData?.userkey && (
           <MobileNavLink to='/zaloguj' onClick={onUserAction} icon={<LoginIcon />}>
             Zaloguj się
           </MobileNavLink>
         )}
-        <MobileNavLink to='/x' onClick={handleLogout} icon={<LogoutIcon />}>
-          Wyloguj się
-        </MobileNavLink>
+        {authData?.userkey && (
+          <MobileNavLink to='/x' onClick={handleLogout} icon={<LogoutIcon />}>
+            Wyloguj się
+          </MobileNavLink>
+        )}
         <MobileNavLink to='/ustawienia' onClick={onUserAction} icon={<SettingsIcon />}>
           Ustawienia
         </MobileNavLink>

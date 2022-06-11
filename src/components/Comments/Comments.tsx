@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Button, Divider, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import { Comment } from 'types';
+import { Comment, ExtendedComment } from 'types';
 import { stopPropagation, handleStopPropagation } from 'utils/windowUtils';
 import CommentView from './CommentView/CommentView';
 import * as S from './Comments.styles';
@@ -28,7 +28,7 @@ const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
 };
 
 interface CommentsProps {
-  comments: Comment[];
+  comments: Comment[] | ExtendedComment[];
   visible: boolean;
   enablePagination: boolean;
 }
@@ -67,7 +67,9 @@ const Comments = ({ comments, visible, enablePagination }: CommentsProps) => {
           ))}
         </Select>
         {commentsList}
-        {page * 10 <= comments.length && <Button onClick={handleLoadMore}>Załaduj więcej</Button>}
+        {enablePagination && page * 10 <= comments.length && (
+          <Button onClick={handleLoadMore}>Załaduj więcej</Button>
+        )}
       </S.CommentsListContainer>
     </S.Container>
   );

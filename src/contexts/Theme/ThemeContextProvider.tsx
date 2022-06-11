@@ -4,7 +4,7 @@ import useLocalStorage from 'hooks/useLocalStorage';
 import { getTheme } from 'theme';
 import ThemeModeContext, { ThemeModeContextInterface } from './ThemeModeContext';
 
-const ThemeContextProvider = ({ children }: PropsWithChildren<unknown>) => {
+const ThemeContextProvider = ({ children }: PropsWithChildren) => {
   const [themeMode, setThemeMode] = useLocalStorage<PaletteMode>('themeMode', 'dark');
 
   const toggleThemeMode = useMemo<ThemeModeContextInterface>(

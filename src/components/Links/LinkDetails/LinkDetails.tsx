@@ -1,20 +1,16 @@
 import { RefCallback, useState } from 'react';
-import { Button, Divider, Tooltip, Typography, IconButton, useTheme } from '@mui/material';
+import { Button, Divider, Typography, IconButton, useTheme } from '@mui/material';
 import { Message as CommentsIcon, Share as ShareIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'types';
 import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
-import { TEXT_SEPARATOR } from 'constants/texts.constant';
-import { USER_COLOR } from 'constants/userColor.constat';
-import { calculateAprroximatedAge } from 'utils/dateUtils';
 import ReactPlayer from 'react-player';
 import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
-import Avatar from '../../UI/Avatar';
 import { Card } from '../../UI/Card';
-import { RouterNoPropagationLink } from '../../UI/CustomLinks';
 import * as S from './LinkDetails.styles';
-import Comments from '../../Entries/Comments/Comments';
 import Media from '../../Media/Media';
+import ContentHeader from '../../UI/ContentHeader';
+import Comments from '../../Comments/Comments';
 
 interface LinkDetailsProps {
   data: Link;
@@ -71,22 +67,8 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
       onMouseUp={handleOpenLinkInNewTab}
       listMode={listMode}
     >
-      <S.LinkHeader>
-        <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-          <Avatar src={user.avatarUrl} size={24} />
-        </RouterNoPropagationLink>
-        <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-          <Typography variant='subtitle2' component='span' color={USER_COLOR[user.status]}>
-            {user.login}
-          </Typography>
-        </RouterNoPropagationLink>
-        {TEXT_SEPARATOR}
-        <Tooltip title={date}>
-          <Typography variant='caption' component='span'>
-            {calculateAprroximatedAge(date)}
-          </Typography>
-        </Tooltip>
-      </S.LinkHeader>
+      <ContentHeader user={user} date={date} />
+
       <S.LinkContent>
         <S.TextContent variant='h6'>{title}</S.TextContent>
 
@@ -116,7 +98,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           <Typography>{commentsCount}</Typography>
         </Button>
 
-        {Boolean(navigator.share) && (
+        {!!navigator.share && (
           <IconButton onClick={handleShare}>
             <ShareIcon />
           </IconButton>

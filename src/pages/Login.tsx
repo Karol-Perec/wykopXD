@@ -9,9 +9,7 @@ import { ROUTE } from 'routes';
 
 const Login = () => {
   useTitle('Zaloguj się');
-  const {
-    authData: { userKey },
-  } = useContext(AuthContext);
+  const { authData } = useContext(AuthContext);
   const navigate = useNavigate();
   const { data, isLoading, error } = useConnectUrl(
     window.location.origin + ROUTE.LOGIN_CALLBACK,
@@ -20,8 +18,10 @@ const Login = () => {
   const connectUrl = process.env.REACT_APP_CONNECT_URL || data;
 
   useEffect(() => {
-    if (userKey) navigate('/');
-  }, [userKey, navigate]);
+    if (authData?.userkey) {
+      navigate('/');
+    }
+  }, [navigate, authData?.userkey]);
 
   if (isLoading && !connectUrl) return <Loading />;
   if (error) return <ErrorMessage error={error} />;

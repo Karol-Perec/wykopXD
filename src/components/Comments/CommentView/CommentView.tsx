@@ -8,7 +8,7 @@ import Avatar from 'components/UI/Avatar';
 import { USER_COLOR } from 'constants/userColor.constat';
 import { TEXT_SEPARATOR } from 'constants/texts.constant';
 import * as S from './CommentView.styles';
-import Media from '../../../Media/Media';
+import Media from '../../Media/Media';
 
 interface CommentProps {
   comment: Comment;

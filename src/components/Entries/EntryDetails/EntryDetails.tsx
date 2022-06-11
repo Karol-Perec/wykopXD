@@ -15,9 +15,10 @@ import Avatar from 'components/UI/Avatar';
 import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/windowUtils';
 import { USER_COLOR } from 'constants/userColor.constat';
 import { TEXT_SEPARATOR } from 'constants/texts.constant';
-import Comments from '../Comments/Comments';
+import Comments from '../../Comments/Comments';
 import * as S from './EntryDetails.styles';
 import { Card } from '../../UI/Card';
+import ContentHeader from '../../UI/ContentHeader';
 
 interface EntryDetailsProps {
   data: Entry;
@@ -62,22 +63,8 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
       onMouseUp={handleOpenEntryInNewTab}
       listMode={listMode}
     >
-      <S.EntryHeader>
-        <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-          <Avatar src={user.avatarUrl} size={24} />
-        </RouterNoPropagationLink>
-        <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-          <Typography variant='subtitle2' component='span' color={USER_COLOR[user.status]}>
-            {user.login}
-          </Typography>
-        </RouterNoPropagationLink>
-        {TEXT_SEPARATOR}
-        <Tooltip title={date}>
-          <Typography variant='caption' component='span'>
-            {calculateAprroximatedAge(date)}
-          </Typography>
-        </Tooltip>
-      </S.EntryHeader>
+      <ContentHeader user={user} date={date} />
+
       <S.EntryContent>
         <S.TextContent variant='body1'>{parsedBody}</S.TextContent>
         {media && (
@@ -101,7 +88,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
           <Typography>{commentsCount}</Typography>
         </Button>
 
-        {Boolean(navigator.share) && (
+        {!!navigator.share && (
           <IconButton onClick={handleShare}>
             <ShareIcon />
           </IconButton>

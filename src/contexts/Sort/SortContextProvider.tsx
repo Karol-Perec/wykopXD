@@ -1,7 +1,7 @@
 import { PropsWithChildren, useMemo, useState } from 'react';
 import SortContext from './SortContext';
 
-const SortContextProvider = ({ children }: PropsWithChildren<unknown>) => {
+const SortContextProvider = ({ children }: PropsWithChildren) => {
   const [options, setStateOptions] = useState<string[]>([]);
   const [activeOption, setStateActiveOption] = useState<string>();
 

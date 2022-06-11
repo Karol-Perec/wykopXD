@@ -3,7 +3,7 @@ import AuthContextProvider from './Auth/AuthContextProvider';
 import SortContextProvider from './Sort/SortContextProvider';
 import ThemeContextProvider from './Theme/ThemeContextProvider';
 
-const ContextProvider = ({ children }: PropsWithChildren<unknown>) => (
+const ContextProvider = ({ children }: PropsWithChildren) => (
   <ThemeContextProvider>
     <AuthContextProvider>
       <SortContextProvider>{children}</SortContextProvider>

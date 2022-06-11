@@ -4,7 +4,7 @@ import RightDrawer from './RightDrawer/RightDrawer';
 import TopBar from './TopBar/TopBar';
 import * as S from './Layout.styles';
 
-const Layout = ({ children }: PropsWithChildren<unknown>) => {
+const Layout = ({ children }: PropsWithChildren) => {
   const [showLeftDrawer, setShowLeftDrawer] = useState(false);
   const [showRightDrawer, setShowRightDrawer] = useState(false);
 

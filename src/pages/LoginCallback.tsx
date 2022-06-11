@@ -8,13 +8,11 @@ const LoginCallback = () => {
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
   const connectData = useSearchParams()[0].get('connectData');
-
-  const handleLogin = (data: any) => {
+  
+  const { mutate: login } = useLogin((data) => {
     authContext.saveAuthData(data);
     navigate('/');
-  };
-
-  const { mutate: login } = useLogin(handleLogin);
+  });
 
   useEffect(() => {
     if (connectData) login(connectData);

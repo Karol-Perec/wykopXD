@@ -40,7 +40,7 @@ const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarPro
 
           <ThemeToggler />
 
-          <Avatar onClick={onRightDrawerToggleClick} size={40} src={authData.profile?.avatarUrl} />
+          <Avatar onClick={onRightDrawerToggleClick} size={40} src={authData?.profile.avatarUrl} />
         </Toolbar>
       </Container>
     </S.TopBar>

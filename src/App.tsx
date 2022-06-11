@@ -42,8 +42,8 @@ export const renderRouterRoutes = (isLoggedIn: boolean) => (
     <Route path={ROUTE.UPCOMING} element={<Upcoming />} />
     <Route path={ROUTE.SETTINGS} element={<Settings />} />
     <Route path={ROUTE.APP_INFO} element={<AppInfo />} />
-    <Route path={ROUTE.LOGIN} element={<Login />} />
-    <Route path={ROUTE.LOGIN_CALLBACK} element={<LoginCallback />} />
+    {!isLoggedIn && <Route path={ROUTE.LOGIN} element={<Login />} />}
+    {!isLoggedIn && <Route path={ROUTE.LOGIN_CALLBACK} element={<LoginCallback />} />}
     <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
   </RouterRoutes>
 );
@@ -55,7 +55,7 @@ const App = () => {
     <ErrorBoundary>
       <ScrollToTop />
       <GlobalStyles styles={globalStyles} />
-      <Layout>{renderRouterRoutes(!!authData.userKey)}</Layout>
+      <Layout>{renderRouterRoutes(!!authData?.userkey)}</Layout>
     </ErrorBoundary>
   );
 };
