@@ -1,5 +1,5 @@
 import { MouseEventHandler, useContext } from 'react';
-import { alpha, Divider, Drawer, List, Typography, useTheme } from '@mui/material';
+import { Divider, List, Typography } from '@mui/material';
 import {
   Login as LoginIcon,
   Logout as LogoutIcon,
@@ -9,7 +9,8 @@ import {
 import AuthContext from 'contexts/Auth/AuthContext';
 import Avatar from '../../UI/Avatar';
 import { MobileNavLink } from '../NavItems/NavLink/NavLink';
-import * as S from './RightDrawer.styles';
+import * as S from './Drawers.styles';
+import Drawer from '../../UI/Drawer';
 
 interface RightDrawerProps {
   open: boolean;
@@ -17,7 +18,6 @@ interface RightDrawerProps {
 }
 
 const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
-  const theme = useTheme();
   const { authData, saveAuthData } = useContext(AuthContext);
 
   const handleLogout: MouseEventHandler = (e) => {
@@ -26,25 +26,11 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
   };
 
   return (
-    <Drawer
-      open={open}
-      onClose={onUserAction}
-      PaperProps={{
-        style: {
-          backdropFilter: 'blur(10px)',
-          backgroundColor: alpha(
-            theme.palette.background.default,
-            theme.palette.mode === 'dark' ? 0.6 : 0.8
-          ),
-          width: 200,
-        },
-      }}
-      anchor='right'
-    >
-      <S.DrawerHeader>
+    <Drawer anchor='right' onUserAction={onUserAction} open={open}>
+      <S.RightDrawerHeader>
         <Avatar src={authData?.profile.avatarUrl} size={60} />
         <Typography variant='h6'>{authData?.profile.login}</Typography>
-      </S.DrawerHeader>
+      </S.RightDrawerHeader>
       <Divider variant='middle' />
       <List>
         {!authData?.userkey && (

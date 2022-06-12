@@ -1,7 +1,6 @@
 import { Sort as SortIcon } from '@mui/icons-material';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const SortButton = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -24,11 +23,9 @@ const SortButton = () => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        <MenuItem onClick={handleClose} component={Link} to='/xd'>
-          xd
-        </MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}>Item 1</MenuItem>
+        <MenuItem onClick={handleClose}>Item 2</MenuItem>
+        <MenuItem onClick={handleClose}>Item 3</MenuItem>
       </Menu>
     </>
   );

@@ -1,6 +1,6 @@
 import { PropsWithChildren, useState } from 'react';
-import LeftDrawer from './LeftDrawer/LeftDrawer';
-import RightDrawer from './RightDrawer/RightDrawer';
+import LeftDrawer from './Drawers/LeftDrawer';
+import RightDrawer from './Drawers/RightDrawer';
 import TopBar from './TopBar/TopBar';
 import * as S from './Layout.styles';
 
