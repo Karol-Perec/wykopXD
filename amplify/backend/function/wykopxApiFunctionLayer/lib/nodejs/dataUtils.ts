@@ -13,6 +13,8 @@ import {
   ExtendedComment,
   Link,
   MediaType,
+  WykopSurvey,
+  Survey,
 } from '../../../../types';
 
 const WYKOP_DEFAULT_AVATAR_URL = 'https://www.wykop.pl/cdn/c3397992/avatar_def,q150.png';
@@ -71,6 +73,12 @@ const mapExtendedComments = (comments: WykopLinkComment[]): ExtendedComment[] =>
     return acc;
   }, []);
 
+const mapSurvey = (s: WykopSurvey): Survey => ({
+  question: s.question,
+  answers: s.answers,
+  userAnswer: s.user_answer,
+});
+
 export const mapEntry = (e: WykopEntry): Entry => ({
   id: e.id,
   user: mapUser(e.author),
@@ -79,6 +87,7 @@ export const mapEntry = (e: WykopEntry): Entry => ({
   voteCountPlus: e.vote_count,
   media: e.embed && mapMedia(e.embed),
   commentsCount: e.comments_count,
+  survey: e.survey && mapSurvey(e.survey),
   comments: e.comments.map((c) => mapComment(c)),
 });
 

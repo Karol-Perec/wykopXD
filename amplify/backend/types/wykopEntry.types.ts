@@ -2,23 +2,23 @@ import { WykopEntryComment } from './wykopComment.types';
 import { WykopEmbedContent } from './wykopEmbedContent.types';
 import { WykopAuthor } from './wykopProfile.types';
 
-interface WykopSurveyAnswer {
+export interface WykopSurveyAnswer {
   id: number;
   answer: string;
   count: number;
   percentage: number;
 }
 
-interface WykopSurvey {
+export interface WykopSurvey {
   question: string;
   answers: WykopSurveyAnswer[];
-  user_answer: number;
+  user_answer?: number;
 }
 
 export interface WykopEntry {
   id: number;
   date: string;
-  body: string; // | { html: string; text: string };
+  body: string;
   author: WykopAuthor;
   receiver?: WykopAuthor;
   blocked: boolean;
