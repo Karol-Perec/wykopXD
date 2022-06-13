@@ -1,4 +1,4 @@
-import { RefCallback, useState } from 'react';
+import { RefCallback } from 'react';
 import { Button, Divider, Typography, IconButton, useTheme } from '@mui/material';
 import { Message as CommentsIcon, Share as ShareIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
@@ -34,13 +34,6 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
   } = data;
   const theme = useTheme();
   const navigate = useNavigate();
-  const [isShowingComments, setIsShowingComments] = useState(!listMode);
-  const [didToggleComments, setDidToggleComments] = useState(!listMode);
-
-  const handleToggleComments = stopPropagation(() => {
-    setIsShowingComments((prev) => !prev);
-    setDidToggleComments(true);
-  });
 
   const handleNavigateToLink = listMode
     ? () => {
@@ -94,7 +87,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           <Typography>{voteCountPlus}</Typography>
         </Button>
 
-        <Button startIcon={<CommentsIcon />} color='inherit' onClick={handleToggleComments}>
+        <Button startIcon={<CommentsIcon />} color='inherit'>
           <Typography>{commentsCount}</Typography>
         </Button>
 
@@ -104,8 +97,8 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           </IconButton>
         )}
       </S.Statistics>
-      {didToggleComments && !!comments?.length && (
-        <Comments comments={comments} visible={isShowingComments} enablePagination={listMode} />
+      {!listMode && !!comments?.length && (
+        <Comments comments={comments} enablePagination={listMode} />
       )}
     </Card>
   );

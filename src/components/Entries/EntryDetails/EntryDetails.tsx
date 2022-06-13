@@ -1,11 +1,11 @@
-import { RefCallback, useMemo, useState } from 'react';
+import { RefCallback, useMemo } from 'react';
 import {
   Message as CommentsIcon,
   AddBox as PlusIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';
 import { Typography, Button, Divider, IconButton } from '@mui/material';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Media from 'components/Media/Media';
 import { Entry } from 'types';
 import { parseHtml } from 'utils/parseHtml';
@@ -24,14 +24,7 @@ interface EntryDetailsProps {
 const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProps) => {
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments } = data;
   const navigate = useNavigate();
-  const [isShowingComments, setIsShowingComments] = useState(!listMode);
-  const [didToggleComments, setDidToggleComments] = useState(!listMode);
   const parsedBody = useMemo(() => parseHtml(body), [body]);
-
-  const handleToggleComments = stopPropagation(() => {
-    setIsShowingComments((prev) => !prev);
-    setDidToggleComments(true);
-  });
 
   const handleNavigateToEntry = listMode
     ? () => {
@@ -79,7 +72,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
           <Typography>{voteCountPlus}</Typography>
         </Button>
 
-        <Button startIcon={<CommentsIcon />} color='inherit' onClick={handleToggleComments}>
+        <Button startIcon={<CommentsIcon />} color='inherit'>
           <Typography>{commentsCount}</Typography>
         </Button>
 
@@ -89,8 +82,8 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
           </IconButton>
         )}
       </S.Statistics>
-      {didToggleComments && !!comments?.length && (
-        <Comments comments={comments} visible={isShowingComments} enablePagination={listMode} />
+      {!listMode && !!comments?.length && (
+        <Comments comments={comments} enablePagination={listMode} />
       )}
     </Card>
   );

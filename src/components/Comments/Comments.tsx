@@ -29,11 +29,10 @@ const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
 
 interface CommentsProps {
   comments: Comment[] | ExtendedComment[];
-  visible: boolean;
   enablePagination: boolean;
 }
 
-const Comments = ({ comments, visible, enablePagination }: CommentsProps) => {
+const Comments = ({ comments, enablePagination }: CommentsProps) => {
   const [orderBy, setOrderBy] = useState<OrderKey>('OLDEST');
   const [page, setPage] = useState(1);
 
@@ -56,7 +55,7 @@ const Comments = ({ comments, visible, enablePagination }: CommentsProps) => {
   );
 
   return (
-    <S.Container visible={visible}>
+    <>
       <Divider variant='middle' />
       <S.CommentsListContainer>
         <Select value={orderBy} onChange={handleSelectOrderBy} variant='standard'>
@@ -71,7 +70,7 @@ const Comments = ({ comments, visible, enablePagination }: CommentsProps) => {
           <Button onClick={handleLoadMore}>Załaduj więcej</Button>
         )}
       </S.CommentsListContainer>
-    </S.Container>
+    </>
   );
 };
 

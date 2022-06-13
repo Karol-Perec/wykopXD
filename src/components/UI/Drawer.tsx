@@ -1,11 +1,5 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
-import {
-  alpha,
-  Drawer as MuiDrawer,
-  useTheme,
-  DrawerProps as MuiDrawerProps,
-  styled,
-} from '@mui/material';
+import { alpha, Drawer as MuiDrawer, DrawerProps as MuiDrawerProps, styled } from '@mui/material';
 
 interface DrawerProps {
   open: boolean;
