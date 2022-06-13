@@ -7,6 +7,13 @@ export const TopBar = styled(AppBar)(({ theme }) => ({
     theme.palette.mode === 'dark' ? theme.palette.background.default : theme.palette.primary.main,
     0.8
   ),
+  '@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none))': {
+    backgroundColor: alpha(
+      theme.palette.mode === 'dark' ? theme.palette.background.default : theme.palette.primary.main,
+      0.99
+    ),
+  },
+
   transition: 'background-color 0.3s ease-out 0s',
 }));
 

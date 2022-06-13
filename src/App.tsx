@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import Layout from 'components/Layout/Layout';
 import { Routes as RouterRoutes, Route, Navigate } from 'react-router-dom';
-import { GlobalStyles } from '@mui/material';
 import { HitsPeriod, MikroblogCategory } from 'types';
 import LinkPage from 'pages/LinkPage';
 import MainPage from 'pages/HomePage';
@@ -19,7 +18,6 @@ import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
 import ScrollToTop from 'components/UI/ScrollToTop';
 import AuthContext from 'contexts/Auth/AuthContext';
 import { ROUTE } from './routes';
-import { globalStyles } from './globalStyles';
 
 export const renderRouterRoutes = (isLoggedIn: boolean) => (
   <RouterRoutes>
@@ -53,7 +51,6 @@ const App = () => {
   return (
     <ErrorBoundary>
       <ScrollToTop />
-      <GlobalStyles styles={globalStyles} />
       <Layout>{renderRouterRoutes(!!authData?.userkey)}</Layout>
     </ErrorBoundary>
   );

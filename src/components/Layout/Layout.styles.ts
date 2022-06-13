@@ -1,6 +1,7 @@
 import { styled } from '@mui/material';
 
 export const Main = styled('main')(({ theme }) => ({
+  display: 'flex',
   boxSizing: 'border-box',
   minHeight: 'calc(100% - 56px)',
   backgroundColor: theme.palette.background.default,

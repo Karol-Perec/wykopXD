@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Divider } from '@mui/material';
 import { ROUTE } from 'routes';
 import { MobileNavLinks } from '../NavItems/NavLinks';
-import * as S from './Drawers.styles';
+import * as S from './SideDrawers.styles';
 import Drawer from '../../UI/Drawer';
 
 interface LeftDrawerProps {

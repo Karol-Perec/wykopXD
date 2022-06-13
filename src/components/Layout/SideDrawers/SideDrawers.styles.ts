@@ -7,7 +7,7 @@ export const LeftDrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export const NavContainer = styled('nav')({
-  width: 230,
+  width: 200,
 });
 
 export const WykopLogo = styled(SvgLogo)(({ theme }) => ({

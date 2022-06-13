@@ -9,7 +9,7 @@ import {
 import AuthContext from 'contexts/Auth/AuthContext';
 import Avatar from '../../UI/Avatar';
 import { MobileNavLink } from '../NavItems/NavLink/NavLink';
-import * as S from './Drawers.styles';
+import * as S from './SideDrawers.styles';
 import Drawer from '../../UI/Drawer';
 
 interface RightDrawerProps {

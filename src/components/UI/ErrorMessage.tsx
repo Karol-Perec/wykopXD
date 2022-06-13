@@ -3,15 +3,17 @@ import { ReactComponent as FeelsBadMan } from 'assets/images/feelsBadMan.svg';
 import { AxiosError } from 'axios';
 
 const StyledContainer = styled('div')(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
+  boxSizing: 'border-box',
+  height: '100%',
   display: 'flex',
-  gap: theme.spacing(1),
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  height: 'calc(100vh - 136px)',
+  gap: theme.spacing(1),
+  backgroundColor: theme.palette.background.default,
   color: theme.palette.text.primary,
   transition: 'background-color 0.3s ease-out 0s',
+  paddingBottom: theme.spacing(10),
 }));
 
 const renderError = (error: unknown) => {
@@ -28,8 +30,12 @@ interface ErrorMessageProps {
 
 const ErrorMessage = ({ error }: ErrorMessageProps) => (
   <StyledContainer>
-    <FeelsBadMan width={150} />
-    <Typography variant='h6'>Błąd: {renderError(error)}</Typography>
+    <FeelsBadMan width={150} style={{ marginLeft: 24 }} />
+
+    <Typography variant='h6' textAlign='center'>
+      Błąd: {renderError(error)}
+    </Typography>
+
     <Button href='/' variant='outlined'>
       Powrót na stronę główną
     </Button>

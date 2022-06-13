@@ -13,7 +13,8 @@ const useLink = (id: string, initialData?: Link) =>
     staleTime: 10000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,
-    initialData
+    initialData,
+    initialDataUpdatedAt: 0,
   });
 
 export default useLink;
