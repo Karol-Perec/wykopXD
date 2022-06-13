@@ -7,12 +7,13 @@ const getEntry = async (id: string) => {
   return data;
 };
 
-const useEntry = (id: string) =>
+const useEntry = (id: string, initialData?: Entry) =>
   useQuery(['entry', id], () => getEntry(id), {
     retry: false,
     staleTime: 10000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,
+    initialData,
   });
 
 export default useEntry;

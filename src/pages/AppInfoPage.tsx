@@ -2,7 +2,7 @@ import useTitle from 'hooks/useTitle';
 import { Card, Container, Typography } from '@mui/material';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from '../components/UI/CustomLinks';
 
-const AppInfo = () => {
+const AppInfoPage = () => {
   useTitle('O aplikacji');
 
   return (
@@ -33,4 +33,4 @@ const AppInfo = () => {
   );
 };
 
-export default AppInfo;
+export default AppInfoPage;

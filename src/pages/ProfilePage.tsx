@@ -6,7 +6,7 @@ import useProfileActions from 'hooks/api/useProfileActions';
 
 const PROFILE_ACTIONS_PAGE_LENGTH = 25;
 
-const Profile = () => {
+const ProfilePage = () => {
   const { username } = useParams();
   useTitle(`@${username}`);
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useProfileActions(
@@ -30,4 +30,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;

@@ -4,21 +4,16 @@ import {
   AddBox as PlusIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';
-import { Typography, Button, Divider, Tooltip, IconButton } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Typography, Button, Divider, IconButton } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Media from 'components/Media/Media';
 import { Entry } from 'types';
-import { calculateAprroximatedAge } from 'utils/dateUtils';
 import { parseHtml } from 'utils/parseHtml';
-import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
-import Avatar from 'components/UI/Avatar';
 import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/windowUtils';
-import { USER_COLOR } from 'constants/userColor.constat';
-import { TEXT_SEPARATOR } from 'constants/texts.constant';
 import Comments from '../../Comments/Comments';
-import * as S from './EntryDetails.styles';
 import { Card } from '../../UI/Card';
 import ContentHeader from '../../UI/ContentHeader';
+import * as S from './EntryDetails.styles';
 
 interface EntryDetailsProps {
   data: Entry;
@@ -41,7 +36,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
   const handleNavigateToEntry = listMode
     ? () => {
         if (document.getSelection()?.isCollapsed) {
-          navigate(`/wpis/${id}`);
+          navigate(`/wpis/${id}`, { state: data });
         }
       }
     : undefined;

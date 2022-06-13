@@ -1,11 +1,9 @@
 import LinksList from 'components/Links/LinksList/LinksList';
 import ErrorMessage from 'components/UI/ErrorMessage';
 import useLinks from 'hooks/api/useLinks';
-import useTitle from 'hooks/useTitle';
 
-const Upcoming = () => {
-  useTitle('Wykopalisko');
-  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useLinks('upcoming');
+const HomePage = () => {
+  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useLinks('promoted');
 
   if (error) return <ErrorMessage error={error} />;
 
@@ -18,4 +16,4 @@ const Upcoming = () => {
   );
 };
 
-export default Upcoming;
+export default HomePage;

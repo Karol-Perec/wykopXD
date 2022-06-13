@@ -8,7 +8,7 @@ interface HitsProps {
   period?: HitsPeriod;
 }
 
-const Hits = ({ period }: HitsProps) => {
+const HitsPage = ({ period }: HitsProps) => {
   useTitle('Hity');
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useHits(
     period || HitsPeriod.WEEK
@@ -31,4 +31,4 @@ const Hits = ({ period }: HitsProps) => {
   );
 };
 
-export default Hits;
+export default HitsPage;

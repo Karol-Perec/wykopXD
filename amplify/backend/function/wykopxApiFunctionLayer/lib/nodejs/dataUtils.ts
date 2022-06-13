@@ -88,7 +88,7 @@ export const mapEntry = (e: WykopEntry): Entry => ({
   media: e.embed && mapMedia(e.embed),
   commentsCount: e.comments_count,
   survey: e.survey && mapSurvey(e.survey),
-  comments: e.comments.map((c) => mapComment(c)),
+  comments: e.comments?.map((c) => mapComment(c)),
 });
 
 export const mapLink = (l: WykopLink): Link => ({

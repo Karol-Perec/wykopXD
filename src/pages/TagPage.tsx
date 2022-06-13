@@ -6,7 +6,7 @@ import useTag from 'hooks/api/useTag';
 
 const TAG_PAGE_LENGTH = 50;
 
-const Tag = () => {
+const TagPage = () => {
   const { tag } = useParams();
   useTitle(`#${tag}`);
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useTag(tag!);
@@ -28,4 +28,4 @@ const Tag = () => {
   );
 };
 
-export default Tag;
+export default TagPage;

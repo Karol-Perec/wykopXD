@@ -45,7 +45,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
   const handleNavigateToLink = listMode
     ? () => {
         if (document.getSelection()?.isCollapsed) {
-          navigate(`/link/${id}`);
+          navigate(`/link/${id}`, { state: data });
         }
       }
     : undefined;

@@ -7,7 +7,7 @@ import useTitle from 'hooks/useTitle';
 import AuthContext from 'contexts/Auth/AuthContext';
 import { ROUTE } from 'routes';
 
-const Login = () => {
+const LoginPage = () => {
   useTitle('Zaloguj się');
   const { authData } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -30,8 +30,6 @@ const Login = () => {
   if (connectUrl) window.location.href = connectUrl;
 
   return null;
-
-  // return <IFrame title='Wykop Connect' src={connectUrl} />;
 };
 
-export default Login;
+export default LoginPage;
