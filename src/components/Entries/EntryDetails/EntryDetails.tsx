@@ -89,7 +89,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
           </IconButton>
         )}
       </S.Statistics>
-      {didToggleComments && comments?.length && (
+      {didToggleComments && !!comments?.length && (
         <Comments comments={comments} visible={isShowingComments} enablePagination={listMode} />
       )}
     </Card>

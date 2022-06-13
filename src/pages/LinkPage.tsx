@@ -16,11 +16,14 @@ const LinkPage = () => {
   );
   useTitle(data?.title);
 
-  if (isLoading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;
-  if (!data) return <ErrorMessage error='Nie znaleziono' />;
 
-  return <LinkDetails data={data} />;
+  return (
+    <>
+      {data && <LinkDetails data={data} />}
+      {isLoading && <Loading />}
+    </>
+  );
 };
 
 export default LinkPage;

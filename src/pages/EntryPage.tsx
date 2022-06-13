@@ -16,11 +16,14 @@ const EntryPage = () => {
   );
   useTitle(data && `@${data.user.login}: ${data.body}`);
 
-  if (isLoading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;
-  if (!data) return <ErrorMessage error='Nie znaleziono' />;
 
-  return <EntryDetails data={data} />;
+  return (
+    <>
+      {data && <EntryDetails data={data} />}
+      {isLoading && <Loading />}
+    </>
+  );
 };
 
 export default EntryPage;

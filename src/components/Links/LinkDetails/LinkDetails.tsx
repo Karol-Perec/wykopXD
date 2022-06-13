@@ -104,7 +104,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           </IconButton>
         )}
       </S.Statistics>
-      {didToggleComments && comments?.length && (
+      {didToggleComments && !!comments?.length && (
         <Comments comments={comments} visible={isShowingComments} enablePagination={listMode} />
       )}
     </Card>
