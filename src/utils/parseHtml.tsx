@@ -4,10 +4,11 @@
 import { Fragment } from 'react';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import Spoiler from 'components/UI/Spoiler';
+import { SPACE_CHAR } from 'constants/texts.constant';
 
 const encodeUtf8 = (message: string) => {
   const query = new URLSearchParams(message);
-  return Array.from(query)?.[0].join(' ');
+  return Array.from(query)?.[0].join(SPACE_CHAR);
 };
 
 const parseTextNode = (text: string | null) => {
@@ -17,33 +18,48 @@ const parseTextNode = (text: string | null) => {
 };
 
 const parseSpoilerText = (text: string | null) =>
-  text?.split(' ').map((word, idx) => {
-    if (word.startsWith('#')) {
-      return (
-        <Fragment key={idx}>
-          <RouterNoPropagationLink to={`/tag/${word.substring(1)}`}>{word}</RouterNoPropagationLink>{' '}
-        </Fragment>
-      );
-    }
-    if (word.startsWith('@')) {
-      return (
-        <Fragment key={idx}>
-          <RouterNoPropagationLink to={`/ludzie/${word.substring(1)}`}>
+  text
+    ?.split(SPACE_CHAR)
+    .map((word, idx) => {
+      if (word.startsWith('#')) {
+        return [
+          <RouterNoPropagationLink to={`/tag/${word.substring(1)}`} key={idx}>
             {word}
-          </RouterNoPropagationLink>{' '}
-        </Fragment>
-      );
-    }
-    if (word.startsWith('http')) {
-      return (
-        <Fragment key={idx}>
-          <ExternalNoPropagationLink href={word}>{word}</ExternalNoPropagationLink>{' '}
-        </Fragment>
-      );
-    }
-    if (word.endsWith('\n')) return [word, <br key={idx} />];
-    return `${word} `;
-  });
+          </RouterNoPropagationLink>,
+          SPACE_CHAR,
+        ];
+      }
+      if (word.startsWith('@')) {
+        return [
+          <RouterNoPropagationLink to={`/ludzie/${word.substring(1)}`} key={idx}>
+            {word}
+          </RouterNoPropagationLink>,
+          SPACE_CHAR,
+        ];
+      }
+      if (word.startsWith('http')) {
+        return [
+          <ExternalNoPropagationLink href={word} key={idx}>
+            {word}
+          </ExternalNoPropagationLink>,
+          SPACE_CHAR,
+        ];
+      }
+      if (word.endsWith('\n')) return [word, <br key={idx} />];
+      return word;
+    })
+    .flat()
+    .reduce<(string | JSX.Element)[]>((arr, node) => {
+      if (typeof node === 'string') {
+        const lastNode = arr[arr.length - 1];
+        if (typeof lastNode === 'string') {
+          arr[arr.length - 1] = `${lastNode} ${node}`;
+          return arr;
+        }
+      }
+      arr.push(node);
+      return arr;
+    }, []);
 
 const parseElementNode = (node: ChildNode) => {
   switch (node.nodeName) {
