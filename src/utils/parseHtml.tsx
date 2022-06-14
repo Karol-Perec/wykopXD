@@ -41,6 +41,7 @@ const parseSpoilerText = (text: string | null) =>
         </Fragment>
       );
     }
+    if (word.endsWith('\n')) return [word, <br key={idx} />];
     return `${word} `;
   });
 
@@ -67,32 +68,26 @@ const parseElementNode = (node: ChildNode) => {
         </em>
       );
     case 'A': {
-      const linkNode = node as HTMLLinkElement;
-      if (linkNode.href.endsWith(`#${linkNode.textContent}`)) {
+      const a = node as HTMLAnchorElement;
+      if (a.href.endsWith(`#${a.textContent}`)) {
         return (
           <RouterNoPropagationLink to={`/tag/${node.textContent}`}>
             {`#${node.textContent}`}
           </RouterNoPropagationLink>
         );
       }
-      if (linkNode.href.endsWith(`@${linkNode.textContent}`)) {
+      if (a.href.endsWith(`@${a.textContent}`)) {
         return (
           <RouterNoPropagationLink to={`/ludzie/${node.textContent}`}>
             {`@${node.textContent}`}
           </RouterNoPropagationLink>
         );
       }
-      if (linkNode.href.startsWith('spoiler:')) {
-        return (
-          <Spoiler>{parseSpoilerText(encodeUtf8(linkNode.href.replace('spoiler:', '')))}</Spoiler>
-        );
+      if (a.href.startsWith('spoiler:')) {
+        return <Spoiler>{parseSpoilerText(encodeUtf8(a.pathname))}</Spoiler>;
       }
-      if (linkNode.href.startsWith('http')) {
-        return (
-          <ExternalNoPropagationLink href={linkNode.href}>
-            {linkNode.textContent}
-          </ExternalNoPropagationLink>
-        );
+      if (a.href.startsWith('http')) {
+        return <ExternalNoPropagationLink href={a.href}>{a.textContent}</ExternalNoPropagationLink>;
       }
       return null;
     }
