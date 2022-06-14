@@ -29,10 +29,9 @@ const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
 
 interface CommentsProps {
   comments: Comment[] | ExtendedComment[];
-  enablePagination: boolean;
 }
 
-const Comments = ({ comments, enablePagination }: CommentsProps) => {
+const Comments = ({ comments }: CommentsProps) => {
   const [orderBy, setOrderBy] = useState<OrderKey>('OLDEST');
   const [page, setPage] = useState(1);
 
@@ -40,18 +39,17 @@ const Comments = ({ comments, enablePagination }: CommentsProps) => {
     () =>
       comments
         .sort(COMMENTS_ORDER[orderBy].comparator)
-        .slice(0, enablePagination ? page * 10 - 1 : undefined)
+        .slice(0, page * 20 - 1)
         .map((c) => <CommentView key={c.id} comment={c} />),
-    [comments, enablePagination, orderBy, page]
+    [comments, orderBy, page]
   );
 
   const handleSelectOrderBy = (e: SelectChangeEvent<OrderKey>) => {
     setOrderBy(e.target.value as OrderKey);
-    if (enablePagination) setPage(1);
   };
 
   const handleLoadMore = stopPropagation(() =>
-    setPage((p) => (p * 10 < comments.length ? p + 1 : p))
+    setPage((p) => (p * 20 < comments.length ? p + 1 : p))
   );
 
   return (
@@ -66,9 +64,7 @@ const Comments = ({ comments, enablePagination }: CommentsProps) => {
           ))}
         </Select>
         {commentsList}
-        {enablePagination && page * 10 <= comments.length && (
-          <Button onClick={handleLoadMore}>Załaduj więcej</Button>
-        )}
+        {page * 20 <= comments.length && <Button onClick={handleLoadMore}>Załaduj więcej</Button>}
       </S.CommentsListContainer>
     </>
   );

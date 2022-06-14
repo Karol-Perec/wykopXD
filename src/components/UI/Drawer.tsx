@@ -12,7 +12,7 @@ const StyledMuiDrawer = styled(MuiDrawer)(({ theme }) => ({
     backdropFilter: 'blur(10px)',
     backgroundColor: alpha(
       theme.palette.background.default,
-      theme.palette.mode === 'dark' ? 0.6 : 0.8
+      theme.palette.mode === 'dark' ? 0.6 : 0.9
     ),
     width: 200,
     '@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none))': {

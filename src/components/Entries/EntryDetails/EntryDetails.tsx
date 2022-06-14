@@ -82,9 +82,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
           </IconButton>
         )}
       </S.Statistics>
-      {!listMode && !!comments?.length && (
-        <Comments comments={comments} enablePagination={listMode} />
-      )}
+      {!listMode && !!comments?.length && <Comments comments={comments} />}
     </Card>
   );
 };

@@ -1,4 +1,4 @@
-import { MouseEventHandler, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import useIsOnScreen from 'hooks/useIsOnScreen';
 import { getDisplayedImageUrl } from 'utils/imageUtils';

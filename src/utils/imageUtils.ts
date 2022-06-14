@@ -12,7 +12,7 @@ export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) =>
   return imageUrl?.replace(/,w[0-9]+(h[0-9]+)?/g, qualityResoultionMap[quality]);
 };
 
-export const getImageQuality = (listMode: boolean, blur: boolean): ImageQuality => {
-  if (blur) return 'lq';
+export const getImageQuality = (listMode: boolean, isBlur: boolean): ImageQuality => {
+  if (isBlur) return 'lq';
   return listMode ? 'hq' : 'hd';
 };

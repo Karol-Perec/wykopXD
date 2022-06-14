@@ -26,7 +26,7 @@ export const Image = styled('img', {
   borderRadius: 10,
 
   maxWidth: '100%',
-  ...(blur && { filter: 'blur(20px)', ':hover': { cursor: 'pointer' } }),
+  ...(blur && { ':hover': { cursor: 'pointer' } }),
 
   maxHeight: 550,
   [theme.breakpoints.up('sm')]: {

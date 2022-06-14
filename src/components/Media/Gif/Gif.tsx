@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
-import { stopPropagation } from '../../../utils/windowUtils';
+import { stopPropagation } from 'utils/windowUtils';
 import * as S from './Gif.styles';
 
 interface GifProps {

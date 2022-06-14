@@ -97,9 +97,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           </IconButton>
         )}
       </S.Statistics>
-      {!listMode && !!comments?.length && (
-        <Comments comments={comments} enablePagination={listMode} />
-      )}
+      {!listMode && !!comments?.length && <Comments comments={comments} />}
     </Card>
   );
 };
