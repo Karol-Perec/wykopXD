@@ -1,11 +1,17 @@
 import { Comment } from './comment.types';
 import { Media } from './media.types';
 import { User } from './user.types';
-import { WykopSurveyAnswer } from './wykopEntry.types';
+
+export interface SurveyAnswer {
+  id: number;
+  text: string;
+  voteCount: number;
+  votePercentage: number;
+}
 
 export interface Survey {
   question: string;
-  answers: WykopSurveyAnswer[];
+  answers: SurveyAnswer[];
   userAnswer?: number;
 }
 

@@ -13,6 +13,7 @@ import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/wind
 import Comments from '../../Comments/Comments';
 import { Card } from '../../UI/Card';
 import ContentHeader from '../../UI/ContentHeader';
+import SurveyAnswer from '../../UI/SurveyAnswer';
 import * as S from './EntryDetails.styles';
 
 interface EntryDetailsProps {
@@ -22,7 +23,7 @@ interface EntryDetailsProps {
 }
 
 const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProps) => {
-  const { media, user, body, id, date, commentsCount, voteCountPlus, comments } = data;
+  const { media, user, body, id, date, commentsCount, voteCountPlus, comments, survey } = data;
   const navigate = useNavigate();
   const parsedBody = useMemo(() => parseHtml(body), [body]);
 
@@ -64,6 +65,18 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
             ratio={media.ratio}
             listMode={listMode}
           />
+        )}
+        {survey && (
+          <S.SurveyContainer>
+            <Typography textAlign='center'>{survey.question}</Typography>
+            {survey.answers.map((answer) => (
+              <SurveyAnswer
+                answer={answer}
+                key={answer.id}
+                isActive={survey.userAnswer === answer.id}
+              />
+            ))}
+          </S.SurveyContainer>
         )}
       </S.EntryContent>
       <Divider variant='middle' />

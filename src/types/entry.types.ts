@@ -2,14 +2,14 @@ import { Comment } from './comment.types';
 import { Media } from './media.types';
 import { User } from './user.types';
 
-interface SurveyAnswer {
+export interface SurveyAnswer {
   id: number;
-  answer: string;
-  count: number;
-  percentage: number;
+  text: string;
+  voteCount: number;
+  votePercentage: number;
 }
 
-interface Survey {
+export interface Survey {
   question: string;
   answers: SurveyAnswer[];
   userAnswer?: number;

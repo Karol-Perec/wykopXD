@@ -75,7 +75,12 @@ const mapExtendedComments = (comments: WykopLinkComment[]): ExtendedComment[] =>
 
 const mapSurvey = (s: WykopSurvey): Survey => ({
   question: s.question,
-  answers: s.answers,
+  answers: s.answers.map((a) => ({
+    id: a.id,
+    text: a.answer,
+    voteCount: a.count,
+    votePercentage: a.percentage,
+  })),
   userAnswer: s.user_answer,
 });
 
