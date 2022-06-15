@@ -1,6 +1,10 @@
 import { RefCallback } from 'react';
-import { Button, Divider, Typography, IconButton, useTheme } from '@mui/material';
-import { Message as CommentsIcon, Share as ShareIcon } from '@mui/icons-material';
+import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/material';
+import {
+  Message as CommentsIcon,
+  Share as ShareIcon,
+  LocalFireDepartment as HotIcon,
+} from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'types';
 import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
@@ -31,6 +35,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
     comments,
     commentsCount,
     voteCountPlus,
+    isHot,
   } = data;
   const theme = useTheme();
   const navigate = useNavigate();
@@ -80,7 +85,15 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
       <Divider variant='middle' />
       <S.Statistics>
         <Button
-          startIcon={<WykopIcon height={18} fill={theme.palette.action.active} />}
+          startIcon={
+            isHot ? (
+              <Badge badgeContent={<HotIcon style={{ height: 16 }} color='error' />}>
+                <WykopIcon height={18} fill={theme.palette.action.active} />
+              </Badge>
+            ) : (
+              <WykopIcon height={18} fill={theme.palette.action.active} />
+            )
+          }
           onClick={handleStopPropagation}
           color='inherit'
         >

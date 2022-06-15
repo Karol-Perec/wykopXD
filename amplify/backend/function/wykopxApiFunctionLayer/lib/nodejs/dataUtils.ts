@@ -94,7 +94,7 @@ export const mapEntry = (e: WykopEntry, skipReducedCommentList = false): Entry =
   commentsCount: e.comments_count,
   survey: e.survey && mapSurvey(e.survey),
   comments:
-    e.comments?.length && (!skipReducedCommentList || e.comments.length < 3)
+    e.comments?.length && (!skipReducedCommentList || e.comments_count < 3)
       ? e.comments.map((c) => mapComment(c))
       : undefined,
 });

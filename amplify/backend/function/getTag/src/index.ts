@@ -17,7 +17,7 @@ export const handler: APIGatewayProxyHandler = async ({
   return get<GetTagReponse>(
     `/tags/index/${pathParameters.tag}/page/${queryStringParameters?.page || 1}/return/comments`,
     ({ data, meta }) => ({
-      items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry))),
+      items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry, true))),
       meta: {
         isObserved: meta.is_observed,
         isBlocked: meta.is_blocked,
