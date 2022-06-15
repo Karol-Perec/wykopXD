@@ -84,7 +84,7 @@ const mapSurvey = (s: WykopSurvey): Survey => ({
   userAnswer: s.user_answer,
 });
 
-export const mapEntry = (e: WykopEntry): Entry => ({
+export const mapEntry = (e: WykopEntry, skipReducedCommentList = false): Entry => ({
   id: e.id,
   user: mapUser(e.author),
   body: e.body,
@@ -93,7 +93,10 @@ export const mapEntry = (e: WykopEntry): Entry => ({
   media: e.embed && mapMedia(e.embed),
   commentsCount: e.comments_count,
   survey: e.survey && mapSurvey(e.survey),
-  comments: e.comments?.length ? e.comments.map((c) => mapComment(c)) : undefined,
+  comments:
+    e.comments?.length && (!skipReducedCommentList || e.comments.length < 3)
+      ? e.comments.map((c) => mapComment(c))
+      : undefined,
 });
 
 export const mapLink = (l: WykopLink): Link => ({
