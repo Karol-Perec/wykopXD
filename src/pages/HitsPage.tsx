@@ -15,7 +15,7 @@ const HitsPage = ({ period }: HitsProps) => {
   );
 
   const handleInititeScroll = () => {
-    if (!data?.pages || data?.pages[data.pages.length - 1].length < 25) {
+    if (!data || data.pages?.at(-1)?.length) {
       fetchNextPage();
     }
   };

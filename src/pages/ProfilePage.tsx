@@ -4,8 +4,6 @@ import ErrorMessage from 'components/UI/ErrorMessage';
 import useTitle from 'hooks/useTitle';
 import useProfileActions from 'hooks/api/useProfileActions';
 
-const PROFILE_ACTIONS_PAGE_LENGTH = 25;
-
 const ProfilePage = () => {
   const { username } = useParams();
   useTitle(`@${username}`);
@@ -14,7 +12,7 @@ const ProfilePage = () => {
   );
 
   const handleInititeScroll = () => {
-    if (data?.pages[data.pages.length - 1].length === PROFILE_ACTIONS_PAGE_LENGTH) {
+    if (!data || data.pages?.at(-1)?.length) {
       fetchNextPage();
     }
   };

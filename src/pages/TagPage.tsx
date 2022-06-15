@@ -4,15 +4,13 @@ import ErrorMessage from 'components/UI/ErrorMessage';
 import useTitle from 'hooks/useTitle';
 import useTag from 'hooks/api/useTag';
 
-const TAG_PAGE_LENGTH = 50;
-
 const TagPage = () => {
   const { tag } = useParams();
   useTitle(`#${tag}`);
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useTag(tag!);
 
   const handleInititeScroll = () => {
-    if (data?.pages[data.pages.length - 1].length === TAG_PAGE_LENGTH) {
+    if (!data || data.pages?.at(-1)?.items.length) {
       fetchNextPage();
     }
   };
@@ -21,7 +19,7 @@ const TagPage = () => {
 
   return (
     <ContentList
-      contents={data?.pages.flat()}
+      contents={data?.pages.flatMap((p) => p.items)}
       isLoading={isLoading || isFetchingNextPage}
       onInfiniteScroll={handleInititeScroll}
     />

@@ -6,7 +6,7 @@ const getTag = async (page: number, tag: string) => {
   const { data } = await axios.get<Collection<Entry | Link> & { meta: TagMeta }>(`/tags/${tag}`, {
     params: { page },
   });
-  return data.items;
+  return data;
 };
 
 const useTag = (tag: string) =>

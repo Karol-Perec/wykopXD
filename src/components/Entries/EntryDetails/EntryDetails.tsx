@@ -66,7 +66,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
             listMode={listMode}
           />
         )}
-        {survey && (
+        {/* {survey && (
           <S.SurveyContainer>
             <Typography textAlign='center'>{survey.question}</Typography>
             {survey.answers.map((answer) => (
@@ -77,7 +77,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
               />
             ))}
           </S.SurveyContainer>
-        )}
+        )} */}
       </S.EntryContent>
       <Divider variant='middle' />
       <S.Statistics>
