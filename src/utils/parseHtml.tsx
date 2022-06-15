@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import Spoiler from 'components/UI/Spoiler';
 import { SPACE_CHAR } from 'constants/texts.constant';
+import { Typography } from '@mui/material';
 
 const encodeUtf8 = (message: string) => {
   const query = new URLSearchParams(message);
@@ -40,7 +41,9 @@ const parseSpoilerText = (text: string | null) =>
       if (word.startsWith('http')) {
         return [
           <ExternalNoPropagationLink href={word} key={idx}>
-            {word}
+            <Typography component='span' style={{ wordBreak: 'break-all' }}>
+              {word}
+            </Typography>
           </ExternalNoPropagationLink>,
           SPACE_CHAR,
         ];
@@ -103,7 +106,13 @@ const parseElementNode = (node: ChildNode) => {
         return <Spoiler>{parseSpoilerText(encodeUtf8(a.pathname))}</Spoiler>;
       }
       if (a.href.startsWith('http')) {
-        return <ExternalNoPropagationLink href={a.href}>{a.textContent}</ExternalNoPropagationLink>;
+        return (
+          <ExternalNoPropagationLink href={a.href}>
+            <Typography component='span' style={{ wordBreak: 'break-all' }}>
+              {a.textContent}
+            </Typography>
+          </ExternalNoPropagationLink>
+        );
       }
       return null;
     }

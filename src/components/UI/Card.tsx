@@ -3,7 +3,6 @@ import { Card as MuiCard, darken, lighten, styled } from '@mui/material';
 export const Card = styled(MuiCard, { shouldForwardProp: (prop) => prop !== 'listMode' })<{
   listMode?: boolean;
 }>(({ theme, listMode }) => ({
-  width: '100%',
   marginBottom: theme.spacing(2),
   WebkitTapHighlightColor: 'transparent',
   transition: 'background-color 0.3s ease-out 0s',

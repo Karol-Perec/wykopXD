@@ -31,6 +31,7 @@ export const RouterNoPropagationLink = ({
     onMouseUp={handleStopPropagation}
     component={RouterLink}
     underline='hover'
+    textOverflow='ellipsis'
   >
     {children}
   </Link>
