@@ -18,11 +18,17 @@ import * as S from './EntryDetails.styles';
 
 interface EntryDetailsProps {
   data: Entry;
+  isUpdatingComments?: boolean;
   listMode?: boolean;
   containerRef?: RefCallback<HTMLElement>;
 }
 
-const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProps) => {
+const EntryDetails = ({
+  data,
+  listMode = false,
+  isUpdatingComments = false,
+  containerRef,
+}: EntryDetailsProps) => {
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments, survey } = data;
   const navigate = useNavigate();
   const parsedBody = useMemo(() => parseHtml(body), [body]);
@@ -95,7 +101,7 @@ const EntryDetails = ({ data, listMode = false, containerRef }: EntryDetailsProp
           </IconButton>
         )}
       </S.Statistics>
-      {!listMode && !!comments?.length && <Comments comments={comments} />}
+      {!listMode && !isUpdatingComments && !!comments?.length && <Comments comments={comments} />}
     </Card>
   );
 };

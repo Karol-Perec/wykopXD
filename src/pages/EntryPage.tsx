@@ -20,7 +20,7 @@ const EntryPage = () => {
 
   return (
     <>
-      {data && <EntryDetails data={data} />}
+      {data && <EntryDetails data={data} isUpdatingComments={isLoading} />}
       {isLoading && <Loading />}
     </>
   );
