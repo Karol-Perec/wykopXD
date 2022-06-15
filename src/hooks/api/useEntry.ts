@@ -14,6 +14,10 @@ const useEntry = (id: string, initialData?: Entry) =>
     keepPreviousData: true,
     refetchOnWindowFocus: false,
     initialData,
+    initialDataUpdatedAt:
+      !initialData?.comments || initialData?.comments?.length <= initialData?.commentsCount
+        ? undefined
+        : 0,
   });
 
 export default useEntry;

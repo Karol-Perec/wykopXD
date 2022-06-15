@@ -25,7 +25,7 @@ export interface WykopEntry {
   favorite: boolean;
   vote_count: number;
   comments_count: number;
-  comments: WykopEntryComment[];
+  comments?: WykopEntryComment[];
   status: 'visible' | string;
   embed?: WykopEmbedContent;
   survey?: WykopSurvey;

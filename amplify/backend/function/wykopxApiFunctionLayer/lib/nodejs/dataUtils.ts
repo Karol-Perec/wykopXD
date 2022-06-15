@@ -93,7 +93,7 @@ export const mapEntry = (e: WykopEntry): Entry => ({
   media: e.embed && mapMedia(e.embed),
   commentsCount: e.comments_count,
   survey: e.survey && mapSurvey(e.survey),
-  comments: e.comments?.map((c) => mapComment(c)),
+  comments: e.comments?.length ? e.comments.map((c) => mapComment(c)) : undefined,
 });
 
 export const mapLink = (l: WykopLink): Link => ({
@@ -110,5 +110,5 @@ export const mapLink = (l: WykopLink): Link => ({
   relatedCount: l.related_count,
   sourceUrl: l.source_url,
   title: l.title.replace(/&quot;/g, '"'),
-  comments: l.comments && mapExtendedComments(l.comments),
+  comments: l.comments?.length ? mapExtendedComments(l.comments) : undefined,
 });
