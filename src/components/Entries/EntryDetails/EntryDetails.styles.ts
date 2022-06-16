@@ -19,10 +19,3 @@ export const Statistics = styled('div')({
   display: 'flex',
   justifyContent: 'space-evenly',
 });
-
-export const SurveyContainer = styled('div')(({ theme }) => ({
-  padding: theme.spacing(1),
-  [theme.breakpoints.up('sm')]: {
-    paddingLeft: 0,
-  },
-}));

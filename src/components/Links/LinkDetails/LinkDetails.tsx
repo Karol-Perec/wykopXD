@@ -68,7 +68,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
       <ContentHeader user={user} date={date} />
 
       <S.LinkContent>
-        <S.TextContent variant='h6'>{title}</S.TextContent>
+        <S.TextContent variant='h5'>{title}</S.TextContent>
 
         <Media
           sourceUrl={sourceUrl}
@@ -79,7 +79,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           listMode={listMode}
         />
 
-        <Typography variant='body1'>{body}</Typography>
+        <Typography>{body}</Typography>
       </S.LinkContent>
 
       <Divider variant='middle' />

@@ -9,7 +9,11 @@ const useLocalStorage = <T>(key: string, defaultValue: T): [T, Dispatch<SetState
   const setValue: Dispatch<SetStateAction<T>> = (value) => {
     const valueToStore = value instanceof Function ? value(storedValue) : value;
     setStoredValue(valueToStore);
-    localStorage.setItem(key, JSON.stringify(valueToStore));
+    if (valueToStore === undefined) {
+      localStorage.removeItem(key);
+    } else {
+      localStorage.setItem(key, JSON.stringify(valueToStore));
+    }
   };
 
   return [storedValue, setValue];

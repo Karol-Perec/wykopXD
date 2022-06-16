@@ -16,10 +16,14 @@ export const getTheme = (mode: PaletteMode): ThemeOptions => ({
     action: { active: mode === 'dark' ? '#fff' : 'rgb(15, 20, 25)' },
   },
   typography: {
-    h2: {
-      fontSize: 18,
-      fontWeight: 500,
+    h5: {
+      fontSize: 16,
+      fontWeight: 'bolder',
       textAlign: 'center',
+    },
+    h6: {
+      fontSize: 14,
+      fontWeight: 'bold',
     },
     body1: {
       fontSize: 14,

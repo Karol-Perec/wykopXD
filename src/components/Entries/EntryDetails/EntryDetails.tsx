@@ -10,10 +10,10 @@ import Media from 'components/Media/Media';
 import { Entry } from 'types';
 import { parseHtml } from 'utils/parseHtml';
 import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/windowUtils';
+import SurveyResults from '../../SurveyResults/SurveyResults';
 import Comments from '../../Comments/Comments';
 import { Card } from '../../UI/Card';
 import ContentHeader from '../../UI/ContentHeader';
-import SurveyAnswer from '../../UI/SurveyAnswer';
 import * as S from './EntryDetails.styles';
 
 interface EntryDetailsProps {
@@ -72,18 +72,7 @@ const EntryDetails = ({
             listMode={listMode}
           />
         )}
-        {survey && (
-          <S.SurveyContainer>
-            <Typography textAlign='center'>{survey.question}</Typography>
-            {survey.answers.map((answer) => (
-              <SurveyAnswer
-                answer={answer}
-                key={answer.id}
-                isActive={survey.userAnswer === answer.id}
-              />
-            ))}
-          </S.SurveyContainer>
-        )}
+        {survey && <SurveyResults survey={survey} />}
       </S.EntryContent>
       <Divider variant='middle' />
       <S.Statistics>

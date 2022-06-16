@@ -26,7 +26,6 @@ const LoginPage = () => {
   if (isLoading && !connectUrl) return <Loading />;
   if (error) return <ErrorMessage error={error} />;
   if (!connectUrl) return <ErrorMessage error='Błąd logowania' />;
-
   if (connectUrl) window.location.href = connectUrl;
 
   return null;

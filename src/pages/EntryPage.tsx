@@ -7,9 +7,9 @@ import useEntry from 'hooks/api/useEntry';
 import { Entry } from '../types';
 
 const EntryPage = () => {
+  const { id } = useParams();
   const { state } = useLocation();
   const navigationType = useNavigationType();
-  const { id } = useParams();
   const { data, isLoading, error } = useEntry(
     id!,
     navigationType === NavigationType.Push ? (state as Entry) : undefined
