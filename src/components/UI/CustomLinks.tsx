@@ -24,13 +24,15 @@ export const ExternalNoPropagationLink = ({
 export const RouterNoPropagationLink = ({
   to,
   children,
-}: Pick<RouterLinkProps, 'to' | 'children'>) => (
+  color,
+}: Pick<RouterLinkProps, 'to' | 'children' | 'color'>) => (
   <Link
     to={to}
     onClick={handleStopPropagation}
     onMouseUp={handleStopPropagation}
     component={RouterLink}
     underline='hover'
+    color={color}
     textOverflow='ellipsis'
   >
     {children}

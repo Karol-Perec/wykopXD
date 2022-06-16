@@ -25,8 +25,8 @@ const ContentHeader = ({ user, date }: ContentHeaderProps) => (
     <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
       <Avatar src={user.avatarUrl} size={24} />
     </RouterNoPropagationLink>
-    <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
-      <Typography variant='subtitle2' component='span' color={USER_COLOR[user.status]}>
+    <RouterNoPropagationLink to={`/ludzie/${user.login}`} color={USER_COLOR[user.status]}>
+      <Typography variant='subtitle2' component='span'>
         {user.login}
       </Typography>
     </RouterNoPropagationLink>

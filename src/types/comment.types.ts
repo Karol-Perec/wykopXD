@@ -7,7 +7,9 @@ export interface Comment {
   body: string;
   date: string;
   voteCountPlus: number;
+  voteCountMinus: number;
   media?: Media;
+  responses?: Comment[];
 }
 
 export interface ExtendedComment extends Comment {

@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react';
-import { Button, Divider, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { Button, Chip, Divider } from '@mui/material';
 import { Comment, ExtendedComment } from 'types';
-import { stopPropagation, handleStopPropagation } from 'utils/windowUtils';
+import { stopPropagation } from 'utils/windowUtils';
 import CommentView from './CommentView/CommentView';
 import * as S from './Comments.styles';
 
-type OrderKey = 'NEWEST' | 'OLDEST' | 'BEST';
+type OrderKey = 'best' | 'oldest' | 'newest';
 
 interface CommentOrder {
   label: string;
@@ -13,17 +13,17 @@ interface CommentOrder {
 }
 
 const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
-  OLDEST: {
+  best: {
+    label: 'Najlepsze',
+    comparator: (c1, c2) => c2.voteCountPlus - c1.voteCountPlus,
+  },
+  oldest: {
     label: 'Najstarsze',
     comparator: (c1, c2) => new Date(c1.date).getTime() - new Date(c2.date).getTime(),
   },
-  NEWEST: {
+  newest: {
     label: 'Najnowsze',
     comparator: (c1, c2) => new Date(c2.date).getTime() - new Date(c1.date).getTime(),
-  },
-  BEST: {
-    label: 'Najlepsze',
-    comparator: (c1, c2) => c2.voteCountPlus - c1.voteCountPlus,
   },
 };
 
@@ -32,7 +32,7 @@ interface CommentsProps {
 }
 
 const Comments = ({ comments }: CommentsProps) => {
-  const [orderBy, setOrderBy] = useState<OrderKey>('OLDEST');
+  const [orderBy, setOrderBy] = useState<OrderKey>('best');
   const [page, setPage] = useState(1);
 
   const commentsList = useMemo(
@@ -44,10 +44,6 @@ const Comments = ({ comments }: CommentsProps) => {
     [comments, orderBy, page]
   );
 
-  const handleSelectOrderBy = (e: SelectChangeEvent<OrderKey>) => {
-    setOrderBy(e.target.value as OrderKey);
-  };
-
   const handleLoadMore = stopPropagation(() =>
     setPage((p) => (p * 20 < comments.length ? p + 1 : p))
   );
@@ -55,14 +51,18 @@ const Comments = ({ comments }: CommentsProps) => {
   return (
     <>
       <Divider variant='middle' />
+      <S.SortingContainer>
+        {Object.entries(COMMENTS_ORDER).map(([orderKey, { label }]) => (
+          <Chip
+            variant={orderBy === orderKey ? 'filled' : 'outlined'}
+            color={orderBy === orderKey ? 'primary' : 'default'}
+            label={label}
+            size='small'
+            onClick={() => setOrderBy(orderKey as OrderKey)}
+          />
+        ))}
+      </S.SortingContainer>
       <S.CommentsListContainer>
-        <Select value={orderBy} onChange={handleSelectOrderBy} variant='standard'>
-          {Object.entries(COMMENTS_ORDER).map(([orderKey, { label }]) => (
-            <MenuItem value={orderKey} key={orderKey} onClick={handleStopPropagation}>
-              {label}
-            </MenuItem>
-          ))}
-        </Select>
         {commentsList}
         {page * 20 <= comments.length && <Button onClick={handleLoadMore}>Załaduj więcej</Button>}
       </S.CommentsListContainer>
