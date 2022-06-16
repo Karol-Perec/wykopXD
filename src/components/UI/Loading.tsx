@@ -7,7 +7,7 @@ const LoadingContainer = styled('div')(({ theme }) => ({
 
 const Loading = () => (
   <LoadingContainer>
-    <CircularProgress size={70} />
+    <CircularProgress size={80} />
   </LoadingContainer>
 );
 

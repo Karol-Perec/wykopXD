@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import Layout from 'components/Layout/Layout';
 import { Routes as RouterRoutes, Route, Navigate } from 'react-router-dom';
 import { HitsPeriod, MikroblogCategory } from 'types';
 import LinkPage from 'pages/LinkPage';
@@ -17,6 +16,7 @@ import AppInfoPage from 'pages/AppInfoPage';
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
 import ScrollToTop from 'components/UI/ScrollToTop';
 import AuthContext from 'contexts/Auth/AuthContext';
+import Layout from 'components/Layout/Layout';
 import { ROUTE } from './routes';
 
 export const renderRouterRoutes = (isLoggedIn: boolean) => (
