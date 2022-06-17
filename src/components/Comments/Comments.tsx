@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
-import { Button, Chip, Divider } from '@mui/material';
+import { Chip, Divider } from '@mui/material';
+import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
 import { Comment, ExtendedComment } from 'types';
-import { stopPropagation } from 'utils/windowUtils';
 import CommentView from './CommentView/CommentView';
 import * as S from './Comments.styles';
+import Loading from '../UI/Loading';
 
 type OrderKey = 'best' | 'oldest' | 'newest';
 
@@ -35,18 +36,21 @@ const Comments = ({ comments }: CommentsProps) => {
   const [orderBy, setOrderBy] = useState<OrderKey>('best');
   const [page, setPage] = useState(1);
 
+  const infiniteScrollingTriggerRef = useInfiniteScrolling(false, () => setPage((p) => p + 1));
+
   const commentsList = useMemo(
     () =>
       comments
         .sort(COMMENTS_ORDER[orderBy].comparator)
-        .slice(0, page * 20 - 1)
+        .slice(0, page * 10 - 1)
         .map((c) => <CommentView key={c.id} comment={c} />),
     [comments, orderBy, page]
   );
 
-  const handleLoadMore = stopPropagation(() =>
-    setPage((p) => (p * 20 < comments.length ? p + 1 : p))
-  );
+  const handleSetOrderBy = (orderKey: OrderKey) => {
+    setPage(1);
+    setOrderBy(orderKey);
+  };
 
   return (
     <>
@@ -58,13 +62,14 @@ const Comments = ({ comments }: CommentsProps) => {
             color={orderBy === orderKey ? 'primary' : 'default'}
             label={label}
             size='small'
-            onClick={() => setOrderBy(orderKey as OrderKey)}
+            onClick={() => handleSetOrderBy(orderKey as OrderKey)}
+            key={orderKey}
           />
         ))}
       </S.SortingContainer>
       <S.CommentsListContainer>
         {commentsList}
-        {page * 20 <= comments.length && <Button onClick={handleLoadMore}>Załaduj więcej</Button>}
+        {page * 10 <= comments.length && <Loading containerRef={infiniteScrollingTriggerRef} />}
       </S.CommentsListContainer>
     </>
   );

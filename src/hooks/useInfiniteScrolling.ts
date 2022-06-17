@@ -1,11 +1,14 @@
 import { RefCallback, useCallback, useRef } from 'react';
 
-const useInfiniteScrolling = (disable: boolean, callback: () => void): RefCallback<HTMLElement> => {
+const useInfiniteScrolling = (
+  disabled: boolean,
+  callback: () => void
+): RefCallback<HTMLElement> => {
   const observer = useRef<IntersectionObserver>();
 
   return useCallback(
     (node) => {
-      if (disable) return;
+      if (disabled) return;
 
       if (observer.current) {
         observer.current.disconnect();
@@ -21,7 +24,7 @@ const useInfiniteScrolling = (disable: boolean, callback: () => void): RefCallba
         observer.current.observe(node);
       }
     },
-    [disable, callback]
+    [disabled, callback]
   );
 };
 
