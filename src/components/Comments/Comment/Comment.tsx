@@ -1,22 +1,22 @@
 import { useMemo } from 'react';
 import { Typography } from '@mui/material';
-import { Comment } from 'types';
+import { Comment as IComment } from 'types';
 import { parseHtml } from 'utils/parseHtml';
 import Media from '../../Media/Media';
 import ContentHeader from '../../UI/ContentHeader';
-import * as S from './CommentView.styles';
+import * as S from './Comment.styles';
 
 interface CommentProps {
-  comment: Comment;
+  comment: IComment;
 }
 
-const CommentView = ({ comment }: CommentProps) => {
+const Comment = ({ comment }: CommentProps) => {
   const { body, user, date, media, responses } = comment;
   const parsedBody = useMemo(() => parseHtml(body), [body]);
 
   return (
     <>
-      <div>
+      <S.CommentContainer>
         <ContentHeader user={user} date={date} />
 
         <Typography>{parsedBody}</Typography>
@@ -31,11 +31,11 @@ const CommentView = ({ comment }: CommentProps) => {
             listMode={false}
           />
         )}
-      </div>
+      </S.CommentContainer>
       {responses && (
         <S.ResponsesListContainer>
           {responses.map((r) => (
-            <CommentView key={r.id} comment={r} />
+            <Comment key={r.id} comment={r} />
           ))}
         </S.ResponsesListContainer>
       )}
@@ -43,4 +43,4 @@ const CommentView = ({ comment }: CommentProps) => {
   );
 };
 
-export default CommentView;
+export default Comment;

@@ -6,3 +6,7 @@ export const ResponsesListContainer = styled('div')(({ theme }) => ({
     marginLeft: theme.spacing(6),
   },
 }));
+
+export const CommentContainer = styled('div')(({ theme }) => ({
+  marginBottom: theme.spacing(1),
+}));
