@@ -2,7 +2,7 @@ import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 import { Divider } from '@mui/material';
 import { ROUTE } from 'routes';
-import { MobileNavLinks } from '../NavItems/NavLinks';
+import { DrawerNavLinks } from '../NavLinks/NavLinks';
 import * as S from './SideDrawers.styles';
 import Drawer from '../../UI/Drawer';
 
@@ -20,7 +20,7 @@ const LeftDrawer = ({ open, onUserAction }: LeftDrawerProps) => (
     </S.LeftDrawerHeader>
     <Divider variant='middle' />
     <S.NavContainer>
-      <MobileNavLinks onNavLinkClick={onUserAction} />
+      <DrawerNavLinks onNavLinkClick={onUserAction} />
     </S.NavContainer>
     <Divider variant='middle' />
   </Drawer>

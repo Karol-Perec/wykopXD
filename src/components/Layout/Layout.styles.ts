@@ -14,8 +14,7 @@ export const Main = styled('main')(({ theme }) => ({
 }));
 
 export const Offset = styled('div')(({ theme }) => ({
-  ...theme.mixins.toolbar,
-  backgroundColor: theme.palette.background.default,
+  height: theme.spacing(6),
 }));
 
 export const MainContentContainer = styled('div')(({ theme }) => ({

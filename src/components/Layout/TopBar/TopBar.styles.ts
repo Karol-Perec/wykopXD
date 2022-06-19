@@ -18,33 +18,16 @@ export const TopBar = styled(AppBar)(({ theme }) => ({
 }));
 
 export const Logo = styled(SvgLogo)(({ theme }) => ({
-  height: 40,
-  width: 100,
+  height: 32,
   fill: theme.palette.mode === 'dark' ? theme.palette.primary.main : 'white',
-  [theme.breakpoints.down('md')]: {
-    display: 'none',
-  },
 }));
 
-export const LinkButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.common.white,
-  [theme.breakpoints.down('md')]: {
-    display: 'none',
-  },
-}));
-
-export const NavContainer = styled('nav')(({ theme }) => ({
-  display: 'none',
-  [theme.breakpoints.up('md')]: {
-    display: 'flex',
-    flexGrow: 1,
-  },
-}));
-
-export const MenuTogglerContainer = styled('div')(({ theme }) => ({
+export const NavContainer = styled('nav')({
   display: 'flex',
   flexGrow: 1,
-  [theme.breakpoints.up('md')]: {
-    display: 'none',
-  },
-}));
+});
+
+export const MenuTogglerContainer = styled('div')({
+  display: 'flex',
+  flexGrow: 1,
+});
