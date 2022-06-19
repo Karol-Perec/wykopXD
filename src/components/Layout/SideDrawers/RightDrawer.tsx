@@ -7,10 +7,10 @@ import {
   Info as AppInfoIcon,
 } from '@mui/icons-material';
 import AuthContext from 'contexts/Auth/AuthContext';
-import Avatar from '../../UI/Avatar';
 import { DrawerNavLink } from '../NavLinks/NavLink/NavLink';
-import * as S from './SideDrawers.styles';
+import Avatar from '../../UI/Avatar';
 import Drawer from '../../UI/Drawer';
+import * as S from './SideDrawers.styles';
 
 interface RightDrawerProps {
   open: boolean;

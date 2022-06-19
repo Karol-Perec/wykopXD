@@ -1,5 +1,5 @@
-import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 import { styled } from '@mui/material';
+import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 
 export const LeftDrawerHeader = styled('div')(({ theme }) => ({
   textAlign: 'center',

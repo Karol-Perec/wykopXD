@@ -1,16 +1,13 @@
 import { styled, Tab } from '@mui/material';
 
 export const NavLinkTab = styled(Tab)(({ theme }) => ({
-  color: 'white',
+  color: '#fff',
   textTransform: 'none',
   fontWeight: theme.typography.fontWeightBold,
   '&:hover': {
     color: theme.palette.primary.main,
   },
   '&.Mui-selected': {
-    color: theme.palette.primary[theme.palette.mode === 'dark' ? 'main' : 'light'],
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.main : '#fff',
   },
-  // '&.Mui-focusVisible': {
-  //   backgroundColor: '#d1eaff',
-  // },
 })) as typeof Tab;

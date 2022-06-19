@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { useLocation } from 'react-router-dom';
-import { List, Tabs } from '@mui/material';
+import { List } from '@mui/material';
 import { Whatshot as HitsIcon, AccountCircle as MyWykopIcon } from '@mui/icons-material';
 import { ROUTE } from 'routes';
 import { DrawerNavLink, TopBarNavLink } from './NavLink/NavLink';
@@ -56,10 +56,10 @@ export const NavLinks = () => {
   const location = useLocation();
 
   return (
-    <Tabs value={location.pathname}>
+    <S.NavTabs value={location.pathname}>
       {navLinks.map((nav) => (
         <TopBarNavLink label={nav.label} to={nav.path} key={nav.path} value={nav.path} />
       ))}
-    </Tabs>
+    </S.NavTabs>
   );
 };

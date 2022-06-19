@@ -1,4 +1,4 @@
-import { styled, alpha, AppBar, Button } from '@mui/material';
+import { styled, alpha, AppBar } from '@mui/material';
 import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 
 export const TopBar = styled(AppBar)(({ theme }) => ({

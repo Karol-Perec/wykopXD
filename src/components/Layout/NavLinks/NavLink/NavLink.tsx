@@ -1,6 +1,6 @@
 import { MouseEventHandler, ReactNode } from 'react';
 import { useMatch, Link as RouterLink } from 'react-router-dom';
-import { ListItemButton, ListItemIcon, ListItemText, TabProps } from '@mui/material';
+import { ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
 import * as S from './NavLink.styles';
 
 interface NavLinkProps {

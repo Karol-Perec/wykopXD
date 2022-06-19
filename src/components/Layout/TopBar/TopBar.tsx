@@ -1,5 +1,5 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
-import { Button, Container, IconButton, Toolbar, useMediaQuery, useTheme } from '@mui/material';
+import { Container, IconButton, Toolbar, useMediaQuery, useTheme } from '@mui/material';
 import { MouseEventHandler, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import AuthContext from 'contexts/Auth/AuthContext';
