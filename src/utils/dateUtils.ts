@@ -12,11 +12,16 @@ export const calculateAprroximatedAge = (date: string) => {
   if (ageInHours < 24) return `${Math.floor(ageInHours)} godz.`;
 
   const ageInDays = ageInHours / 24;
-  if (ageInDays < 7) return `${Math.floor(ageInDays)} dni`;
+  if (ageInDays < 7) {
+    const daysPostfix = ageInDays < 2 ? 'dzień' : 'dni';
+    return `${Math.floor(ageInDays)} ${daysPostfix}`;
+  }
 
   const ageInWeeks = ageInDays / 7;
-  const weeksPostfix = ageInWeeks < 2 ? 'tyg.' : ' tydz.';
-  if (ageInWeeks < 5) return `${Math.floor(ageInWeeks)} ${weeksPostfix}`;
+  if (ageInWeeks < 5) {
+    const weeksPostfix = ageInWeeks < 2 ? 'tyg.' : 'tydz.';
+    return `${Math.floor(ageInWeeks)} ${weeksPostfix}`;
+  }
 
   const ageInMonths = ageInDays / 30;
   if (ageInMonths < 12) return `${Math.floor(ageInMonths)} mies.`;

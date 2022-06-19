@@ -5,6 +5,7 @@ export const Main = styled('main')(({ theme }) => ({
   minHeight: 'calc(100% - 56px)',
   backgroundColor: theme.palette.background.default,
   paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
   transition: 'background-color 0.3s ease-out 0s',
 
   [theme.breakpoints.up('sm')]: {

@@ -1,4 +1,4 @@
-import { styled, Tooltip, Typography } from '@mui/material';
+import { styled, Typography } from '@mui/material';
 import { User } from 'types';
 import { TEXT_SEPARATOR } from '../../constants/texts.constant';
 import { USER_COLOR } from '../../constants/userColor.constat';
@@ -31,11 +31,9 @@ const UserHeader = ({ user, date }: UserHeaderProps) => (
       </Typography>
     </RouterNoPropagationLink>
     {TEXT_SEPARATOR}
-    <Tooltip title={date}>
-      <Typography variant='caption' component='span'>
-        {calculateAprroximatedAge(date)}
-      </Typography>
-    </Tooltip>
+    <Typography variant='caption' component='span'>
+      {calculateAprroximatedAge(date)}
+    </Typography>
   </Container>
 );
 export default UserHeader;
