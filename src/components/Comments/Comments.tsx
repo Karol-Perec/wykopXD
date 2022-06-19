@@ -67,10 +67,8 @@ const Comments = ({ comments }: CommentsProps) => {
           />
         ))}
       </S.SortingContainer>
-      <S.CommentsListContainer>
-        {commentsList}
-        {page * 10 <= comments.length && <Loading containerRef={infiniteScrollingTriggerRef} />}
-      </S.CommentsListContainer>
+      {commentsList}
+      {page * 10 <= comments.length && <Loading containerRef={infiniteScrollingTriggerRef} />}
     </>
   );
 };

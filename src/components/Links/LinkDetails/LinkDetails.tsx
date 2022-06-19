@@ -10,10 +10,10 @@ import { Link } from 'types';
 import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
 import ReactPlayer from 'react-player';
 import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
-import { Card } from '../../UI/Card';
+import { Card, ContentContainer, TextContentContainer } from '../../UI/Containers';
 import * as S from './LinkDetails.styles';
 import Media from '../../Media/Media';
-import ContentHeader from '../../UI/ContentHeader';
+import UserHeader from '../../UI/UserHeader';
 import Comments from '../../Comments/Comments';
 
 interface LinkDetailsProps {
@@ -65,10 +65,10 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
       onMouseUp={handleOpenLinkInNewTab}
       listMode={listMode}
     >
-      <ContentHeader user={user} date={date} />
+      <UserHeader user={user} date={date} />
 
-      <S.LinkContent>
-        <S.TextContent variant='h5'>{title}</S.TextContent>
+      <ContentContainer>
+        <TextContentContainer variant='h5'>{title}</TextContentContainer>
 
         <Media
           sourceUrl={sourceUrl}
@@ -79,8 +79,8 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           listMode={listMode}
         />
 
-        <Typography>{body}</Typography>
-      </S.LinkContent>
+        <TextContentContainer>{body}</TextContentContainer>
+      </ContentContainer>
 
       <Divider variant='middle' />
       <S.Statistics>

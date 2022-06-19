@@ -12,8 +12,8 @@ import { parseHtml } from 'utils/parseHtml';
 import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/windowUtils';
 import SurveyResults from '../../SurveyResults/SurveyResults';
 import Comments from '../../Comments/Comments';
-import { Card } from '../../UI/Card';
-import ContentHeader from '../../UI/ContentHeader';
+import { Card, ContentContainer, TextContentContainer } from '../../UI/Containers';
+import UserHeader from '../../UI/UserHeader';
 import * as S from './EntryDetails.styles';
 
 interface EntryDetailsProps {
@@ -58,10 +58,10 @@ const EntryDetails = ({
       onMouseUp={handleOpenEntryInNewTab}
       listMode={listMode}
     >
-      <ContentHeader user={user} date={date} />
+      <UserHeader user={user} date={date} />
 
-      <S.EntryContent>
-        <S.TextContent variant='body1'>{parsedBody}</S.TextContent>
+      <ContentContainer>
+        <TextContentContainer variant='body1'>{parsedBody}</TextContentContainer>
         {media && (
           <Media
             sourceUrl={media.url}
@@ -73,8 +73,10 @@ const EntryDetails = ({
           />
         )}
         {survey && <SurveyResults survey={survey} />}
-      </S.EntryContent>
+      </ContentContainer>
+
       <Divider variant='middle' />
+
       <S.Statistics>
         <Button startIcon={<PlusIcon />} color='inherit' onClick={handleStopPropagation}>
           <Typography>{voteCountPlus}</Typography>
@@ -90,6 +92,7 @@ const EntryDetails = ({
           </IconButton>
         )}
       </S.Statistics>
+      
       {!listMode && !isUpdatingComments && !!comments?.length && <Comments comments={comments} />}
     </Card>
   );

@@ -15,12 +15,12 @@ const Container = styled('div')(({ theme }) => ({
   alignItems: 'center',
 }));
 
-interface ContentHeaderProps {
+interface UserHeaderProps {
   user: User;
   date: string;
 }
 
-const ContentHeader = ({ user, date }: ContentHeaderProps) => (
+const UserHeader = ({ user, date }: UserHeaderProps) => (
   <Container>
     <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
       <Avatar src={user.avatarUrl} size={24} />
@@ -38,4 +38,4 @@ const ContentHeader = ({ user, date }: ContentHeaderProps) => (
     </Tooltip>
   </Container>
 );
-export default ContentHeader;
+export default UserHeader;

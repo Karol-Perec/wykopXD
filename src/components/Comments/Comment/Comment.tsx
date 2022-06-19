@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
-import { Typography } from '@mui/material';
 import { Comment as IComment } from 'types';
 import { parseHtml } from 'utils/parseHtml';
+import { Divider } from '@mui/material';
 import Media from '../../Media/Media';
-import ContentHeader from '../../UI/ContentHeader';
+import UserHeader from '../../UI/UserHeader';
 import * as S from './Comment.styles';
+import { ContentContainer, TextContentContainer } from '../../UI/Containers';
 
 interface CommentProps {
   comment: IComment;
@@ -15,23 +16,26 @@ const Comment = ({ comment }: CommentProps) => {
   const parsedBody = useMemo(() => parseHtml(body), [body]);
 
   return (
-    <>
+    <div>
       <S.CommentContainer>
-        <ContentHeader user={user} date={date} />
+        <Divider variant='middle' />
+        <UserHeader user={user} date={date} />
 
-        <Typography>{parsedBody}</Typography>
-
-        {media && (
-          <Media
-            sourceUrl={media.url}
-            imageUrl={media.previewUrl}
-            type={media.type}
-            plus18={media.plus18}
-            ratio={media.ratio}
-            listMode={false}
-          />
-        )}
+        <ContentContainer>
+          <TextContentContainer>{parsedBody}</TextContentContainer>
+          {media && (
+            <Media
+              sourceUrl={media.url}
+              imageUrl={media.previewUrl}
+              type={media.type}
+              plus18={media.plus18}
+              ratio={media.ratio}
+              listMode={false}
+            />
+          )}
+        </ContentContainer>
       </S.CommentContainer>
+
       {responses && (
         <S.ResponsesListContainer>
           {responses.map((r) => (
@@ -39,7 +43,7 @@ const Comment = ({ comment }: CommentProps) => {
           ))}
         </S.ResponsesListContainer>
       )}
-    </>
+    </div>
   );
 };
 

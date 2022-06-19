@@ -1,4 +1,4 @@
-import { LinkProps, styled, Link } from '@mui/material';
+import { LinkProps, styled, Link as MuiLink } from '@mui/material';
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 import { handleStopPropagation } from '../../utils/windowUtils';
 
@@ -11,14 +11,14 @@ export const ExternalNoPropagationLink = ({
   href,
   children,
 }: Pick<LinkProps, 'href' | 'children'>) => (
-  <Link
+  <MuiLink
     href={href}
     onClick={handleStopPropagation}
     onMouseUp={handleStopPropagation}
     underline='hover'
   >
     {children}
-  </Link>
+  </MuiLink>
 );
 
 export const RouterNoPropagationLink = ({
@@ -26,7 +26,7 @@ export const RouterNoPropagationLink = ({
   children,
   color,
 }: Pick<RouterLinkProps, 'to' | 'children' | 'color'>) => (
-  <Link
+  <MuiLink
     to={to}
     onClick={handleStopPropagation}
     onMouseUp={handleStopPropagation}
@@ -36,5 +36,5 @@ export const RouterNoPropagationLink = ({
     textOverflow='ellipsis'
   >
     {children}
-  </Link>
+  </MuiLink>
 );

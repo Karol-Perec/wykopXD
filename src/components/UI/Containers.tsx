@@ -1,4 +1,4 @@
-import { Card as MuiCard, darken, lighten, styled } from '@mui/material';
+import { Card as MuiCard, darken, lighten, styled, Typography } from '@mui/material';
 
 export const Card = styled(MuiCard, { shouldForwardProp: (prop) => prop !== 'listMode' })<{
   listMode?: boolean;
@@ -17,5 +17,20 @@ export const Card = styled(MuiCard, { shouldForwardProp: (prop) => prop !== 'lis
   }),
   [theme.breakpoints.down('sm')]: {
     borderRadius: 0,
+  },
+}));
+
+export const ContentContainer = styled('div')(({ theme }) => ({
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(6),
+  },
+}));
+
+export const TextContentContainer = styled(Typography)(({ theme }) => ({
+  padding: theme.spacing(1),
+  paddingLeft: theme.spacing(1),
+  paddingRight: theme.spacing(1),
+  [theme.breakpoints.up('sm')]: {
+    paddingLeft: 0,
   },
 }));
