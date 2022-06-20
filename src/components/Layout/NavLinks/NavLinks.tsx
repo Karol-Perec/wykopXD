@@ -56,7 +56,7 @@ export const NavLinks = () => {
   const location = useLocation();
 
   return (
-    <S.NavTabs value={location.pathname}>
+    <S.NavTabs value={!!navLinks.find((l) => l.path === location.pathname) && location.pathname}>
       {navLinks.map((nav) => (
         <TopBarNavLink label={nav.label} to={nav.path} key={nav.path} value={nav.path} />
       ))}

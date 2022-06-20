@@ -5,7 +5,7 @@ export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) =>
     hd: ',w600',
     hq: ',w400',
     mq: ',w300',
-    lq: ',w207',
+    lq: ',w207h139',
     original: '',
   };
 
@@ -13,6 +13,6 @@ export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) =>
 };
 
 export const getImageQuality = (listMode: boolean, isBlur: boolean): ImageQuality => {
-  if (isBlur) return 'lq';
+  if (isBlur) return 'mq';
   return listMode ? 'hq' : 'hd';
 };

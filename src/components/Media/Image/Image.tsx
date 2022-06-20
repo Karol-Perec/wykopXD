@@ -12,7 +12,6 @@ interface ImageProps {
 }
 
 const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => {
-  const [unblockMaxHeight, setUnblockMaxHeight] = useState(false);
   const [isBlurred, setIsBlurred] = useState(plus18);
 
   const mediaContainerRef = useRef<HTMLDivElement>(null);
@@ -20,22 +19,20 @@ const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => 
 
   const handleUnblurImage = stopPropagation(() => setIsBlurred(false));
 
-  const image = isBlurred ? (
-    <div style={{ overflow: 'hidden' }}>
+  const image = (
+    <S.BlurredImageContainer>
       <S.Image
         src={displayedImageUrl}
         blur={isBlurred}
-        alt='+18 image'
         onClick={handleUnblurImage}
+        draggable={!isBlurred}
       />
-    </div>
-  ) : (
-    <S.Image src={displayedImageUrl} blur={isBlurred} alt='' />
+    </S.BlurredImageContainer>
   );
 
   return (
-    <S.Container ref={mediaContainerRef} ratio={ratio} unblockMaxHeight={unblockMaxHeight}>
-      {listMode ? image : <a href={sourceUrl}>{image}</a>}
+    <S.Container ref={mediaContainerRef}>
+      {listMode || isBlurred ? image : <a href={sourceUrl}>{image}</a>}
     </S.Container>
   );
 };

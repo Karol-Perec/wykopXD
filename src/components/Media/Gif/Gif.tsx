@@ -12,7 +12,6 @@ interface GifProps {
 }
 
 const Gif = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: GifProps) => {
-  const [unblockMaxHeight, setUnblockMaxHeight] = useState(false);
   const [isBlurred, setIsBlurred] = useState(plus18);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -43,7 +42,7 @@ const Gif = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: GifProps) => {
   );
 
   return (
-    <S.Container ref={mediaContainerRef} ratio={ratio} unblockMaxHeight={unblockMaxHeight}>
+    <S.Container ref={mediaContainerRef}>
       {listMode ? gif : <a href={sourceUrl}>{gif}</a>}
     </S.Container>
   );

@@ -1,13 +1,6 @@
 import { styled } from '@mui/material/styles';
 
-interface ContainerProps {
-  ratio?: number;
-  unblockMaxHeight: boolean;
-}
-
-export const Container = styled('div', {
-  shouldForwardProp: (prop) => prop !== 'ratio' && prop !== 'unblockMaxHeight',
-})<ContainerProps>(({ theme, ratio, unblockMaxHeight }) => ({
+export const Container = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
 
@@ -26,10 +19,15 @@ export const Image = styled('img', {
   borderRadius: 10,
 
   maxWidth: '100%',
-  ...(blur && { ':hover': { cursor: 'pointer' } }),
+  ...(blur && { filter: 'blur(20px)', ':hover': { cursor: 'pointer' } }),
 
   maxHeight: 550,
   [theme.breakpoints.up('sm')]: {
     maxHeight: 650,
   },
 }));
+
+export const BlurredImageContainer = styled('div')({
+  borderRadius: 10,
+  overflow: 'hidden'
+});
