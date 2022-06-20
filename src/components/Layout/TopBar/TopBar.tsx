@@ -26,7 +26,7 @@ const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarPro
         <Toolbar disableGutters variant='dense'>
           {isDekstop ? (
             <S.NavContainer>
-              <IconButton component={RouterLink} to={ROUTE.HOME} disableRipple >
+              <IconButton component={RouterLink} to={ROUTE.HOME} disableRipple>
                 <S.Logo />
               </IconButton>
               <NavLinks />

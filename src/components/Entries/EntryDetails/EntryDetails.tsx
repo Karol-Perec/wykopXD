@@ -93,7 +93,7 @@ const EntryDetails = ({
         )}
       </S.Statistics>
       
-      {!listMode && !isUpdatingComments && !!comments?.length && <Comments comments={comments} />}
+      {!listMode && !isUpdatingComments && comments && <Comments comments={comments} />}
     </Card>
   );
 };

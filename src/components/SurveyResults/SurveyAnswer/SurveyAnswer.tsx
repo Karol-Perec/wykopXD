@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material';
+import { CheckCircleOutline as UserVoteIcon } from '@mui/icons-material';
 import { SurveyAnswer as Answer } from 'types';
 import * as S from './SurveyAnswer.styles';
 
@@ -13,6 +14,7 @@ const SurveyAnswer = ({ answer, isActive }: SurveyAnswerProps) => (
     <Typography component='div'>
       <S.Label>{answer.text}</S.Label>
       <S.Statistics>
+        {isActive && <UserVoteIcon fontSize='small' />}
         {/* <span>{`${answer.voteCount} ${answer.voteCount === 1 ? 'głos' : 'głosów'} `}</span> */}
         {/* <span>[{answer.voteCount}]</span>
         <span>{TEXT_SEPARATOR}</span> */}

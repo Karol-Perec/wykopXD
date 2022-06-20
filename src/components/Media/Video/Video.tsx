@@ -1,9 +1,11 @@
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import useIsOnScreen from 'hooks/useIsOnScreen';
+import useGfycat from 'hooks/api/useGfycat';
 import { getDisplayedImageUrl } from 'utils/imageUtils';
+import { stopPropagation } from 'utils/windowUtils';
+import { MediaType } from 'types';
 import * as S from './Video.styles';
-import { stopPropagation } from '../../../utils/windowUtils';
 
 interface VideoProps {
   sourceUrl: string;
@@ -11,9 +13,11 @@ interface VideoProps {
   plus18: boolean;
   listMode?: boolean;
   ratio?: number;
+  isGfycat: boolean;
 }
 
-const Video = ({ sourceUrl, previewUrl, plus18, ratio, listMode }: VideoProps) => {
+const Video = ({ sourceUrl, previewUrl, plus18, ratio, listMode, isGfycat }: VideoProps) => {
+  const { data: gfycatSourceUrl } = useGfycat(sourceUrl, isGfycat);
   const [expandedVideo, setExpandedVideo] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isOnScreen = useIsOnScreen(wrapperRef);
@@ -28,7 +32,7 @@ const Video = ({ sourceUrl, previewUrl, plus18, ratio, listMode }: VideoProps) =
     <S.Container>
       <S.VideoWrapper ref={wrapperRef} ratio={ratio} expandedVideo={expandedVideo}>
         <ReactPlayer
-          url={sourceUrl}
+          url={isGfycat ? gfycatSourceUrl : sourceUrl}
           controls
           light={displayedPreviewUrl}
           width='100%'

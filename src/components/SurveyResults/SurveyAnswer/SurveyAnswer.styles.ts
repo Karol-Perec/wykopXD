@@ -28,11 +28,14 @@ export const SurveyProgress = styled(LinearProgress, {
   marginTop: theme.spacing(1),
   height: 29,
   borderRadius: 10,
+
+  // border: highlight ? '1px solid #bbb' : undefined,
+  
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+    backgroundColor: theme.palette.grey[theme.palette.mode === 'dark' ? 800 : 200],
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 10,
-    backgroundColor: theme.palette.primary[highlight ? 'light' : 'dark'],
+    backgroundColor: theme.palette.primary[theme.palette.mode],
   },
 }));

@@ -87,11 +87,11 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
         <Button
           startIcon={
             isHot ? (
-              <Badge badgeContent={<HotIcon style={{ height: 16 }} color='error' />}>
-                <WykopIcon height={18} fill={theme.palette.action.active} />
+              <Badge badgeContent={<HotIcon style={{ height: 14 }} color='error' />}>
+                <WykopIcon height={18} width={24} fill={theme.palette.action.active} />
               </Badge>
             ) : (
-              <WykopIcon height={18} fill={theme.palette.action.active} />
+              <WykopIcon height={18} width={24} fill={theme.palette.action.active} />
             )
           }
           onClick={handleStopPropagation}
@@ -100,7 +100,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           <Typography>{voteCountPlus}</Typography>
         </Button>
 
-        <Button startIcon={<CommentsIcon />} color='inherit'>
+        <Button startIcon={<CommentsIcon/>} color='inherit'>
           <Typography>{commentsCount}</Typography>
         </Button>
 
@@ -110,7 +110,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           </IconButton>
         )}
       </S.Statistics>
-      {!listMode && !!comments?.length && <Comments comments={comments} />}
+      {!listMode && comments && <Comments comments={comments} />}
     </Card>
   );
 };
