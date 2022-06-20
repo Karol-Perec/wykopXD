@@ -26,3 +26,8 @@ export const Gif = styled('img', {
     maxHeight: 650,
   },
 }));
+
+export const GifContainer = styled('div')({
+  borderRadius: 10,
+  overflow: 'hidden'
+});

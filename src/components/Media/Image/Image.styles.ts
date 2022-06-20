@@ -19,7 +19,7 @@ export const Image = styled('img', {
   borderRadius: 10,
 
   maxWidth: '100%',
-  ...(blur && { filter: 'blur(20px)', ':hover': { cursor: 'pointer' } }),
+  ...(blur && { filter: 'blur(40px)', ':hover': { cursor: 'pointer' } }),
 
   maxHeight: 550,
   [theme.breakpoints.up('sm')]: {
@@ -27,7 +27,7 @@ export const Image = styled('img', {
   },
 }));
 
-export const BlurredImageContainer = styled('div')({
+export const ImageContainer = styled('div')({
   borderRadius: 10,
   overflow: 'hidden'
 });

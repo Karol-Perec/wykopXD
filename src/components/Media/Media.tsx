@@ -32,7 +32,7 @@ const Media = ({ type, sourceUrl, imageUrl, plus18, ratio, listMode }: MediaProp
     return (
       <Video
         sourceUrl={sourceUrl}
-        imageUrl={imageUrl}
+        previewUrl={imageUrl}
         plus18={plus18}
         ratio={ratio}
         listMode={listMode}
@@ -43,7 +43,7 @@ const Media = ({ type, sourceUrl, imageUrl, plus18, ratio, listMode }: MediaProp
     return (
       <Video
         sourceUrl={gfycatSourceUrl!}
-        imageUrl={imageUrl}
+        previewUrl={imageUrl}
         plus18={plus18}
         ratio={ratio}
         listMode={listMode}

@@ -9,6 +9,9 @@ export const VideoWrapper = styled('div', {
   shouldForwardProp: (prop) => !['ratio', 'expandedVideo'].includes(String(prop)),
 })<ContainerProps>(({ ratio, expandedVideo }) => ({
   width: '100%',
+  borderRadius: 10,
+  overflow: 'hidden',
+
   aspectRatio: expandedVideo && ratio ? String(1 / ratio) : '16 / 9',
   '@supports not (aspect-ratio: 16 / 9)': {
     '::before': {

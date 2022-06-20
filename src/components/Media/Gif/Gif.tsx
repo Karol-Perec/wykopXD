@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
 import { stopPropagation } from 'utils/windowUtils';
 import * as S from './Gif.styles';
@@ -14,38 +14,27 @@ interface GifProps {
 const Gif = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: GifProps) => {
   const [isBlurred, setIsBlurred] = useState(plus18);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const mediaContainerRef = useRef<HTMLDivElement>(null);
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, isBlurred));
 
-  const handleUnblurImage = stopPropagation(() => {
+  const handleUnblurGif = stopPropagation(() => {
     setIsBlurred(false);
     setIsPlaying((prev) => !prev);
   });
 
   const handleStopGif = stopPropagation(() => setIsPlaying((prev) => !prev));
 
-  const gif = isBlurred ? (
-    <S.Gif
-      src={isPlaying ? sourceUrl : getDisplayedImageUrl(imageUrl, 'lq')}
-      blur={isBlurred}
-      alt='+18 image'
-      onClick={handleUnblurImage}
-    />
-  ) : (
-    <S.Gif
-      src={isPlaying ? sourceUrl : displayedImageUrl}
-      blur={isBlurred}
-      alt=''
-      onClick={handleStopGif}
-    />
+  const gif = (
+    <S.GifContainer>
+      <S.Gif
+        src={isPlaying ? sourceUrl : displayedImageUrl}
+        blur={isBlurred}
+        onClick={isBlurred ? handleUnblurGif : handleStopGif}
+        draggable={!isBlurred}
+      />
+    </S.GifContainer>
   );
 
-  return (
-    <S.Container ref={mediaContainerRef}>
-      {listMode ? gif : <a href={sourceUrl}>{gif}</a>}
-    </S.Container>
-  );
+  return <S.Container>{listMode || isBlurred ? gif : <a href={sourceUrl}>{gif}</a>}</S.Container>;
 };
 
 export default Gif;
