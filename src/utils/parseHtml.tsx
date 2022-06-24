@@ -9,7 +9,7 @@ import { Typography } from '@mui/material';
 
 const encodeUtf8 = (message: string) => {
   const query = new URLSearchParams(message);
-  return Array.from(query)?.[0].join(SPACE_CHAR);
+  return Array.from(query)?.[0]?.join(SPACE_CHAR);
 };
 
 const parseTextNode = (text: string | null) => {
