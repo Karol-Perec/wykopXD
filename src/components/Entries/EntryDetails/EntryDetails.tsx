@@ -1,4 +1,4 @@
-import { RefCallback, useMemo } from 'react';
+import { RefCallback, useMemo, useState } from 'react';
 import {
   Message as CommentsIcon,
   AddBox as PlusIcon,
@@ -15,6 +15,7 @@ import Comments from '../../Comments/Comments';
 import { Card, ContentContainer, TextContentContainer } from '../../UI/Containers';
 import UserHeader from '../../UI/UserHeader';
 import * as S from './EntryDetails.styles';
+import EntryCommentsDrawer from '../EntryCommentsDrawer/EntryCommentsDrawer';
 
 interface EntryDetailsProps {
   data: Entry;
@@ -32,6 +33,7 @@ const EntryDetails = ({
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments, survey } = data;
   const navigate = useNavigate();
   const parsedBody = useMemo(() => parseHtml(body), [body]);
+  const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
 
   const handleNavigateToEntry = listMode
     ? () => {
@@ -42,6 +44,9 @@ const EntryDetails = ({
     : undefined;
 
   const handleOpenEntryInNewTab = listMode ? openInNewTab(`/wpis/${id}`) : undefined;
+  const handleToggleCommentsDrawer = stopPropagation(() =>
+    setIsCommentsDrawerOpened((prev) => !prev)
+  );
 
   const handleShare = stopPropagation(() =>
     navigator
@@ -82,7 +87,7 @@ const EntryDetails = ({
           <Typography>{voteCountPlus}</Typography>
         </Button>
 
-        <Button startIcon={<CommentsIcon />} color='inherit'>
+        <Button startIcon={<CommentsIcon />} onClick={handleToggleCommentsDrawer} color='inherit'>
           <Typography>{commentsCount}</Typography>
         </Button>
 
@@ -92,8 +97,20 @@ const EntryDetails = ({
           </IconButton>
         )}
       </S.Statistics>
-      
-      {!listMode && !isUpdatingComments && comments && <Comments comments={comments} />}
+      {isCommentsDrawerOpened && listMode && (
+        <EntryCommentsDrawer
+          entry={data}
+          open={isCommentsDrawerOpened}
+          onOpen={() => setIsCommentsDrawerOpened(true)}
+          onClose={() => setIsCommentsDrawerOpened(false)}
+        />
+      )}
+      {!listMode && !isUpdatingComments && (
+        <>
+          <Divider variant='middle' />
+          <Comments comments={comments} />
+        </>
+      )}
     </Card>
   );
 };

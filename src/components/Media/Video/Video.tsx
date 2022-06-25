@@ -4,7 +4,6 @@ import useIsOnScreen from 'hooks/useIsOnScreen';
 import useGfycat from 'hooks/api/useGfycat';
 import { getDisplayedImageUrl } from 'utils/imageUtils';
 import { stopPropagation } from 'utils/windowUtils';
-import { MediaType } from 'types';
 import * as S from './Video.styles';
 
 interface VideoProps {

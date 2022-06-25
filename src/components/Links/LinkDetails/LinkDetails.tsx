@@ -100,7 +100,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           <Typography>{voteCountPlus}</Typography>
         </Button>
 
-        <Button startIcon={<CommentsIcon/>} color='inherit'>
+        <Button startIcon={<CommentsIcon />} color='inherit'>
           <Typography>{commentsCount}</Typography>
         </Button>
 
@@ -110,7 +110,12 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           </IconButton>
         )}
       </S.Statistics>
-      {!listMode && comments && <Comments comments={comments} />}
+      {!listMode && (
+        <>
+          <Divider variant='middle' />
+          <Comments comments={comments} />
+        </>
+      )}
     </Card>
   );
 };

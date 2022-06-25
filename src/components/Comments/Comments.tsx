@@ -29,10 +29,10 @@ const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
 };
 
 interface CommentsProps {
-  comments: Comment[] | ExtendedComment[];
+  comments?: Comment[] | ExtendedComment[];
 }
 
-const Comments = ({ comments }: CommentsProps) => {
+const Comments = ({ comments = [] }: CommentsProps) => {
   const [orderBy, setOrderBy] = useState<OrderKey>('best');
   const [page, setPage] = useState(1);
 
@@ -54,7 +54,6 @@ const Comments = ({ comments }: CommentsProps) => {
 
   return (
     <>
-      <Divider variant='middle' />
       <S.SortingContainer>
         {Object.entries(COMMENTS_ORDER).map(([orderKey, { label }]) => (
           <Chip
