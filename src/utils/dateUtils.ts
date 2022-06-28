@@ -1,8 +1,5 @@
 export const calculateAprroximatedAge = (date: string) => {
-  const startDate = new Date(date);
-  const now = new Date();
-
-  const ageInSeconds = (now.getTime() - startDate.getTime()) / 1000;
+  const ageInSeconds = (Date.now() - Date.parse(date)) / 1000;
   if (ageInSeconds < 60) return `${Math.floor(ageInSeconds)} sek.`;
 
   const ageInMinutes = ageInSeconds / 60;
