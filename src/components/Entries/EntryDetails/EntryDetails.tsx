@@ -89,13 +89,12 @@ const EntryDetails = ({
         </Button>
 
         <Button
-          startIcon={<CommentsIcon/>}
+          startIcon={<CommentsIcon />}
           onClick={handleToggleCommentsDrawer}
           onMouseUp={handleStopPropagation}
           color='inherit'
           component={RouterLink}
           to={`/wpis/${id}`}
-          disabled={!listMode}
           title={`Wpis użytkownika @${user.login}`}
         >
           <Typography>{commentsCount}</Typography>
@@ -103,11 +102,11 @@ const EntryDetails = ({
 
         {!!navigator.share && (
           <IconButton onClick={handleShare} size='small'>
-            <ShareIcon fontSize='small'/>
+            <ShareIcon fontSize='small' />
           </IconButton>
         )}
       </S.Statistics>
-      {isCommentsDrawerOpened && listMode && (
+      {listMode && (
         <EntryCommentsDrawer
           entry={data}
           open={isCommentsDrawerOpened}

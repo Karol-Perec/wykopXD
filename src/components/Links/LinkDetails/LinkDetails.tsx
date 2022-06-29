@@ -116,7 +116,6 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           color='inherit'
           component={RouterLink}
           to={`/link/${id}`}
-          disabled={!listMode}
           title={title}
         >
           <Typography>{commentsCount}</Typography>
@@ -128,7 +127,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           </IconButton>
         )}
       </S.Statistics>
-      {isCommentsDrawerOpened && listMode && (
+      {listMode && (
         <LinkCommentsDrawer
           link={data}
           open={isCommentsDrawerOpened}
