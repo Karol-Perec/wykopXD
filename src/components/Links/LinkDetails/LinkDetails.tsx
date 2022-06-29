@@ -1,11 +1,11 @@
-import { RefCallback } from 'react';
+import { RefCallback, useState } from 'react';
 import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/material';
 import {
   Message as CommentsIcon,
   Share as ShareIcon,
   LocalFireDepartment as HotIcon,
 } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { Link } from 'types';
 import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
 import ReactPlayer from 'react-player';
@@ -15,6 +15,8 @@ import * as S from './LinkDetails.styles';
 import Media from '../../Media/Media';
 import UserHeader from '../../UI/UserHeader';
 import Comments from '../../Comments/Comments';
+import { RouterNoPropagationLink } from '../../UI/CustomLinks';
+import LinkCommentsDrawer from '../../CommentsDrawer/LinkCommentsDrawer';
 
 interface LinkDetailsProps {
   data: Link;
@@ -39,6 +41,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
   } = data;
   const theme = useTheme();
   const navigate = useNavigate();
+  const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
 
   const handleNavigateToLink = listMode
     ? () => {
@@ -49,6 +52,10 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
     : undefined;
 
   const handleOpenLinkInNewTab = listMode ? openInNewTab(`/link/${id}`) : undefined;
+  const handleToggleCommentsDrawer = stopPropagation((e) => {
+    e.preventDefault();
+    setIsCommentsDrawerOpened((prev) => !prev);
+  });
 
   const handleShare = stopPropagation(() =>
     navigator
@@ -68,7 +75,9 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
       <UserHeader user={user} date={date} />
 
       <ContentContainer>
-        <TextContentContainer variant='h5'>{title}</TextContentContainer>
+        <RouterNoPropagationLink to={`/link/${id}`} color='inherit' title={title} underline='none'>
+          <TextContentContainer variant='h5'>{title}</TextContentContainer>
+        </RouterNoPropagationLink>
 
         <Media
           sourceUrl={sourceUrl}
@@ -100,7 +109,16 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           <Typography>{voteCountPlus}</Typography>
         </Button>
 
-        <Button startIcon={<CommentsIcon />} color='inherit'>
+        <Button
+          startIcon={<CommentsIcon />}
+          onClick={handleToggleCommentsDrawer}
+          onMouseUp={handleStopPropagation}
+          color='inherit'
+          component={RouterLink}
+          to={`/link/${id}`}
+          disabled={!listMode}
+          title={title}
+        >
           <Typography>{commentsCount}</Typography>
         </Button>
 
@@ -110,6 +128,14 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           </IconButton>
         )}
       </S.Statistics>
+      {isCommentsDrawerOpened && listMode && (
+        <LinkCommentsDrawer
+          link={data}
+          open={isCommentsDrawerOpened}
+          onOpen={() => setIsCommentsDrawerOpened(true)}
+          onClose={() => setIsCommentsDrawerOpened(false)}
+        />
+      )}
       {!listMode && (
         <>
           <Divider variant='middle' />

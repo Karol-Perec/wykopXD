@@ -22,10 +22,14 @@ interface UserHeaderProps {
 
 const UserHeader = ({ user, date }: UserHeaderProps) => (
   <Container>
-    <RouterNoPropagationLink to={`/ludzie/${user.login}`}>
+    <RouterNoPropagationLink to={`/ludzie/${user.login}`} title={`@${user.login}`}>
       <Avatar src={user.avatarUrl} size={24} />
     </RouterNoPropagationLink>
-    <RouterNoPropagationLink to={`/ludzie/${user.login}`} color={USER_COLOR[user.status]}>
+    <RouterNoPropagationLink
+      to={`/ludzie/${user.login}`}
+      color={USER_COLOR[user.status]}
+      title={`@${user.login}`}
+    >
       <Typography variant='subtitle2' component='span'>
         {user.login}
       </Typography>

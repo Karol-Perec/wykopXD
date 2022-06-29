@@ -5,7 +5,7 @@ import {
   Share as ShareIcon,
 } from '@mui/icons-material';
 import { Typography, Button, Divider, IconButton } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import Media from 'components/Media/Media';
 import { Entry } from 'types';
 import { parseHtml } from 'utils/parseHtml';
@@ -15,7 +15,7 @@ import Comments from '../../Comments/Comments';
 import { Card, ContentContainer, TextContentContainer } from '../../UI/Containers';
 import UserHeader from '../../UI/UserHeader';
 import * as S from './EntryDetails.styles';
-import EntryCommentsDrawer from '../EntryCommentsDrawer/EntryCommentsDrawer';
+import EntryCommentsDrawer from '../../CommentsDrawer/EntryCommentsDrawer';
 
 interface EntryDetailsProps {
   data: Entry;
@@ -44,9 +44,10 @@ const EntryDetails = ({
     : undefined;
 
   const handleOpenEntryInNewTab = listMode ? openInNewTab(`/wpis/${id}`) : undefined;
-  const handleToggleCommentsDrawer = stopPropagation(() =>
-    setIsCommentsDrawerOpened((prev) => !prev)
-  );
+  const handleToggleCommentsDrawer = stopPropagation((e) => {
+    e.preventDefault();
+    setIsCommentsDrawerOpened((prev) => !prev);
+  });
 
   const handleShare = stopPropagation(() =>
     navigator
@@ -87,7 +88,16 @@ const EntryDetails = ({
           <Typography>{voteCountPlus}</Typography>
         </Button>
 
-        <Button startIcon={<CommentsIcon />} onClick={handleToggleCommentsDrawer} color='inherit'>
+        <Button
+          startIcon={<CommentsIcon />}
+          onClick={handleToggleCommentsDrawer}
+          onMouseUp={handleStopPropagation}
+          color='inherit'
+          component={RouterLink}
+          to={`/wpis/${id}`}
+          disabled={!listMode}
+          title={`Wpis użytkownika @${user.login}`}
+        >
           <Typography>{commentsCount}</Typography>
         </Button>
 

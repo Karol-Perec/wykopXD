@@ -14,7 +14,7 @@ const EntryPage = () => {
     id!,
     navigationType === NavigationType.Push ? (state as Entry) : undefined
   );
-  useTitle(data && `@${data.user.login}: ${data.body}`);
+  useTitle(`Wpis użytkownika ${data ? `@${data.user.login}` : ''}`);
 
   if (error) return <ErrorMessage error={error} />;
 

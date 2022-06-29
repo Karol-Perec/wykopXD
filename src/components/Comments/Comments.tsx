@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Chip, Divider } from '@mui/material';
+import { Chip } from '@mui/material';
 import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
 import { Comment, ExtendedComment } from 'types';
 import CommentView from './Comment/Comment';
