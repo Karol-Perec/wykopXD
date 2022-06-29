@@ -123,8 +123,8 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
         </Button>
 
         {!!navigator.share && (
-          <IconButton onClick={handleShare}>
-            <ShareIcon />
+          <IconButton onClick={handleShare} size='small'>
+            <ShareIcon fontSize='small' />
           </IconButton>
         )}
       </S.Statistics>

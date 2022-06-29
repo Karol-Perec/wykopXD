@@ -89,7 +89,7 @@ const EntryDetails = ({
         </Button>
 
         <Button
-          startIcon={<CommentsIcon />}
+          startIcon={<CommentsIcon/>}
           onClick={handleToggleCommentsDrawer}
           onMouseUp={handleStopPropagation}
           color='inherit'
@@ -102,8 +102,8 @@ const EntryDetails = ({
         </Button>
 
         {!!navigator.share && (
-          <IconButton onClick={handleShare}>
-            <ShareIcon />
+          <IconButton onClick={handleShare} size='small'>
+            <ShareIcon fontSize='small'/>
           </IconButton>
         )}
       </S.Statistics>
