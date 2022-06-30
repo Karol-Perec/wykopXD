@@ -35,33 +35,33 @@ const EntryDetails = ({
   const parsedBody = useMemo(() => parseHtml(body), [body]);
   const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
 
-  const handleNavigateToEntry = listMode
-    ? () => {
-        if (document.getSelection()?.isCollapsed) {
-          navigate(`/wpis/${id}`, { state: data });
-        }
-      }
-    : undefined;
+  const handleNavigateToEntry = () => {
+    if (document.getSelection()?.isCollapsed) {
+      navigate(`/wpis/${id}`, { state: data });
+    }
+  };
 
-  const handleOpenEntryInNewTab = listMode ? openInNewTab(`/wpis/${id}`) : undefined;
   const handleToggleCommentsDrawer = stopPropagation((e) => {
     e.preventDefault();
     setIsCommentsDrawerOpened((prev) => !prev);
   });
 
-  const handleShare = stopPropagation(() =>
+  const handleShare = stopPropagation(() => {
     navigator
       .share({
         url: `${window.location.origin}/wpis/${id}`,
       })
-      .catch(() => undefined)
-  );
+      .catch(() => undefined);
+  });
+
+  const handleOpenCommentsDrawer = () => setIsCommentsDrawerOpened(true);
+  const handleCloseCommentsDrawer = () => setIsCommentsDrawerOpened(false);
 
   return (
     <Card
       ref={containerRef}
-      onClick={handleNavigateToEntry}
-      onMouseUp={handleOpenEntryInNewTab}
+      onClick={listMode ? handleNavigateToEntry : undefined}
+      onMouseUp={listMode ? openInNewTab(`/wpis/${id}`) : undefined}
       listMode={listMode}
     >
       <UserHeader user={user} date={date} />
@@ -106,14 +106,16 @@ const EntryDetails = ({
           </IconButton>
         )}
       </S.Statistics>
+
       {listMode && (
         <EntryCommentsDrawer
           entry={data}
           open={isCommentsDrawerOpened}
-          onOpen={() => setIsCommentsDrawerOpened(true)}
-          onClose={() => setIsCommentsDrawerOpened(false)}
+          onOpen={handleOpenCommentsDrawer}
+          onClose={handleCloseCommentsDrawer}
         />
       )}
+
       {!listMode && !isUpdatingComments && (
         <>
           <Divider variant='middle' />

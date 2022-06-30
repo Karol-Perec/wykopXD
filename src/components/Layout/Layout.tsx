@@ -8,8 +8,8 @@ const Layout = ({ children }: PropsWithChildren) => {
   const [showLeftDrawer, setShowLeftDrawer] = useState(false);
   const [showRightDrawer, setShowRightDrawer] = useState(false);
 
-  const handleToggleLeftDrawer = () => setShowLeftDrawer((prevState) => !prevState);
-  const handleToggleRightDrawer = () => setShowRightDrawer((prevState) => !prevState);
+  const handleToggleLeftDrawer = () => setShowLeftDrawer((prev) => !prev);
+  const handleToggleRightDrawer = () => setShowRightDrawer((prev) => !prev);
 
   return (
     <>

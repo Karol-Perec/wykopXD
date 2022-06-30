@@ -43,33 +43,33 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
   const navigate = useNavigate();
   const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
 
-  const handleNavigateToLink = listMode
-    ? () => {
-        if (document.getSelection()?.isCollapsed) {
-          navigate(`/link/${id}`, { state: data });
-        }
-      }
-    : undefined;
+  const handleNavigateToLink = () => {
+    if (document.getSelection()?.isCollapsed) {
+      navigate(`/link/${id}`, { state: data });
+    }
+  };
 
-  const handleOpenLinkInNewTab = listMode ? openInNewTab(`/link/${id}`) : undefined;
   const handleToggleCommentsDrawer = stopPropagation((e) => {
     e.preventDefault();
     setIsCommentsDrawerOpened((prev) => !prev);
   });
 
-  const handleShare = stopPropagation(() =>
+  const handleShare = stopPropagation(() => {
     navigator
       .share({
         url: `${window.location.origin}/link/${id}`,
       })
-      .catch(() => undefined)
-  );
+      .catch(() => undefined);
+  });
+
+  const handleOpenCommentsDrawer = () => setIsCommentsDrawerOpened(true);
+  const handleCloseCommentsDrawer = () => setIsCommentsDrawerOpened(false);
 
   return (
     <Card
       ref={containerRef}
-      onClick={handleNavigateToLink}
-      onMouseUp={handleOpenLinkInNewTab}
+      onClick={listMode ? handleNavigateToLink : undefined}
+      onMouseUp={listMode ? openInNewTab(`/link/${id}`) : undefined}
       listMode={listMode}
     >
       <UserHeader user={user} date={date} />
@@ -127,14 +127,16 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           </IconButton>
         )}
       </S.Statistics>
+
       {listMode && (
         <LinkCommentsDrawer
           link={data}
           open={isCommentsDrawerOpened}
-          onOpen={() => setIsCommentsDrawerOpened(true)}
-          onClose={() => setIsCommentsDrawerOpened(false)}
+          onOpen={handleOpenCommentsDrawer}
+          onClose={handleCloseCommentsDrawer}
         />
       )}
+
       {!listMode && (
         <>
           <Divider variant='middle' />
