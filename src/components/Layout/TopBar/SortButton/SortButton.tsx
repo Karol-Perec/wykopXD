@@ -1,9 +1,19 @@
+import { useState } from 'react';
+import { useHref, useLocation } from 'react-router-dom';
 import { Sort as SortIcon } from '@mui/icons-material';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import { useState } from 'react';
+import ReactPortal from './ReactPortal';
 
-const SortButton = () => {
+interface SortButtonProps {
+  options?: string[];
+  activeOption?: string;
+}
+
+const SortButton = ({ options = [], activeOption }: SortButtonProps) => {
+  const xd = useLocation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  console.log(xd);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -12,7 +22,7 @@ const SortButton = () => {
   const handleClose = () => setAnchorEl(null);
 
   return (
-    <>
+    <ReactPortal wrapperId='react-portal-modal-container'>
       <IconButton onClick={handleClick} color='inherit'>
         <SortIcon />
       </IconButton>
@@ -27,7 +37,7 @@ const SortButton = () => {
         <MenuItem onClick={handleClose}>Item 2</MenuItem>
         <MenuItem onClick={handleClose}>Item 3</MenuItem>
       </Menu>
-    </>
+    </ReactPortal>
   );
 };
 

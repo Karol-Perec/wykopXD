@@ -39,7 +39,7 @@ const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarPro
             </S.MenuTogglerContainer>
           )}
 
-          <SortButton />
+          {/* <SortButton /> */}
           <ThemeToggler />
           <Avatar onClick={onRightDrawerToggleClick} size={32} src={authData?.profile?.avatarUrl} />
         </Toolbar>

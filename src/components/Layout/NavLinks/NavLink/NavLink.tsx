@@ -1,6 +1,6 @@
 import { MouseEventHandler, ReactNode } from 'react';
 import { useMatch, Link as RouterLink } from 'react-router-dom';
-import { ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
+import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import * as S from './NavLink.styles';
 
 interface NavLinkProps {
@@ -8,12 +8,12 @@ interface NavLinkProps {
   label: string;
 }
 
-interface DrawerNavLinkProps extends NavLinkProps {
+interface ListNavLinkProps extends NavLinkProps {
   icon: ReactNode;
   onClick: MouseEventHandler;
 }
 
-export const DrawerNavLink = ({ label, icon, to, onClick }: DrawerNavLinkProps) => {
+export const ListNavLink = ({ label, icon, to, onClick }: ListNavLinkProps) => {
   const match = useMatch(to);
 
   return (

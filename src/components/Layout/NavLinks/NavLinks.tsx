@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { List } from '@mui/material';
 import { Whatshot as HitsIcon, AccountCircle as MyWykopIcon } from '@mui/icons-material';
 import { ROUTE } from 'routes';
-import { DrawerNavLink, TopBarNavLink } from './NavLink/NavLink';
+import { ListNavLink, TopBarNavLink } from './NavLink/NavLink';
 import * as S from './NavLinks.styles';
 
 export const navLinks = [
@@ -34,14 +34,14 @@ export const navLinks = [
   },
 ];
 
-interface DrawerNavLinksProps {
+interface ListNavLinksProps {
   onNavLinkClick: MouseEventHandler;
 }
 
-export const DrawerNavLinks = ({ onNavLinkClick }: DrawerNavLinksProps) => (
+export const ListNavLinks = ({ onNavLinkClick }: ListNavLinksProps) => (
   <List>
     {navLinks.map((nav) => (
-      <DrawerNavLink
+      <ListNavLink
         to={nav.path}
         label={nav.label}
         icon={nav.icon}

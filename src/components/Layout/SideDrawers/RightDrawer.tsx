@@ -7,7 +7,7 @@ import {
   Info as AppInfoIcon,
 } from '@mui/icons-material';
 import AuthContext from 'contexts/Auth/AuthContext';
-import { DrawerNavLink } from '../NavLinks/NavLink/NavLink';
+import { ListNavLink } from '../NavLinks/NavLink/NavLink';
 import Avatar from '../../UI/Avatar';
 import Drawer from '../../UI/Drawer';
 import * as S from './SideDrawers.styles';
@@ -34,7 +34,7 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
       <Divider variant='middle' />
       <List>
         {!authData?.userkey && (
-          <DrawerNavLink
+          <ListNavLink
             to='/zaloguj'
             label='Zaloguj się'
             onClick={onUserAction}
@@ -42,15 +42,15 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
           />
         )}
         {authData?.userkey && (
-          <DrawerNavLink to='/x' label='Wyloguj się' onClick={handleLogout} icon={<LogoutIcon />} />
+          <ListNavLink to='/x' label='Wyloguj się' onClick={handleLogout} icon={<LogoutIcon />} />
         )}
-        <DrawerNavLink
+        <ListNavLink
           to='/ustawienia'
           label='Ustawienia'
           onClick={onUserAction}
           icon={<SettingsIcon />}
         />
-        <DrawerNavLink
+        <ListNavLink
           to='/o-aplikacji'
           label='O aplikacji'
           onClick={onUserAction}
