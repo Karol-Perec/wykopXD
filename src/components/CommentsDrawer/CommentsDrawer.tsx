@@ -37,9 +37,11 @@ const CommentsDrawer = ({
       onClose={onClose}
       onClick={handleStopPropagation}
     >
-      {/* <S.Puller /> */}
-      <Comments comments={comments} />
-      {isLoading && <Loading />}
+      {!isDekstop && <S.Puller />}
+      <div style={{width: '100%', overflowY: 'scroll'}}>
+        <Comments comments={comments} />
+        {isLoading && <Loading />}
+      </div>
     </S.CommentsDrawer>
   );
 };
