@@ -1,4 +1,4 @@
-import { ReactEventHandler } from 'react';
+import { ReactEventHandler, useEffect, useState } from 'react';
 import { Entry } from 'types';
 import useEntry from 'hooks/api/useEntry';
 import CommentsDrawer from './CommentsDrawer';
@@ -11,7 +11,12 @@ interface EntryCommentsDrawerProps {
 }
 
 const EntryCommentsDrawer = ({ entry, open, onOpen, onClose }: EntryCommentsDrawerProps) => {
-  const { data, isLoading, error } = useEntry(entry.id, entry);
+  const [wasOpened, setWasOpened] = useState(false);
+  const { data, isLoading, error } = useEntry(entry.id, entry, wasOpened);
+
+  useEffect(() => {
+    if (open) setWasOpened(true);
+  }, [open]);
 
   return (
     <CommentsDrawer

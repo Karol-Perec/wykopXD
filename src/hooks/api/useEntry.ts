@@ -7,12 +7,13 @@ const getEntry = async (id: string | number) => {
   return data;
 };
 
-const useEntry = (id: string | number, initialData?: Entry) =>
+const useEntry = (id: string | number, initialData?: Entry, enabled = true) =>
   useQuery(['entry', id], () => getEntry(id), {
     retry: false,
     staleTime: 10000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,
+    enabled,
     initialData,
     initialDataUpdatedAt:
       initialData?.commentsCount !== initialData?.comments?.length ? 0 : undefined,

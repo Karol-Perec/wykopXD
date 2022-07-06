@@ -6,10 +6,6 @@ export const LeftDrawerHeader = styled('div')(({ theme }) => ({
   margin: theme.spacing(2),
 }));
 
-export const NavContainer = styled('nav')({
-  width: 200,
-});
-
 export const WykopLogo = styled(SvgLogo)(({ theme }) => ({
   height: 50,
   fill: theme.palette.primary.main,

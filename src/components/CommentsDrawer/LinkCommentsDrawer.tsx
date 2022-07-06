@@ -1,4 +1,4 @@
-import { ReactEventHandler } from 'react';
+import { ReactEventHandler, useEffect, useState } from 'react';
 import { Link } from 'types';
 import useLink from 'hooks/api/useLink';
 import CommentsDrawer from './CommentsDrawer';
@@ -11,7 +11,12 @@ interface LinkCommentsDrawerProps {
 }
 
 const LinkCommentsDrawer = ({ link, open, onOpen, onClose }: LinkCommentsDrawerProps) => {
-  const { data, isLoading, error } = useLink(link.id, link);
+  const [wasOpened, setWasOpened] = useState(open);
+  const { data, isLoading, error } = useLink(link.id, link, wasOpened);
+
+  useEffect(() => {
+    if (open) setWasOpened(true);
+  }, [open]);
 
   return (
     <CommentsDrawer

@@ -36,6 +36,7 @@ const CommentsDrawer = ({
       onOpen={onOpen}
       onClose={onClose}
       onClick={handleStopPropagation}
+      keepMounted={false}
     >
       {!isDekstop && <S.Puller />}
       <div style={{width: '100%', overflowY: 'scroll'}}>

@@ -19,9 +19,9 @@ const LeftDrawer = ({ open, onUserAction }: LeftDrawerProps) => (
       </Link>
     </S.LeftDrawerHeader>
     <Divider variant='middle' />
-    <S.NavContainer>
+    <nav>
       <ListNavLinks onNavLinkClick={onUserAction} />
-    </S.NavContainer>
+    </nav>
     <Divider variant='middle' />
   </Drawer>
 );

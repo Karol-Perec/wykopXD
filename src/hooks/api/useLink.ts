@@ -7,12 +7,13 @@ const getLink = async (id: string | number) => {
   return data;
 };
 
-const useLink = (id: string | number, initialData?: Link) =>
+const useLink = (id: string | number, initialData?: Link, enabled = true) =>
   useQuery(['link', id], () => getLink(id), {
     retry: false,
     staleTime: 10000,
     keepPreviousData: true,
     refetchOnWindowFocus: false,
+    enabled,
     initialData,
     initialDataUpdatedAt: 0,
   });

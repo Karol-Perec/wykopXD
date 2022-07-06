@@ -1,4 +1,4 @@
-import { alpha, styled, SwipeableDrawer } from '@mui/material';
+import { styled, SwipeableDrawer } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
 export const CommentsDrawer = styled(SwipeableDrawer)(({ theme }) => ({
@@ -13,14 +13,14 @@ export const CommentsDrawer = styled(SwipeableDrawer)(({ theme }) => ({
       borderRadius: '10px 0px 0px 10px',
     },
 
-    backdropFilter: 'blur(10px)',
-    backgroundColor: alpha(
-      theme.palette.background.default,
-      theme.palette.mode === 'dark' ? 0.7 : 0.9
-    ),
-    '@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none))': {
-      backgroundColor: alpha(theme.palette.background.default, 0.95),
-    },
+    // backdropFilter: 'blur(10px)',
+    // backgroundColor: alpha(
+    //   theme.palette.background.default,
+    //   theme.palette.mode === 'dark' ? 0.7 : 0.9
+    // ),
+    // '@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none))': {
+    //   backgroundColor: alpha(theme.palette.background.default, 0.95),
+    // },
   },
 }));
 

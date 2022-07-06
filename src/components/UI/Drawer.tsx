@@ -1,5 +1,5 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
-import { alpha, Drawer as MuiDrawer, DrawerProps as MuiDrawerProps, styled } from '@mui/material';
+import { Drawer as MuiDrawer, DrawerProps as MuiDrawerProps, styled } from '@mui/material';
 
 interface DrawerProps {
   open: boolean;
@@ -7,22 +7,23 @@ interface DrawerProps {
   anchor: MuiDrawerProps['anchor'];
 }
 
-const StyledMuiDrawer = styled(MuiDrawer)(({ theme }) => ({
+const StyledMuiDrawer = styled(MuiDrawer)({
   '.MuiPaper-root': {
-    backdropFilter: 'blur(10px)',
-    backgroundColor: alpha(
-      theme.palette.background.default,
-      theme.palette.mode === 'dark' ? 0.7 : 0.9
-    ),
-    width: 200,
-    '@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none))': {
-      backgroundColor: alpha(theme.palette.background.default, 0.95),
-    },
+    width: 220,
+
+    // backdropFilter: 'blur(10px)',
+    // backgroundColor: alpha(
+    //   theme.palette.background.default,
+    //   theme.palette.mode === 'dark' ? 0.7 : 0.9
+    // ),
+    // '@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none))': {
+    //   backgroundColor: alpha(theme.palette.background.default, 0.95),
+    // },
   },
-}));
+});
 
 const Drawer = ({ open, anchor, children, onUserAction }: PropsWithChildren<DrawerProps>) => (
-  <StyledMuiDrawer open={open} onClose={onUserAction} anchor={anchor}>
+  <StyledMuiDrawer open={open} onClose={onUserAction} anchor={anchor} keepMounted>
     {children}
   </StyledMuiDrawer>
 );
