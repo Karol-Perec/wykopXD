@@ -37,11 +37,13 @@ const mapMedia = (e: WykopEmbedContent): Media => {
   };
 };
 
-export const mapUser = (p: WykopAuthor): User => ({
+export const mapUser = (p: WykopAuthor, hqAvatar = false): User => ({
   login: p.login,
   status: p.color,
   avatarUrl:
-    p.avatar !== WYKOP_DEFAULT_AVATAR_URL ? p.avatar.replace(',q150.', ',q40.') : undefined,
+    p.avatar !== WYKOP_DEFAULT_AVATAR_URL
+      ? p.avatar.replace(',q150.', hqAvatar ? ',q60.' : ',q40.')
+      : undefined,
   sex: p.sex,
 });
 

@@ -12,7 +12,9 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters })
   }
 
   return get<GetLinksResponse>(
-    `/links/${queryStringParameters.category}/page/${queryStringParameters.page || 1}`,
+    `/links/${queryStringParameters.category}
+    /page/${queryStringParameters.page || 1}
+    /${queryStringParameters?.sort || ''}`,
     ({ data }) => ({ items: data.map((l) => mapLink(l)) })
   );
 };

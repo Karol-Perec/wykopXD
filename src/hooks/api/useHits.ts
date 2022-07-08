@@ -3,14 +3,14 @@ import { Link, Collection, HitsPeriod } from 'types';
 import axios from 'utils/axios';
 
 // TO DO: add period
-const getHits = async (page: number, period: HitsPeriod) => {
+const getHits = async (page: number, period?: HitsPeriod) => {
   const { data } = await axios.get<Collection<Link>>('/hits', {
     params: { page, period },
   });
   return data.items;
 };
 
-const useHits = (period: HitsPeriod) =>
+const useHits = (period?: HitsPeriod, sort?: string) =>
   useInfiniteQuery(['hits', period], ({ pageParam = 1 }) => getHits(pageParam, period), {
     retry: false,
     staleTime: 100000,

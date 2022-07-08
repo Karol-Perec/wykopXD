@@ -1,28 +1,26 @@
-import { useState } from 'react';
-import { useHref, useLocation } from 'react-router-dom';
+import { MouseEventHandler, useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { Sort as SortIcon } from '@mui/icons-material';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import ReactPortal from './ReactPortal';
+import ReactPortal from 'components/UI/ReactPortal';
+import { SortOption } from 'types';
 
 interface SortButtonProps {
-  options?: string[];
+  sortOptions: SortOption[];
   activeOption?: string;
 }
 
-const SortButton = ({ options = [], activeOption }: SortButtonProps) => {
-  const xd = useLocation();
+const SortButton = ({ sortOptions = [], activeOption }: SortButtonProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  console.log(xd);
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick: MouseEventHandler<HTMLElement> = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => setAnchorEl(null);
 
   return (
-    <ReactPortal wrapperId='react-portal-modal-container'>
+    <ReactPortal wrapperId='sort-button-wrapper'>
       <IconButton onClick={handleClick} color='inherit'>
         <SortIcon />
       </IconButton>
@@ -33,9 +31,17 @@ const SortButton = ({ options = [], activeOption }: SortButtonProps) => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        <MenuItem onClick={handleClose}>Item 1</MenuItem>
-        <MenuItem onClick={handleClose}>Item 2</MenuItem>
-        <MenuItem onClick={handleClose}>Item 3</MenuItem>
+        {sortOptions.map((o) => (
+          <MenuItem
+            onClick={handleClose}
+            component={RouterLink}
+            to={o.path}
+            selected={activeOption === o.key}
+            key={o.key}
+          >
+            {o.label}
+          </MenuItem>
+        ))}
       </Menu>
     </ReactPortal>
   );

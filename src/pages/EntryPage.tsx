@@ -12,7 +12,7 @@ const EntryPage = () => {
   const navigationType = useNavigationType();
   const { data, isLoading, error } = useEntry(
     id!,
-    navigationType === NavigationType.Push ? (state as Entry) : undefined
+    navigationType === NavigationType.Push && state ? (state as Entry) : undefined
   );
   useTitle(`Wpis użytkownika ${data ? `@${data.user.login}` : ''}`);
 

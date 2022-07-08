@@ -7,7 +7,6 @@ import { ROUTE } from 'routes';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import * as S from './TopBar.styles';
 import { NavLinks } from '../NavLinks/NavLinks';
-import SortButton from './SortButton/SortButton';
 import Avatar from '../../UI/Avatar';
 
 interface TopBarProps {
@@ -39,7 +38,7 @@ const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarPro
             </S.MenuTogglerContainer>
           )}
 
-          {/* <SortButton /> */}
+          <div id='sort-button-wrapper' />
           <ThemeToggler />
           <Avatar onClick={onRightDrawerToggleClick} size={32} src={authData?.profile?.avatarUrl} />
         </Toolbar>

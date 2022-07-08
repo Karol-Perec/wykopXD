@@ -12,7 +12,7 @@ const LinkPage = () => {
   const navigationType = useNavigationType();
   const { data, isLoading, error } = useLink(
     id!,
-    navigationType === NavigationType.Push ? (state as Link) : undefined
+    navigationType === NavigationType.Push && state ? (state as Link) : undefined
   );
   useTitle(data?.title);
 

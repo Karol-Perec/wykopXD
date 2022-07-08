@@ -1,6 +1,6 @@
 {
   "queryStringParameters": {
     "page": 1,
-    "category": "hot"
+    "sort": "hot/period/12"
   }
 }

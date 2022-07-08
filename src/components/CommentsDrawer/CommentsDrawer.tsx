@@ -36,6 +36,7 @@ const CommentsDrawer = ({
       onOpen={onOpen}
       onClose={onClose}
       onClick={handleStopPropagation}
+      onMouseUp={handleStopPropagation}
       keepMounted={false}
     >
       {!isDekstop && <S.Puller />}

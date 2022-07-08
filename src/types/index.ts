@@ -5,4 +5,4 @@ export * from './media.types';
 export * from './user.types';
 export * from './tag.types';
 export * from './comment.types';
-export * from './sortCategories.types';
+export * from './filterOptions.types';

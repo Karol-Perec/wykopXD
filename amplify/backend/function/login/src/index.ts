@@ -41,7 +41,7 @@ export const handler: APIGatewayProxyHandler = async ({ body }) => {
       accountkey: token,
     },
     (d) => ({
-      profile: mapUser(d.data.profile),
+      profile: mapUser(d.data.profile, true),
       userkey: d.data.userkey,
       accountkey: token,
     })
