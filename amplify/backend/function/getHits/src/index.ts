@@ -6,14 +6,12 @@ import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 
 type GetHitsResponse = WykopResponse<WykopLink[]>;
 
-export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
-  if (!queryStringParameters?.period) {
-    return createResponse('Missing period', 400);
-  }
+export const handler: APIGatewayProxyHandler = async ({
+  queryStringParameters: { period, page },
+}) => {
+  if (!period) return createResponse('Missing period', 400);
 
-  return get<GetHitsResponse>(
-    `/hits/${queryStringParameters.period}
-    /page/${queryStringParameters.page || 1}`,
-    ({ data }) => ({ items: data.map((l) => mapLink(l)) })
-  );
+  return get<GetHitsResponse>(`/hits/${period}/page/${page || 1}`, ({ data }) => ({
+    items: data.map((l) => mapLink(l)),
+  }));
 };

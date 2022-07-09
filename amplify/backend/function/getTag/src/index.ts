@@ -7,15 +7,13 @@ import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 type GetTagReponse = WykopResponse<WykopMulti[], WykopTagMeta> & WykopPaginated;
 
 export const handler: APIGatewayProxyHandler = async ({
-  pathParameters,
-  queryStringParameters,
+  pathParameters: { tag },
+  queryStringParameters: { page },
 }) => {
-  if (!pathParameters?.tag) {
-    return createResponse('Missing tag', 400);
-  }
+  if (!tag) return createResponse('Missing tag', 400);
 
   return get<GetTagReponse>(
-    `/tags/index/${pathParameters.tag}/page/${queryStringParameters?.page || 1}/return/comments`,
+    `/tags/index/${tag}/page/${page || 1}/return/comments`,
     ({ data, meta }) => ({
       items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry, true))),
       meta: {

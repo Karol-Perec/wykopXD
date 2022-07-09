@@ -8,16 +8,14 @@ type GetProfileActionsResponse = WykopResponse<WykopMulti[]> & WykopPaginated;
 
 export const handler: APIGatewayProxyHandler = async ({
   pathParameters,
-  queryStringParameters,
+  queryStringParameters: { username, page },
 }) => {
   if (!pathParameters?.username) {
     return createResponse('Missing username', 400);
   }
 
   return get<GetProfileActionsResponse>(
-    `/profiles/actions/${pathParameters.username}/page/${
-      Number(queryStringParameters?.page || 1) + 1 // wykop response for pages 1 and 2 is the same
-    }/return/comments`,
+    `/profiles/actions/${username}/page/${(+page || 1) + 1}/return/comments`,
     ({ data }) => ({
       items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry, true))),
     })
