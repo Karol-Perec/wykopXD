@@ -27,11 +27,11 @@ export const navLinks = [
     path: ROUTE.MIKROBLOG,
     icon: <S.MikroblogIcon />,
   },
-  {
-    label: 'Mój Wykop',
-    path: ROUTE.MY_WYKOP,
-    icon: <MyWykopIcon />,
-  },
+  // {
+  //   label: 'Mój Wykop',
+  //   path: ROUTE.MY_WYKOP,
+  //   icon: <MyWykopIcon />,
+  // },
 ];
 
 interface ListNavLinksProps {

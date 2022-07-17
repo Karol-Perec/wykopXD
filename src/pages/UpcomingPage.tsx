@@ -8,22 +8,22 @@ import { ROUTE } from 'routes';
 
 export const upcomingCategories: Record<UpcomingCategory, CategoryOption> = {
   [UpcomingCategory.ACTIVE]: {
-    path: `${ROUTE.UPCOMING}/${UpcomingCategory.ACTIVE}`,
+    path: UpcomingCategory.ACTIVE,
     label: 'Aktywne',
     value: 'active',
   },
   [UpcomingCategory.NEWEST]: {
-    path: `${ROUTE.UPCOMING}/${UpcomingCategory.NEWEST}`,
+    path: UpcomingCategory.NEWEST,
     label: 'Najnowsze',
     value: 'date',
   },
   [UpcomingCategory.VOTED]: {
-    path: `${ROUTE.UPCOMING}/${UpcomingCategory.VOTED}`,
+    path: UpcomingCategory.VOTED,
     label: 'Wykopywane',
     value: 'votes',
   },
   [UpcomingCategory.COMMENTED]: {
-    path: `${ROUTE.UPCOMING}/${UpcomingCategory.COMMENTED}`,
+    path: UpcomingCategory.COMMENTED,
     label: 'Komentowane',
     value: 'comments',
   },
@@ -48,6 +48,7 @@ const UpcomingPage = ({ category }: UpcomingPageProps) => {
       <CategoryButton
         options={Object.values(upcomingCategories)}
         activeOption={activeCategory.label}
+        baseRoute={ROUTE.UPCOMING}
       />
       <LinksList
         links={data?.pages.flat()}

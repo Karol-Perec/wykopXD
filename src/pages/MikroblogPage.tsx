@@ -8,27 +8,27 @@ import { ROUTE } from 'routes';
 
 const mikroblogCategories: Record<MikroblogCategory, CategoryOption> = {
   [MikroblogCategory.NEW]: {
-    path: `${ROUTE.MIKROBLOG}/najnowsze`,
+    path: MikroblogCategory.NEW,
     label: 'Najnowsze',
     value: 'stream',
   },
   [MikroblogCategory.ACTIVE]: {
-    path: `${ROUTE.MIKROBLOG}/aktywne`,
+    path: MikroblogCategory.ACTIVE,
     label: 'Aktywne',
     value: 'active',
   },
   [MikroblogCategory.HOT_6H]: {
-    path: `${ROUTE.MIKROBLOG}/hot/ostatnie/6`,
+    path: MikroblogCategory.HOT_6H,
     label: 'Gorące 6h',
     value: 'hot/period/6',
   },
   [MikroblogCategory.HOT_12H]: {
-    path: `${ROUTE.MIKROBLOG}/hot/ostatnie/12`,
+    path: MikroblogCategory.HOT_12H,
     label: 'Gorące 12h',
     value: 'hot/period/12',
   },
   [MikroblogCategory.HOT_24H]: {
-    path: `${ROUTE.MIKROBLOG}/hot/ostatnie/24`,
+    path: MikroblogCategory.HOT_24H,
     label: 'Gorące 24h',
     value: 'hot/period/24',
   },
@@ -53,6 +53,7 @@ const MikroblogPage = ({ category }: MikroblogPageProps) => {
       <CategoryButton
         options={Object.values(mikroblogCategories)}
         activeOption={activeCategory.label}
+        baseRoute={ROUTE.MIKROBLOG}
       />
       <EntriesList
         entries={data?.pages.flat()}
