@@ -15,10 +15,10 @@ const mikroblogCategories: Record<MikroblogCategory, CategoryOption> = {
   [MikroblogCategory.ACTIVE]: {
     path: `${ROUTE.MIKROBLOG}/aktywne`,
     label: 'Aktywne',
-    value: 'newest',
+    value: 'active',
   },
   [MikroblogCategory.HOT_6H]: {
-    path: `${ROUTE.MIKROBLOG}hot/ostatnie/6/`,
+    path: `${ROUTE.MIKROBLOG}/hot/ostatnie/6`,
     label: 'Gorące 6h',
     value: 'hot/period/6',
   },

@@ -49,7 +49,7 @@ const HitsPage = ({ category }: HitsPageProps) => {
   );
 
   const handleInititeScroll = () => {
-    if (!data || data.pages?.at(-1)?.length) {
+    if (category !== HitsCategory.POPULAR && (!data || data.pages?.at(-1)?.length)) {
       fetchNextPage();
     }
   };
@@ -58,7 +58,7 @@ const HitsPage = ({ category }: HitsPageProps) => {
 
   return (
     <>
-      <CategoryButton options={[]} activeOption={activeCategory.label} />
+      <CategoryButton options={Object.values(hitsCategories)} activeOption={activeCategory.label} />
       <LinksList
         links={data?.pages.flat()}
         isLoading={isLoading || isFetchingNextPage}
