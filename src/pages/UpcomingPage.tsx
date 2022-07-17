@@ -1,59 +1,54 @@
 import LinksList from 'components/Links/LinksList/LinksList';
 import ErrorMessage from 'components/UI/ErrorMessage';
-import SortButton from 'components/Layout/TopBar/SortButton/SortButton';
+import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
 import useLinks from 'hooks/api/useLinks';
 import useTitle from 'hooks/useTitle';
-import { SortOption } from 'types';
-import { useNavigate, useParams } from 'react-router-dom';
-import { ROUTE } from '../routes';
+import { UpcomingCategory, CategoryOption } from 'types';
+import { ROUTE } from 'routes';
 
-export const upcomingSortOptions: SortOption[] = [
-  {
-    key: 'active',
-    path: `${ROUTE.UPCOMING}/aktywne`,
+export const upcomingCategories: Record<UpcomingCategory, CategoryOption> = {
+  [UpcomingCategory.ACTIVE]: {
+    path: `${ROUTE.UPCOMING}/${UpcomingCategory.ACTIVE}`,
     label: 'Aktywne',
-    fetchValue: '',
+    value: 'active',
   },
-  {
-    key: 'newest',
-    path: `${ROUTE.UPCOMING}/najnowsze`,
+  [UpcomingCategory.NEWEST]: {
+    path: `${ROUTE.UPCOMING}/${UpcomingCategory.NEWEST}`,
     label: 'Najnowsze',
-    fetchValue: 'sort/date',
+    value: 'date',
   },
-  {
-    key: 'voted',
-    path: `${ROUTE.UPCOMING}/wykopywane`,
+  [UpcomingCategory.VOTED]: {
+    path: `${ROUTE.UPCOMING}/${UpcomingCategory.VOTED}`,
     label: 'Wykopywane',
-    fetchValue: 'sort/votes',
+    value: 'votes',
   },
-  {
-    key: 'commented',
-    path: `${ROUTE.UPCOMING}/komentowane`,
+  [UpcomingCategory.COMMENTED]: {
+    path: `${ROUTE.UPCOMING}/${UpcomingCategory.COMMENTED}`,
     label: 'Komentowane',
-    fetchValue: 'sort/comments',
+    value: 'comments',
   },
-];
+};
 
-const UpcomingPage = () => {
+interface UpcomingPageProps {
+  category: UpcomingCategory;
+}
+
+const UpcomingPage = ({ category }: UpcomingPageProps) => {
   useTitle('Wykopalisko');
-
-  const { sort } = useParams();
-  const navigate = useNavigate();
-  if (sort && !upcomingSortOptions[sort]) navigate(ROUTE.UPCOMING);
-
-  const activeSortOption = upcomingSortOptions[sort || 'newest'];
+  const activeCategory = upcomingCategories[category];
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useLinks(
     'upcoming',
-    activeSortOption?.fetchValue
+    activeCategory.value
   );
-
-  console.log(sort);
 
   if (error) return <ErrorMessage error={error} />;
 
   return (
     <>
-      <SortButton sortOptions={upcomingSortOptions} activeOption={activeSortOption?.label} />
+      <CategoryButton
+        options={Object.values(upcomingCategories)}
+        activeOption={activeCategory.label}
+      />
       <LinksList
         links={data?.pages.flat()}
         isLoading={isLoading || isFetchingNextPage}

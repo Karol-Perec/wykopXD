@@ -1,38 +1,52 @@
-import { useParams } from 'react-router-dom';
 import LinksList from 'components/Links/LinksList/LinksList';
 import ErrorMessage from 'components/UI/ErrorMessage';
-import FilterButton from 'components/Layout/TopBar/SortButton/SortButton';
+import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
 import useTitle from 'hooks/useTitle';
 import useHits from 'hooks/api/useHits';
-import { SortOption, HitsPeriod } from 'types';
+import { CategoryOption, HitsCategory } from 'types';
+import { ROUTE } from 'routes';
 
-const hitsSortOptions: Record<string, SortOption> = {
-  active: {
-    path: '/hity/aktywne',
-    label: 'Aktywne',
-    fetchValue: 'active',
+const hitsCategories: Record<HitsCategory, CategoryOption> = {
+  [HitsCategory.POPULAR]: {
+    path: `${ROUTE.HITS}/${HitsCategory.POPULAR}`,
+    label: 'Popularne',
+    value: 'popular',
   },
-  newest: {
-    path: '/hity/najnowsze',
-    label: 'Najnowsze',
-    fetchValue: 'newest',
+  [HitsCategory.DAY]: {
+    path: `${ROUTE.HITS}/${HitsCategory.DAY}`,
+    label: 'Dnia',
+    value: 'day',
   },
-  voted: {
-    path: '/hity/wykopywane',
-    label: 'Wykopywane',
-    fetchValue: 'voted',
+  [HitsCategory.WEEK]: {
+    path: `${ROUTE.HITS}/${HitsCategory.WEEK}`,
+    label: 'Tygodnia',
+    value: 'week',
   },
-  commented: {
-    path: '/hity/komentowane',
-    label: 'Komentowane',
-    fetchValue: 'commented',
+  [HitsCategory.MONTH]: {
+    path: `${ROUTE.HITS}/${HitsCategory.MONTH}`,
+    label: 'Miesiąca',
+    value: 'month',
+    datePick: ['month', 'year'],
+  },
+  [HitsCategory.YEAR]: {
+    path: `${ROUTE.HITS}/${HitsCategory.YEAR}`,
+    label: 'Roku',
+    value: 'year',
+    datePick: ['year'],
   },
 };
 
-const HitsPage = () => {
+interface HitsPageProps {
+  category: HitsCategory;
+}
+
+const HitsPage = ({ category }: HitsPageProps) => {
   useTitle('Hity');
-  const { sort } = useParams();
-  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useHits(HitsPeriod.WEEK);
+
+  const activeCategory = hitsCategories[category];
+  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useHits(
+    activeCategory.value
+  );
 
   const handleInititeScroll = () => {
     if (!data || data.pages?.at(-1)?.length) {
@@ -44,7 +58,7 @@ const HitsPage = () => {
 
   return (
     <>
-      {/* <FilterButton sortOptions={[]} /> */}
+      <CategoryButton options={[]} activeOption={activeCategory.label} />
       <LinksList
         links={data?.pages.flat()}
         isLoading={isLoading || isFetchingNextPage}

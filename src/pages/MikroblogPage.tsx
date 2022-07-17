@@ -2,63 +2,57 @@ import EntriesList from 'components/Entries/EntriesList/EntriesList';
 import ErrorMessage from 'components/UI/ErrorMessage';
 import useTitle from 'hooks/useTitle';
 import useEntries from 'hooks/api/useEntries';
-import { MikroblogCategory, SortOption } from 'types';
-import { useNavigate, useParams } from 'react-router-dom';
-import SortButton from '../components/Layout/TopBar/SortButton/SortButton';
-import { ROUTE } from '../routes';
+import { MikroblogCategory, CategoryOption } from 'types';
+import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
+import { ROUTE } from 'routes';
 
-const mikroblogSortOptions: SortOption[] = [
-  {
-    key: 'newest',
-    path: ROUTE.MIKROBLOG,
+const mikroblogCategories: Record<MikroblogCategory, CategoryOption> = {
+  [MikroblogCategory.NEW]: {
+    path: `${ROUTE.MIKROBLOG}/najnowsze`,
     label: 'Najnowsze',
-    fetchValue: 'stream',
+    value: 'stream',
   },
-  {
-    key: 'active',
+  [MikroblogCategory.ACTIVE]: {
     path: `${ROUTE.MIKROBLOG}/aktywne`,
-    label: 'Najnowsze',
-    fetchValue: 'newest',
+    label: 'Aktywne',
+    value: 'newest',
   },
-  {
-    key: 'hot6h',
+  [MikroblogCategory.HOT_6H]: {
     path: `${ROUTE.MIKROBLOG}hot/ostatnie/6/`,
     label: 'Gorące 6h',
-    fetchValue: 'hot/period/6',
+    value: 'hot/period/6',
   },
-  {
-    key: 'hot12h',
+  [MikroblogCategory.HOT_12H]: {
     path: `${ROUTE.MIKROBLOG}/hot/ostatnie/12`,
     label: 'Gorące 12h',
-    fetchValue: 'hot/period/12',
+    value: 'hot/period/12',
   },
-  {
-    key: 'hot24h',
+  [MikroblogCategory.HOT_24H]: {
     path: `${ROUTE.MIKROBLOG}/hot/ostatnie/24`,
     label: 'Gorące 24h',
-    fetchValue: 'hot/period/24',
+    value: 'hot/period/24',
   },
-];
+};
 
-const MikroblogPage = () => {
+interface MikroblogPageProps {
+  category: MikroblogCategory;
+}
+
+const MikroblogPage = ({ category }: MikroblogPageProps) => {
   useTitle('Mikroblog');
 
-  const { sort } = useParams<'sort'>();
-  const navigate = useNavigate();
-  if (sort && !mikroblogSortOptions[sort]) navigate(ROUTE.MIKROBLOG);
-
-  const activeSortOption = mikroblogSortOptions[sort || 'hot12h'];
+  const activeCategory = mikroblogCategories[category];
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useEntries(
-    activeSortOption?.fetchValue as any
+    activeCategory.value
   );
 
   if (error) return <ErrorMessage error={error} />;
 
   return (
     <>
-      <SortButton
-        sortOptions={mikroblogSortOptions}
-        activeOption={activeSortOption?.key}
+      <CategoryButton
+        options={Object.values(mikroblogCategories)}
+        activeOption={activeCategory.label}
       />
       <EntriesList
         entries={data?.pages.flat()}

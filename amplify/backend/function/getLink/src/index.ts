@@ -6,10 +6,9 @@ import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 
 type GetLinkResponse = WykopResponse<WykopLink>;
 
-export const handler: APIGatewayProxyHandler = async ({ pathParameters: { id } }) => {
-  if (!id) {
-    return createResponse('Missing link ID', 400);
-  }
+export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
+  const { id } = pathParameters || {};
+  if (!id) return createResponse('Missing link ID', 400);
 
   return get<GetLinkResponse>(`/links/link/${id}/withcomments/true`, ({ data }) => mapLink(data));
 };

@@ -12,21 +12,12 @@ export const CommentsDrawer = styled(SwipeableDrawer)(({ theme }) => ({
       height: '100%',
       borderRadius: '10px 0px 0px 10px',
     },
-
-    // backdropFilter: 'blur(10px)',
-    // backgroundColor: alpha(
-    //   theme.palette.background.default,
-    //   theme.palette.mode === 'dark' ? 0.7 : 0.9
-    // ),
-    // '@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none))': {
-    //   backgroundColor: alpha(theme.palette.background.default, 0.95),
-    // },
   },
 }));
 
 export const CommentsDrawerContainer = styled('div')(({ theme }) => ({
   width: '100%',
-  height: 500,
+  height: 600,
 
   [theme.breakpoints.up('sm')]: {
     width: '100%',

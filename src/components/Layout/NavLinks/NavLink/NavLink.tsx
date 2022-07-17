@@ -1,7 +1,8 @@
 import { MouseEventHandler, ReactNode } from 'react';
-import { useMatch, Link as RouterLink } from 'react-router-dom';
+import { useMatch, Link as RouterLink, matchPath } from 'react-router-dom';
 import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import * as S from './NavLink.styles';
+import { ROUTE } from '../../../../routes';
 
 interface NavLinkProps {
   to: string;
@@ -14,7 +15,7 @@ interface ListNavLinkProps extends NavLinkProps {
 }
 
 export const ListNavLink = ({ label, icon, to, onClick }: ListNavLinkProps) => {
-  const match = useMatch(to);
+  const match = useMatch({ path: to, end: to === ROUTE.HOME });
 
   return (
     <li>

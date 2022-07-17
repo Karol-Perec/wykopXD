@@ -42,7 +42,7 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
           />
         )}
         {authData?.userkey && (
-          <ListNavLink to='/x' label='Wyloguj się' onClick={handleLogout} icon={<LogoutIcon />} />
+          <ListNavLink to='/' label='Wyloguj się' onClick={handleLogout} icon={<LogoutIcon />} />
         )}
         <ListNavLink
           to='/ustawienia'

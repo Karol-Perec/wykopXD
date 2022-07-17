@@ -1,7 +1,8 @@
-import { Brightness4 as DarkModeIcon, Brightness7 as LightModeIcon } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
-import ThemeModeContext from 'contexts/Theme/ThemeModeContext';
 import { useContext } from 'react';
+import { IconButton } from '@mui/material';
+import { Brightness4 as DarkModeIcon, Brightness7 as LightModeIcon } from '@mui/icons-material';
+import ThemeModeContext from 'contexts/Theme/ThemeModeContext';
+
 
 const ThemeToggler = () => {
   const themeContext = useContext(ThemeModeContext);

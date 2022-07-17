@@ -2,19 +2,19 @@ import { useInfiniteQuery } from 'react-query';
 import { Link, Collection } from 'types';
 import axios from 'utils/axios';
 
-export type LinksCategory = 'promoted' | 'upcoming' | 'observed';
+type LinksType = 'promoted' | 'upcoming' | 'observed';
 
-const getLinks = async (page: number, category: LinksCategory, filter?: string) => {
+const getLinks = async (page: number, type: LinksType, category?: string) => {
   const { data } = await axios.get<Collection<Link>>('/links', {
-    params: { page, category, filter },
+    params: { page, type, category },
   });
   return data.items;
 };
 
-const useLinks = (category: LinksCategory, filter?: string) =>
+const useLinks = (type: LinksType, category?: string) =>
   useInfiniteQuery(
-    ['links', category],
-    ({ pageParam = 1 }) => getLinks(pageParam, category, filter),
+    ['links', type, category],
+    ({ pageParam = 1 }) => getLinks(pageParam, type, category),
     {
       retry: false,
       staleTime: 100000,

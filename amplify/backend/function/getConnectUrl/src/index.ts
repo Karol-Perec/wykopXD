@@ -3,9 +3,8 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import { MD5 } from 'crypto-js';
 import { createResponse } from '/opt/nodejs/wykopApiUtils';
 
-export const handler: APIGatewayProxyHandler = async ({
-  queryStringParameters: { redirectUrl },
-}) => {
+export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
+  const { redirectUrl } = queryStringParameters || {};
   if (!redirectUrl) return createResponse('Missing redirectUrl', 400);
 
   const encodedRedirectUrl = encodeURIComponent(Buffer.from(redirectUrl).toString('base64'));
