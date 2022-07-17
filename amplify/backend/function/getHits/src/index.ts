@@ -7,12 +7,14 @@ import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 type GetHitsResponse = WykopResponse<WykopLink[]>;
 
 export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
-  if (!queryStringParameters?.period) {
-    return createResponse('Missing period', 400);
-  }
+  const { category, page = 1, year, month } = queryStringParameters || {};
+  if (!category) return createResponse('Missing category', 400);
+
+  const yearFilter = (category === 'year' || category === 'month') && year ? `/${year}` : '';
+  const monthFilter = category === 'month' && month ? `/${month}` : '';
 
   return get<GetHitsResponse>(
-    `/hits/${queryStringParameters.period}/page/${queryStringParameters.page || 1}`,
+    `/hits/${category}${yearFilter}${monthFilter}/page/${page}`,
     ({ data }) => ({ items: data.map((l) => mapLink(l)) })
   );
 };

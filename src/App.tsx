@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-import { Routes as RouterRoutes, Route, Navigate } from 'react-router-dom';
-import { HitsPeriod, MikroblogCategory } from 'types';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import LinkPage from 'pages/LinkPage';
 import MainPage from 'pages/HomePage';
 import EntryPage from 'pages/EntryPage';
@@ -18,15 +17,27 @@ import ScrollToTop from 'components/UI/ScrollToTop';
 import AuthContext from 'contexts/Auth/AuthContext';
 import Layout from 'components/Layout/Layout';
 import { ROUTE } from './routes';
+import { HitsCategory, MikroblogCategory, UpcomingCategory } from './types';
 
 export const renderRouterRoutes = (isLoggedIn: boolean) => (
-  <RouterRoutes>
-    <Route path={ROUTE.HITS} element={<HitsPage />}>
-      {Object.values(HitsPeriod).map((period) => (
-        <Route path={period} key={period} element={<HitsPage period={period} />} />
+  <Routes>
+    <Route path={ROUTE.HITS}>
+      <Route index element={<HitsPage category={HitsCategory.WEEK} />} />
+      {Object.values(HitsCategory).map((category) => (
+        <Route path={category} key={category} element={<HitsPage category={category} />}>
+          {category === HitsCategory.MONTH && (
+            <Route path=':year' element={<HitsPage category={category} />}>
+              <Route path=':month' element={<HitsPage category={category} />} />
+            </Route>
+          )}
+          {category === HitsCategory.YEAR && (
+            <Route path=':year' element={<HitsPage category={category} />} />
+          )}
+        </Route>
       ))}
     </Route>
-    <Route path={ROUTE.MIKROBLOG} element={<MikroblogPage />}>
+    <Route path={ROUTE.MIKROBLOG}>
+      <Route index element={<MikroblogPage category={MikroblogCategory.HOT_12H} />} />
       {Object.values(MikroblogCategory).map((category) => (
         <Route path={category} key={category} element={<MikroblogPage category={category} />} />
       ))}
@@ -36,13 +47,18 @@ export const renderRouterRoutes = (isLoggedIn: boolean) => (
     <Route path={ROUTE.TAG} element={<TagPage />} />
     <Route path={ROUTE.PROFILE} element={<ProfilePage />} />
     <Route path={ROUTE.HOME} element={<MainPage />} />
-    <Route path={ROUTE.UPCOMING} element={<UpcomingPage />} />
+    <Route path={ROUTE.UPCOMING}>
+      <Route index element={<UpcomingPage category={UpcomingCategory.NEWEST} />} />
+      {Object.values(UpcomingCategory).map((category) => (
+        <Route path={category} key={category} element={<UpcomingPage category={category} />} />
+      ))}
+    </Route>
     <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
     <Route path={ROUTE.APP_INFO} element={<AppInfoPage />} />
     {!isLoggedIn && <Route path={ROUTE.LOGIN} element={<LoginPage />} />}
     {!isLoggedIn && <Route path={ROUTE.LOGIN_CALLBACK} element={<LoginCallback />} />}
     <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
-  </RouterRoutes>
+  </Routes>
 );
 
 const App = () => {

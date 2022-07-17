@@ -4,15 +4,12 @@ import { MD5 } from 'crypto-js';
 import { createResponse } from '/opt/nodejs/wykopApiUtils';
 
 export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
-  if (!queryStringParameters?.redirectUrl) {
-    return createResponse('Missing redirectUrl', 400);
-  }
+  const { redirectUrl } = queryStringParameters || {};
+  if (!redirectUrl) return createResponse('Missing redirectUrl', 400);
 
-  let url = `https://a2.wykop.pl/login/connect/appkey/${process.env.API_KEY}`;
-  url += `/redirect/${encodeURIComponent(
-    Buffer.from(queryStringParameters.redirectUrl).toString('base64')
-  )}`;
-  url += `/secure/${MD5(process.env.SECRET + queryStringParameters.redirectUrl)}`;
+  const encodedRedirectUrl = encodeURIComponent(Buffer.from(redirectUrl).toString('base64'));
+  const sign = MD5(process.env.SECRET + redirectUrl);
+  const url = `https://a2.wykop.pl/login/connect/appkey/${process.env.API_KEY}/redirect/${encodedRedirectUrl}/secure/${sign}`;
 
   return createResponse(url, 200);
 };

@@ -19,9 +19,7 @@ interface ConnectData {
 
 export const handler: APIGatewayProxyHandler = async ({ body }) => {
   const connectData: string = body && JSON.parse(body)?.connectData;
-  if (!connectData) {
-    return createResponse('Missing connect data', 400);
-  }
+  if (!connectData) return createResponse('Missing connect data', 400);
 
   const { appkey, login, sign, token } = JSON.parse(
     Buffer.from(connectData, 'base64').toString()
@@ -41,7 +39,7 @@ export const handler: APIGatewayProxyHandler = async ({ body }) => {
       accountkey: token,
     },
     (d) => ({
-      profile: mapUser(d.data.profile),
+      profile: mapUser(d.data.profile, true),
       userkey: d.data.userkey,
       accountkey: token,
     })

@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
 import { stopPropagation } from 'utils/windowUtils';
+import { RouterNoPropagationLink } from '../../UI/CustomLinks';
 import * as S from './Image.styles';
 
 interface ImageProps {
@@ -28,9 +30,17 @@ const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => 
     </S.ImageContainer>
   );
 
-  return (
-    <S.Container>{listMode || isBlurred ? image : <a href={sourceUrl}>{image}</a>}</S.Container>
-  );
+  const imageWithLink =
+    sourceUrl.startsWith('https://www.wykop.pl/wpis') ||
+    sourceUrl.startsWith('https://www.wykop.pl/link') ? (
+      <RouterNoPropagationLink to={sourceUrl.replace('https://www.wykop.pl', '')}>
+        {image}
+      </RouterNoPropagationLink>
+    ) : (
+      <a href={sourceUrl}>{image}</a>
+    );
+
+  return <S.Container>{listMode || isBlurred ? image : imageWithLink}</S.Container>;
 };
 
 export default Image;

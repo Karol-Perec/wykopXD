@@ -7,12 +7,11 @@ import { mapLink } from '/opt/nodejs/dataUtils';
 type GetLinksResponse = WykopResponse<WykopLink[]> & WykopPaginated;
 
 export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
-  if (!queryStringParameters?.category) {
-    return createResponse('Missing category', 400);
-  }
+  const { type, page = 1, category } = queryStringParameters || {};
+  if (!type) return createResponse('Missing links type', 400);
 
   return get<GetLinksResponse>(
-    `/links/${queryStringParameters.category}/page/${queryStringParameters.page || 1}`,
+    `/links/${type}/page/${page}${category ? `/sort/${category}` : ''}`,
     ({ data }) => ({ items: data.map((l) => mapLink(l)) })
   );
 };

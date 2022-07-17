@@ -56,7 +56,16 @@ export const NavLinks = () => {
   const location = useLocation();
 
   return (
-    <S.NavTabs value={!!navLinks.find((l) => l.path === location.pathname) && location.pathname}>
+    <S.NavTabs
+      value={
+        (
+          navLinks
+            .filter((l) => l.path !== ROUTE.HOME)
+            .find((l) => location.pathname.startsWith(l.path)) ||
+          navLinks.find((l) => l.path === location.pathname)
+        )?.path || false
+      }
+    >
       {navLinks.map((nav) => (
         <TopBarNavLink label={nav.label} to={nav.path} key={nav.path} value={nav.path} />
       ))}
