@@ -13,6 +13,8 @@ interface ImageProps {
   ratio?: number;
 }
 
+const linkOrEntryRegex = /https?:\/\/(www\.)?wykop\.pl\/(wpis|link)\/([0-9]+).+/;
+
 const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => {
   const [isBlurred, setIsBlurred] = useState(plus18);
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, isBlurred));
@@ -30,15 +32,13 @@ const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => 
     </S.ImageContainer>
   );
 
-  const imageWithLink =
-    sourceUrl.startsWith('https://www.wykop.pl/wpis') ||
-    sourceUrl.startsWith('https://www.wykop.pl/link') ? (
-      <RouterNoPropagationLink to={sourceUrl.replace('https://www.wykop.pl', '')}>
-        {image}
-      </RouterNoPropagationLink>
-    ) : (
-      <a href={sourceUrl}>{image}</a>
-    );
+  const imageWithLink = sourceUrl.match(linkOrEntryRegex) ? (
+    <RouterNoPropagationLink to={sourceUrl.replace('https://www.wykop.pl', '')}>
+      {image}
+    </RouterNoPropagationLink>
+  ) : (
+    <a href={sourceUrl}>{image}</a>
+  );
 
   return <S.Container>{listMode || isBlurred ? image : imageWithLink}</S.Container>;
 };

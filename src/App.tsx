@@ -48,7 +48,7 @@ export const renderRouterRoutes = (isLoggedIn: boolean) => (
     <Route path={ROUTE.PROFILE} element={<ProfilePage />} />
     <Route path={ROUTE.HOME} element={<MainPage />} />
     <Route path={ROUTE.UPCOMING}>
-      <Route index element={<UpcomingPage category={UpcomingCategory.NEWEST} />} />
+      <Route index element={<UpcomingPage category={UpcomingCategory.VOTED} />} />
       {Object.values(UpcomingCategory).map((category) => (
         <Route path={category} key={category} element={<UpcomingPage category={category} />} />
       ))}

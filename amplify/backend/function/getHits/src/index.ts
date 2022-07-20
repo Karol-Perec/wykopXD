@@ -10,8 +10,9 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters })
   const { category, page = 1, year, month } = queryStringParameters || {};
   if (!category) return createResponse('Missing category', 400);
 
-  const yearFilter = (category === 'year' || category === 'month') && year ? `/${year}` : '';
-  const monthFilter = category === 'month' && month ? `/${month}` : '';
+  const yearFilter =
+    category === 'year' || category === 'month' ? `/${year || new Date().getFullYear()}` : '';
+  const monthFilter = category === 'month' ? `/${month || new Date().getMonth()}` : '';
 
   return get<GetHitsResponse>(
     `/hits/${category}${yearFilter}${monthFilter}/page/${page}`,

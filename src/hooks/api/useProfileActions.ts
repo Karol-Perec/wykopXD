@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { Entry, Collection, Link } from 'types';
 import axios from 'utils/axios';
 
