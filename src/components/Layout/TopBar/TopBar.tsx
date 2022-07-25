@@ -4,10 +4,9 @@ import { MouseEventHandler, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import AuthContext from 'contexts/Auth/AuthContext';
 import { ROUTE } from 'routes';
-import ThemeToggler from './ThemeToggler/ThemeToggler';
-import * as S from './TopBar.styles';
 import { NavLinks } from '../NavLinks/NavLinks';
 import Avatar from '../../UI/Avatar';
+import * as S from './TopBar.styles';
 
 interface TopBarProps {
   onLeftDrawerToggleClick: MouseEventHandler<HTMLElement>;
@@ -39,7 +38,6 @@ const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarPro
           )}
 
           <div id='sort-filter-button-wrapper' />
-          <ThemeToggler />
           <Avatar onClick={onRightDrawerToggleClick} size={32} src={authData?.profile?.avatarUrl} />
         </Toolbar>
       </Container>

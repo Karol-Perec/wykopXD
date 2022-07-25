@@ -1,5 +1,4 @@
 import EntriesList from 'components/Entries/EntriesList/EntriesList';
-import ErrorMessage from 'components/UI/ErrorMessage';
 import useTitle from 'hooks/useTitle';
 import useEntries from 'hooks/api/useEntries';
 import { MikroblogCategory, CategoryOption } from 'types';
@@ -42,11 +41,7 @@ const MikroblogPage = ({ category }: MikroblogPageProps) => {
   useTitle('Mikroblog');
 
   const activeCategory = mikroblogCategories[category];
-  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useEntries(
-    activeCategory.value
-  );
-
-  if (error) return <ErrorMessage error={error} />;
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useEntries(activeCategory.value);
 
   return (
     <>

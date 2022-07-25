@@ -1,5 +1,4 @@
 import LinksList from 'components/Links/LinksList/LinksList';
-import ErrorMessage from 'components/UI/ErrorMessage';
 import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
 import useTitle from 'hooks/useTitle';
 import useHits from 'hooks/api/useHits';
@@ -45,7 +44,7 @@ const HitsPage = ({ category }: HitsPageProps) => {
   useTitle('Hity');
   const { year, month } = useParams<{ year: string; month: string }>();
   const activeCategory = hitsCategories[category];
-  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useHits(
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useHits(
     activeCategory.value,
     Number(year) || undefined,
     Number(month) || undefined
@@ -56,8 +55,6 @@ const HitsPage = ({ category }: HitsPageProps) => {
       fetchNextPage();
     }
   };
-
-  if (error) return <ErrorMessage error={error} />;
 
   return (
     <>

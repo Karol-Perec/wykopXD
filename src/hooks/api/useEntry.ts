@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Entry } from 'types';
 import axios from 'utils/axios';
+import { defaultOptions } from './defaultOptions';
 
 const getEntry = async (id: string | number) => {
   const { data } = await axios.get<Entry>(`/entries/${id}`);
@@ -9,10 +10,8 @@ const getEntry = async (id: string | number) => {
 
 const useEntry = (id: string | number, initialData?: Entry, enabled = true) =>
   useQuery(['entry', id], () => getEntry(id), {
-    retry: false,
-    staleTime: 10000,
+    ...defaultOptions,
     keepPreviousData: true,
-    refetchOnWindowFocus: false,
     enabled,
     initialData,
     initialDataUpdatedAt:

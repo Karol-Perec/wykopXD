@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link, Collection } from 'types';
 import axios from 'utils/axios';
+import { defaultOptions } from './defaultOptions';
 
 type LinksType = 'promoted' | 'upcoming' | 'observed';
 
@@ -16,10 +17,7 @@ const useLinks = (type: LinksType, category?: string) =>
     ['links', type, category],
     ({ pageParam = 1 }) => getLinks(pageParam, type, category),
     {
-      retry: false,
-      staleTime: 100000,
-      keepPreviousData: true,
-      refetchOnWindowFocus: false,
+      ...defaultOptions,
       getNextPageParam: (_lastPage, pages) => pages.length + 1,
     }
   );

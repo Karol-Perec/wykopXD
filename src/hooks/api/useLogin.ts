@@ -13,6 +13,7 @@ const login = async (connectData: string) => {
   return data;
 };
 
-const useLogin = (onSuccess: (data: AuthData) => void) => useMutation(login, { onSuccess });
+const useLogin = (onSuccess: (data: AuthData) => void) =>
+  useMutation(login, { onSuccess, useErrorBoundary: false });
 
 export default useLogin;

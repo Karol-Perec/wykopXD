@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link, Collection } from 'types';
 import axios from 'utils/axios';
+import { defaultOptions } from './defaultOptions';
 
 // TO DO: add period
 const getHits = async (page: number, category: string, year?: number, month?: number) => {
@@ -15,10 +16,7 @@ const useHits = (category: string, year?: number, month?: number) =>
     ['hits', category, year, month],
     ({ pageParam = 1 }) => getHits(pageParam, category, year, month),
     {
-      retry: false,
-      staleTime: 100000,
-      keepPreviousData: true,
-      refetchOnWindowFocus: false,
+      ...defaultOptions,
       getNextPageParam: (_lastPage, pages) => pages.length + 1,
     }
   );

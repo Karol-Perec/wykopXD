@@ -1,11 +1,8 @@
 import LinksList from 'components/Links/LinksList/LinksList';
-import ErrorMessage from 'components/UI/ErrorMessage';
 import useLinks from 'hooks/api/useLinks';
 
 const HomePage = () => {
-  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } = useLinks('promoted');
-
-  if (error) return <ErrorMessage error={error} />;
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useLinks('promoted');
 
   return (
     <LinksList

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { defaultOptions } from './defaultOptions';
 
 const getGfycat = async (sourceUrl: string): Promise<string> => {
   const id = sourceUrl.split('/').slice(-1);
@@ -9,10 +10,7 @@ const getGfycat = async (sourceUrl: string): Promise<string> => {
 
 const useGfycat = (sourceUrl: string, enabled: boolean) =>
   useQuery(['gfycat', sourceUrl], () => getGfycat(sourceUrl), {
-    retry: false,
-    staleTime: 10000,
-    keepPreviousData: true,
-    refetchOnWindowFocus: false,
+    ...defaultOptions,
     enabled,
   });
 

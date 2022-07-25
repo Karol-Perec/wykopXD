@@ -6,11 +6,27 @@ const lightModePalette: PaletteOptions = {
   background: { default: '#f9fbfa' },
 };
 
-export const getTheme = (mode: PaletteMode): ThemeOptions => ({
+export enum PrimaryColor {
+  Blue = '#1d9bf0',
+  Yellow = '#ffd400',
+  Pink = '#f91880',
+  Purple = '#7856ff',
+  Orange = '#ff7a00',
+  Green = '#00ba7c',
+}
+
+export enum ThemeMode {
+  Light = 'light',
+  Dim = 'dim',
+  Dark = 'dark',
+  Black = 'black',
+}
+
+export const getTheme = (mode: PaletteMode, primaryColor: PrimaryColor): ThemeOptions => ({
   palette: {
     mode,
     ...(mode === 'dark' ? darkModePalette : lightModePalette),
-    primary: { main: '#1d9bf0' }, // #328efe #4283af
+    primary: { main: primaryColor },
     text: { secondary: '#bbb' },
     action: { active: mode === 'dark' ? '#fff' : 'rgb(15, 20, 25)' },
   },
