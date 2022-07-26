@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { IconButton, ListItemIcon } from '@mui/material';
 import { CalendarPickerView, DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -66,9 +66,8 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
             })}
             ref={inputRef}
             centerRipple
-            style={{ marginLeft: 5 }}
           >
-            <CalendarIcon />
+            <CalendarIcon fontSize='small'/>
           </IconButton>
         )}
       />

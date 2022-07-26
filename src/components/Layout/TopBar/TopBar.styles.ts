@@ -20,14 +20,10 @@ export const TopBar = styled(AppBar)(({ theme }) => ({
 export const Logo = styled(SvgLogo)(({ theme }) => ({
   height: 32,
   fill: theme.palette.mode === 'dark' ? theme.palette.primary.main : 'white',
+  marginRight: theme.spacing(2),
 }));
 
-export const NavContainer = styled('nav')({
-  display: 'flex',
-  flexGrow: 1,
-});
-
-export const MenuTogglerContainer = styled('div')({
+export const MainNavigation = styled('div')({
   display: 'flex',
   flexGrow: 1,
 });

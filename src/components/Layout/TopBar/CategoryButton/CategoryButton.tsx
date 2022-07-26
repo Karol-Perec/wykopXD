@@ -1,10 +1,11 @@
 import { MouseEventHandler, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { IconButton, ListItemText, Menu, MenuItem } from '@mui/material';
+import { ListItemText, Menu } from '@mui/material';
 import { Sort as SortIcon } from '@mui/icons-material';
 import ReactPortal from 'components/UI/ReactPortal';
 import { CategoryOption } from 'types';
 import CategoryDatePicker from './CategoryDatePicker';
+import * as S from './CategoryButton.styles';
 
 interface CategoryButtonProps {
   options: CategoryOption[];
@@ -22,10 +23,10 @@ const CategoryButton = ({ options = [], activeOption, baseRoute }: CategoryButto
   const handleClose = () => setAnchorEl(null);
 
   return (
-    <ReactPortal wrapperId='sort-filter-button-wrapper'>
-      <IconButton onClick={handleOpenCategoriesMenu} color='inherit'>
+    <ReactPortal wrapperId='category-button-wrapper'>
+      <S.IconButton onClick={handleOpenCategoriesMenu} color='inherit'>
         <SortIcon />
-      </IconButton>
+      </S.IconButton>
       <Menu
         anchorEl={anchorEl}
         open={!!anchorEl}
@@ -34,7 +35,7 @@ const CategoryButton = ({ options = [], activeOption, baseRoute }: CategoryButto
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
         {options.map((o) => (
-          <MenuItem
+          <S.MenuItem
             component={RouterLink}
             onClick={handleClose}
             to={`${baseRoute}/${o.path}`}
@@ -45,7 +46,7 @@ const CategoryButton = ({ options = [], activeOption, baseRoute }: CategoryButto
             {o.datePick && (
               <CategoryDatePicker option={o} baseRoute={baseRoute} handleClose={handleClose} />
             )}
-          </MenuItem>
+          </S.MenuItem>
         ))}
       </Menu>
     </ReactPortal>

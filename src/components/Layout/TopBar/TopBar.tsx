@@ -20,27 +20,25 @@ const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarPro
 
   return (
     <S.TopBar>
-      <Container>
-        <Toolbar disableGutters variant='dense'>
+      <Toolbar disableGutters variant='dense' component={Container}>
+        <S.MainNavigation>
           {isDekstop ? (
-            <S.NavContainer>
+            <>
               <IconButton component={RouterLink} to={ROUTE.HOME} disableRipple>
                 <S.Logo />
               </IconButton>
               <NavLinks />
-            </S.NavContainer>
+            </>
           ) : (
-            <S.MenuTogglerContainer>
-              <IconButton onClick={onLeftDrawerToggleClick} color='inherit'>
-                <MenuIcon />
-              </IconButton>
-            </S.MenuTogglerContainer>
+            <IconButton onClick={onLeftDrawerToggleClick} color='inherit'>
+              <MenuIcon />
+            </IconButton>
           )}
+        </S.MainNavigation>
 
-          <div id='sort-filter-button-wrapper' />
-          <Avatar onClick={onRightDrawerToggleClick} size={32} src={authData?.profile?.avatarUrl} />
-        </Toolbar>
-      </Container>
+        <div id='category-button-wrapper' />
+        <Avatar onClick={onRightDrawerToggleClick} size={32} src={authData?.profile?.avatarUrl} />
+      </Toolbar>
     </S.TopBar>
   );
 };

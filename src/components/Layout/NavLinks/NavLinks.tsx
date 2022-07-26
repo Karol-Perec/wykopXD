@@ -55,17 +55,16 @@ export const ListNavLinks = ({ onNavLinkClick }: ListNavLinksProps) => (
 export const NavLinks = () => {
   const location = useLocation();
 
+  const value =
+    (
+      navLinks
+        .filter((l) => l.path !== ROUTE.HOME)
+        .find((l) => location.pathname.startsWith(l.path)) ||
+      navLinks.find((l) => l.path === location.pathname)
+    )?.path || false;
+
   return (
-    <S.NavTabs
-      value={
-        (
-          navLinks
-            .filter((l) => l.path !== ROUTE.HOME)
-            .find((l) => location.pathname.startsWith(l.path)) ||
-          navLinks.find((l) => l.path === location.pathname)
-        )?.path || false
-      }
-    >
+    <S.NavTabs value={value} component='nav'>
       {navLinks.map((nav) => (
         <TopBarNavLink label={nav.label} to={nav.path} key={nav.path} value={nav.path} />
       ))}

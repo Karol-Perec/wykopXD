@@ -1,5 +1,5 @@
-import { Avatar as MuiAvatar, styled } from '@mui/material';
 import { MouseEventHandler } from 'react';
+import { Avatar as MuiAvatar, styled } from '@mui/material';
 
 interface AvatarProps {
   size: number;
