@@ -2,9 +2,12 @@ import { MenuItem as MuiMenuItem, IconButton as MuiIconButton, styled } from '@m
 
 export const MenuItem = styled(MuiMenuItem)({
   height: 42,
-  width: 130,
 }) as typeof MuiMenuItem;
 
 export const IconButton = styled(MuiIconButton)(({ theme }) => ({
   marginRight: theme.spacing(1),
 }));
+
+export const CalendarIconButton = styled(MuiIconButton)(({ theme }) => ({
+  marginLeft: theme.spacing(1),
+})) as typeof MuiIconButton;

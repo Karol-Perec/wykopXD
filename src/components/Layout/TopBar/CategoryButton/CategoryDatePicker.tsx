@@ -1,12 +1,13 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { IconButton, ListItemIcon } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ListItemIcon } from '@mui/material';
 import { CalendarPickerView, DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { Event as CalendarIcon } from '@mui/icons-material';
 import plLocale from 'date-fns/locale/pl';
 import { handleStopPropagation, stopPropagation } from 'utils/windowUtils';
 import { CategoryOption } from 'types';
+import * as S from './CategoryButton.styles';
 
 interface DateMenuItemContentProps {
   option: CategoryOption;
@@ -15,9 +16,17 @@ interface DateMenuItemContentProps {
 }
 
 const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemContentProps) => {
+  const { year, month } = useParams<{ year: string; month: string }>();
   const [date, setDate] = useState<Date | null>(new Date());
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const initDate = new Date();
+    if (month && option.datePick?.includes('month')) initDate.setMonth(+month);
+    if (year && option.datePick?.includes('year')) initDate.setFullYear(+year);
+    setDate(initDate);
+  }, [month, option.datePick, year]);
 
   const handleSetDateParams = (newDate: Date | null, route: string, pick: CalendarPickerView[]) => {
     handleClose();
@@ -57,7 +66,7 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
           onMouseDown: handleStopPropagation,
         }}
         renderInput={({ inputRef }) => (
-          <IconButton
+          <S.CalendarIconButton
             component={ListItemIcon}
             onMouseDown={handleStopPropagation}
             onClick={stopPropagation((e) => {
@@ -67,8 +76,8 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
             ref={inputRef}
             centerRipple
           >
-            <CalendarIcon fontSize='small'/>
-          </IconButton>
+            <CalendarIcon fontSize='small' />
+          </S.CalendarIconButton>
         )}
       />
     </LocalizationProvider>
