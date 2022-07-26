@@ -33,9 +33,7 @@ const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => 
   );
 
   const imageWithLink = sourceUrl.match(linkOrEntryRegex) ? (
-    <RouterNoPropagationLink to={sourceUrl.replace('https://www.wykop.pl', '')}>
-      {image}
-    </RouterNoPropagationLink>
+    <RouterNoPropagationLink to={sourceUrl.split('wykop.pl')[1]}>{image}</RouterNoPropagationLink>
   ) : (
     <a href={sourceUrl}>{image}</a>
   );

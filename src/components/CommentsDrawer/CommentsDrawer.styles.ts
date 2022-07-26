@@ -4,25 +4,16 @@ import { grey } from '@mui/material/colors';
 export const CommentsDrawer = styled(SwipeableDrawer)(({ theme }) => ({
   '.MuiPaper-root': {
     width: '100%',
-    height: 500,
+    height: 700,
+    maxHeight: 'calc(100% - 48px)',
     borderRadius: '10px 10px 0px 0px',
 
     [theme.breakpoints.up('md')]: {
-      maxWidth: 500,
+      maxWidth: 550,
       height: '100%',
+      maxHeight: '100%',
       borderRadius: '10px 0px 0px 10px',
     },
-  },
-}));
-
-export const CommentsDrawerContainer = styled('div')(({ theme }) => ({
-  width: '100%',
-  height: 600,
-
-  [theme.breakpoints.up('sm')]: {
-    width: '100%',
-    maxWidth: 700,
-    height: '100%',
   },
 }));
 
