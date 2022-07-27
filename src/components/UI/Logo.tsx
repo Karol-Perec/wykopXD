@@ -1,5 +1,5 @@
-import { SVGProps } from 'react';
 import { styled } from '@mui/material';
+import { SVGProps } from 'react';
 import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 
 const Logo = styled(SvgLogo)<SVGProps<SVGSVGElement>>(({ theme }) => ({

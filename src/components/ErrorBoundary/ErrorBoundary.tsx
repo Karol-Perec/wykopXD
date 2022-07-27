@@ -1,4 +1,4 @@
-import { Component, PropsWithChildren } from 'react';
+import { Component, ErrorInfo, PropsWithChildren } from 'react';
 import ErrorMessage from 'components/UI/ErrorMessage';
 
 interface ErrorBoundaryState {
@@ -12,8 +12,13 @@ class ErrorBoundary extends Component<PropsWithChildren, ErrorBoundaryState> {
     this.state = { hasError: false, error: null };
   }
 
-  public static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    console.log(error);
     return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.log(error, errorInfo);
   }
 
   public render() {

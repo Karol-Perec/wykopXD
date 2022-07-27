@@ -1,9 +1,9 @@
-import LinksList from 'components/Links/LinksList/LinksList';
 import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
+import LinksList from 'components/Links/LinksList/LinksList';
 import useLinks from 'hooks/api/useLinks';
 import useTitle from 'hooks/useTitle';
-import { UpcomingCategory, CategoryOption } from 'types';
 import { ROUTE } from 'routes';
+import { UpcomingCategory, CategoryOption } from 'types';
 
 export const upcomingCategories: Record<UpcomingCategory, CategoryOption> = {
   [UpcomingCategory.ACTIVE]: {

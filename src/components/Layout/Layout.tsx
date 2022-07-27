@@ -1,8 +1,8 @@
 import { PropsWithChildren, useState } from 'react';
+import * as S from './Layout.styles';
 import LeftDrawer from './SideDrawers/LeftDrawer';
 import RightDrawer from './SideDrawers/RightDrawer';
 import TopBar from './TopBar/TopBar';
-import * as S from './Layout.styles';
 
 const Layout = ({ children }: PropsWithChildren) => {
   const [showLeftDrawer, setShowLeftDrawer] = useState(false);

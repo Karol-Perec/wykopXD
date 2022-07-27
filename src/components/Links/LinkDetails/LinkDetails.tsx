@@ -1,22 +1,22 @@
-import { RefCallback, useState } from 'react';
-import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/material';
 import {
   Message as CommentsIcon,
   Share as ShareIcon,
   LocalFireDepartment as HotIcon,
 } from '@mui/icons-material';
+import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/material';
+import { RefCallback, useState } from 'react';
+import ReactPlayer from 'react-player';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
 import { Link } from 'types';
 import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
-import ReactPlayer from 'react-player';
-import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
-import { Card, ContentContainer, TextContentContainer } from '../../UI/Containers';
-import * as S from './LinkDetails.styles';
-import Media from '../../Media/Media';
-import UserHeader from '../../UI/UserHeader';
 import Comments from '../../Comments/Comments';
-import { RouterNoPropagationLink } from '../../UI/CustomLinks';
 import LinkCommentsDrawer from '../../CommentsDrawer/LinkCommentsDrawer';
+import Media from '../../Media/Media';
+import { Card, ContentContainer, TextContentContainer } from '../../UI/Containers';
+import { RouterNoPropagationLink } from '../../UI/CustomLinks';
+import UserHeader from '../../UI/UserHeader';
+import * as S from './LinkDetails.styles';
 
 interface LinkDetailsProps {
   data: Link;

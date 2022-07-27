@@ -1,11 +1,11 @@
+import { Divider } from '@mui/material';
 import { useMemo } from 'react';
 import { Comment as IComment } from 'types';
 import { parseHtml } from 'utils/parseHtml';
-import { Divider } from '@mui/material';
 import Media from '../../Media/Media';
+import { ContentContainer, TextContentContainer } from '../../UI/Containers';
 import UserHeader from '../../UI/UserHeader';
 import * as S from './Comment.styles';
-import { ContentContainer, TextContentContainer } from '../../UI/Containers';
 
 interface CommentProps {
   comment: IComment;

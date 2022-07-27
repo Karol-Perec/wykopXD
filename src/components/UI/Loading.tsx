@@ -1,5 +1,5 @@
-import { RefCallback } from 'react';
 import { CircularProgress, styled } from '@mui/material';
+import { RefCallback } from 'react';
 
 const LoadingContainer = styled('div')(({ theme }) => ({
   textAlign: 'center',

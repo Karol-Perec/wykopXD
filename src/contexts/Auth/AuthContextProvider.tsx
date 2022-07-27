@@ -1,6 +1,6 @@
 import { PropsWithChildren, useMemo } from 'react';
-import useLocalStorage from 'hooks/useLocalStorage';
 import { AuthData } from 'hooks/api/useLogin';
+import useLocalStorage from 'hooks/useLocalStorage';
 import AuthContext, { AuthContextInterface } from './AuthContext';
 
 const AuthContextProvider = ({ children }: PropsWithChildren) => {

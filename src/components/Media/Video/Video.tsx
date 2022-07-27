@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import useIsOnScreen from 'hooks/useIsOnScreen';
 import useGfycat from 'hooks/api/useGfycat';
+import useIsOnScreen from 'hooks/useIsOnScreen';
 import { getDisplayedImageUrl } from 'utils/imageUtils';
 import { stopPropagation } from 'utils/windowUtils';
 import * as S from './Video.styles';

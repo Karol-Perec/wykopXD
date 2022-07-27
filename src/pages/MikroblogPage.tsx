@@ -1,9 +1,9 @@
 import EntriesList from 'components/Entries/EntriesList/EntriesList';
-import useTitle from 'hooks/useTitle';
-import useEntries from 'hooks/api/useEntries';
-import { MikroblogCategory, CategoryOption } from 'types';
 import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
+import useEntries from 'hooks/api/useEntries';
+import useTitle from 'hooks/useTitle';
 import { ROUTE } from 'routes';
+import { MikroblogCategory, CategoryOption } from 'types';
 
 const mikroblogCategories: Record<MikroblogCategory, CategoryOption> = {
   [MikroblogCategory.NEW]: {

@@ -1,6 +1,6 @@
 import { ReactEventHandler, useEffect, useState } from 'react';
-import { Link } from 'types';
 import useLink from 'hooks/api/useLink';
+import { Link } from 'types';
 import CommentsDrawer from './CommentsDrawer';
 
 interface LinkCommentsDrawerProps {

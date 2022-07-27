@@ -1,10 +1,10 @@
+import { Divider } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
-import { Divider } from '@mui/material';
 import { ROUTE } from 'routes';
+import Drawer from '../../UI/Drawer';
 import { ListNavLinks } from '../NavLinks/NavLinks';
 import * as S from './SideDrawers.styles';
-import Drawer from '../../UI/Drawer';
 
 interface LeftDrawerProps {
   open: boolean;

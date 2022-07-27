@@ -1,21 +1,21 @@
-import { RefCallback, useMemo, useState } from 'react';
 import {
   Message as CommentsIcon,
   AddBox as PlusIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';
 import { Typography, Button, Divider, IconButton } from '@mui/material';
+import { RefCallback, useMemo, useState } from 'react';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import Media from 'components/Media/Media';
 import { Entry } from 'types';
 import { parseHtml } from 'utils/parseHtml';
 import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/windowUtils';
-import SurveyResults from '../../SurveyResults/SurveyResults';
 import Comments from '../../Comments/Comments';
+import EntryCommentsDrawer from '../../CommentsDrawer/EntryCommentsDrawer';
+import SurveyResults from '../../SurveyResults/SurveyResults';
 import { Card, ContentContainer, TextContentContainer } from '../../UI/Containers';
 import UserHeader from '../../UI/UserHeader';
 import * as S from './EntryDetails.styles';
-import EntryCommentsDrawer from '../../CommentsDrawer/EntryCommentsDrawer';
 
 interface EntryDetailsProps {
   data: Entry;

@@ -1,11 +1,11 @@
+import { Sort as SortIcon } from '@mui/icons-material';
+import { IconButton, ListItemText, Menu } from '@mui/material';
 import { MouseEventHandler, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { ListItemText, Menu } from '@mui/material';
-import { Sort as SortIcon } from '@mui/icons-material';
 import ReactPortal from 'components/UI/ReactPortal';
 import { CategoryOption } from 'types';
-import CategoryDatePicker from './CategoryDatePicker';
 import * as S from './CategoryButton.styles';
+import CategoryDatePicker from './CategoryDatePicker';
 
 interface CategoryButtonProps {
   options: CategoryOption[];
@@ -24,9 +24,9 @@ const CategoryButton = ({ options = [], activeOption, baseRoute }: CategoryButto
 
   return (
     <ReactPortal wrapperId='category-button-wrapper'>
-      <S.IconButton onClick={handleOpenCategoriesMenu} color='inherit'>
+      <IconButton onClick={handleOpenCategoriesMenu} color='inherit'>
         <SortIcon />
-      </S.IconButton>
+      </IconButton>
       <Menu
         anchorEl={anchorEl}
         open={!!anchorEl}

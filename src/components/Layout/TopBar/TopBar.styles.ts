@@ -1,7 +1,12 @@
-import { styled, alpha, AppBar } from '@mui/material';
+import {
+  styled,
+  alpha,
+  AppBar as MuiAppBar,
+  Container,
+} from '@mui/material';
 import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 
-export const TopBar = styled(AppBar)(({ theme }) => ({
+export const AppBar = styled(MuiAppBar)(({ theme }) => ({
   backdropFilter: 'blur(10px)',
   backgroundColor: alpha(
     theme.palette.mode === 'dark' ? theme.palette.background.default : theme.palette.primary.main,
@@ -15,6 +20,10 @@ export const TopBar = styled(AppBar)(({ theme }) => ({
   },
 
   transition: 'background-color 0.3s ease-out 0s',
+}));
+
+export const ToolbarContainer = styled(Container)(({ theme }) => ({
+  gap: theme.spacing(1),
 }));
 
 export const Logo = styled(SvgLogo)(({ theme }) => ({

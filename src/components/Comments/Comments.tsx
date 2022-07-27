@@ -1,9 +1,9 @@
-import { useMemo, useState } from 'react';
 import { Chip } from '@mui/material';
+import { useMemo, useState } from 'react';
 import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
 import { Comment, ExtendedComment } from 'types';
-import CommentView from './Comment/Comment';
 import Loading from '../UI/Loading';
+import CommentView from './Comment/Comment';
 import * as S from './Comments.styles';
 
 type OrderKey = 'best' | 'oldest' | 'newest';

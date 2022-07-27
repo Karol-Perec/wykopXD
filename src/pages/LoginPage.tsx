@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loading from 'components/UI/Loading';
+import AuthContext from 'contexts/Auth/AuthContext';
 import useConnectUrl from 'hooks/api/useConnectUrl';
 import useTitle from 'hooks/useTitle';
-import AuthContext from 'contexts/Auth/AuthContext';
 import { ROUTE } from 'routes';
 
 const LoginPage = () => {

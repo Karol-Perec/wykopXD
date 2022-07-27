@@ -1,5 +1,5 @@
-import useTitle from 'hooks/useTitle';
 import { Card, Container, Typography } from '@mui/material';
+import useTitle from 'hooks/useTitle';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from '../components/UI/CustomLinks';
 
 const AppInfoPage = () => {

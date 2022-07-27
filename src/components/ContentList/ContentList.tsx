@@ -1,8 +1,8 @@
-import { Entry, Link } from 'types';
 import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
-import Loading from '../UI/Loading';
+import { Entry, Link } from 'types';
 import EntryDetails from '../Entries/EntryDetails/EntryDetails';
 import LinkDetails from '../Links/LinkDetails/LinkDetails';
+import Loading from '../UI/Loading';
 
 interface MultiListProps {
   contents?: (Link | Entry)[];

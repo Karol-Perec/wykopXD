@@ -1,15 +1,15 @@
-import { MouseEventHandler, useContext } from 'react';
-import { Divider, List, Typography } from '@mui/material';
 import {
   Login as LoginIcon,
   Logout as LogoutIcon,
   Settings as SettingsIcon,
   Info as AppInfoIcon,
 } from '@mui/icons-material';
+import { Divider, List, Typography } from '@mui/material';
+import { MouseEventHandler, useContext } from 'react';
 import AuthContext from 'contexts/Auth/AuthContext';
-import { ListNavLink } from '../NavLinks/NavLink/NavLink';
 import Avatar from '../../UI/Avatar';
 import Drawer from '../../UI/Drawer';
+import { ListNavLink } from '../NavLinks/NavLink/NavLink';
 import * as S from './SideDrawers.styles';
 
 interface RightDrawerProps {

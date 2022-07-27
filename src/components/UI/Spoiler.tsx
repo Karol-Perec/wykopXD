@@ -1,5 +1,5 @@
-import { MouseEvent, PropsWithChildren, useState } from 'react';
 import { styled } from '@mui/material';
+import { MouseEvent, PropsWithChildren, useState } from 'react';
 
 interface BlurContainerProps {
   showMessage: boolean;

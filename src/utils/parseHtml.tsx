@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/no-array-index-key */
+import { Typography } from '@mui/material';
 import { Fragment } from 'react';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import Spoiler from 'components/UI/Spoiler';
 import { SPACE_CHAR } from 'constants/texts.constant';
-import { Typography } from '@mui/material';
 
 const encodeUtf8 = (message: string) => {
   const query = new URLSearchParams(message);

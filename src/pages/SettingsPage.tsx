@@ -1,7 +1,7 @@
-import useTitle from 'hooks/useTitle';
+import { Check } from '@mui/icons-material';
 import { Card, Container, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useContext } from 'react';
-import { Check } from '@mui/icons-material';
+import useTitle from 'hooks/useTitle';
 import ThemeContext from '../contexts/Theme/ThemeContext';
 import { PrimaryColor, ThemeMode } from '../theme';
 

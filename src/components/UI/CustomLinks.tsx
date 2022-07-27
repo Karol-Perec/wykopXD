@@ -1,5 +1,5 @@
-import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 import { LinkProps as MuiLinkProps, styled, Link as MuiLink } from '@mui/material';
+import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 import { handleStopPropagation } from 'utils/windowUtils';
 
 export const UnstyledRouterLink = styled(RouterLink)({
