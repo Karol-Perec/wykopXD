@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
 import { stopPropagation } from 'utils/windowUtils';
 import { RouterNoPropagationLink } from '../../UI/CustomLinks';

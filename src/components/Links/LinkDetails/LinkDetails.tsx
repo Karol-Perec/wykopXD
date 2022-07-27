@@ -8,14 +8,14 @@ import { RefCallback, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
+import Comments from 'components/Comments/Comments';
+import LinkCommentsDrawer from 'components/CommentsDrawer/LinkCommentsDrawer';
+import Media from 'components/Media/Media';
+import { Card, ContentContainer, TextContentContainer } from 'components/UI/Containers';
+import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
+import UserHeader from 'components/UI/UserHeader';
 import { Link } from 'types';
 import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
-import Comments from '../../Comments/Comments';
-import LinkCommentsDrawer from '../../CommentsDrawer/LinkCommentsDrawer';
-import Media from '../../Media/Media';
-import { Card, ContentContainer, TextContentContainer } from '../../UI/Containers';
-import { RouterNoPropagationLink } from '../../UI/CustomLinks';
-import UserHeader from '../../UI/UserHeader';
 import * as S from './LinkDetails.styles';
 
 interface LinkDetailsProps {

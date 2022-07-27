@@ -1,5 +1,4 @@
 import { styled, alpha, InputBase as MuiInputBase } from '@mui/material';
-import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
 
 export const Search = styled('div')(({ theme }) => ({
   position: 'relative',

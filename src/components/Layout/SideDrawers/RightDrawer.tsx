@@ -6,9 +6,9 @@ import {
 } from '@mui/icons-material';
 import { Divider, List, Typography } from '@mui/material';
 import { MouseEventHandler, useContext } from 'react';
+import Avatar from 'components/UI/Avatar';
+import Drawer from 'components/UI/Drawer';
 import AuthContext from 'contexts/Auth/AuthContext';
-import Avatar from '../../UI/Avatar';
-import Drawer from '../../UI/Drawer';
 import { ListNavLink } from '../NavLinks/NavLink/NavLink';
 import * as S from './SideDrawers.styles';
 

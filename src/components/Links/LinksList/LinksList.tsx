@@ -1,6 +1,6 @@
+import Loading from 'components/UI/Loading';
+import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
 import { Link } from 'types';
-import useInfiniteScrolling from '../../../hooks/useInfiniteScrolling';
-import Loading from '../../UI/Loading';
 import LinkDetails from '../LinkDetails/LinkDetails';
 
 interface LinksListProps {

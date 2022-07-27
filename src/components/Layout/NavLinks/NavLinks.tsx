@@ -1,4 +1,4 @@
-import { Whatshot as HitsIcon, AccountCircle as MyWykopIcon } from '@mui/icons-material';
+import { Whatshot as HitsIcon } from '@mui/icons-material';
 import { List } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -30,7 +30,7 @@ export const navLinks = [
   // {
   //   label: 'Mój Wykop',
   //   path: ROUTE.MY_WYKOP,
-  //   icon: <MyWykopIcon />,
+  //   icon: <AccountCircle />,
   // },
 ];
 
