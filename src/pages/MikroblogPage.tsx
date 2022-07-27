@@ -1,5 +1,6 @@
 import EntriesList from 'components/Entries/EntriesList/EntriesList';
 import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
+import ErrorMessage from 'components/UI/ErrorMessage';
 import useEntries from 'hooks/api/useEntries';
 import useTitle from 'hooks/useTitle';
 import { ROUTE } from 'routes';
@@ -41,7 +42,11 @@ const MikroblogPage = ({ category }: MikroblogPageProps) => {
   useTitle('Mikroblog');
 
   const activeCategory = mikroblogCategories[category];
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useEntries(activeCategory.value);
+  const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useEntries(
+    activeCategory.value
+  );
+
+  if (error) return <ErrorMessage error={error} />;
 
   return (
     <>

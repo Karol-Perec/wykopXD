@@ -1,5 +1,6 @@
 import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
 import LinksList from 'components/Links/LinksList/LinksList';
+import ErrorMessage from 'components/UI/ErrorMessage';
 import useLinks from 'hooks/api/useLinks';
 import useTitle from 'hooks/useTitle';
 import { ROUTE } from 'routes';
@@ -35,10 +36,12 @@ interface UpcomingPageProps {
 const UpcomingPage = ({ category }: UpcomingPageProps) => {
   useTitle('Wykopalisko');
   const activeCategory = upcomingCategories[category];
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useLinks(
+  const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useLinks(
     'upcoming',
     activeCategory.value
   );
+
+  if (error) return <ErrorMessage error={error} />;
 
   return (
     <>

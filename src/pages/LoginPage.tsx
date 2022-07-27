@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ErrorMessage from 'components/UI/ErrorMessage';
 import Loading from 'components/UI/Loading';
 import AuthContext from 'contexts/Auth/AuthContext';
 import useConnectUrl from 'hooks/api/useConnectUrl';
@@ -10,7 +11,7 @@ const LoginPage = () => {
   useTitle('Zaloguj się');
   const { authData } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { data, isLoading } = useConnectUrl(
+  const { data, isLoading, error } = useConnectUrl(
     window.location.origin + ROUTE.LOGIN_CALLBACK,
     !process.env.REACT_APP_CONNECT_URL
   );
@@ -22,6 +23,7 @@ const LoginPage = () => {
     }
   }, [navigate, authData?.userkey]);
 
+  if (error) return <ErrorMessage error={error} />;
   if (isLoading && !connectUrl) return <Loading />;
   if (connectUrl) window.location.href = connectUrl;
 

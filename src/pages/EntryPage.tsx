@@ -4,7 +4,7 @@ import ErrorMessage from 'components/UI/ErrorMessage';
 import Loading from 'components/UI/Loading';
 import useEntry from 'hooks/api/useEntry';
 import useTitle from 'hooks/useTitle';
-import { Entry } from '../types';
+import { Entry } from 'types';
 
 const EntryPage = () => {
   const { id } = useParams();
