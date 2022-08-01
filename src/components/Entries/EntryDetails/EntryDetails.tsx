@@ -69,14 +69,17 @@ const EntryDetails = ({
       <ContentContainer>
         <TextContentContainer variant='body1'>{parsedBody}</TextContentContainer>
         {media && (
-          <Media
-            sourceUrl={media.url}
-            imageUrl={media.previewUrl}
-            type={media.type}
-            plus18={media.plus18}
-            ratio={media.ratio}
-            listMode={listMode}
-          />
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+          <div onClick={handleStopPropagation}>
+            <Media
+              sourceUrl={media.url}
+              imageUrl={media.previewUrl}
+              type={media.type}
+              plus18={media.plus18}
+              ratio={media.ratio}
+              listMode={listMode}
+            />
+          </div>
         )}
         {survey && <SurveyResults survey={survey} />}
       </ContentContainer>

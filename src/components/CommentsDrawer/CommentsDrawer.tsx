@@ -40,7 +40,7 @@ const CommentsDrawer = ({
       keepMounted={false}
     >
       {!isDekstop && <S.Puller />}
-      <div style={{width: '100%', overflowY: 'scroll'}}>
+      <div style={{ overflowY: 'auto'}}>
         <Comments comments={comments} />
         {isLoading && <Loading />}
       </div>

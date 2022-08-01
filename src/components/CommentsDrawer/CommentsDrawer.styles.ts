@@ -9,7 +9,7 @@ export const CommentsDrawer = styled(SwipeableDrawer)(({ theme }) => ({
     borderRadius: '10px 10px 0px 0px',
 
     [theme.breakpoints.up('md')]: {
-      maxWidth: 550,
+      maxWidth: 600,
       height: '100%',
       maxHeight: '100%',
       borderRadius: '10px 0px 0px 10px',

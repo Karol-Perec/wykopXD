@@ -1,3 +1,6 @@
+import ReactPlayer from 'react-player';
+import { MediaType } from 'types';
+
 type ImageQuality = 'original' | 'hd' | 'hq' | 'mq' | 'lq';
 
 export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) => {
@@ -15,4 +18,10 @@ export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) =>
 export const getImageQuality = (listMode: boolean, isBlur: boolean): ImageQuality => {
   if (isBlur) return 'mq';
   return listMode ? 'hq' : 'hd';
+};
+
+export const getLinkMediaType = (sourceUrl: string): MediaType => {
+  if (sourceUrl.includes('gfycat.com')) return 'gfycat';
+  if (ReactPlayer.canPlay(sourceUrl)) return 'video';
+  return 'image';
 };

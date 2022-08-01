@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getDisplayedImageUrl, getImageQuality } from 'utils/imageUtils';
+import { getDisplayedImageUrl, getImageQuality } from 'utils/mediaUtils';
 import { stopPropagation } from 'utils/windowUtils';
 import { RouterNoPropagationLink } from '../../UI/CustomLinks';
 import * as S from './Image.styles';

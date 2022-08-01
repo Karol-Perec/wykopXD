@@ -5,6 +5,7 @@ import { ContentContainer, TextContentContainer } from 'components/UI/Containers
 import UserHeader from 'components/UI/UserHeader';
 import { Comment as IComment } from 'types';
 import { parseHtml } from 'utils/parseHtml';
+import { handleStopPropagation } from 'utils/windowUtils';
 import * as S from './Comment.styles';
 
 interface CommentProps {
@@ -24,14 +25,17 @@ const Comment = ({ comment }: CommentProps) => {
         <ContentContainer>
           <TextContentContainer>{parsedBody}</TextContentContainer>
           {media && (
-            <Media
-              sourceUrl={media.url}
-              imageUrl={media.previewUrl}
-              type={media.type}
-              plus18={media.plus18}
-              ratio={media.ratio}
-              listMode={false}
-            />
+            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+            <div onClick={handleStopPropagation}>
+              <Media
+                sourceUrl={media.url}
+                imageUrl={media.previewUrl}
+                type={media.type}
+                plus18={media.plus18}
+                ratio={media.ratio}
+                listMode={false}
+              />
+            </div>
           )}
         </ContentContainer>
       </S.CommentContainer>

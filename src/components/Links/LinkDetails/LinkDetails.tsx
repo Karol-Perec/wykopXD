@@ -4,8 +4,7 @@ import {
   LocalFireDepartment as HotIcon,
 } from '@mui/icons-material';
 import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/material';
-import { RefCallback, useState } from 'react';
-import ReactPlayer from 'react-player';
+import { RefCallback, useRef, useState } from 'react';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
 import Comments from 'components/Comments/Comments';
@@ -15,6 +14,7 @@ import { Card, ContentContainer, TextContentContainer } from 'components/UI/Cont
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import UserHeader from 'components/UI/UserHeader';
 import { Link } from 'types';
+import { getLinkMediaType } from 'utils/mediaUtils';
 import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
 import * as S from './LinkDetails.styles';
 
@@ -42,6 +42,8 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
   const theme = useTheme();
   const navigate = useNavigate();
   const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
+  const mediaContainerRef = useRef<HTMLDivElement>(null);
+  const mediaType = getLinkMediaType(sourceUrl);
 
   const handleNavigateToLink = () => {
     if (document.getSelection()?.isCollapsed) {
@@ -65,6 +67,10 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
   const handleOpenCommentsDrawer = () => setIsCommentsDrawerOpened(true);
   const handleCloseCommentsDrawer = () => setIsCommentsDrawerOpened(false);
 
+  const handleEnlargeVideo = stopPropagation(() => {
+    if (mediaContainerRef?.current) mediaContainerRef.current.style.width = '100%';
+  });
+
   return (
     <Card
       ref={containerRef}
@@ -74,22 +80,34 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
     >
       <UserHeader user={user} date={date} />
 
-      <ContentContainer>
-        <RouterNoPropagationLink to={`/link/${id}`} color='inherit' title={title} underline='none'>
-          <TextContentContainer variant='h5'>{title}</TextContentContainer>
-        </RouterNoPropagationLink>
-
-        <Media
-          sourceUrl={sourceUrl}
-          imageUrl={previewUrl}
-          type={ReactPlayer.canPlay(sourceUrl) ? 'video' : 'image'}
-          plus18={plus18}
-          ratio={9 / 16}
+      <S.ContentContainer>
+        <S.MediaContainer
+          ref={mediaContainerRef}
+          onClick={mediaType === 'video' ? handleEnlargeVideo : undefined}
           listMode={listMode}
-        />
+        >
+          <Media
+            sourceUrl={sourceUrl}
+            imageUrl={previewUrl}
+            type={mediaType}
+            plus18={plus18}
+            ratio={9 / 16}
+            listMode={listMode}
+          />
+        </S.MediaContainer>
 
-        <TextContentContainer>{body}</TextContentContainer>
-      </ContentContainer>
+        <div style={{ flexGrow: 1, width: '100px', display: 'inline-block' }}>
+          <RouterNoPropagationLink
+            to={`/link/${id}`}
+            color='inherit'
+            title={title}
+            underline='none'
+          >
+            <TextContentContainer variant='h6'>{title}</TextContentContainer>
+            <TextContentContainer>{body}</TextContentContainer>
+          </RouterNoPropagationLink>
+        </div>
+      </S.ContentContainer>
 
       <Divider variant='middle' />
       <S.Statistics>
