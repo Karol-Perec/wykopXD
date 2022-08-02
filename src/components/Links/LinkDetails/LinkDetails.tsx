@@ -10,7 +10,7 @@ import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
 import Comments from 'components/Comments/Comments';
 import LinkCommentsDrawer from 'components/CommentsDrawer/LinkCommentsDrawer';
 import Media from 'components/Media/Media';
-import { Card, ContentContainer, TextContentContainer } from 'components/UI/Containers';
+import { Card, TextContentContainer } from 'components/UI/Containers';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import UserHeader from 'components/UI/UserHeader';
 import { Link } from 'types';
@@ -71,6 +71,13 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
     if (mediaContainerRef?.current) mediaContainerRef.current.style.width = '100%';
   });
 
+  const textContent = (
+    <>
+      <TextContentContainer variant='h6'>{title}</TextContentContainer>
+      <TextContentContainer>{body}</TextContentContainer>
+    </>
+  );
+
   return (
     <Card
       ref={containerRef}
@@ -83,7 +90,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
       <S.ContentContainer>
         <S.MediaContainer
           ref={mediaContainerRef}
-          onClick={mediaType === 'video' ? handleEnlargeVideo : undefined}
+          onClick={mediaType !== 'image' ? handleEnlargeVideo : undefined}
           listMode={listMode}
         >
           <Media
@@ -97,15 +104,18 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
         </S.MediaContainer>
 
         <div style={{ flexGrow: 1, width: '100px', display: 'inline-block' }}>
-          <RouterNoPropagationLink
-            to={`/link/${id}`}
-            color='inherit'
-            title={title}
-            underline='none'
-          >
-            <TextContentContainer variant='h6'>{title}</TextContentContainer>
-            <TextContentContainer>{body}</TextContentContainer>
-          </RouterNoPropagationLink>
+          {listMode ? (
+            <RouterNoPropagationLink
+              to={`/link/${id}`}
+              color='inherit'
+              title={title}
+              underline='none'
+            >
+              {textContent}
+            </RouterNoPropagationLink>
+          ) : (
+            textContent
+          )}
         </div>
       </S.ContentContainer>
 

@@ -70,7 +70,7 @@ const EntryDetails = ({
         <TextContentContainer variant='body1'>{parsedBody}</TextContentContainer>
         {media && (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-          <div onClick={handleStopPropagation}>
+          <div onClick={media.type !== 'image' ? handleStopPropagation : undefined}>
             <Media
               sourceUrl={media.url}
               imageUrl={media.previewUrl}

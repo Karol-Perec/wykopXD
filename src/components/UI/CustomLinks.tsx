@@ -9,13 +9,15 @@ export const UnstyledRouterLink = styled(RouterLink)({
 
 export const ExternalNoPropagationLink = ({
   href,
+  title,
   children,
-}: Pick<MuiLinkProps, 'href' | 'children'>) => (
+}: Pick<MuiLinkProps, 'href' | 'children' | 'title'>) => (
   <MuiLink
     href={href}
     onClick={handleStopPropagation}
     onMouseUp={handleStopPropagation}
     underline='hover'
+    title={title}
   >
     {children}
   </MuiLink>
@@ -27,7 +29,8 @@ export const RouterNoPropagationLink = ({
   color,
   title,
   underline,
-}: Pick<RouterLinkProps, 'to' | 'children' | 'color' | 'title'> &
+  state,
+}: Pick<RouterLinkProps, 'to' | 'children' | 'color' | 'title' | 'state'> &
   Pick<MuiLinkProps, 'underline'>) => (
   <MuiLink
     to={to}
@@ -38,6 +41,7 @@ export const RouterNoPropagationLink = ({
     color={color}
     textOverflow='ellipsis'
     title={title}
+    state={state}
   >
     {children}
   </MuiLink>
