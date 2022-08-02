@@ -18,9 +18,7 @@ const LoginPage = () => {
   const connectUrl = process.env.REACT_APP_CONNECT_URL || data;
 
   useEffect(() => {
-    if (authData?.userkey) {
-      navigate('/');
-    }
+    if (authData?.userkey) navigate('/');
   }, [navigate, authData?.userkey]);
 
   if (error) return <ErrorMessage error={error} />;

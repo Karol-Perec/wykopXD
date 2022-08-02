@@ -6,21 +6,24 @@
     {
       "src": "/images/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
       "src": "/images/icon-384.png",
       "sizes": "384x384",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
       "src": "/images/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ],
-  "scope": ".",
-  "start_url": ".",
+  "scope": "/",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#272727",
