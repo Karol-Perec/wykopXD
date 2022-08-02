@@ -91,15 +91,7 @@ const EntryDetails = ({
           <Typography>{voteCountPlus}</Typography>
         </Button>
 
-        <Button
-          startIcon={<CommentsIcon />}
-          onClick={handleToggleCommentsDrawer}
-          onMouseUp={handleStopPropagation}
-          color='inherit'
-          component={RouterLink}
-          to={`/wpis/${id}`}
-          title={`Wpis użytkownika @${user.login}`}
-        >
+        <Button startIcon={<CommentsIcon />} onClick={handleToggleCommentsDrawer} color='inherit'>
           <Typography>{commentsCount}</Typography>
         </Button>
 

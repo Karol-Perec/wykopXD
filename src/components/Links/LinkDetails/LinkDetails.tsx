@@ -110,6 +110,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
               color='inherit'
               title={title}
               underline='none'
+              state={data}
             >
               {textContent}
             </RouterNoPropagationLink>
@@ -137,15 +138,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
           <Typography>{voteCountPlus}</Typography>
         </Button>
 
-        <Button
-          startIcon={<CommentsIcon />}
-          onClick={handleToggleCommentsDrawer}
-          onMouseUp={handleStopPropagation}
-          color='inherit'
-          component={RouterLink}
-          to={`/link/${id}`}
-          title={title}
-        >
+        <Button startIcon={<CommentsIcon />} onClick={handleToggleCommentsDrawer} color='inherit'>
           <Typography>{commentsCount}</Typography>
         </Button>
 
