@@ -5,8 +5,7 @@ import {
 } from '@mui/icons-material';
 import { Typography, Button, Divider, IconButton } from '@mui/material';
 import { RefCallback, useMemo, useState } from 'react';
-import { useNavigate, Link as RouterLink } from 'react-router-dom';
-import Comments from 'components/Comments/Comments';
+import { useNavigate } from 'react-router-dom';
 import EntryCommentsDrawer from 'components/CommentsDrawer/EntryCommentsDrawer';
 import Media from 'components/Media/Media';
 import SurveyResults from 'components/SurveyResults/SurveyResults';
@@ -15,22 +14,15 @@ import UserHeader from 'components/UI/UserHeader';
 import { Entry } from 'types';
 import { parseHtml } from 'utils/parseHtml';
 import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/windowUtils';
-import * as S from './EntryDetails.styles';
+import * as S from './Entry.styles';
 
-interface EntryDetailsProps {
+interface EntryPreviewProps {
   data: Entry;
-  isUpdatingComments?: boolean;
-  listMode?: boolean;
   containerRef?: RefCallback<HTMLElement>;
 }
 
-const EntryDetails = ({
-  data,
-  listMode = false,
-  isUpdatingComments = false,
-  containerRef,
-}: EntryDetailsProps) => {
-  const { media, user, body, id, date, commentsCount, voteCountPlus, comments, survey } = data;
+const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
+  const { media, user, body, id, date, commentsCount, voteCountPlus, survey } = data;
   const navigate = useNavigate();
   const parsedBody = useMemo(() => parseHtml(body), [body]);
   const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
@@ -60,9 +52,9 @@ const EntryDetails = ({
   return (
     <Card
       ref={containerRef}
-      onClick={listMode ? handleNavigateToEntry : undefined}
-      onMouseUp={listMode ? openInNewTab(`/wpis/${id}`) : undefined}
-      listMode={listMode}
+      onClick={handleNavigateToEntry}
+      onMouseUp={openInNewTab(`/wpis/${id}`)}
+      listMode
     >
       <UserHeader user={user} date={date} />
 
@@ -77,7 +69,7 @@ const EntryDetails = ({
               type={media.type}
               plus18={media.plus18}
               ratio={media.ratio}
-              listMode={listMode}
+              listMode
             />
           </div>
         )}
@@ -102,23 +94,14 @@ const EntryDetails = ({
         )}
       </S.Statistics>
 
-      {listMode && (
-        <EntryCommentsDrawer
-          entry={data}
-          open={isCommentsDrawerOpened}
-          onOpen={handleOpenCommentsDrawer}
-          onClose={handleCloseCommentsDrawer}
-        />
-      )}
-
-      {!listMode && !isUpdatingComments && (
-        <>
-          <Divider variant='middle' />
-          <Comments comments={comments} />
-        </>
-      )}
+      <EntryCommentsDrawer
+        entry={data}
+        open={isCommentsDrawerOpened}
+        onOpen={handleOpenCommentsDrawer}
+        onClose={handleCloseCommentsDrawer}
+      />
     </Card>
   );
 };
 
-export default EntryDetails;
+export default EntryPreview;

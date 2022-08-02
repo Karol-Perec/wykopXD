@@ -8,11 +8,11 @@ interface MediaProps {
   sourceUrl: string;
   imageUrl: string;
   plus18: boolean;
-  listMode: boolean;
+  listMode?: boolean;
   ratio?: number;
 }
 
-const Media = ({ type, sourceUrl, imageUrl, plus18, ratio, listMode }: MediaProps) => {
+const Media = ({ type, sourceUrl, imageUrl, plus18, ratio, listMode = false }: MediaProps) => {
   switch (type) {
     case 'gif':
       return (

@@ -17,7 +17,7 @@ export const ContentContainer = styled('div')(({ theme }) => ({
 }));
 
 export const MediaContainer = styled('div', { shouldForwardProp: (prop) => prop !== 'listMode' })<{
-  listMode: boolean;
+  listMode?: boolean;
 }>(({ listMode }) => ({
   width: '100%',
   transition: 'width 0.3s ease-in-out',

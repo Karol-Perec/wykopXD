@@ -1,5 +1,5 @@
-import EntryDetails from 'components/Entries/EntryDetails/EntryDetails';
-import LinkDetails from 'components/Links/LinkDetails/LinkDetails';
+import EntryPreview from 'components/Entries/Entry/EntryPreview';
+import LinkPreview from 'components/Links/Link/LinkPreview';
 import Loading from 'components/UI/Loading';
 import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
 import { Entry, Link } from 'types';
@@ -18,12 +18,11 @@ const ContentList = ({ contents, isLoading, onInfiniteScroll }: MultiListProps) 
   return (
     <>
       {contents?.map((content, idx) => {
-        const ContentComponent = isLink(content) ? LinkDetails : EntryDetails;
+        const ContentComponent = isLink(content) ? LinkPreview : EntryPreview;
         return (
           <ContentComponent
             data={content as any}
             key={content.id}
-            listMode
             containerRef={idx + 2 === contents.length ? infiniteScrollingTriggerRef : undefined}
           />
         );

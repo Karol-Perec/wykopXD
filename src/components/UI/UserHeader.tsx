@@ -8,9 +8,7 @@ import { RouterNoPropagationLink } from './CustomLinks';
 
 const Container = styled('div')(({ theme }) => ({
   display: 'flex',
-  paddingTop: theme.spacing(1.5),
-  paddingLeft: theme.spacing(2),
-  paddingRight: theme.spacing(2),
+  padding: theme.spacing(1.5, 2, 1, 2),
   gap: theme.spacing(1),
   alignItems: 'center',
 }));

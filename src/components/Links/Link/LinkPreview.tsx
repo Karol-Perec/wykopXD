@@ -5,9 +5,8 @@ import {
 } from '@mui/icons-material';
 import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/material';
 import { RefCallback, useRef, useState } from 'react';
-import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
-import Comments from 'components/Comments/Comments';
 import LinkCommentsDrawer from 'components/CommentsDrawer/LinkCommentsDrawer';
 import Media from 'components/Media/Media';
 import { Card, TextContentContainer } from 'components/UI/Containers';
@@ -16,15 +15,14 @@ import UserHeader from 'components/UI/UserHeader';
 import { Link } from 'types';
 import { getLinkMediaType } from 'utils/mediaUtils';
 import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
-import * as S from './LinkDetails.styles';
+import * as S from './Link.styles';
 
 interface LinkDetailsProps {
   data: Link;
-  listMode?: boolean;
   containerRef?: RefCallback<HTMLElement>;
 }
 
-const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps) => {
+const LinkPreview = ({ data, containerRef }: LinkDetailsProps) => {
   const {
     id,
     body,
@@ -34,7 +32,6 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
     sourceUrl,
     title,
     user,
-    comments,
     commentsCount,
     voteCountPlus,
     isHot,
@@ -71,19 +68,12 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
     if (mediaContainerRef?.current) mediaContainerRef.current.style.width = '100%';
   });
 
-  const textContent = (
-    <>
-      <TextContentContainer variant='h6'>{title}</TextContentContainer>
-      <TextContentContainer>{body}</TextContentContainer>
-    </>
-  );
-
   return (
     <Card
       ref={containerRef}
-      onClick={listMode ? handleNavigateToLink : undefined}
-      onMouseUp={listMode ? openInNewTab(`/link/${id}`) : undefined}
-      listMode={listMode}
+      onClick={handleNavigateToLink}
+      onMouseUp={openInNewTab(`/link/${id}`)}
+      listMode
     >
       <UserHeader user={user} date={date} />
 
@@ -91,7 +81,7 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
         <S.MediaContainer
           ref={mediaContainerRef}
           onClick={mediaType !== 'image' ? handleEnlargeVideo : undefined}
-          listMode={listMode}
+          listMode
         >
           <Media
             sourceUrl={sourceUrl}
@@ -99,24 +89,21 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
             type={mediaType}
             plus18={plus18}
             ratio={9 / 16}
-            listMode={listMode}
+            listMode
           />
         </S.MediaContainer>
 
         <div style={{ flexGrow: 1, width: '100px', display: 'inline-block' }}>
-          {listMode ? (
-            <RouterNoPropagationLink
-              to={`/link/${id}`}
-              color='inherit'
-              title={title}
-              underline='none'
-              state={data}
-            >
-              {textContent}
-            </RouterNoPropagationLink>
-          ) : (
-            textContent
-          )}
+          <RouterNoPropagationLink
+            to={`/link/${id}`}
+            color='inherit'
+            title={title}
+            underline='none'
+            state={data}
+          >
+            <TextContentContainer variant='h6'>{title}</TextContentContainer>
+            <TextContentContainer>{body}</TextContentContainer>
+          </RouterNoPropagationLink>
         </div>
       </S.ContentContainer>
 
@@ -149,23 +136,14 @@ const LinkDetails = ({ data, listMode = false, containerRef }: LinkDetailsProps)
         )}
       </S.Statistics>
 
-      {listMode && (
-        <LinkCommentsDrawer
-          link={data}
-          open={isCommentsDrawerOpened}
-          onOpen={handleOpenCommentsDrawer}
-          onClose={handleCloseCommentsDrawer}
-        />
-      )}
-
-      {!listMode && (
-        <>
-          <Divider variant='middle' />
-          <Comments comments={comments} />
-        </>
-      )}
+      <LinkCommentsDrawer
+        link={data}
+        open={isCommentsDrawerOpened}
+        onOpen={handleOpenCommentsDrawer}
+        onClose={handleCloseCommentsDrawer}
+      />
     </Card>
   );
 };
 
-export default LinkDetails;
+export default LinkPreview;
