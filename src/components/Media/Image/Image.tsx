@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { getDisplayedImageUrl, getImageQuality } from 'utils/mediaUtils';
+import { linkOrEntryRegex } from 'utils/parseHtml';
 import { stopPropagation } from 'utils/windowUtils';
 import { RouterNoPropagationLink } from '../../UI/CustomLinks';
 import * as S from './Image.styles';
@@ -11,8 +12,6 @@ interface ImageProps {
   listMode: boolean;
   ratio?: number;
 }
-
-const linkOrEntryRegex = /https?:\/\/(www\.)?wykop\.pl\/(wpis|link)\/([0-9]+).+/;
 
 const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => {
   const [isBlurred, setIsBlurred] = useState(plus18);

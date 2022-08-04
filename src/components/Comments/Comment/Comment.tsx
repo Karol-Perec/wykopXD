@@ -13,12 +13,12 @@ interface CommentProps {
 }
 
 const Comment = ({ comment }: CommentProps) => {
-  const { body, user, date, media, responses } = comment;
+  const { id, body, user, date, media, responses } = comment;
   const parsedBody = useMemo(() => parseHtml(body), [body]);
 
   return (
-    <div>
-      <S.CommentContainer>
+    <>
+      <S.CommentContainer id={`comment-${id}`}>
         <Divider variant='middle' />
         <UserHeader user={user} date={date} />
 
@@ -47,7 +47,7 @@ const Comment = ({ comment }: CommentProps) => {
           ))}
         </S.ResponsesListContainer>
       )}
-    </div>
+    </>
   );
 };
 

@@ -1,48 +1,49 @@
-import { LinkProps as MuiLinkProps, styled, Link as MuiLink } from '@mui/material';
+import { LinkProps as MuiLinkProps, Link as MuiLink, styled } from '@mui/material';
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 import { handleStopPropagation } from 'utils/windowUtils';
 
-export const UnstyledRouterLink = styled(RouterLink)({
-  color: 'inherit',
-  textDecoration: 'inherit',
-});
+const StyledMuiLink = styled(MuiLink)({
+  wordBreak: 'break-word',
+}) as typeof MuiLink;
 
 export const ExternalNoPropagationLink = ({
   href,
   title,
+  color,
+  underline = 'hover',
   children,
-}: Pick<MuiLinkProps, 'href' | 'children' | 'title'>) => (
-  <MuiLink
+}: Pick<MuiLinkProps, 'href' | 'children' | 'title' | 'underline' | 'color'>) => (
+  <StyledMuiLink
     href={href}
     onClick={handleStopPropagation}
     onMouseUp={handleStopPropagation}
-    underline='hover'
+    underline={underline}
+    color={color}
     title={title}
   >
     {children}
-  </MuiLink>
+  </StyledMuiLink>
 );
 
 export const RouterNoPropagationLink = ({
   to,
-  children,
-  color,
   title,
-  underline,
+  color,
+  underline = 'hover',
   state,
+  children,
 }: Pick<RouterLinkProps, 'to' | 'children' | 'color' | 'title' | 'state'> &
   Pick<MuiLinkProps, 'underline'>) => (
-  <MuiLink
+  <StyledMuiLink
+    component={RouterLink}
     to={to}
     onClick={handleStopPropagation}
     onMouseUp={handleStopPropagation}
-    component={RouterLink}
-    underline={underline || 'hover'}
+    underline={underline}
     color={color}
-    textOverflow='ellipsis'
     title={title}
     state={state}
   >
     {children}
-  </MuiLink>
+  </StyledMuiLink>
 );

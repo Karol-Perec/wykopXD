@@ -12,7 +12,6 @@ import { Card, ContentContainer, TextContentContainer } from 'components/UI/Cont
 import UserHeader from 'components/UI/UserHeader';
 import { Entry } from 'types';
 import { parseHtml } from 'utils/parseHtml';
-import { stopPropagation, handleStopPropagation } from 'utils/windowUtils';
 import * as S from './Entry.styles';
 
 interface EntryDetailsProps {
@@ -24,16 +23,16 @@ const EntryDetails = ({ data, isUpdatingComments = false }: EntryDetailsProps) =
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments, survey } = data;
   const parsedBody = useMemo(() => parseHtml(body), [body]);
 
-  const handleShare = stopPropagation(() => {
+  const handleShare = () => {
     navigator.share({ url: `${window.location.origin}/wpis/${id}` }).catch(() => undefined);
-  });
+  };
 
   return (
     <Card>
       <UserHeader user={user} date={date} />
 
       <ContentContainer>
-        <TextContentContainer variant='body1'>{parsedBody}</TextContentContainer>
+        <TextContentContainer>{parsedBody}</TextContentContainer>
         {media && (
           <Media
             sourceUrl={media.url}
@@ -49,7 +48,7 @@ const EntryDetails = ({ data, isUpdatingComments = false }: EntryDetailsProps) =
       <Divider variant='middle' />
 
       <S.Statistics>
-        <Button startIcon={<PlusIcon />} color='inherit' onClick={handleStopPropagation}>
+        <Button startIcon={<PlusIcon />} color='inherit'>
           <Typography>{voteCountPlus}</Typography>
         </Button>
 

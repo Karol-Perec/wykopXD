@@ -59,7 +59,7 @@ const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
       <UserHeader user={user} date={date} />
 
       <ContentContainer>
-        <TextContentContainer variant='body1'>{parsedBody}</TextContentContainer>
+        <TextContentContainer>{parsedBody}</TextContentContainer>
         {media && (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
           <div onClick={media.type !== 'image' ? handleStopPropagation : undefined}>

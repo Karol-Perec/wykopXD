@@ -1,5 +1,6 @@
 import { Chip } from '@mui/material';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Loading from 'components/UI/Loading';
 import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
 import { Comment, ExtendedComment } from 'types';
@@ -32,7 +33,10 @@ interface CommentsProps {
   comments?: Comment[] | ExtendedComment[];
 }
 
+const PAGE_SIZE = 10;
+
 const Comments = ({ comments = [] }: CommentsProps) => {
+  const { hash } = useLocation();
   const [orderBy, setOrderBy] = useState<OrderKey>('best');
   const [page, setPage] = useState(1);
 
@@ -42,15 +46,23 @@ const Comments = ({ comments = [] }: CommentsProps) => {
     () =>
       comments
         .sort(COMMENTS_ORDER[orderBy].comparator)
-        .slice(0, page * 10 - 1)
+        .slice(0, hash.includes('#comment') ? undefined : page * PAGE_SIZE - 1)
         .map((c) => <CommentView key={c.id} comment={c} />),
-    [comments, orderBy, page]
+    [comments, orderBy, page, hash]
   );
 
   const handleSetOrderBy = (orderKey: OrderKey) => {
     setPage(1);
     setOrderBy(orderKey);
   };
+
+  useEffect(() => {
+    if (comments.length && hash.includes('#comment-')) {
+      document
+        .getElementById(hash.slice(1))
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [comments, hash]);
 
   return (
     <>
@@ -67,7 +79,9 @@ const Comments = ({ comments = [] }: CommentsProps) => {
         ))}
       </S.SortingContainer>
       {commentsList}
-      {page * 10 <= comments.length && <Loading containerRef={infiniteScrollingTriggerRef} />}
+      {page * PAGE_SIZE <= comments.length && (
+        <Loading containerRef={infiniteScrollingTriggerRef} />
+      )}
     </>
   );
 };
