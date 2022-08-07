@@ -22,8 +22,8 @@
       "purpose": "maskable any"
     }
   ],
-  "scope": "/",
-  "start_url": "/",
+  "scope": "./",
+  "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#272727",
