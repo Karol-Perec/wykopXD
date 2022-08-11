@@ -1,7 +1,7 @@
 import { Divider } from '@mui/material';
 import { useMemo } from 'react';
 import Media from 'components/Media/Media';
-import { ContentContainer, TextContentContainer } from 'components/UI/Containers';
+import { ContentContainer, TextContainer } from 'components/UI/Containers';
 import UserHeader from 'components/UI/UserHeader';
 import { Comment as IComment } from 'types';
 import { parseHtml } from 'utils/parseHtml';
@@ -23,7 +23,7 @@ const Comment = ({ comment }: CommentProps) => {
         <UserHeader user={user} date={date} />
 
         <ContentContainer>
-          <TextContentContainer>{parsedBody}</TextContentContainer>
+          <TextContainer>{parsedBody}</TextContainer>
           {media && (
             // eslint-disable-next-line jsx-a11y/no-static-element-interactions
             <div onClick={handleStopPropagation}>

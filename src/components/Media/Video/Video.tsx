@@ -21,8 +21,8 @@ const Video = ({ sourceUrl, previewUrl, plus18, ratio, listMode, isGfycat }: Vid
   const [autostopEnabled, setAutostopEnabled] = useState(false);
   const displayedPreviewUrl = getDisplayedImageUrl(previewUrl, listMode ? 'mq' : 'hq');
 
-  const enableAutostop = () => setAutostopEnabled(true);
-  const disableAutostop = () => setAutostopEnabled(false);
+  const handleEnableAutostop = () => setAutostopEnabled(true);
+  const handleDisableAutostop = () => setAutostopEnabled(false);
 
   return (
     <S.Container>
@@ -33,9 +33,9 @@ const Video = ({ sourceUrl, previewUrl, plus18, ratio, listMode, isGfycat }: Vid
           light={displayedPreviewUrl}
           width='100%'
           height='100%'
-          onClickPreview={enableAutostop}
-          onPlay={enableAutostop}
-          onPause={disableAutostop}
+          onClickPreview={handleEnableAutostop}
+          onPlay={handleEnableAutostop}
+          onPause={handleDisableAutostop}
           playing={autostopEnabled ? isOnScreen : undefined}
         />
       </S.VideoWrapper>

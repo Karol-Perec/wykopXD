@@ -42,11 +42,13 @@ const parseSpoilerText = (text: string | null) =>
       if (word.startsWith('http')) {
         return [
           word.match(linkOrEntryRegex) ? (
-            <RouterNoPropagationLink to={word.split('wykop.pl')[1]}>
+            <RouterNoPropagationLink to={word.split('wykop.pl')[1]} key={idx}>
               {word.replace('wykop.pl', window.location.host)}
             </RouterNoPropagationLink>
           ) : (
-            <ExternalNoPropagationLink href={word}>{word}</ExternalNoPropagationLink>
+            <ExternalNoPropagationLink href={word} key={idx}>
+              {word}
+            </ExternalNoPropagationLink>
           ),
           SPACE_CHAR,
         ];

@@ -7,8 +7,8 @@ import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/m
 import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
 import Comments from 'components/Comments/Comments';
 import Media from 'components/Media/Media';
-import { Card, TextContentContainer } from 'components/UI/Containers';
-import { ExternalNoPropagationLink, RouterNoPropagationLink } from 'components/UI/CustomLinks';
+import { Card, TextContainer } from 'components/UI/Containers';
+import { ExternalNoPropagationLink } from 'components/UI/CustomLinks';
 import UserHeader from 'components/UI/UserHeader';
 import { Link } from 'types';
 import { getLinkMediaType } from 'utils/mediaUtils';
@@ -59,10 +59,12 @@ const LinkDetails = ({ data }: LinkDetailsProps) => {
           />
         </S.MediaContainer>
 
-        <ExternalNoPropagationLink href={sourceUrl} underline='none' color='inherit'>
-          <TextContentContainer variant='h6'>{title}</TextContentContainer>
-          <TextContentContainer>{body}</TextContentContainer>
-        </ExternalNoPropagationLink>
+        <S.TextContentContainer>
+          <ExternalNoPropagationLink href={sourceUrl} underline='none' color='inherit'>
+            <TextContainer variant='h6'>{title}</TextContainer>
+            <TextContainer>{body}</TextContainer>
+          </ExternalNoPropagationLink>
+        </S.TextContentContainer>
       </S.ContentContainer>
 
       <Divider variant='middle' />

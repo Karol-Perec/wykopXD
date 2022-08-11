@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
 import LinkCommentsDrawer from 'components/CommentsDrawer/LinkCommentsDrawer';
 import Media from 'components/Media/Media';
-import { Card, TextContentContainer } from 'components/UI/Containers';
+import { Card, TextContainer } from 'components/UI/Containers';
 import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
 import UserHeader from 'components/UI/UserHeader';
 import { Link } from 'types';
@@ -93,7 +93,7 @@ const LinkPreview = ({ data, containerRef }: LinkDetailsProps) => {
           />
         </S.MediaContainer>
 
-        <div style={{ flexGrow: 1, width: '100px', display: 'inline-block' }}>
+        <S.TextContentContainer>
           <RouterNoPropagationLink
             to={`/link/${id}`}
             color='inherit'
@@ -101,10 +101,10 @@ const LinkPreview = ({ data, containerRef }: LinkDetailsProps) => {
             underline='none'
             state={data}
           >
-            <TextContentContainer variant='h6'>{title}</TextContentContainer>
-            <TextContentContainer>{body}</TextContentContainer>
+            <TextContainer variant='h6'>{title}</TextContainer>
+            <TextContainer>{body}</TextContainer>
           </RouterNoPropagationLink>
-        </div>
+        </S.TextContentContainer>
       </S.ContentContainer>
 
       <Divider variant='middle' />

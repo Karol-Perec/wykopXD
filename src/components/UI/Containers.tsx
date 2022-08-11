@@ -26,7 +26,7 @@ export const ContentContainer = styled('div')(({ theme }) => ({
   },
 }));
 
-export const TextContentContainer = styled(Typography)(({ theme }) => ({
+export const TextContainer = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(1),
   paddingLeft: theme.spacing(1),
   paddingRight: theme.spacing(1),

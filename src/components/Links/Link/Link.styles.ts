@@ -5,11 +5,16 @@ export const Statistics = styled('div')({
   justifyContent: 'space-evenly',
 });
 
+export const TextContentContainer = styled('div')({
+  flexGrow: 1,
+  width: 300,
+});
+
 export const ContentContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   flexFlow: 'wrap',
-  flexWrap: 'wrap',
   flexDirection: 'row-reverse',
+  justifyContent: 'right',
 
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(6),

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import EntryCommentsDrawer from 'components/CommentsDrawer/EntryCommentsDrawer';
 import Media from 'components/Media/Media';
 import SurveyResults from 'components/SurveyResults/SurveyResults';
-import { Card, ContentContainer, TextContentContainer } from 'components/UI/Containers';
+import { Card, ContentContainer, TextContainer } from 'components/UI/Containers';
 import UserHeader from 'components/UI/UserHeader';
 import { Entry } from 'types';
 import { parseHtml } from 'utils/parseHtml';
@@ -59,7 +59,7 @@ const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
       <UserHeader user={user} date={date} />
 
       <ContentContainer>
-        <TextContentContainer>{parsedBody}</TextContentContainer>
+        <TextContainer>{parsedBody}</TextContainer>
         {media && (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
           <div onClick={media.type !== 'image' ? handleStopPropagation : undefined}>
