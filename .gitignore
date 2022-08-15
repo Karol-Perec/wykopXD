@@ -49,3 +49,4 @@ amplifytools.xcconfig
 .vscode/settings.json
 
 !amplify/backend/src/api/wykopxApi/*
+!amplify/backend/.env
