@@ -1,9 +1,9 @@
 import { Chip } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Loading from 'components/UI/Loading';
-import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
-import { Comment, ExtendedComment } from 'types';
+import Loading from '~/components/UI/Loading';
+import useInfiniteScrolling from '~/hooks/useInfiniteScrolling';
+import { Comment, ExtendedComment } from '~/types';
 import CommentView from './Comment/Comment';
 import * as S from './Comments.styles';
 

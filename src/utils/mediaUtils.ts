@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player';
-import { MediaType } from 'types';
+import { MediaType } from '~/types';
 
 type ImageQuality = 'original' | 'hd' | 'hq' | 'mq' | 'lq';
 

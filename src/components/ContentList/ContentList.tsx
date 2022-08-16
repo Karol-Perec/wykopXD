@@ -1,8 +1,8 @@
-import EntryPreview from 'components/Entries/Entry/EntryPreview';
-import LinkPreview from 'components/Links/Link/LinkPreview';
-import Loading from 'components/UI/Loading';
-import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
-import { Entry, Link } from 'types';
+import EntryPreview from '~/components/Entries/Entry/EntryPreview';
+import LinkPreview from '~/components/Links/Link/LinkPreview';
+import Loading from '~/components/UI/Loading';
+import useInfiniteScrolling from '~/hooks/useInfiniteScrolling';
+import { Entry, Link } from '~/types';
 
 interface MultiListProps {
   contents?: (Link | Entry)[];

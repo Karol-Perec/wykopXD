@@ -1,4 +1,4 @@
-import { MediaType } from 'types';
+import { MediaType } from '~/types';
 import Gif from './Gif/Gif';
 import Image from './Image/Image';
 import Video from './Video/Video';

@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { Survey } from 'types';
+import { Survey } from '~/types';
 import SurveyAnswer from './SurveyAnswer/SurveyAnswer';
 import * as S from './SurveyResults.styles';
 

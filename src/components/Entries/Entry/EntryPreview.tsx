@@ -6,14 +6,14 @@ import {
 import { Typography, Button, Divider, IconButton } from '@mui/material';
 import { RefCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import EntryCommentsDrawer from 'components/CommentsDrawer/EntryCommentsDrawer';
-import Media from 'components/Media/Media';
-import SurveyResults from 'components/SurveyResults/SurveyResults';
-import { Card, ContentContainer, TextContainer } from 'components/UI/Containers';
-import UserHeader from 'components/UI/UserHeader';
-import { Entry } from 'types';
-import { parseHtml } from 'utils/parseHtml';
-import { openInNewTab, stopPropagation, handleStopPropagation } from 'utils/windowUtils';
+import EntryCommentsDrawer from '~/components/CommentsDrawer/EntryCommentsDrawer';
+import Media from '~/components/Media/Media';
+import SurveyResults from '~/components/SurveyResults/SurveyResults';
+import { Card, ContentContainer, TextContainer } from '~/components/UI/Containers';
+import UserHeader from '~/components/UI/UserHeader';
+import { Entry } from '~/types';
+import { parseHtml } from '~/utils/parseHtml';
+import { openInNewTab, stopPropagation, handleStopPropagation } from '~/utils/windowUtils';
 import * as S from './Entry.styles';
 
 interface EntryPreviewProps {

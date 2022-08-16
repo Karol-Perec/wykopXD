@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
-import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
-import LinksList from 'components/Links/LinksList/LinksList';
-import ErrorMessage from 'components/UI/ErrorMessage';
-import useHits from 'hooks/api/useHits';
-import useTitle from 'hooks/useTitle';
-import { ROUTE } from 'routes';
-import { CategoryOption, HitsCategory } from 'types';
+import CategoryButton from '~/components/Layout/TopBar/CategoryButton/CategoryButton';
+import LinksList from '~/components/Links/LinksList/LinksList';
+import ErrorMessage from '~/components/UI/ErrorMessage';
+import useHits from '~/hooks/api/useHits';
+import useTitle from '~/hooks/useTitle';
+import { ROUTE } from '~/routes';
+import { CategoryOption, HitsCategory } from '~/types';
 
 const hitsCategories: Record<HitsCategory, CategoryOption> = {
   [HitsCategory.POPULAR]: {

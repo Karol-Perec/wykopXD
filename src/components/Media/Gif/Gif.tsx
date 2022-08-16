@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { getDisplayedImageUrl, getImageQuality } from 'utils/mediaUtils';
-import { stopPropagation } from 'utils/windowUtils';
+import { getDisplayedImageUrl, getImageQuality } from '~/utils/mediaUtils';
+import { stopPropagation } from '~/utils/windowUtils';
 import * as S from './Gif.styles';
 
 interface GifProps {
@@ -11,6 +11,7 @@ interface GifProps {
   ratio?: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Gif = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: GifProps) => {
   const [isBlurred, setIsBlurred] = useState(plus18);
   const [isPlaying, setIsPlaying] = useState(false);

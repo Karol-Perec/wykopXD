@@ -1,6 +1,6 @@
 import { ReactEventHandler, useEffect, useState } from 'react';
-import useEntry from 'hooks/api/useEntry';
-import { Entry } from 'types';
+import useEntry from '~/hooks/api/useEntry';
+import { Entry } from '~/types';
 import CommentsDrawer from './CommentsDrawer';
 
 interface EntryCommentsDrawerProps {

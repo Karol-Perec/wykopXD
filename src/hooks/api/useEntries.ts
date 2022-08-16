@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Entry, Collection } from 'types';
-import axios from 'utils/axios';
+import { Entry, Collection } from '~/types';
+import axios from '~/utils/axios';
 import { defaultOptions } from './defaultOptions';
 
 const getEntries = async (page: number, category: string) => {

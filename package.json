@@ -1,27 +1,12 @@
 {
   "name": "wykopx",
-  "version": "1.0.5",
   "private": true,
-  "dependencies": {
-    "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
-    "@mui/icons-material": "^5.8.4",
-    "@mui/material": "^5.10.0",
-    "@mui/x-date-pickers": "^5.0.0-beta.5",
-    "@tanstack/react-query": "^4.1.3",
-    "axios": "^0.27.2",
-    "date-fns": "^2.29.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-player": "^2.10.1",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1"
-  },
+  "version": "1.0.5",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "lint": "eslint src",
     "compile-ts": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && find function/ -name '*.ts' -exec rm {} \\; && cd -",
     "amplify:wykopxApi": "npm run compile-ts",
@@ -37,24 +22,29 @@
     "amplify:getConnectUrl": "npm run compile-ts",
     "amplify:login": "npm run compile-ts"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.10.0",
+    "@mui/x-date-pickers": "^5.0.0-beta.5",
+    "@tanstack/react-query": "^4.1.3",
+    "axios": "^0.27.2",
+    "date-fns": "^2.29.1",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-player": "^2.10.1",
+    "react-router-dom": "^6.3.0",
+    "vite-plugin-svgr": "^2.2.1"
   },
   "devDependencies": {
-    "@types/node": "^16.11.49",
+    "@types/node": "^18.7.6",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
+    "@vitejs/plugin-react": "^2.0.1",
     "eslint": "^8.22.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -64,6 +54,7 @@
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "vite": "^3.0.7"
   }
 }

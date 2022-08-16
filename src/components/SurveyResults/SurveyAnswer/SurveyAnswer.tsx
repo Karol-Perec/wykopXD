@@ -1,6 +1,6 @@
 import { CheckCircleOutline as UserVoteIcon } from '@mui/icons-material';
 import { Typography } from '@mui/material';
-import { SurveyAnswer as Answer } from 'types';
+import { SurveyAnswer as Answer } from '~/types';
 import * as S from './SurveyAnswer.styles';
 
 interface SurveyAnswerProps {

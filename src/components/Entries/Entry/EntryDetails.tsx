@@ -5,13 +5,13 @@ import {
 } from '@mui/icons-material';
 import { Typography, Button, Divider, IconButton } from '@mui/material';
 import { useMemo } from 'react';
-import Comments from 'components/Comments/Comments';
-import Media from 'components/Media/Media';
-import SurveyResults from 'components/SurveyResults/SurveyResults';
-import { Card, ContentContainer, TextContainer } from 'components/UI/Containers';
-import UserHeader from 'components/UI/UserHeader';
-import { Entry } from 'types';
-import { parseHtml } from 'utils/parseHtml';
+import Comments from '~/components/Comments/Comments';
+import Media from '~/components/Media/Media';
+import SurveyResults from '~/components/SurveyResults/SurveyResults';
+import { Card, ContentContainer, TextContainer } from '~/components/UI/Containers';
+import UserHeader from '~/components/UI/UserHeader';
+import { Entry } from '~/types';
+import { parseHtml } from '~/utils/parseHtml';
 import * as S from './Entry.styles';
 
 interface EntryDetailsProps {

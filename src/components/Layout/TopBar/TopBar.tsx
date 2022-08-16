@@ -2,9 +2,9 @@ import { Menu as MenuIcon } from '@mui/icons-material';
 import { IconButton, Toolbar, useMediaQuery, useTheme } from '@mui/material';
 import { MouseEventHandler, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import Avatar from 'components/UI/Avatar';
-import AuthContext from 'contexts/Auth/AuthContext';
-import { ROUTE } from 'routes';
+import Avatar from '~/components/UI/Avatar';
+import AuthContext from '~/contexts/Auth/AuthContext';
+import { ROUTE } from '~/routes';
 import { NavLinks } from '../NavLinks/NavLinks';
 import * as S from './TopBar.styles';
 
