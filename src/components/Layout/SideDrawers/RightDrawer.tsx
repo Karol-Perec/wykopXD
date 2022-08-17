@@ -4,7 +4,14 @@ import {
   Settings as SettingsIcon,
   Info as AppInfoIcon,
 } from '@mui/icons-material';
-import { Divider, List, Typography } from '@mui/material';
+import {
+  Divider,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from '@mui/material';
 import { MouseEventHandler, useContext } from 'react';
 import Avatar from '~/components/UI/Avatar';
 import Drawer from '~/components/UI/Drawer';
@@ -33,13 +40,19 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
       </S.RightDrawerHeader>
       <Divider variant='middle' />
       <List>
-        {!authData?.userkey && (
-          <ListNavLink
-            to='/zaloguj'
-            label='Zaloguj się'
-            onClick={onUserAction}
-            icon={<LoginIcon />}
-          />
+      {!authData?.userkey && (
+          <ListItemButton disabled>
+            <ListItemIcon>
+              <LoginIcon />
+            </ListItemIcon>
+            <ListItemText>Zaloguj się</ListItemText>
+          </ListItemButton>
+          // <ListNavLink
+          //   to='/zaloguj'
+          //   label='Zaloguj się'
+          //   onClick={onUserAction}
+          //   icon={<LoginIcon />}
+          // />
         )}
         {authData?.userkey && (
           <ListNavLink to='/' label='Wyloguj się' onClick={handleLogout} icon={<LogoutIcon />} />
