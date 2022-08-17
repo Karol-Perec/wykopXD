@@ -15,7 +15,7 @@ const SurveyAnswer = ({ answer, isActive }: SurveyAnswerProps) => (
       <S.Label>{answer.text}</S.Label>
       <S.Statistics>
         {isActive && <UserVoteIcon fontSize='small' />}
-        {/* <span>{`${answer.voteCount} ${answer.voteCount === 1 ? 'głos' : 'głosów'} `}</span> */}
+        <span>{`${answer.voteCount} ${answer.voteCount === 1 ? 'głos' : 'głosów'} `}</span>
         {/* <span>[{answer.voteCount}]</span>
         <span>{TEXT_SEPARATOR}</span> */}
         <b>{answer.votePercentage.toFixed()}%</b>
