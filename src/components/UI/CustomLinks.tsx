@@ -1,6 +1,6 @@
 import { LinkProps as MuiLinkProps, Link as MuiLink, styled } from '@mui/material';
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
-import { handleStopPropagation } from 'utils/windowUtils';
+import { handleStopPropagation } from '~/utils/windowUtils';
 
 const StyledMuiLink = styled(MuiLink)({
   wordBreak: 'break-word',

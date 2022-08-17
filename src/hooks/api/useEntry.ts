@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { Entry } from 'types';
-import axios from 'utils/axios';
+import { Entry } from '~/types';
+import axios from '~/utils/axios';
 import { defaultOptions } from './defaultOptions';
 
 const getEntry = async (id: string | number) => {

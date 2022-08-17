@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Link, Collection } from 'types';
-import axios from 'utils/axios';
+import { Link, Collection } from '~/types';
+import axios from '~/utils/axios';
 import { defaultOptions } from './defaultOptions';
 
 type LinksType = 'promoted' | 'upcoming' | 'observed';

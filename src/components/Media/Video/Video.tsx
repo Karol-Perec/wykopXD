@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import useGfycat from 'hooks/api/useGfycat';
-import useIsOnScreen from 'hooks/useIsOnScreen';
-import { getDisplayedImageUrl } from 'utils/mediaUtils';
+import useGfycat from '~/hooks/api/useGfycat';
+import useIsOnScreen from '~/hooks/useIsOnScreen';
+import { getDisplayedImageUrl } from '~/utils/mediaUtils';
 import * as S from './Video.styles';
 
 interface VideoProps {
@@ -14,6 +14,7 @@ interface VideoProps {
   isGfycat: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Video = ({ sourceUrl, previewUrl, plus18, ratio, listMode, isGfycat }: VideoProps) => {
   const { data: gfycatSourceUrl } = useGfycat(sourceUrl, isGfycat);
   const wrapperRef = useRef<HTMLDivElement>(null);

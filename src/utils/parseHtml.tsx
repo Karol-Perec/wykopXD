@@ -2,9 +2,9 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/no-array-index-key */
 import { Fragment } from 'react';
-import { ExternalNoPropagationLink, RouterNoPropagationLink } from 'components/UI/CustomLinks';
-import Spoiler from 'components/UI/Spoiler';
-import { SPACE_CHAR } from 'constants/texts.constant';
+import { ExternalNoPropagationLink, RouterNoPropagationLink } from '~/components/UI/CustomLinks';
+import Spoiler from '~/components/UI/Spoiler';
+import { SPACE_CHAR } from '~/constants/texts.constant';
 
 export const linkOrEntryRegex = /https?:\/\/(www\.)?wykop\.pl\/(wpis|link)\/([0-9]+).+/;
 

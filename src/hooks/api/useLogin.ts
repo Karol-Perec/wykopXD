@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
-import { UserFull } from 'types';
-import axios from 'utils/axios';
+import { UserFull } from '~/types';
+import axios from '~/utils/axios';
 
 export interface AuthData {
   profile: UserFull;

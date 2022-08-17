@@ -4,7 +4,7 @@ import {
   AppBar as MuiAppBar,
   Container,
 } from '@mui/material';
-import { ReactComponent as SvgLogo } from 'assets/images/logo.svg';
+import { ReactComponent as SvgLogo } from '~/assets/images/logo.svg';
 
 export const AppBar = styled(MuiAppBar)(({ theme }) => ({
   backdropFilter: 'blur(10px)',
