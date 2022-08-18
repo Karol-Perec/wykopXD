@@ -1,10 +1,10 @@
 import { useLocation, useNavigationType, useParams, NavigationType } from 'react-router-dom';
-import EntryDetails from 'components/Entries/Entry/EntryDetails';
-import ErrorMessage from 'components/UI/ErrorMessage';
-import Loading from 'components/UI/Loading';
-import useEntry from 'hooks/api/useEntry';
-import useTitle from 'hooks/useTitle';
-import { Entry } from 'types';
+import EntryDetails from '~/components/Entries/Entry/EntryDetails';
+import ErrorMessage from '~/components/UI/ErrorMessage';
+import Loading from '~/components/UI/Loading';
+import useEntry from '~/hooks/api/useEntry';
+import useTitle from '~/hooks/useTitle';
+import { Entry } from '~/types';
 
 const EntryPage = () => {
   const { id } = useParams();

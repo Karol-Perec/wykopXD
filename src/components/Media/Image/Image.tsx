@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { getDisplayedImageUrl, getImageQuality } from 'utils/mediaUtils';
-import { linkOrEntryRegex } from 'utils/parseHtml';
-import { stopPropagation } from 'utils/windowUtils';
+import { getDisplayedImageUrl, getImageQuality } from '~/utils/mediaUtils';
+import { linkOrEntryRegex } from '~/utils/parseHtml';
+import { stopPropagation } from '~/utils/windowUtils';
 import { RouterNoPropagationLink } from '../../UI/CustomLinks';
 import * as S from './Image.styles';
 
@@ -13,6 +13,7 @@ interface ImageProps {
   ratio?: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => {
   const [isBlurred, setIsBlurred] = useState(plus18);
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, isBlurred));

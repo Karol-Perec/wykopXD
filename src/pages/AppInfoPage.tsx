@@ -1,6 +1,6 @@
 import { Card, Container, Typography } from '@mui/material';
-import { ExternalNoPropagationLink, RouterNoPropagationLink } from 'components/UI/CustomLinks';
-import useTitle from 'hooks/useTitle';
+import { ExternalNoPropagationLink, RouterNoPropagationLink } from '~/components/UI/CustomLinks';
+import useTitle from '~/hooks/useTitle';
 
 const AppInfoPage = () => {
   useTitle('O aplikacji');

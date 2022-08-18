@@ -1,6 +1,6 @@
 import { styled, Tabs } from '@mui/material';
-import { ReactComponent as WykopLogo } from 'assets/images/logo.svg';
-import { ReactComponent as ShovelIcon } from 'assets/images/shovel.svg';
+import { ReactComponent as WykopLogo } from '~/assets/images/logo.svg';
+import { ReactComponent as ShovelIcon } from '~/assets/images/shovel.svg';
 
 export const UpcomingIcon = styled(ShovelIcon)(({ theme }) => ({
   height: 20,

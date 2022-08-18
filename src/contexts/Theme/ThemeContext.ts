@@ -1,6 +1,6 @@
 import { PaletteMode } from '@mui/material';
 import { createContext } from 'react';
-import { PrimaryColor } from 'theme';
+import { PrimaryColor } from '~/theme';
 
 export interface ThemeContextInterface {
   handleToggleThemeMode: () => void;

@@ -1,10 +1,10 @@
-import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
-import LinksList from 'components/Links/LinksList/LinksList';
-import ErrorMessage from 'components/UI/ErrorMessage';
-import useLinks from 'hooks/api/useLinks';
-import useTitle from 'hooks/useTitle';
-import { ROUTE } from 'routes';
-import { UpcomingCategory, CategoryOption } from 'types';
+import CategoryButton from '~/components/Layout/TopBar/CategoryButton/CategoryButton';
+import LinksList from '~/components/Links/LinksList/LinksList';
+import ErrorMessage from '~/components/UI/ErrorMessage';
+import useLinks from '~/hooks/api/useLinks';
+import useTitle from '~/hooks/useTitle';
+import { ROUTE } from '~/routes';
+import { UpcomingCategory, CategoryOption } from '~/types';
 
 export const upcomingCategories: Record<UpcomingCategory, CategoryOption> = {
   [UpcomingCategory.ACTIVE]: {

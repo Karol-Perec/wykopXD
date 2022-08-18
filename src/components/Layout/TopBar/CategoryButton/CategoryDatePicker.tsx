@@ -6,7 +6,7 @@ import plLocale from 'date-fns/locale/pl';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CategoryOption } from 'types';
-import { handleStopPropagation, stopPropagation } from 'utils/windowUtils';
+import { handleStopPropagation, stopPropagation } from '~/utils/windowUtils';
 import * as S from './CategoryButton.styles';
 
 interface DateMenuItemContentProps {

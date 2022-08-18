@@ -1,10 +1,10 @@
 import { useMediaQuery, useTheme } from '@mui/material';
 import { ReactEventHandler } from 'react';
-import Comments from 'components/Comments/Comments';
-import ErrorMessage from 'components/UI/ErrorMessage';
-import Loading from 'components/UI/Loading';
-import { Comment, ExtendedComment } from 'types';
-import { handleStopPropagation } from 'utils/windowUtils';
+import Comments from '~/components/Comments/Comments';
+import ErrorMessage from '~/components/UI/ErrorMessage';
+import Loading from '~/components/UI/Loading';
+import { Comment, ExtendedComment } from '~/types';
+import { handleStopPropagation } from '~/utils/windowUtils';
 import * as S from './CommentsDrawer.styles';
 
 interface CommentsDrawerProps {

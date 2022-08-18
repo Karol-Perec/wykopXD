@@ -1,6 +1,6 @@
 import { Typography, styled, Button } from '@mui/material';
 import { AxiosError } from 'axios';
-import { ReactComponent as FeelsBadMan } from 'assets/images/feelsBadMan.svg';
+import { ReactComponent as FeelsBadMan } from '~/assets/images/feelsBadMan.svg';
 
 const StyledContainer = styled('div')(({ theme }) => ({
   boxSizing: 'border-box',

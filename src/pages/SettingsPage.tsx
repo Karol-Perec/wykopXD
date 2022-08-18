@@ -1,9 +1,9 @@
 import { Check } from '@mui/icons-material';
 import { Card, Container, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useContext } from 'react';
-import ThemeContext from 'contexts/Theme/ThemeContext';
-import useTitle from 'hooks/useTitle';
-import { PrimaryColor, ThemeMode } from 'theme';
+import ThemeContext from '~/contexts/Theme/ThemeContext';
+import useTitle from '~/hooks/useTitle';
+import { PrimaryColor, ThemeMode } from '~/theme';
 
 const SettingsPage = () => {
   useTitle('Ustawienia');

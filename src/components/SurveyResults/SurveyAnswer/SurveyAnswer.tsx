@@ -1,6 +1,6 @@
 import { CheckCircleOutline as UserVoteIcon } from '@mui/icons-material';
 import { Typography } from '@mui/material';
-import { SurveyAnswer as Answer } from 'types';
+import { SurveyAnswer as Answer } from '~/types';
 import * as S from './SurveyAnswer.styles';
 
 interface SurveyAnswerProps {
@@ -18,7 +18,7 @@ const SurveyAnswer = ({ answer, isActive }: SurveyAnswerProps) => (
         <span>{`${answer.voteCount} ${answer.voteCount === 1 ? 'głos' : 'głosów'} `}</span>
         {/* <span>[{answer.voteCount}]</span>
         <span>{TEXT_SEPARATOR}</span> */}
-        <b>{answer.votePercentage.toFixed()}%</b>
+        {/* <strong>({answer.votePercentage.toFixed()}%)</strong> */}
       </S.Statistics>
     </Typography>
   </S.Container>

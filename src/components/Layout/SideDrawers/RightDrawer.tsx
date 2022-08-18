@@ -13,9 +13,9 @@ import {
   Typography,
 } from '@mui/material';
 import { MouseEventHandler, useContext } from 'react';
-import Avatar from 'components/UI/Avatar';
-import Drawer from 'components/UI/Drawer';
-import AuthContext from 'contexts/Auth/AuthContext';
+import Avatar from '~/components/UI/Avatar';
+import Drawer from '~/components/UI/Drawer';
+import AuthContext from '~/contexts/Auth/AuthContext';
 import { ListNavLink } from '../NavLinks/NavLink/NavLink';
 import * as S from './SideDrawers.styles';
 
@@ -40,7 +40,7 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
       </S.RightDrawerHeader>
       <Divider variant='middle' />
       <List>
-        {!authData?.userkey && (
+      {!authData?.userkey && (
           <ListItemButton disabled>
             <ListItemIcon>
               <LoginIcon />

@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider, PaletteMode } from '@mui/material';
 import { PropsWithChildren, useMemo } from 'react';
-import useLocalStorage from 'hooks/useLocalStorage';
-import { getTheme, PrimaryColor } from 'theme';
+import useLocalStorage from '~/hooks/useLocalStorage';
+import { getTheme, PrimaryColor } from '~/theme';
 import ThemeModeContext, { ThemeContextInterface } from './ThemeContext';
 
 const ThemeContextProvider = ({ children }: PropsWithChildren) => {
