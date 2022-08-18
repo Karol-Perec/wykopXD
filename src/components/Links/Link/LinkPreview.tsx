@@ -6,15 +6,15 @@ import {
 import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/material';
 import { RefCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as WykopIcon } from 'assets/images/logo.svg';
-import LinkCommentsDrawer from 'components/CommentsDrawer/LinkCommentsDrawer';
-import Media from 'components/Media/Media';
-import { Card, TextContainer } from 'components/UI/Containers';
-import { RouterNoPropagationLink } from 'components/UI/CustomLinks';
-import UserHeader from 'components/UI/UserHeader';
-import { Link } from 'types';
-import { getLinkMediaType } from 'utils/mediaUtils';
-import { handleStopPropagation, openInNewTab, stopPropagation } from 'utils/windowUtils';
+import { ReactComponent as WykopIcon } from '~/assets/images/logo.svg';
+import LinkCommentsDrawer from '~/components/CommentsDrawer/LinkCommentsDrawer';
+import Media from '~/components/Media/Media';
+import { Card, TextContainer } from '~/components/UI/Containers';
+import { RouterNoPropagationLink } from '~/components/UI/CustomLinks';
+import UserHeader from '~/components/UI/UserHeader';
+import { Link } from '~/types';
+import { getLinkMediaType } from '~/utils/mediaUtils';
+import { handleStopPropagation, openInNewTab, stopPropagation } from '~/utils/windowUtils';
 import * as S from './Link.styles';
 
 interface LinkDetailsProps {

@@ -1,6 +1,6 @@
-import Loading from 'components/UI/Loading';
-import useInfiniteScrolling from 'hooks/useInfiniteScrolling';
-import { Entry } from 'types';
+import Loading from '~/components/UI/Loading';
+import useInfiniteScrolling from '~/hooks/useInfiniteScrolling';
+import { Entry } from '~/types';
 import EntryPreview from '../Entry/EntryPreview';
 
 interface EntriesListProps {

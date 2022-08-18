@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'types';
-import axios from 'utils/axios';
+import { Link } from '~/types';
+import axios from '~/utils/axios';
 import { defaultOptions } from './defaultOptions';
 
 const getLink = async (id: string | number) => {

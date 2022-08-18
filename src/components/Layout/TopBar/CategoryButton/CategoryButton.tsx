@@ -2,8 +2,8 @@ import { Sort as SortIcon } from '@mui/icons-material';
 import { IconButton, ListItemText, Menu } from '@mui/material';
 import { MouseEventHandler, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import ReactPortal from 'components/UI/ReactPortal';
-import { CategoryOption } from 'types';
+import ReactPortal from '~/components/UI/ReactPortal';
+import { CategoryOption } from '~/types';
 import * as S from './CategoryButton.styles';
 import CategoryDatePicker from './CategoryDatePicker';
 

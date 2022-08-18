@@ -1,11 +1,11 @@
 import { Divider } from '@mui/material';
 import { useMemo } from 'react';
-import Media from 'components/Media/Media';
-import { ContentContainer, TextContainer } from 'components/UI/Containers';
-import UserHeader from 'components/UI/UserHeader';
-import { Comment as IComment } from 'types';
-import { parseHtml } from 'utils/parseHtml';
-import { handleStopPropagation } from 'utils/windowUtils';
+import Media from '~/components/Media/Media';
+import { ContentContainer, TextContainer } from '~/components/UI/Containers';
+import UserHeader from '~/components/UI/UserHeader';
+import { Comment as IComment } from '~/types';
+import { parseHtml } from '~/utils/parseHtml';
+import { handleStopPropagation } from '~/utils/windowUtils';
 import * as S from './Comment.styles';
 
 interface CommentProps {

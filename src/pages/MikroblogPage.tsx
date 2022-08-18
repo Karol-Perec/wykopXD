@@ -1,10 +1,10 @@
-import EntriesList from 'components/Entries/EntriesList/EntriesList';
-import CategoryButton from 'components/Layout/TopBar/CategoryButton/CategoryButton';
-import ErrorMessage from 'components/UI/ErrorMessage';
-import useEntries from 'hooks/api/useEntries';
-import useTitle from 'hooks/useTitle';
-import { ROUTE } from 'routes';
-import { MikroblogCategory, CategoryOption } from 'types';
+import EntriesList from '~/components/Entries/EntriesList/EntriesList';
+import CategoryButton from '~/components/Layout/TopBar/CategoryButton/CategoryButton';
+import ErrorMessage from '~/components/UI/ErrorMessage';
+import useEntries from '~/hooks/api/useEntries';
+import useTitle from '~/hooks/useTitle';
+import { ROUTE } from '~/routes';
+import { MikroblogCategory, CategoryOption } from '~/types';
 
 const mikroblogCategories: Record<MikroblogCategory, CategoryOption> = {
   [MikroblogCategory.NEW]: {

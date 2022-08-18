@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { AuthData } from 'hooks/api/useLogin';
+import { AuthData } from '~/hooks/api/useLogin';
 
 export interface AuthContextInterface {
   saveAuthData: (authData: AuthData | undefined) => void;

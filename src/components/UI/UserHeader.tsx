@@ -1,8 +1,8 @@
 import { styled, Typography } from '@mui/material';
-import { TEXT_SEPARATOR } from 'constants/texts.constant';
-import { USER_COLOR } from 'constants/userColor.constant';
-import { User } from 'types';
-import { calculateAprroximatedAge } from 'utils/dateUtils';
+import { TEXT_SEPARATOR } from '~/constants/texts.constant';
+import { USER_COLOR } from '~/constants/userColor.constant';
+import { User } from '~/types';
+import { calculateAprroximatedAge } from '~/utils/dateUtils';
 import Avatar from './Avatar';
 import { RouterNoPropagationLink } from './CustomLinks';
 

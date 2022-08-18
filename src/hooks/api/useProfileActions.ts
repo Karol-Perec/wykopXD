@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Entry, Collection, Link } from 'types';
-import axios from 'utils/axios';
+import { Entry, Collection, Link } from '~/types';
+import axios from '~/utils/axios';
 import { defaultOptions } from './defaultOptions';
 
 const getProfileActions = async (page: number, username: string) => {

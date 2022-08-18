@@ -1,5 +1,5 @@
 import { Component, PropsWithChildren } from 'react';
-import ErrorMessage from 'components/UI/ErrorMessage';
+import ErrorMessage from '~/components/UI/ErrorMessage';
 
 interface ErrorBoundaryState {
   hasError: boolean;
