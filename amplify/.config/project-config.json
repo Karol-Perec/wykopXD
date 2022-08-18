@@ -6,9 +6,9 @@
     "framework": "react",
     "config": {
       "SourceDir": "src",
-      "DistributionDir": "build",
-      "BuildCommand": "npm run build",
-      "StartCommand": "npm run start"
+      "DistributionDir": "dist",
+      "BuildCommand": "yarn build",
+      "StartCommand": "yarn dev"
     }
   },
   "providers": ["awscloudformation"]
