@@ -88,8 +88,7 @@
             },
             "SECRET": {
               "Ref": "secret"
-            },
-            "OWM_API_KEY": "{{OWM_API_KEY}}"
+            }
           }
         },
         "Role": {
