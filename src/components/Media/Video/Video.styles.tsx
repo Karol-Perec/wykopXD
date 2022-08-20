@@ -27,6 +27,7 @@ export const VideoWrapper = styled('div', {
 }));
 
 export const Container = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(1),
   display: 'flex',
   justifyContent: 'center',
   borderRadius: 10,

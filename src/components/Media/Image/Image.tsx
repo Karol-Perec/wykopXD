@@ -13,7 +13,6 @@ interface ImageProps {
   ratio?: number;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => {
   const [isBlurred, setIsBlurred] = useState(plus18);
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, isBlurred));

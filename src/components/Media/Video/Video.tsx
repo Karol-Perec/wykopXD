@@ -14,7 +14,6 @@ interface VideoProps {
   isGfycat: boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Video = ({ sourceUrl, previewUrl, plus18, ratio, listMode, isGfycat }: VideoProps) => {
   const { data: gfycatSourceUrl } = useGfycat(sourceUrl, isGfycat);
   const wrapperRef = useRef<HTMLDivElement>(null);

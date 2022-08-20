@@ -16,12 +16,12 @@ interface ImageProps {
 export const Image = styled('img', {
   shouldForwardProp: (prop) => prop !== 'blur',
 })<ImageProps>(({ theme, blur }) => ({
-  borderRadius: 10,
-
   maxWidth: '100%',
+  maxHeight: 550,
+  borderRadius: 10,
+  verticalAlign: 'top',
   ...(blur && { filter: 'blur(40px)', ':hover': { cursor: 'pointer' } }),
 
-  maxHeight: 550,
   [theme.breakpoints.up('sm')]: {
     maxHeight: 650,
   },
@@ -29,5 +29,5 @@ export const Image = styled('img', {
 
 export const ImageContainer = styled('div')({
   borderRadius: 10,
-  overflow: 'hidden'
+  overflow: 'hidden',
 });

@@ -21,6 +21,7 @@ export const Card = styled(MuiCard, { shouldForwardProp: (prop) => prop !== 'lis
 }));
 
 export const ContentContainer = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(1),
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(6),
   },
@@ -28,8 +29,7 @@ export const ContentContainer = styled('div')(({ theme }) => ({
 
 export const TextContainer = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(1),
-  paddingLeft: theme.spacing(1),
-  paddingRight: theme.spacing(1),
+  paddingTop: 0,
   [theme.breakpoints.up('sm')]: {
     paddingLeft: 0,
   },

@@ -5,10 +5,11 @@ export const Statistics = styled('div')({
   justifyContent: 'space-evenly',
 });
 
-export const TextContentContainer = styled('div')({
+export const TextContentContainer = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(1),
   flexGrow: 1,
   width: 300,
-});
+}));
 
 export const ContentContainer = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -23,7 +24,8 @@ export const ContentContainer = styled('div')(({ theme }) => ({
 
 export const MediaContainer = styled('div', { shouldForwardProp: (prop) => prop !== 'listMode' })<{
   listMode?: boolean;
-}>(({ listMode }) => ({
+}>(({ theme, listMode }) => ({
+  marginTop: theme.spacing(1),
   width: '100%',
   transition: 'width 0.3s ease-in-out',
 

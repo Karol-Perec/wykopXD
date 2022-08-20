@@ -16,12 +16,12 @@ interface GifProps {
 export const Gif = styled('img', {
   shouldForwardProp: (prop) => prop !== 'blur',
 })<GifProps>(({ theme, blur }) => ({
-  borderRadius: 10,
-
   maxWidth: '100%',
-  ...(blur && { filter: 'blur(20px)', ':hover': { cursor: 'pointer' } }),
-
   maxHeight: 550,
+  borderRadius: 10,
+  verticalAlign: 'top',
+  ...(blur && { filter: 'blur(40px)', ':hover': { cursor: 'pointer' } }),
+
   [theme.breakpoints.up('sm')]: {
     maxHeight: 650,
   },
@@ -29,5 +29,5 @@ export const Gif = styled('img', {
 
 export const GifContainer = styled('div')({
   borderRadius: 10,
-  overflow: 'hidden'
+  overflow: 'hidden',
 });
