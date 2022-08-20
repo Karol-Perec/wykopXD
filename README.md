@@ -8,6 +8,6 @@
 <p align="center">New beautiful and extremely fast version of Wykop.pl
 </p>
 
-## Check in out
+## Check it out
 
 [Deplyed on AWS](https://master.d25ragnar7mkzl.amplifyapp.com/) - React SPA and serverless in action.
