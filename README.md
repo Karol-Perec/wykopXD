@@ -10,4 +10,4 @@
 
 ## Check it out
 
-[Deplyed on AWS](https://master.d25ragnar7mkzl.amplifyapp.com/) - React SPA and serverless in action.
+[Deployed on AWS](https://master.d25ragnar7mkzl.amplifyapp.com/) - React SPA and serverless in action.
