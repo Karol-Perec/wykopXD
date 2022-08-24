@@ -78,10 +78,12 @@ const Comments = ({ comments = [] }: CommentsProps) => {
           />
         ))}
       </S.SortingContainer>
-      {commentsList}
-      {page * PAGE_SIZE <= comments.length && (
-        <Loading containerRef={infiniteScrollingTriggerRef} />
-      )}
+      <div style={{ overflowY: 'auto' }}>
+        {commentsList}
+        {page * PAGE_SIZE <= comments.length && (
+          <Loading containerRef={infiniteScrollingTriggerRef} />
+        )}
+      </div>
     </>
   );
 };
