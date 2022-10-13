@@ -25,7 +25,10 @@ wykopAxiosInstance.interceptors.request.use((config) => {
       config.baseURL +
       config.url +
       (config.data ? Object.values(config.data).join(',') : '');
-    config.headers?.common?.set('apisign', MD5(signContent).toString());
+    config.headers = {
+      ...config.headers,
+      apisign: MD5(signContent).toString(),
+    };
   } else {
     config.url += `/appkey/${process.env.OWM_API_KEY}`;
   }
