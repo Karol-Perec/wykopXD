@@ -4,6 +4,9 @@ import axios from 'axios';
 import { MD5 } from 'crypto-js';
 import { WykopErrorResponse } from '../../../../types';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const xd = 'xd';
+
 export const createResponse = (body: unknown, statusCode: number): APIGatewayProxyResult => ({
   statusCode,
   headers: {

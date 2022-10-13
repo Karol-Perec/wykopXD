@@ -10,6 +10,9 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters })
   const { category, page = 1, year, month } = queryStringParameters || {};
   if (!category) return createResponse('Missing category', 400);
 
+  // eslint-disable-next-line no-console
+  console.log(queryStringParameters);
+
   const yearFilter =
     category === 'year' || category === 'month' ? `/${year || new Date().getFullYear()}` : '';
   const monthFilter = category === 'month' ? `/${month || new Date().getMonth()}` : '';

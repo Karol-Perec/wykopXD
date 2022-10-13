@@ -14,6 +14,9 @@ export const handler: APIGatewayProxyHandler = async ({
   const { page = 1 } = queryStringParameters || {};
   if (!tag) return createResponse('Missing tag', 400);
 
+  // eslint-disable-next-line no-console
+  console.log(pathParameters);
+
   return get<GetTagReponse>(
     `/tags/index/${tag}/page/${page}/return/comments`,
     ({ data, meta }) => ({

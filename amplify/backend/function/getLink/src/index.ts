@@ -10,5 +10,8 @@ export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
   const { id } = pathParameters || {};
   if (!id) return createResponse('Missing link ID', 400);
 
+  // eslint-disable-next-line no-console
+  console.log(pathParameters);
+
   return get<GetLinkResponse>(`/links/link/${id}/withcomments/true`, ({ data }) => mapLink(data));
 };

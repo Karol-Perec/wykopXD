@@ -10,6 +10,9 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters })
   const { type, page = 1, category } = queryStringParameters || {};
   if (!type) return createResponse('Missing links type', 400);
 
+  // eslint-disable-next-line no-console
+  console.log(queryStringParameters);
+
   return get<GetLinksResponse>(
     `/links/${type}/page/${page}${category ? `/sort/${category}` : ''}`,
     ({ data }) => ({ items: data.map((l) => mapLink(l)) })

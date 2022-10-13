@@ -14,6 +14,9 @@ export const handler: APIGatewayProxyHandler = async ({
   const { page = 1 } = queryStringParameters || {};
   if (!username) return createResponse('Missing username', 400);
 
+  // eslint-disable-next-line no-console
+  console.log(pathParameters);
+
   return get<GetProfileActionsResponse>(
     `/profiles/actions/${username}/page/${+page + 1}/return/comments`,
     ({ data }) => ({

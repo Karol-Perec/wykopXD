@@ -21,6 +21,9 @@ export const handler: APIGatewayProxyHandler = async ({ body }) => {
   const connectData: string = body && JSON.parse(body)?.connectData;
   if (!connectData) return createResponse('Missing connect data', 400);
 
+  // eslint-disable-next-line no-console
+  console.log(body);
+
   const { appkey, login, sign, token } = JSON.parse(
     Buffer.from(connectData, 'base64').toString()
   ) as ConnectData;

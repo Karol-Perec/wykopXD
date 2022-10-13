@@ -10,5 +10,8 @@ export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
   const { id } = pathParameters || {};
   if (!id) return createResponse('Missing entry ID', 400);
 
+  // eslint-disable-next-line no-console
+  console.log(pathParameters);
+
   return get<GetEntryResponse>(`/entries/entry/${id}`, ({ data }) => mapEntry(data));
 };
