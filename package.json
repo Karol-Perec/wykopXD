@@ -40,7 +40,7 @@
     "vite-plugin-svgr": "^2.2.2"
   },
   "devDependencies": {
-    "@types/node": "^16.11.51",
+    "@types/node": "^16.11.65",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
