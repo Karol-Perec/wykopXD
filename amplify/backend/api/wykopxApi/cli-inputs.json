@@ -43,6 +43,13 @@
         "setting": "open"
       }
     },
+    "/hits": {
+      "name": "/hits",
+      "lambdaFunction": "getHits",
+      "permissions": {
+        "setting": "open"
+      }
+    },
     "/links": {
       "name": "/links",
       "lambdaFunction": "getLinks",

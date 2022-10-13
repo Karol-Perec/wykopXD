@@ -9,8 +9,8 @@ import EntryPage from '~/pages/EntryPage';
 import HitsPage from '~/pages/HitsPage';
 import MainPage from '~/pages/HomePage';
 import LinkPage from '~/pages/LinkPage';
-// import LoginCallback from '~/pages/LoginCallback';
-// import LoginPage from '~/pages/LoginPage';
+import LoginCallback from '~/pages/LoginCallback';
+import LoginPage from '~/pages/LoginPage';
 import MikroblogPage from '~/pages/MikroblogPage';
 import ProfilePage from '~/pages/ProfilePage';
 import SettingsPage from '~/pages/SettingsPage';
@@ -55,8 +55,8 @@ export const renderRouterRoutes = (isLoggedIn: boolean) => (
     </Route>
     <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
     <Route path={ROUTE.APP_INFO} element={<AppInfoPage />} />
-    {/* {!isLoggedIn && <Route path={ROUTE.LOGIN} element={<LoginPage />} />}
-    {!isLoggedIn && <Route path={ROUTE.LOGIN_CALLBACK} element={<LoginCallback />} />} */}
+    {!isLoggedIn && <Route path={ROUTE.LOGIN} element={<LoginPage />} />}
+    {!isLoggedIn && <Route path={ROUTE.LOGIN_CALLBACK} element={<LoginCallback />} />}
     <Route path={ROUTE.ANY} element={<Navigate to='/' />} />
   </Routes>
 );

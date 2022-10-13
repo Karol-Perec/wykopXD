@@ -1,6 +1,6 @@
 {
   "queryStringParameters": {
     "page": 1,
-    "period": "popular"
+    "category": "year"
   }
 }
