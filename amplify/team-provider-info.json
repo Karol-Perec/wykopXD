@@ -22,6 +22,14 @@
         "wykopxApiFunctionLayer": {
           "deploymentBucketName": "amplify-wykopx-dev-232416-deployment",
           "s3Key": "amplify-builds/wykopxApiFunctionLayer-LambdaLayerVersion2db75c9b-build.zip"
+        },
+        "getLink": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
+        },
+        "getEntry": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
         }
       }
     }
