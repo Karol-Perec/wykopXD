@@ -15,7 +15,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "outDir": ".",
     "rootDir": "./"
   },
