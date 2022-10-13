@@ -1,17 +1,47 @@
 /* eslint-disable import/extensions */
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { WykopLink, WykopPaginated, WykopResponse } from '../../../types';
-import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
-import { mapLink } from '/opt/nodejs/dataUtils';
+import { MD5 } from 'crypto-js';
+import { WykopProfile, WykopResponse } from '../../../types';
+import { mapUser } from '/opt/nodejs/dataUtils';
+import { createResponse, post } from '/opt/nodejs/wykopApiUtils';
 
-type GetLinksResponse = WykopResponse<WykopLink[]> & WykopPaginated;
+type LoginResponse = WykopResponse<{
+  profile: WykopProfile;
+  userkey: string;
+}>;
 
-export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
-  const { type, page = 1, category } = queryStringParameters || {};
-  if (!type) return createResponse('Missing links type', 400);
+interface ConnectData {
+  appkey: string;
+  sign: string;
+  login: string;
+  token: string;
+}
 
-  return get<GetLinksResponse>(
-    `/links/${type}/page/${page}${category ? `/sort/${category}` : ''}`,
-    ({ data }) => ({ items: data.map((l) => mapLink(l)) })
+export const handler: APIGatewayProxyHandler = async ({ body }) => {
+  const connectData: string = body && JSON.parse(body)?.connectData;
+  if (!connectData) return createResponse('Missing connect data', 400);
+
+  const { appkey, login, sign, token } = JSON.parse(
+    Buffer.from(connectData, 'base64').toString()
+  ) as ConnectData;
+
+  if (appkey !== process.env.API_KEY) {
+    return createResponse('Wrong application', 400);
+  }
+  if (sign !== MD5(process.env.SECRET + appkey + login + token).toString()) {
+    return createResponse('Manipulated connect data', 400);
+  }
+
+  return post<LoginResponse>(
+    '/login/index',
+    {
+      login,
+      accountkey: token,
+    },
+    (d) => ({
+      profile: mapUser(d.data.profile, true),
+      userkey: d.data.userkey,
+      accountkey: token,
+    })
   );
 };
