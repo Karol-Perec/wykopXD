@@ -30,6 +30,22 @@
         "getEntry": {
           "apiKey": "{{API_KEY}}",
           "secret": "{{SECRET}}"
+        },
+        "getEntries": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
+        },
+        "getTag": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
+        },
+        "getProfile": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
+        },
+        "getProfileActions": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
         }
       }
     }

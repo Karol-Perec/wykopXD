@@ -17,9 +17,6 @@ import {
   Survey,
 } from '../../../../types';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const xd = 'xd';
-
 const WYKOP_DEFAULT_AVATAR_URL = 'https://www.wykop.pl/cdn/c3397992/avatar_def,q150.png';
 
 const mapMediaType = (e: WykopEmbedContent): MediaType => {

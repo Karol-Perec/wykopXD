@@ -13,7 +13,9 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -25,7 +27,65 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": ["Arn"]
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "getEntries": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "getTag": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "getProfile": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "getProfileActions": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     }
@@ -38,12 +98,50 @@
         {
           "category": "function",
           "resourceName": "getLink",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         },
         {
           "category": "function",
           "resourceName": "getEntry",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getEntries",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getTag",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getProfile",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getProfileActions",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ]
     }
