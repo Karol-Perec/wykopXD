@@ -42,6 +42,27 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/links": {
+      "name": "/links",
+      "lambdaFunction": "getLinks",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/auth/connect-url": {
+      "name": "/auth/connect-url",
+      "lambdaFunction": "getConnectUrl",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/auth/login": {
+      "name": "/auth/login",
+      "lambdaFunction": "login",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

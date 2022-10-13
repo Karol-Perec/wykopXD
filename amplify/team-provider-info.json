@@ -46,6 +46,22 @@
         "getProfileActions": {
           "apiKey": "{{API_KEY}}",
           "secret": "{{SECRET}}"
+        },
+        "getHits": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
+        },
+        "getLinks": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
+        },
+        "getConnectUrl": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
+        },
+        "login": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
         }
       }
     }

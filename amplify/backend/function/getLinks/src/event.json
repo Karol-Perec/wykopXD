@@ -1,0 +1,6 @@
+{
+  "queryStringParameters": {
+    "page": 1,
+    "category": "hot"
+  }
+}
