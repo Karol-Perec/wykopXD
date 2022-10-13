@@ -1,5 +1,5 @@
 import { Typography, styled, Button } from '@mui/material';
-import { AxiosError } from 'axios';
+import axios from 'axios';
 import { ReactComponent as FeelsBadMan } from '~/assets/images/feelsBadMan.svg';
 
 const StyledContainer = styled('div')(({ theme }) => ({
@@ -17,7 +17,8 @@ const StyledContainer = styled('div')(({ theme }) => ({
 }));
 
 const renderError = (error: unknown) => {
-  if (error instanceof AxiosError) return error.response?.data || error.message;
+  // TODO: change this workaround after axios fixes that
+  if (error instanceof axios.AxiosError) return error.response?.data || error.message;
   if (error instanceof Error) return error.message;
   if (typeof error === 'string') return error;
 
