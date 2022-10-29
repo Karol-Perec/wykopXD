@@ -3,6 +3,7 @@ import LinkPreview from '~/components/Links/Link/LinkPreview';
 import Loading from '~/components/UI/Loading';
 import useInfiniteScrolling from '~/hooks/useInfiniteScrolling';
 import { Entry, Link } from '~/types';
+import { MainContentContainer } from '../UI/Containers';
 
 interface MultiListProps {
   contents?: (Link | Entry)[];
@@ -16,7 +17,7 @@ const ContentList = ({ contents, isLoading, onInfiniteScroll }: MultiListProps) 
   const infiniteScrollingTriggerRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
 
   return (
-    <>
+    <MainContentContainer>
       {contents?.map((content, idx) => {
         const ContentComponent = isLink(content) ? LinkPreview : EntryPreview;
         return (
@@ -28,7 +29,7 @@ const ContentList = ({ contents, isLoading, onInfiniteScroll }: MultiListProps) 
         );
       })}
       {isLoading && <Loading />}
-    </>
+    </MainContentContainer>
   );
 };
 

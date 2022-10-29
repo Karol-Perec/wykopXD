@@ -34,3 +34,15 @@ export const TextContainer = styled(Typography)(({ theme }) => ({
     paddingLeft: 0,
   },
 }));
+
+export const MainContentContainer = styled('div')(({ theme }) => ({
+  maxWidth: 700,
+  paddingTop: theme.spacing(2),
+  marginLeft: 'auto',
+  marginRight: 'auto',
+
+  [theme.breakpoints.up('sm')]: {
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  },
+}));

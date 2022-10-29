@@ -1,3 +1,4 @@
+import { MainContentContainer } from '~/components/UI/Containers';
 import Loading from '~/components/UI/Loading';
 import useInfiniteScrolling from '~/hooks/useInfiniteScrolling';
 import { Entry } from '~/types';
@@ -13,7 +14,7 @@ const EntriesList = ({ entries, isLoading, onInfiniteScroll }: EntriesListProps)
   const infiniteScrollingTriggerRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
 
   return (
-    <>
+    <MainContentContainer>
       {entries?.map((entry, idx) => (
         <EntryPreview
           data={entry}
@@ -22,7 +23,7 @@ const EntriesList = ({ entries, isLoading, onInfiniteScroll }: EntriesListProps)
         />
       ))}
       {isLoading && <Loading />}
-    </>
+    </MainContentContainer>
   );
 };
 

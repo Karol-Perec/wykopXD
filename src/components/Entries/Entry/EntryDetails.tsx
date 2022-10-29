@@ -8,7 +8,12 @@ import { useMemo } from 'react';
 import Comments from '~/components/Comments/Comments';
 import Media from '~/components/Media/Media';
 import SurveyResults from '~/components/SurveyResults/SurveyResults';
-import { Card, ContentContainer, TextContainer } from '~/components/UI/Containers';
+import {
+  Card,
+  ContentContainer,
+  MainContentContainer,
+  TextContainer,
+} from '~/components/UI/Containers';
 import UserHeader from '~/components/UI/UserHeader';
 import { Entry } from '~/types';
 import { parseHtml } from '~/utils/parseHtml';
@@ -28,48 +33,50 @@ const EntryDetails = ({ data, isUpdatingComments = false }: EntryDetailsProps) =
   };
 
   return (
-    <Card>
-      <UserHeader user={user} date={date} />
+    <MainContentContainer>
+      <Card>
+        <UserHeader user={user} date={date} />
 
-      <ContentContainer>
-        <TextContainer>{parsedBody}</TextContainer>
-        {media && (
-          <Media
-            sourceUrl={media.url}
-            imageUrl={media.previewUrl}
-            type={media.type}
-            plus18={media.plus18}
-            ratio={media.ratio}
-          />
+        <ContentContainer>
+          <TextContainer>{parsedBody}</TextContainer>
+          {media && (
+            <Media
+              sourceUrl={media.url}
+              imageUrl={media.previewUrl}
+              type={media.type}
+              plus18={media.plus18}
+              ratio={media.ratio}
+            />
+          )}
+          {survey && <SurveyResults survey={survey} />}
+        </ContentContainer>
+
+        <Divider variant='middle' />
+
+        <S.Statistics>
+          <Button startIcon={<PlusIcon />} color='inherit'>
+            <Typography>{voteCountPlus}</Typography>
+          </Button>
+
+          <Button startIcon={<CommentsIcon />} color='inherit'>
+            <Typography>{commentsCount}</Typography>
+          </Button>
+
+          {!!navigator.share && (
+            <IconButton onClick={handleShare} size='small'>
+              <ShareIcon fontSize='small' />
+            </IconButton>
+          )}
+        </S.Statistics>
+
+        {!isUpdatingComments && (
+          <>
+            <Divider variant='middle' />
+            <Comments comments={comments} />
+          </>
         )}
-        {survey && <SurveyResults survey={survey} />}
-      </ContentContainer>
-
-      <Divider variant='middle' />
-
-      <S.Statistics>
-        <Button startIcon={<PlusIcon />} color='inherit'>
-          <Typography>{voteCountPlus}</Typography>
-        </Button>
-
-        <Button startIcon={<CommentsIcon />} color='inherit'>
-          <Typography>{commentsCount}</Typography>
-        </Button>
-
-        {!!navigator.share && (
-          <IconButton onClick={handleShare} size='small'>
-            <ShareIcon fontSize='small' />
-          </IconButton>
-        )}
-      </S.Statistics>
-
-      {!isUpdatingComments && (
-        <>
-          <Divider variant='middle' />
-          <Comments comments={comments} />
-        </>
-      )}
-    </Card>
+      </Card>
+    </MainContentContainer>
   );
 };
 

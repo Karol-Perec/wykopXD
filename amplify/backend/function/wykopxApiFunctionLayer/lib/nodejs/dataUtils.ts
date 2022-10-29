@@ -15,6 +15,8 @@ import {
   MediaType,
   WykopSurvey,
   Survey,
+  WykopProfile,
+  Profile,
 } from '../../../../types';
 
 const WYKOP_DEFAULT_AVATAR_URL = 'https://www.wykop.pl/cdn/c3397992/avatar_def,q150.png';
@@ -45,6 +47,31 @@ export const mapUser = (p: WykopAuthor, hqAvatar = false): User => ({
       ? p.avatar.replace(',q150.', hqAvatar ? ',q60.' : ',q40.')
       : undefined,
   sex: p.sex,
+});
+
+export const mapProfile = (p: WykopProfile, hqAvatar = false): Profile => ({
+  login: p.login,
+  status: p.color,
+  avatarUrl:
+    p.avatar !== WYKOP_DEFAULT_AVATAR_URL
+      ? p.avatar.replace(',q150.', hqAvatar ? ',q60.' : ',q40.')
+      : undefined,
+  sex: p.sex,
+  about: p.about,
+  backgroundUrl: p.background,
+  commentsCount: p.comments_count,
+  diggsCount: p.diggs,
+  entriesCount: p.entries,
+  entriesCommentsCount: p.entries_comments,
+  followersCount: p.followers,
+  followingCount: p.following,
+  isBlocked: p.is_blocked,
+  isObserved: p.is_observed,
+  isVerified: p.is_verified,
+  linksAddedCount: p.links_added_count,
+  linksPublishedCount: p.links_published_count,
+  rank: p.rank,
+  registeredAt: p.signup_at,
 });
 
 const mapComment = (c: WykopEntryComment | WykopLinkComment): Comment => ({

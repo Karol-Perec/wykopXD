@@ -20,9 +20,7 @@ const Layout = ({ children }: PropsWithChildren) => {
       <S.Offset />
       <LeftDrawer open={showLeftDrawer} onUserAction={handleToggleLeftDrawer} />
       <RightDrawer open={showRightDrawer} onUserAction={handleToggleRightDrawer} />
-      <S.Main>
-        <S.MainContentContainer>{children}</S.MainContentContainer>
-      </S.Main>
+      <S.Main>{children}</S.Main>
     </>
   );
 };

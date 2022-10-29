@@ -1,3 +1,4 @@
+import { MainContentContainer } from '~/components/UI/Containers';
 import Loading from '~/components/UI/Loading';
 import useInfiniteScrolling from '~/hooks/useInfiniteScrolling';
 import { Link } from '~/types';
@@ -13,7 +14,7 @@ const LinksList = ({ links, isLoading, onInfiniteScroll }: LinksListProps) => {
   const infiniteScrollingTriggerRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
 
   return (
-    <>
+    <MainContentContainer>
       {links?.map((link, idx) => (
         <LinkPreview
           data={link}
@@ -22,7 +23,7 @@ const LinksList = ({ links, isLoading, onInfiniteScroll }: LinksListProps) => {
         />
       ))}
       {isLoading && <Loading />}
-    </>
+    </MainContentContainer>
   );
 };
 

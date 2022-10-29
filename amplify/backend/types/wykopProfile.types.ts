@@ -10,16 +10,16 @@ export interface WykopProfile {
   is_verified: boolean;
   is_observed: boolean; // is observed by current user
   is_blocked: boolean; // is blocekd by current user
-  email: string;
-  about: string;
-  name: string;
-  www: string;
-  jabber: string;
-  gg: string;
-  city: string;
-  facebook: string;
-  twitter: string;
-  instagram: string;
+  email?: string;
+  about?: string;
+  name?: string;
+  www?: string;
+  jabber?: string;
+  gg?: string;
+  city?: string;
+  facebook?: string;
+  twitter?: string;
+  instagram?: string;
   links_added_count: number;
   links_published_count: number;
   comments_count: number;
@@ -29,7 +29,7 @@ export interface WykopProfile {
   entries: number;
   entries_comments: number;
   diggs: number;
-  buries: number;
+  buries?: number;
   violation_url?: string;
   ban?: any;
 }

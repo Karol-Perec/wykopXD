@@ -1,30 +1,37 @@
+import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import ContentList from '~/components/ContentList/ContentList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
+import useProfile from '~/hooks/api/useProfile';
 import useProfileActions from '~/hooks/api/useProfileActions';
 import useTitle from '~/hooks/useTitle';
 
 const ProfilePage = () => {
   const { username } = useParams();
   useTitle(`@${username}`);
-  const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useProfileActions(
-    username!
-  );
+  const actions = useProfileActions(username!);
+  const profile = useProfile(username!);
 
   const handleInititeScroll = () => {
-    if (!data || data.pages?.at(-1)?.length) {
-      fetchNextPage();
+    if (!actions.data || actions.data.pages?.at(-1)?.length) {
+      actions.fetchNextPage();
     }
   };
 
-  if (error) return <ErrorMessage error={error} />;
+  if (actions.error) return <ErrorMessage error={actions.error} />;
 
   return (
-    <ContentList
-      contents={data?.pages.flat()}
-      isLoading={isLoading || isFetchingNextPage}
-      onInfiniteScroll={handleInititeScroll}
-    />
+    <>
+      {/* <Container disableGutters>
+        {profile?.background && <img src={profile.data.background} width='100%' alt={tag} />}
+      </Container> */}
+
+      <ContentList
+        contents={actions.data?.pages.flat()}
+        isLoading={actions.isLoading || actions.isFetchingNextPage}
+        onInfiniteScroll={handleInititeScroll}
+      />
+    </>
   );
 };
 

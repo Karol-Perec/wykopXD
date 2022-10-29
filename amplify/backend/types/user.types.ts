@@ -14,3 +14,21 @@ export interface User {
   status: ProfileStatus;
   avatarUrl?: string;
 }
+
+export interface Profile extends User {
+  about?: string;
+  backgroundUrl?: string;
+  registeredAt: string;
+  rank: number;
+  commentsCount: number;
+  diggsCount: number;
+  entriesCount: number;
+  entriesCommentsCount: number;
+  followersCount: number;
+  followingCount: number;
+  linksAddedCount: number;
+  linksPublishedCount: number;
+  isBlocked: boolean;
+  isObserved: boolean;
+  isVerified?: boolean;
+}

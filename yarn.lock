@@ -744,10 +744,10 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
-"@mui/x-date-pickers@^5.0.5":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-5.0.5.tgz#ea4fbc8402b3e16e36f2f0e4eac2bf7501d74622"
-  integrity sha512-VHnRTbJlG3yiczwmHOLUKuInKUaDBFsimaIm2ek3lBBWXXvHEo+sIHjG5fgQhj7TragHFh/jPbXqSR87VBkLjA==
+"@mui/x-date-pickers@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-5.0.6.tgz#f1d60fe4189cecfb98bcf69cfa65b1e0ea3b0971"
+  integrity sha512-DTdA6psDnyLir6dyKyjsMLEMA6rHHsZqEw0vKxsIsNoYRWQ+cBGqPS6VWKzibuv8QnqGxp3BRHz0R3Dtg2SDqg==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@date-io/core" "^2.15.0"
@@ -3209,10 +3209,10 @@ vite-plugin-svgr@^2.2.2:
     "@rollup/pluginutils" "^5.0.0"
     "@svgr/core" "^6.4.0"
 
-vite@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.0.tgz#a4015914620ff0122ea57fddfecc0e250eb6582c"
-  integrity sha512-Ovj7+cqIdM1I0LPCk2CWxzgADXMix3NLXpUT6g7P7zg/a9grk/TaC3qn9YMg7w7M0POIVCBOp1aBANJW+RH7oA==
+vite@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.1.tgz#dc1f54568300a7acdd89c8611e2719c21f1334f4"
+  integrity sha512-ADtMkfHuWq4tskJsri2n2FZkORO8ZyhI+zIz7zTrDAgDEtct1jdxOg3YsZBfHhKjmMoWLOSCr+64qrEDGo/DbQ==
   dependencies:
     esbuild "^0.15.9"
     postcss "^8.4.18"
