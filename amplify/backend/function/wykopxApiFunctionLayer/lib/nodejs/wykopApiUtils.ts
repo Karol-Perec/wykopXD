@@ -43,11 +43,11 @@ wykopAxiosInstance.interceptors.request.use((config) => {
 export const get = async <D>(url: string, dataMapper: (responseData: D) => unknown) => {
   const { data } = await wykopAxiosInstance.get<D | WykopErrorResponse>(url);
 
-  if ((data as WykopErrorResponse).error) {
-    return createResponse((data as WykopErrorResponse).error.message_pl, 500);
+  if ('error' in data) {
+    return createResponse(data.error.message_pl, 500);
   }
 
-  return createResponse(dataMapper(data as D), 200);
+  return createResponse(dataMapper(data), 200);
 };
 
 export const post = async <D>(
@@ -57,9 +57,9 @@ export const post = async <D>(
 ) => {
   const { data } = await wykopAxiosInstance.post<D | WykopErrorResponse>(url, body);
 
-  if ((data as WykopErrorResponse).error) {
-    return createResponse((data as WykopErrorResponse).error.message_pl, 500);
+  if ('error' in data) {
+    return createResponse(data.error.message_pl, 500);
   }
 
-  return createResponse(dataMapper ? dataMapper(data as D) : data, 200);
+  return createResponse(dataMapper ? dataMapper(data) : data, 200);
 };
