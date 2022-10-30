@@ -12,10 +12,10 @@ import LinkPage from '~/pages/LinkPage';
 import LoginCallback from '~/pages/LoginCallback';
 import LoginPage from '~/pages/LoginPage';
 import MikroblogPage from '~/pages/MikroblogPage';
-import ProfilePage from '~/pages/ProfilePage';
 import SettingsPage from '~/pages/SettingsPage';
 import TagPage from '~/pages/TagPage';
 import UpcomingPage from '~/pages/UpcomingPage';
+import UserPage from '~/pages/UserPage';
 import { ROUTE } from './routes';
 import { HitsCategory, MikroblogCategory, UpcomingCategory } from './types';
 
@@ -45,7 +45,7 @@ export const renderRouterRoutes = (isLoggedIn: boolean) => (
     <Route path={ROUTE.LINK} element={<LinkPage />} />
     <Route path={ROUTE.ENTRY} element={<EntryPage />} />
     <Route path={ROUTE.TAG} element={<TagPage />} />
-    <Route path={ROUTE.PROFILE} element={<ProfilePage />} />
+    <Route path={ROUTE.USER} element={<UserPage />} />
     <Route path={ROUTE.HOME} element={<MainPage />} />
     <Route path={ROUTE.UPCOMING}>
       <Route index element={<UpcomingPage category={UpcomingCategory.VOTED} />} />

@@ -11,7 +11,7 @@ const getTag = async (page: number, tag: string) => {
 };
 
 const useTag = (tag: string) =>
-  useInfiniteQuery(['entries', tag], ({ pageParam = 1 }) => getTag(pageParam, tag), {
+  useInfiniteQuery(['tag', tag], ({ pageParam = 1 }) => getTag(pageParam, tag), {
     ...defaultOptions,
     getNextPageParam: (_lastPage, pages) => pages.length + 1,
   });

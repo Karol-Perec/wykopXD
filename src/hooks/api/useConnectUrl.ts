@@ -8,7 +8,7 @@ const getConnectUrl = async (redirectUrl: string) => {
 };
 
 const useConnectUrl = (redirectUrl: string, enabled: boolean) =>
-  useQuery(['profile', redirectUrl], () => getConnectUrl(redirectUrl), {
+  useQuery(['connect-url', redirectUrl], () => getConnectUrl(redirectUrl), {
     ...defaultOptions,
     enabled,
   });

@@ -6,7 +6,7 @@ import { ExternalNoPropagationLink, RouterNoPropagationLink } from '~/components
 import Spoiler from '~/components/UI/Spoiler';
 import { SPACE_CHAR } from '~/constants/texts.constant';
 
-export const linkOrEntryRegex = /https?:\/\/(www\.)?wykop\.pl\/(wpis|link)\/([0-9]+).+/;
+export const availableWykopPathsRegex = /https?:\/\/(www\.)?wykop\.pl\/(wpis|link|ludzie)\/([0-9]+).+/;
 
 const encodeUtf8 = (message: string) => {
   const query = new URLSearchParams(message);
@@ -41,7 +41,7 @@ const parseSpoilerText = (text: string | null) =>
       }
       if (word.startsWith('http')) {
         return [
-          word.match(linkOrEntryRegex) ? (
+          word.match(availableWykopPathsRegex) ? (
             <RouterNoPropagationLink to={word.split('wykop.pl')[1]} key={idx}>
               {word.replace('wykop.pl', window.location.host)}
             </RouterNoPropagationLink>
@@ -111,7 +111,7 @@ const parseElementNode = (node: ChildNode) => {
         return <Spoiler>{parseSpoilerText(encodeUtf8(a.pathname))}</Spoiler>;
       }
       if (a.href.startsWith('http')) {
-        return a.href.match(linkOrEntryRegex) ? (
+        return a.href.match(availableWykopPathsRegex) ? (
           <RouterNoPropagationLink to={a.href.split('wykop.pl')[1]}>
             {a.textContent?.replace('wykop.pl', window.location.host)}
           </RouterNoPropagationLink>

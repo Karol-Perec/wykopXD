@@ -10,7 +10,7 @@ export enum ROUTE {
   // TAG_LINKS = '/tag/znaleziska/:tag',
   // TAG_ENTRIES = '/tag/wpisy/:tag',
   TAG = '/tag/:tag',
-  PROFILE = '/ludzie/:username',
+  USER = '/ludzie/:username',
   SETTINGS = '/ustawienia',
   APP_INFO = '/o-aplikacji',
   LOGIN = '/zaloguj',

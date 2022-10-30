@@ -60,12 +60,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "getProfile",
+            "getUserActions",
             {
               "Fn::Join": [
                 "",
                 [
-                  "getProfile",
+                  "getUserActions",
                   "-",
                   {
                     "Ref": "env"
@@ -95,12 +95,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "wykopxLambdaRoleda3c2ac7",
+            "wykopxLambdaRole142269b1",
             {
               "Fn::Join": [
                 "",
                 [
-                  "wykopxLambdaRoleda3c2ac7",
+                  "wykopxLambdaRole142269b1",
                   "-",
                   {
                     "Ref": "env"

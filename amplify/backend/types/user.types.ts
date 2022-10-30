@@ -15,7 +15,7 @@ export interface User {
   avatarUrl?: string;
 }
 
-export interface Profile extends User {
+export interface UserFull extends User {
   about?: string;
   backgroundUrl?: string;
   registeredAt: string;

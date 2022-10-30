@@ -13,9 +13,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -27,9 +25,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -41,9 +37,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -55,37 +49,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "getProfile": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "getProfileActions": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -97,9 +61,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -111,9 +73,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -125,9 +85,7 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
         }
       ]
     },
@@ -139,9 +97,31 @@
         {
           "category": "function",
           "resourceName": "wykopxApiFunctionLayer",
-          "attributes": [
-            "Arn"
-          ]
+          "attributes": ["Arn"]
+        }
+      ]
+    },
+    "getUser": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": ["Arn"]
+        }
+      ]
+    },
+    "getUserActions": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wykopxApiFunctionLayer",
+          "attributes": ["Arn"]
         }
       ]
     }
@@ -154,82 +134,52 @@
         {
           "category": "function",
           "resourceName": "getLink",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
         },
         {
           "category": "function",
           "resourceName": "getEntry",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
         },
         {
           "category": "function",
           "resourceName": "getEntries",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
         },
         {
           "category": "function",
           "resourceName": "getTag",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getProfile",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getProfileActions",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getLinks",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getConnectUrl",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "login",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
         },
         {
           "category": "function",
           "resourceName": "getHits",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
+        },
+        {
+          "category": "function",
+          "resourceName": "getLinks",
+          "attributes": ["Name", "Arn"]
+        },
+        {
+          "category": "function",
+          "resourceName": "getConnectUrl",
+          "attributes": ["Name", "Arn"]
+        },
+        {
+          "category": "function",
+          "resourceName": "login",
+          "attributes": ["Name", "Arn"]
+        },
+        {
+          "category": "function",
+          "resourceName": "getUser",
+          "attributes": ["Name", "Arn"]
+        },
+        {
+          "category": "function",
+          "resourceName": "getUserActions",
+          "attributes": ["Name", "Arn"]
         }
       ]
     }

@@ -15,12 +15,20 @@ export interface User {
   avatarUrl?: string;
 }
 
-
 export interface UserFull extends User {
-  signupAt: string;
+  about?: string;
+  backgroundUrl?: string;
+  registeredAt: string;
+  rank: number;
+  commentsCount: number;
+  diggsCount: number;
+  entriesCount: number;
+  entriesCommentsCount: number;
+  followersCount: number;
+  followingCount: number;
   linksAddedCount: number;
   linksPublishedCount: number;
-  commentsCount: number;
-  rank: number;
-  followers: number;
+  isBlocked: boolean;
+  isObserved: boolean;
+  isVerified?: boolean;
 }

@@ -2,15 +2,15 @@ import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import ContentList from '~/components/ContentList/ContentList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
-import useProfile from '~/hooks/api/useProfile';
-import useProfileActions from '~/hooks/api/useProfileActions';
+import useUser from '~/hooks/api/useUser';
+import useUserActions from '~/hooks/api/useUserActions';
 import useTitle from '~/hooks/useTitle';
 
-const ProfilePage = () => {
+const UserPage = () => {
   const { username } = useParams();
   useTitle(`@${username}`);
-  const actions = useProfileActions(username!);
-  const profile = useProfile(username!);
+  const actions = useUserActions(username!);
+  const user = useUser(username!);
 
   const handleInititeScroll = () => {
     if (!actions.data || actions.data.pages?.at(-1)?.length) {
@@ -22,9 +22,11 @@ const ProfilePage = () => {
 
   return (
     <>
-      {/* <Container disableGutters>
-        {profile?.background && <img src={profile.data.background} width='100%' alt={tag} />}
-      </Container> */}
+      <Container disableGutters>
+        {user.data?.backgroundUrl && (
+          <img src={user.data.backgroundUrl} width='100%' alt={username} />
+        )}
+      </Container>
 
       <ContentList
         contents={actions.data?.pages.flat()}
@@ -35,4 +37,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default UserPage;

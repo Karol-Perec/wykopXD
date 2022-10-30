@@ -39,14 +39,6 @@
           "apiKey": "{{API_KEY}}",
           "secret": "{{SECRET}}"
         },
-        "getProfile": {
-          "apiKey": "{{API_KEY}}",
-          "secret": "{{SECRET}}"
-        },
-        "getProfileActions": {
-          "apiKey": "{{API_KEY}}",
-          "secret": "{{SECRET}}"
-        },
         "getHits": {
           "apiKey": "{{API_KEY}}",
           "secret": "{{SECRET}}"
@@ -60,6 +52,14 @@
           "secret": "{{SECRET}}"
         },
         "login": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
+        },
+        "getUser": {
+          "apiKey": "{{API_KEY}}",
+          "secret": "{{SECRET}}"
+        },
+        "getUserActions": {
           "apiKey": "{{API_KEY}}",
           "secret": "{{SECRET}}"
         }

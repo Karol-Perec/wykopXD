@@ -16,7 +16,7 @@ import {
   WykopSurvey,
   Survey,
   WykopProfile,
-  Profile,
+  UserFull,
 } from '../../../../types';
 
 const WYKOP_DEFAULT_AVATAR_URL = 'https://www.wykop.pl/cdn/c3397992/avatar_def,q150.png';
@@ -49,7 +49,7 @@ export const mapUser = (p: WykopAuthor, hqAvatar = false): User => ({
   sex: p.sex,
 });
 
-export const mapProfile = (p: WykopProfile, hqAvatar = false): Profile => ({
+export const mapUserFull = (p: WykopProfile, hqAvatar = false): UserFull => ({
   login: p.login,
   status: p.color,
   avatarUrl:

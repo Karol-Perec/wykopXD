@@ -29,20 +29,6 @@
         "setting": "open"
       }
     },
-    "/profiles/{username}": {
-      "name": "/profiles/{username}",
-      "lambdaFunction": "getProfile",
-      "permissions": {
-        "setting": "open"
-      }
-    },
-    "/profiles/{username}/actions": {
-      "name": "/profiles/{username}/actions",
-      "lambdaFunction": "getProfileActions",
-      "permissions": {
-        "setting": "open"
-      }
-    },
     "/hits": {
       "name": "/hits",
       "lambdaFunction": "getHits",
@@ -67,6 +53,20 @@
     "/auth/login": {
       "name": "/auth/login",
       "lambdaFunction": "login",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/users/{username}": {
+      "name": "/users/{username}",
+      "lambdaFunction": "getUser",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/users/{username}/actions": {
+      "name": "/users/{username}/actions",
+      "lambdaFunction": "getUserActions",
       "permissions": {
         "setting": "open"
       }
