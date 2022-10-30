@@ -1,4 +1,4 @@
-export enum ProfileStatus {
+export enum UserStatus {
   GREEN = 0,
   ORANGE = 1,
   RED = 2,
@@ -11,7 +11,7 @@ export enum ProfileStatus {
 export interface User {
   login: string;
   sex?: 'male' | 'female';
-  status: ProfileStatus;
+  status: UserStatus;
   avatarUrl?: string;
 }
 

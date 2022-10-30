@@ -2,7 +2,7 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import { MD5 } from 'crypto-js';
 import { WykopProfile, WykopResponse } from '../../../types';
-import { mapProfile } from '/opt/nodejs/dataUtils';
+import { mapUser } from '/opt/nodejs/dataUtils';
 import { createResponse, post } from '/opt/nodejs/wykopApiUtils';
 
 type LoginResponse = WykopResponse<{
@@ -39,7 +39,7 @@ export const handler: APIGatewayProxyHandler = async ({ body }) => {
       accountkey: token,
     },
     (d) => ({
-      profile: mapProfile(d.data.profile, true),
+      user: mapUser(d.data.profile, true),
       userkey: d.data.userkey,
       accountkey: token,
     })

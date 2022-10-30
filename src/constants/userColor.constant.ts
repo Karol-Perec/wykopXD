@@ -1,11 +1,11 @@
-import { ProfileStatus } from '../types';
+import { UserStatus } from '../types';
 
-export const USER_COLOR: Record<ProfileStatus, string> = {
-  [ProfileStatus.GREEN]: '#393',
-  [ProfileStatus.ORANGE]: '#ff5917',
-  [ProfileStatus.RED]: '#e22',
-  [ProfileStatus.ADMIN]: '#fff',
-  [ProfileStatus.BANNED]: '#999',
-  [ProfileStatus.DELETED]: '#999', // overlined
-  [ProfileStatus.MEDIA]: '#3f6fa0',
+export const USER_COLOR: Record<UserStatus, string> = {
+  [UserStatus.GREEN]: '#393',
+  [UserStatus.ORANGE]: '#ff5917',
+  [UserStatus.RED]: '#e22',
+  [UserStatus.ADMIN]: '#fff',
+  [UserStatus.BANNED]: '#999',
+  [UserStatus.DELETED]: '#999', // overlined
+  [UserStatus.MEDIA]: '#3f6fa0',
 };

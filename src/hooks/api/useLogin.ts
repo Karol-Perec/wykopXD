@@ -3,7 +3,7 @@ import { UserFull } from '~/types';
 import axios from '~/utils/axios';
 
 export interface AuthData {
-  profile: UserFull;
+  user: UserFull;
   userkey: string;
   accountkey: string;
 }

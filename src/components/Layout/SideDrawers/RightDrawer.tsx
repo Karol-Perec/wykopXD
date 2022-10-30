@@ -28,8 +28,8 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
   return (
     <Drawer anchor='right' onUserAction={onUserAction} open={open}>
       <S.RightDrawerHeader>
-        <Avatar src={authData?.profile?.avatarUrl} size={60} />
-        <Typography variant='h6'>{authData?.profile?.login}</Typography>
+        <Avatar src={authData?.user?.avatarUrl} size={60} />
+        <Typography variant='h6'>{authData?.user?.login}</Typography>
       </S.RightDrawerHeader>
       <Divider variant='middle' />
       <List>
