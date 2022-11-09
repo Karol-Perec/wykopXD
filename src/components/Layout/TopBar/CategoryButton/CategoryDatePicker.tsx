@@ -1,9 +1,10 @@
-import { Event as CalendarIcon } from '@mui/icons-material';
-import { ListItemIcon } from '@mui/material';
+/* eslint-disable react/no-children-prop */
+/* eslint-disable react/jsx-props-no-spreading */
+import { IconButton, ListItemIcon } from '@mui/material';
 import { CalendarPickerView, DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import plLocale from 'date-fns/locale/pl';
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CategoryOption } from 'types';
 import { handleStopPropagation, stopPropagation } from '~/utils/windowUtils';
@@ -18,24 +19,24 @@ interface DateMenuItemContentProps {
 const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemContentProps) => {
   const { year, month } = useParams<{ year: string; month: string }>();
   const [date, setDate] = useState<Date | null>(new Date());
-  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const initDate = new Date();
-    if (month && option.datePick?.includes('month')) initDate.setMonth(+month);
+    if (month && option.datePick?.includes('month')) initDate.setMonth(+month - 1);
     if (year && option.datePick?.includes('year')) initDate.setFullYear(+year);
     setDate(initDate);
   }, [month, option.datePick, year]);
 
   const handleSetDateParams = (newDate: Date | null, route: string, pick: CalendarPickerView[]) => {
     handleClose();
+    if (!newDate) return navigate('/');
     navigate(
       `${route}${pick
         .map((calendar) => {
-          if (calendar === 'year') return `/${newDate?.getFullYear()}`;
-          if (calendar === 'month') return `/${newDate?.getMonth()}`;
-          if (calendar === 'day') return `/${newDate?.getDate()}`;
+          if (calendar === 'year') return `/${newDate.getFullYear()}`;
+          if (calendar === 'month') return `/${newDate.getMonth() + 1}`;
+          if (calendar === 'day') return `/${newDate.getDate()}`;
           return '';
         })
         .reverse()
@@ -46,9 +47,6 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={plLocale}>
       <DatePicker
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
         views={option.datePick}
         minDate={new Date('2005-12-01')}
         maxDate={new Date()}
@@ -57,28 +55,27 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
           handleSetDateParams(newDate, `${baseRoute}/${option.path}`, option.datePick!)
         }
         onChange={setDate}
-        PaperProps={{
-          onClick: handleStopPropagation,
-          onMouseDown: handleStopPropagation,
+        desktopModeMediaQuery=''
+        componentsProps={{
+          desktopPaper: { onClick: handleStopPropagation, onMouseDown: handleStopPropagation },
+          dialog: { onClick: handleStopPropagation, onMouseDown: handleStopPropagation },
         }}
-        DialogProps={{
-          onClick: handleStopPropagation,
-          onMouseDown: handleStopPropagation,
+        renderInput={(params) => {
+          const endAndorment = params.InputProps?.endAdornment as ReactElement;
+          return (
+            <S.CalendarIconButton
+              component={ListItemIcon}
+              onClick={stopPropagation((e) => {
+                e.preventDefault();
+                endAndorment.props.children.props.onClick();
+              })}
+              onMouseDown={handleStopPropagation}
+              ref={params.inputRef}
+            >
+              {endAndorment.props.children.props.children}
+            </S.CalendarIconButton>
+          );
         }}
-        renderInput={({ inputRef }) => (
-          <S.CalendarIconButton
-            component={ListItemIcon}
-            onMouseDown={handleStopPropagation}
-            onClick={stopPropagation((e) => {
-              e.preventDefault();
-              setOpen((prev) => !prev);
-            })}
-            ref={inputRef}
-            centerRipple
-          >
-            <CalendarIcon fontSize='small' />
-          </S.CalendarIconButton>
-        )}
       />
     </LocalizationProvider>
   );
