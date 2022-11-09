@@ -1,6 +1,4 @@
-/* eslint-disable react/no-children-prop */
-/* eslint-disable react/jsx-props-no-spreading */
-import { IconButton, ListItemIcon } from '@mui/material';
+import { ListItemIcon } from '@mui/material';
 import { CalendarPickerView, DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import plLocale from 'date-fns/locale/pl';
