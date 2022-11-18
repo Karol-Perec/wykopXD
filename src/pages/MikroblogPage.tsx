@@ -5,6 +5,7 @@ import useEntries from '~/hooks/api/useEntries';
 import useTitle from '~/hooks/useTitle';
 import { ROUTE } from '~/routes';
 import { MikroblogCategory, CategoryOption } from '~/types';
+import { filterUniqueData } from '~/utils/dataUtils';
 
 const mikroblogCategories: Record<MikroblogCategory, CategoryOption> = {
   [MikroblogCategory.NEW]: {
@@ -56,7 +57,7 @@ const MikroblogPage = ({ category }: MikroblogPageProps) => {
         baseRoute={ROUTE.MIKROBLOG}
       />
       <EntriesList
-        entries={data?.pages.flat()}
+        entries={filterUniqueData(data?.pages.flat())}
         isLoading={isLoading || isFetchingNextPage}
         onInfiniteScroll={fetchNextPage}
       />

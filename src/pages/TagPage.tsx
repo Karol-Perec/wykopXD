@@ -4,6 +4,7 @@ import ContentList from '~/components/ContentList/ContentList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import useTag from '~/hooks/api/useTag';
 import useTitle from '~/hooks/useTitle';
+import { filterUniqueData } from '~/utils/dataUtils';
 
 const TagPage = () => {
   const { tag } = useParams();
@@ -26,7 +27,7 @@ const TagPage = () => {
       </Container>
 
       <ContentList
-        contents={data?.pages.flatMap((p) => p.items)}
+        contents={filterUniqueData(data?.pages.flatMap((p) => p.items))}
         isLoading={isLoading || isFetchingNextPage}
         onInfiniteScroll={handleInititeScroll}
       />

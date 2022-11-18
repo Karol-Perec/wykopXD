@@ -6,6 +6,7 @@ import useHits from '~/hooks/api/useHits';
 import useTitle from '~/hooks/useTitle';
 import { ROUTE } from '~/routes';
 import { CategoryOption, HitsCategory } from '~/types';
+import { filterUniqueData } from '~/utils/dataUtils';
 
 const hitsCategories: Record<HitsCategory, CategoryOption> = {
   [HitsCategory.POPULAR]: {
@@ -67,7 +68,7 @@ const HitsPage = ({ category }: HitsPageProps) => {
         baseRoute={ROUTE.HITS}
       />
       <LinksList
-        links={data?.pages.flat()}
+        links={filterUniqueData(data?.pages.flat())}
         isLoading={isLoading || isFetchingNextPage}
         onInfiniteScroll={handleInititeScroll}
       />

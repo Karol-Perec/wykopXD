@@ -5,6 +5,7 @@ import ErrorMessage from '~/components/UI/ErrorMessage';
 import useUser from '~/hooks/api/useUser';
 import useUserActions from '~/hooks/api/useUserActions';
 import useTitle from '~/hooks/useTitle';
+import { filterUniqueData } from '~/utils/dataUtils';
 
 const UserPage = () => {
   const { username } = useParams();
@@ -29,7 +30,7 @@ const UserPage = () => {
       </Container>
 
       <ContentList
-        contents={actions.data?.pages.flat()}
+        contents={filterUniqueData(actions.data?.pages.flat())}
         isLoading={actions.isLoading || actions.isFetchingNextPage}
         onInfiniteScroll={handleInititeScroll}
       />

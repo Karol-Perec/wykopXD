@@ -5,6 +5,7 @@ import useLinks from '~/hooks/api/useLinks';
 import useTitle from '~/hooks/useTitle';
 import { ROUTE } from '~/routes';
 import { UpcomingCategory, CategoryOption } from '~/types';
+import { filterUniqueData } from '~/utils/dataUtils';
 
 export const upcomingCategories: Record<UpcomingCategory, CategoryOption> = {
   [UpcomingCategory.ACTIVE]: {
@@ -51,7 +52,7 @@ const UpcomingPage = ({ category }: UpcomingPageProps) => {
         baseRoute={ROUTE.UPCOMING}
       />
       <LinksList
-        links={data?.pages.flat()}
+        links={filterUniqueData(data?.pages.flat())}
         isLoading={isLoading || isFetchingNextPage}
         onInfiniteScroll={fetchNextPage}
       />
