@@ -1,18 +1,17 @@
-import { PaletteMode } from '@mui/material';
-import { createContext } from 'react';
-import { PrimaryColor } from '~/theme';
+import { MouseEvent, createContext } from 'react';
+import { PrimaryColor, ThemeMode } from '~/theme';
 
 export interface ThemeContextInterface {
-  handleToggleThemeMode: () => void;
+  handleChangeThemeMode: (event: MouseEvent<HTMLElement>, mode: ThemeMode) => void;
   handleSetPrimaryColor: React.Dispatch<React.SetStateAction<PrimaryColor>>;
-  themeMode: PaletteMode;
+  themeMode: ThemeMode;
   primaryColor: PrimaryColor;
 }
 
 const ThemeContext = createContext<ThemeContextInterface>({
-  handleToggleThemeMode: () => {}, // eslint-disable-line
-  handleSetPrimaryColor: () => {}, // eslint-disable-line
-  themeMode: 'dark',
+  handleChangeThemeMode: () => undefined,
+  handleSetPrimaryColor: () => undefined,
+  themeMode: ThemeMode.Dark,
   primaryColor: PrimaryColor.Blue,
 });
 

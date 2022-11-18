@@ -11,7 +11,11 @@ const StyledAvatar = styled(MuiAvatar)<AvatarProps>(({ theme, size }) => ({
   backgroundColor: theme.palette.primary.light,
   width: size,
   height: size,
-  ':hover': { cursor: 'pointer' },
+  ':hover': {
+    cursor: 'pointer',
+    filter: 'brightness(80%)',
+    transition: 'filter 0.1s ease-out 0s',
+  },
 }));
 
 const Avatar = ({ src, size, onClick }: AvatarProps) => (

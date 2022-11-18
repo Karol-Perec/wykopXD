@@ -1,17 +1,16 @@
-import { createTheme, ThemeProvider, PaletteMode } from '@mui/material';
-import { PropsWithChildren, useMemo } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material';
+import { PropsWithChildren, useMemo, MouseEvent } from 'react';
 import useLocalStorage from '~/hooks/useLocalStorage';
-import { getTheme, PrimaryColor } from '~/theme';
+import { getTheme, PrimaryColor, ThemeMode } from '~/theme';
 import ThemeModeContext, { ThemeContextInterface } from './ThemeContext';
 
 const ThemeContextProvider = ({ children }: PropsWithChildren) => {
-  const [themeMode, setThemeMode] = useLocalStorage<PaletteMode>('themeMode', 'dark');
+  const [themeMode, setThemeMode] = useLocalStorage<ThemeMode>('themeMode', ThemeMode.Dark);
   const [primaryColor, setPrimaryColor] = useLocalStorage<PrimaryColor>('color', PrimaryColor.Blue);
 
   const toggleThemeMode = useMemo<ThemeContextInterface>(
     () => ({
-      handleToggleThemeMode: () =>
-        setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light')),
+      handleChangeThemeMode: (_: MouseEvent<HTMLElement>, mode: ThemeMode) => setThemeMode(mode),
       themeMode,
       handleSetPrimaryColor: setPrimaryColor,
       primaryColor,

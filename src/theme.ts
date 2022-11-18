@@ -1,10 +1,4 @@
-import { PaletteMode, PaletteOptions, ThemeOptions } from '@mui/material';
-
-const darkModePalette: PaletteOptions = {};
-
-const lightModePalette: PaletteOptions = {
-  background: { default: '#f9fbfa' },
-};
+import { PaletteOptions, ThemeOptions } from '@mui/material';
 
 export enum PrimaryColor {
   Blue = '#1d9bf0',
@@ -22,15 +16,55 @@ export enum ThemeMode {
   Black = 'black',
 }
 
-export const getTheme = (mode: PaletteMode, primaryColor: PrimaryColor): ThemeOptions => ({
+export const themeModeTitles = {
+  [ThemeMode.Light]: 'Jasny',
+  [ThemeMode.Dim]: 'Zmierzch',
+  [ThemeMode.Dark]: 'Ciemny',
+  [ThemeMode.Black]: 'Noc',
+};
+
+const themePalettes = new Map<ThemeMode, PaletteOptions>([
+  [
+    ThemeMode.Light,
+    {
+      action: { active: '#0f1419' },
+      background: { default: '#f9fbfa' },
+    },
+  ],
+  [
+    ThemeMode.Dim,
+    {
+      action: { active: '#fff' },
+      background: { default: '#15202b', paper: '#15202b' },
+    },
+  ],
+  [
+    ThemeMode.Dark,
+    {
+      action: { active: '#fff' },
+    },
+  ],
+
+  [
+    ThemeMode.Black,
+    {
+      action: { active: '#fff' },
+      background: { default: '#000', paper: '#000' },
+    },
+  ],
+]);
+
+export const getTheme = (mode: ThemeMode, primaryColor: PrimaryColor): ThemeOptions => ({
   palette: {
-    mode,
-    ...(mode === 'dark' ? darkModePalette : lightModePalette),
+    mode: mode === ThemeMode.Light ? 'light' : 'dark',
+    ...themePalettes.get(mode),
     primary: { main: primaryColor },
     text: { secondary: '#bbb' },
-    action: { active: mode === 'dark' ? '#fff' : 'rgb(15, 20, 25)' },
   },
   typography: {
+    caption: {
+      color: '#aaa',
+    },
     h2: {
       fontSize: 18,
       fontWeight: 'bold',
