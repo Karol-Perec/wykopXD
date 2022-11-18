@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "vite",
+    "start-expose": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src",

@@ -13,6 +13,16 @@ export const CommentsDrawer = styled(SwipeableDrawer)(({ theme }) => ({
       height: '100%',
       maxHeight: '100%',
       borderRadius: '10px 0px 0px 10px',
+
+      '& ::-webkit-scrollbar': {
+        width: theme.spacing(1),
+      },
+      '& ::-webkit-scrollbar-track': {
+        background: theme.palette.background.default,
+      },
+      '& ::-webkit-scrollbar-thumb': {
+        background: theme.palette.primary.main,
+      },
     },
   },
 }));
