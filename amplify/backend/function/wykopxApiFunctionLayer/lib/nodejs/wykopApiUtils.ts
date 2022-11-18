@@ -40,7 +40,10 @@ wykopAxiosInstance.interceptors.request.use((config) => {
   return config;
 });
 
-export const get = async <D>(url: string, dataMapper: (responseData: D) => unknown) => {
+export const get = async <D extends object>(
+  url: string,
+  dataMapper: (responseData: D) => unknown
+) => {
   const { data } = await wykopAxiosInstance.get<D | WykopErrorResponse>(url);
 
   if ('error' in data) return createResponse(data.error.message_pl, 500);
@@ -48,7 +51,7 @@ export const get = async <D>(url: string, dataMapper: (responseData: D) => unkno
   return createResponse(dataMapper(data), 200);
 };
 
-export const post = async <D>(
+export const post = async <D extends object>(
   url: string,
   body: unknown,
   dataMapper?: (responseData: D) => unknown
