@@ -11,7 +11,7 @@ interface MultiListProps {
   onInfiniteScroll: () => void;
 }
 
-const isLink = (content: Entry | Link): content is Link => !!(content as Link).title;
+const isLink = (content: Entry | Link): content is Link => 'title' in content;
 
 const ContentList = ({ contents, isLoading, onInfiniteScroll }: MultiListProps) => {
   const infiniteScrollingTriggerRef = useInfiniteScrolling(isLoading, onInfiniteScroll);
