@@ -1,4 +1,4 @@
-import { Chip } from '@mui/material';
+import { Chip, Divider } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Loading from '~/components/UI/Loading';
@@ -78,6 +78,7 @@ const Comments = ({ comments = [] }: CommentsProps) => {
           />
         ))}
       </S.SortingContainer>
+      <Divider variant='middle' />
       <div style={{ overflowY: 'auto' }}>
         {commentsList}
         {page * PAGE_SIZE <= comments.length && (

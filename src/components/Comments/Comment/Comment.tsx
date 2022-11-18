@@ -19,7 +19,6 @@ const Comment = ({ comment }: CommentProps) => {
   return (
     <>
       <S.CommentContainer id={`comment-${id}`}>
-        <Divider variant='middle' />
         <UserHeader user={user} date={date} />
 
         <ContentContainer>
@@ -39,7 +38,7 @@ const Comment = ({ comment }: CommentProps) => {
           )}
         </ContentContainer>
       </S.CommentContainer>
-
+      <Divider variant='middle' />
       {responses && (
         <S.ResponsesListContainer>
           {responses.map((r) => (
