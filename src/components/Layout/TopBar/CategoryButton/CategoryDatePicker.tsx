@@ -1,5 +1,5 @@
 import { ListItemIcon } from '@mui/material';
-import { CalendarPickerView, DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { DateView, DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import plLocale from 'date-fns/locale/pl';
 import { ReactElement, useEffect, useState } from 'react';
@@ -26,15 +26,19 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
     setDate(initDate);
   }, [month, option.datePick, year]);
 
-  const handleSetDateParams = (newDate: Date | null, route: string, pick: CalendarPickerView[]) => {
+  const handleSetDateParams = (
+    newDate: Date | null,
+    route: string,
+    picks: DateView[] | undefined
+  ) => {
     handleClose();
-    if (!newDate) return navigate('/');
+    if (!newDate || !picks) return navigate('/');
     navigate(
-      `${route}${pick
-        .map((calendar) => {
-          if (calendar === 'year') return `/${newDate.getFullYear()}`;
-          if (calendar === 'month') return `/${newDate.getMonth() + 1}`;
-          if (calendar === 'day') return `/${newDate.getDate()}`;
+      `${route}${picks
+        .map((pick) => {
+          if (pick === 'year') return `/${newDate.getFullYear()}`;
+          if (pick === 'month') return `/${newDate.getMonth() + 1}`;
+          if (pick === 'day') return `/${newDate.getDate()}`;
           return '';
         })
         .reverse()
@@ -50,7 +54,7 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
         maxDate={new Date()}
         value={date}
         onAccept={(newDate) =>
-          handleSetDateParams(newDate, `${baseRoute}/${option.path}`, option.datePick!)
+          handleSetDateParams(newDate, `${baseRoute}/${option.path}`, option.datePick)
         }
         onChange={setDate}
         desktopModeMediaQuery=''
