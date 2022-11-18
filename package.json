@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src",
-    "compile-ts": "cd amplify/backend && npm i && tsc -p ./tsconfig.json && find function/ -name '*.ts' -exec rm {} \\; && cd -",
+    "compile-ts": "cd amplify/backend && yarn install && tsc -p ./tsconfig.json && find function/ -name '*.ts' -exec rm {} \\; && cd -",
     "amplify:wykopxApi": "npm run compile-ts",
     "amplify:wykopxApiFunctionLayer": "npm run compile-ts",
     "amplify:getLink": "npm run compile-ts",
