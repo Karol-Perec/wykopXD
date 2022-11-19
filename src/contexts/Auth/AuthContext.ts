@@ -7,7 +7,7 @@ export interface AuthContextInterface {
 }
 
 const AuthContext = createContext<AuthContextInterface>({
-  saveAuthData: () => {}, // eslint-disable-line
+  saveAuthData: () => undefined,
 });
 
 export default AuthContext;
