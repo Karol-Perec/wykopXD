@@ -1,5 +1,5 @@
 import {
-  Message as CommentsIcon,
+  ModeCommentOutlined as CommentsIcon,
   AddBox as PlusIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';

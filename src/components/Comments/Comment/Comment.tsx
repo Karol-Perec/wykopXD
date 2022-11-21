@@ -1,4 +1,8 @@
-import { Divider } from '@mui/material';
+import {
+  ThumbUpOutlined as ThumbUpIcon,
+  ThumbDownOutlined as ThumbDownIcon,
+} from '@mui/icons-material';
+import { Button, Divider, Typography } from '@mui/material';
 import { useMemo } from 'react';
 import Media from '~/components/Media/Media';
 import { ContentContainer, TextContainer } from '~/components/UI/Containers';
@@ -13,7 +17,7 @@ interface CommentProps {
 }
 
 const Comment = ({ comment }: CommentProps) => {
-  const { id, body, user, date, media, responses } = comment;
+  const { id, body, user, date, media, responses, voteCountMinus, voteCountPlus } = comment;
   const parsedBody = useMemo(() => parseHtml(body), [body]);
 
   return (
@@ -37,6 +41,17 @@ const Comment = ({ comment }: CommentProps) => {
             </div>
           )}
         </ContentContainer>
+        <S.Statistics>
+          <Button startIcon={<ThumbUpIcon />} color='inherit'>
+            <Typography>{voteCountPlus}</Typography>
+          </Button>
+
+          {voteCountMinus !== undefined && (
+            <Button startIcon={<ThumbDownIcon />} color='inherit'>
+              <Typography>{voteCountMinus}</Typography>
+            </Button>
+          )}
+        </S.Statistics>
       </S.CommentContainer>
       <Divider variant='middle' />
       {responses && (

@@ -1,6 +1,6 @@
 import {
-  Message as CommentsIcon,
-  AddBox as PlusIcon,
+  ModeCommentOutlined as CommentsIcon,
+  ThumbUpOutlined as ThumbUpIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';
 import { Typography, Button, Divider, IconButton } from '@mui/material';
@@ -79,7 +79,7 @@ const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
       <Divider variant='middle' />
 
       <S.Statistics>
-        <Button startIcon={<PlusIcon />} color='inherit' onClick={handleStopPropagation}>
+        <Button startIcon={<ThumbUpIcon />} color='inherit' onClick={handleStopPropagation}>
           <Typography>{voteCountPlus}</Typography>
         </Button>
 

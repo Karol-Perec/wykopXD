@@ -10,3 +10,8 @@ export const ResponsesListContainer = styled('div')(({ theme }) => ({
 export const CommentContainer = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(1),
 }));
+
+export const Statistics = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-evenly',
+});

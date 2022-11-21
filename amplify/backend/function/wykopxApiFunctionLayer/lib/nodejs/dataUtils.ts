@@ -85,6 +85,7 @@ const mapComment = (c: WykopEntryComment | WykopLinkComment): Comment => ({
 
 const mapExtendedComment = (c: WykopLinkComment): ExtendedComment => ({
   ...mapComment(c),
+  voteCountPlus: c.vote_count_plus,
   voteCountMinus: c.vote_count - c.vote_count_plus,
   responses: c.id === c.parent_id ? [] : undefined,
 });
