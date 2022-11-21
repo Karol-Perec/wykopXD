@@ -78,7 +78,7 @@ const Comments = ({ comments = [] }: CommentsProps) => {
           />
         ))}
       </S.SortingContainer>
-      <Divider variant='middle' />
+      <Divider />
       <div style={{ overflowY: 'auto' }}>
         {commentsList}
         {page * PAGE_SIZE <= comments.length && (
