@@ -28,5 +28,6 @@
   "typescript.preferences.importModuleSpecifier": "shortest",
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
-  }
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

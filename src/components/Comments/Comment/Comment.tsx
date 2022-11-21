@@ -14,9 +14,10 @@ import * as S from './Comment.styles';
 
 interface CommentProps {
   comment: IComment;
+  isResponse?: boolean;
 }
 
-const Comment = ({ comment }: CommentProps) => {
+const Comment = ({ comment, isResponse }: CommentProps) => {
   const { id, body, user, date, media, responses, voteCountMinus, voteCountPlus } = comment;
   const parsedBody = useMemo(() => parseHtml(body), [body]);
 
@@ -29,7 +30,7 @@ const Comment = ({ comment }: CommentProps) => {
           <TextContainer>{parsedBody}</TextContainer>
           {media && (
             // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-            <div onClick={handleStopPropagation}>
+            <S.CommentMediaContainer onClick={handleStopPropagation} doAddMargin={isResponse}>
               <Media
                 sourceUrl={media.url}
                 imageUrl={media.previewUrl}
@@ -38,7 +39,7 @@ const Comment = ({ comment }: CommentProps) => {
                 ratio={media.ratio}
                 listMode={false}
               />
-            </div>
+            </S.CommentMediaContainer>
           )}
         </ContentContainer>
         <S.Statistics>
@@ -57,7 +58,7 @@ const Comment = ({ comment }: CommentProps) => {
       {responses && (
         <S.ResponsesListContainer>
           {responses.map((r) => (
-            <Comment key={r.id} comment={r} />
+            <Comment key={r.id} comment={r} isResponse/>
           ))}
         </S.ResponsesListContainer>
       )}
