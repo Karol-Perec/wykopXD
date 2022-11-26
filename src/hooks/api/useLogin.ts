@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
-import { UserFull } from '~/types';
+import { User } from '~/types';
 import axios from '~/utils/axios';
 
 export interface AuthData {
-  user: UserFull;
+  user: User;
   userkey: string;
   accountkey: string;
 }

@@ -5,6 +5,7 @@ import {
   Info as AppInfoIcon,
 } from '@mui/icons-material';
 import { Divider, List, Typography } from '@mui/material';
+import { useQueryClient } from '@tanstack/react-query';
 import { MouseEventHandler, useContext } from 'react';
 import Avatar from '~/components/UI/Avatar';
 import Drawer from '~/components/UI/Drawer';
@@ -19,9 +20,11 @@ interface RightDrawerProps {
 
 const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
   const { authData, saveAuthData } = useContext(AuthContext);
+  const queryClient = useQueryClient()
 
   const handleLogout: MouseEventHandler = (e) => {
     saveAuthData(undefined);
+    queryClient.invalidateQueries();
     onUserAction(e);
   };
 
