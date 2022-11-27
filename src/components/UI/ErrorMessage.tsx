@@ -17,7 +17,7 @@ const StyledContainer = styled('div')(({ theme }) => ({
 }));
 
 const renderError = (error: unknown) => {
-  if (error instanceof AxiosError) return error.response?.data || error.message;
+  if (error instanceof AxiosError) return error.message || error.response?.data?.message;
   if (error instanceof Error) return error.message;
   if (typeof error === 'string') return error;
 

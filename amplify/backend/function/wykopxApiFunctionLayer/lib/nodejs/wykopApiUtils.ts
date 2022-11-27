@@ -46,7 +46,7 @@ export const get = async <D extends object>(
   dataMapper: (responseData: D) => unknown
 ) => {
   const { data } = await wykopAxiosInstance.get<D | WykopErrorResponse>(
-    url + userkey ? `/userkey/${userkey}` : ''
+    url + (userkey ? `/userkey/${userkey}` : '')
   );
 
   if ('error' in data) return createResponse(data.error.message_pl, 500);
@@ -61,7 +61,7 @@ export const post = async <D extends object>(
   dataMapper?: (responseData: D) => unknown
 ) => {
   const { data } = await wykopAxiosInstance.post<D | WykopErrorResponse>(
-    url + userkey ? `/userkey/${userkey}` : '',
+    url + (userkey ? `/userkey/${userkey}` : ''),
     body
   );
 
