@@ -9,6 +9,7 @@ type GetProfileActionsResponse = WykopResponse<WykopMulti[]> & WykopPaginated;
 export const handler: APIGatewayProxyHandler = async ({
   pathParameters,
   queryStringParameters,
+  headers,
 }) => {
   const { username } = pathParameters || {};
   const { page = 1 } = queryStringParameters || {};
@@ -16,6 +17,7 @@ export const handler: APIGatewayProxyHandler = async ({
 
   return get<GetProfileActionsResponse>(
     `/profiles/actions/${username}/page/${+page + 1}/return/comments`,
+    headers?.userkey,
     ({ data }) => ({
       items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry, true))),
     })

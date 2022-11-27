@@ -6,7 +6,7 @@ import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 
 type GetHitsResponse = WykopResponse<WykopLink[]>;
 
-export const handler: APIGatewayProxyHandler = async ({ queryStringParameters }) => {
+export const handler: APIGatewayProxyHandler = async ({ queryStringParameters, headers }) => {
   const { category, page = 1, year, month } = queryStringParameters || {};
   if (!category) return createResponse('Missing category', 400);
 
@@ -16,6 +16,7 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters })
 
   return get<GetHitsResponse>(
     `/hits/${category}${yearFilter}${monthFilter}/page/${page}`,
+    headers?.userkey,
     ({ data }) => ({ items: data.map((l) => mapLink(l)) })
   );
 };

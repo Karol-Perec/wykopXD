@@ -21,9 +21,9 @@ export const handler: APIGatewayProxyHandler = async ({ body }) => {
   const connectData: string = body && JSON.parse(body)?.connectData;
   if (!connectData) return createResponse('Missing connect data', 400);
 
-  const { appkey, login, sign, token } = JSON.parse(
+  const { appkey, login, sign, token }: ConnectData = JSON.parse(
     Buffer.from(connectData, 'base64').toString()
-  ) as ConnectData;
+  );
 
   if (appkey !== process.env.API_KEY) {
     return createResponse('Wrong application', 400);
@@ -38,6 +38,7 @@ export const handler: APIGatewayProxyHandler = async ({ body }) => {
       login,
       accountkey: token,
     },
+    undefined,
     (d) => ({
       user: mapUser(d.data.profile, true),
       userkey: d.data.userkey,

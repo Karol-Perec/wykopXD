@@ -17,7 +17,8 @@ interface CommentOrder {
 const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
   best: {
     label: 'Najlepsze',
-    comparator: (c1, c2) => c2.voteCountPlus - c1.voteCountPlus,
+    comparator: (c1, c2) =>
+      c2.voteCountPlus + (c2.voteCountMinus || 0) - c1.voteCountPlus - (c1.voteCountMinus || 0),
   },
   oldest: {
     label: 'Najstarsze',
@@ -78,7 +79,9 @@ const Comments = ({ comments = [] }: CommentsProps) => {
           />
         ))}
       </S.SortingContainer>
+
       <Divider />
+
       <div style={{ overflowY: 'auto' }}>
         {commentsList}
         {page * PAGE_SIZE <= comments.length && (

@@ -6,9 +6,11 @@ import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 
 type GetEntryResponse = WykopResponse<WykopEntry>;
 
-export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
+export const handler: APIGatewayProxyHandler = async ({ pathParameters, headers }) => {
   const { id } = pathParameters || {};
   if (!id) return createResponse('Missing entry ID', 400);
 
-  return get<GetEntryResponse>(`/entries/entry/${id}`, ({ data }) => mapEntry(data));
+  return get<GetEntryResponse>(`/entries/entry/${id}`, headers?.userkey, ({ data }) =>
+    mapEntry(data)
+  );
 };

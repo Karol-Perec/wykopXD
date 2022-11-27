@@ -3,7 +3,6 @@ import { Link, Collection } from '~/types';
 import axios from '~/utils/axios';
 import { defaultOptions } from './defaultOptions';
 
-// TO DO: add period
 const getHits = async (page: number, category: string, year?: number, month?: number) => {
   const { data } = await axios.get<Collection<Link>>('/hits', {
     params: { page, category, year, month },
@@ -17,7 +16,7 @@ const useHits = (category: string, year?: number, month?: number) =>
     ({ pageParam = 1 }) => getHits(pageParam, category, year, month),
     {
       ...defaultOptions,
-      getNextPageParam: (_lastPage, pages) => pages.length + 1,
+      getNextPageParam: (_, pages) => pages.length + 1,
     }
   );
 

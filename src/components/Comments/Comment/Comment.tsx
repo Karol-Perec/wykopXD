@@ -29,7 +29,6 @@ const Comment = ({ comment, isResponse }: CommentProps) => {
         <ContentContainer>
           <TextContainer>{parsedBody}</TextContainer>
           {media && (
-            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
             <S.CommentMediaContainer onClick={handleStopPropagation} doAddMargin={isResponse}>
               <Media
                 sourceUrl={media.url}
@@ -42,6 +41,7 @@ const Comment = ({ comment, isResponse }: CommentProps) => {
             </S.CommentMediaContainer>
           )}
         </ContentContainer>
+
         <S.Statistics>
           <Button startIcon={<ThumbUpIcon />} color='inherit'>
             <Typography>{voteCountPlus}</Typography>
@@ -54,11 +54,13 @@ const Comment = ({ comment, isResponse }: CommentProps) => {
           )}
         </S.Statistics>
       </S.CommentContainer>
+
       <Divider variant='middle' />
+
       {responses && (
         <S.ResponsesListContainer>
           {responses.map((r) => (
-            <Comment key={r.id} comment={r} isResponse/>
+            <Comment key={r.id} comment={r} isResponse />
           ))}
         </S.ResponsesListContainer>
       )}

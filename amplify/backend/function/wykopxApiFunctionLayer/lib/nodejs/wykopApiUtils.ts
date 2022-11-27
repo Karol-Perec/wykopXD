@@ -42,9 +42,12 @@ wykopAxiosInstance.interceptors.request.use((config) => {
 
 export const get = async <D extends object>(
   url: string,
+  userkey: string | undefined,
   dataMapper: (responseData: D) => unknown
 ) => {
-  const { data } = await wykopAxiosInstance.get<D | WykopErrorResponse>(url);
+  const { data } = await wykopAxiosInstance.get<D | WykopErrorResponse>(
+    url + userkey ? `/userkey/${userkey}` : ''
+  );
 
   if ('error' in data) return createResponse(data.error.message_pl, 500);
 
@@ -54,9 +57,13 @@ export const get = async <D extends object>(
 export const post = async <D extends object>(
   url: string,
   body: unknown,
+  userkey: string | undefined,
   dataMapper?: (responseData: D) => unknown
 ) => {
-  const { data } = await wykopAxiosInstance.post<D | WykopErrorResponse>(url, body);
+  const { data } = await wykopAxiosInstance.post<D | WykopErrorResponse>(
+    url + userkey ? `/userkey/${userkey}` : '',
+    body
+  );
 
   if ('error' in data) return createResponse(data.error.message_pl, 500);
 

@@ -6,9 +6,11 @@ import { createResponse, get } from '/opt/nodejs/wykopApiUtils';
 
 type GetProfileResponse = WykopResponse<WykopProfile>;
 
-export const handler: APIGatewayProxyHandler = async ({ pathParameters }) => {
+export const handler: APIGatewayProxyHandler = async ({ pathParameters, headers }) => {
   const { username } = pathParameters || {};
   if (!username) return createResponse('Missing username', 400);
 
-  return get<GetProfileResponse>(`/profiles/${username}`, ({ data }) => mapUserFull(data));
+  return get<GetProfileResponse>(`/profiles/${username}`, headers?.userkey, ({ data }) =>
+    mapUserFull(data)
+  );
 };

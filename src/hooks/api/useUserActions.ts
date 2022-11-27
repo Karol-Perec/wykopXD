@@ -16,7 +16,7 @@ const useUserActions = (username: string) =>
     ({ pageParam = 1 }) => getUserActions(pageParam, username),
     {
       ...defaultOptions,
-      getNextPageParam: (_lastPage, pages) => pages.length + 1,
+      getNextPageParam: (_, pages) => pages.length + 1,
     }
   );
 

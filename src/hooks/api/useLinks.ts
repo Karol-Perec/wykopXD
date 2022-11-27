@@ -18,7 +18,7 @@ const useLinks = (type: LinksType, category?: string) =>
     ({ pageParam = 1 }) => getLinks(pageParam, type, category),
     {
       ...defaultOptions,
-      getNextPageParam: (_lastPage, pages) => pages.length + 1,
+      getNextPageParam: (_, pages) => pages.length + 1,
     }
   );
 

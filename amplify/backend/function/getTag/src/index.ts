@@ -9,6 +9,7 @@ type GetTagReponse = WykopResponse<WykopMulti[], WykopTagMeta> & WykopPaginated;
 export const handler: APIGatewayProxyHandler = async ({
   pathParameters,
   queryStringParameters,
+  headers,
 }) => {
   const { tag } = pathParameters || {};
   const { page = 1 } = queryStringParameters || {};
@@ -16,6 +17,7 @@ export const handler: APIGatewayProxyHandler = async ({
 
   return get<GetTagReponse>(
     `/tags/index/${tag}/page/${page}/return/comments`,
+    headers?.userkey,
     ({ data, meta }) => ({
       items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry, true))),
       meta: {
