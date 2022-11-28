@@ -12,7 +12,7 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters, h
 
   return get<GetEntriesResponse>(
     `/entries/${category}/page/${page}/return/comments`,
-    headers?.userkey,
+    headers?.Authorization,
     ({ data }) => ({ items: data.map((e) => mapEntry(e)) })
   );
 };

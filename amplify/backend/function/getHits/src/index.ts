@@ -16,7 +16,7 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters, h
 
   return get<GetHitsResponse>(
     `/hits/${category}${yearFilter}${monthFilter}/page/${page}`,
-    headers?.userkey,
+    headers?.Authorization,
     ({ data }) => ({ items: data.map((l) => mapLink(l)) })
   );
 };

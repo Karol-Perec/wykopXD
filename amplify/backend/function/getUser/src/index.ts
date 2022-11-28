@@ -10,7 +10,7 @@ export const handler: APIGatewayProxyHandler = async ({ pathParameters, headers 
   const { username } = pathParameters || {};
   if (!username) return createResponse('Missing username', 400);
 
-  return get<GetProfileResponse>(`/profiles/${username}`, headers?.userkey, ({ data }) =>
+  return get<GetProfileResponse>(`/profiles/${username}`, headers?.Authorization, ({ data }) =>
     mapUserFull(data)
   );
 };

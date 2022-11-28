@@ -10,7 +10,7 @@ export const handler: APIGatewayProxyHandler = async ({ pathParameters, headers 
   const { id } = pathParameters || {};
   if (!id) return createResponse('Missing entry ID', 400);
 
-  return get<GetEntryResponse>(`/entries/entry/${id}`, headers?.userkey, ({ data }) =>
+  return get<GetEntryResponse>(`/entries/entry/${id}`, headers?.Authorization, ({ data }) =>
     mapEntry(data)
   );
 };

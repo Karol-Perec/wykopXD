@@ -17,7 +17,7 @@ export const handler: APIGatewayProxyHandler = async ({
 
   return get<GetProfileActionsResponse>(
     `/profiles/actions/${username}/page/${+page + 1}/return/comments`,
-    headers?.userkey,
+    headers?.Authorization,
     ({ data }) => ({
       items: data.map((m) => (m.type === 'link' ? mapLink(m.link) : mapEntry(m.entry, true))),
     })

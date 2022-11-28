@@ -10,7 +10,9 @@ export const handler: APIGatewayProxyHandler = async ({ pathParameters, headers 
   const { id } = pathParameters || {};
   if (!id) return createResponse('Missing link ID', 400);
 
-  return get<GetLinkResponse>(`/links/link/${id}/withcomments/true`, headers?.userkey, ({ data }) =>
-    mapLink(data)
+  return get<GetLinkResponse>(
+    `/links/link/${id}/withcomments/true`,
+    headers?.Authorization,
+    ({ data }) => mapLink(data)
   );
 };

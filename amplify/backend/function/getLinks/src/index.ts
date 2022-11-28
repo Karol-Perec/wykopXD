@@ -12,7 +12,7 @@ export const handler: APIGatewayProxyHandler = async ({ queryStringParameters, h
 
   return get<GetLinksResponse>(
     `/links/${type}/page/${page}${category ? `/sort/${category}` : ''}`,
-    headers?.userkey,
+    headers?.Authorization,
     ({ data }) => ({ items: data.map((l) => mapLink(l)) })
   );
 };
