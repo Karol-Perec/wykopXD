@@ -1,5 +1,5 @@
 import { Chip, Divider } from '@mui/material';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Loading from '~/components/UI/Loading';
 import useInfiniteScrolling from '~/hooks/useInfiniteScrolling';
@@ -40,6 +40,7 @@ const Comments = ({ comments = [] }: CommentsProps) => {
   const { hash } = useLocation();
   const [orderBy, setOrderBy] = useState<OrderKey>('best');
   const [page, setPage] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const infiniteScrollingTriggerRef = useInfiniteScrolling(false, () => setPage((p) => p + 1));
 
@@ -55,6 +56,7 @@ const Comments = ({ comments = [] }: CommentsProps) => {
   const handleSetOrderBy = (orderKey: OrderKey) => {
     setPage(1);
     setOrderBy(orderKey);
+    containerRef.current?.scroll({ top: 0 });
   };
 
   useEffect(() => {
@@ -82,7 +84,7 @@ const Comments = ({ comments = [] }: CommentsProps) => {
 
       <Divider />
 
-      <div style={{ overflowY: 'auto' }}>
+      <div style={{ overflowY: 'auto' }} ref={containerRef}>
         {commentsList}
         {page * PAGE_SIZE <= comments.length && (
           <Loading containerRef={infiniteScrollingTriggerRef} />
