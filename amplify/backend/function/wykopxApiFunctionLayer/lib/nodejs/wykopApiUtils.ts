@@ -50,7 +50,7 @@ export const get = async <D extends object>(
   );
 
   if ('error' in data) {
-    console.log(data);
+    console.error(data);
     return createResponse(data.error.message_pl, 500);
   }
 
@@ -69,7 +69,7 @@ export const post = async <D extends object>(
   );
 
   if ('error' in data) {
-    console.log(data);
+    console.error(data);
     return createResponse(data.error.message_pl, 500);
   }
 
