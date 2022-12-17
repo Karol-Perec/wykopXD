@@ -49,7 +49,10 @@ export const get = async <D extends object>(
     url + (userkey ? `/userkey/${userkey}` : '')
   );
 
-  if ('error' in data) return createResponse(data.error.message_pl, 500);
+  if ('error' in data) {
+    console.log(data);
+    return createResponse(data.error.message_pl, 500);
+  }
 
   return createResponse(dataMapper(data), 200);
 };
@@ -65,7 +68,10 @@ export const post = async <D extends object>(
     body
   );
 
-  if ('error' in data) return createResponse(data.error.message_pl, 500);
+  if ('error' in data) {
+    console.log(data);
+    return createResponse(data.error.message_pl, 500);
+  }
 
   return createResponse(dataMapper ? dataMapper(data) : data, 200);
 };
