@@ -45,16 +45,18 @@ export const get = async <D extends object>(
   userkey: string | undefined,
   dataMapper: (responseData: D) => unknown
 ) => {
-  const { data } = await wykopAxiosInstance.get<D | WykopErrorResponse>(
-    url + (userkey ? `/userkey/${userkey}` : '')
-  );
+  try {
+    const { data } = await wykopAxiosInstance.get<D | WykopErrorResponse>(
+      url + (userkey ? `/userkey/${userkey}` : '')
+    );
 
-  if ('error' in data) {
-    console.error(data);
-    return createResponse(data.error.message_pl, 500);
+    if ('error' in data) return createResponse(data.error.message_pl, 500);
+
+    return createResponse(dataMapper(data), 200);
+  } catch (err) {
+    console.error(err);
+    return createResponse(err.message, err.status);
   }
-
-  return createResponse(dataMapper(data), 200);
 };
 
 export const post = async <D extends object>(
@@ -63,15 +65,17 @@ export const post = async <D extends object>(
   userkey: string | undefined,
   dataMapper?: (responseData: D) => unknown
 ) => {
-  const { data } = await wykopAxiosInstance.post<D | WykopErrorResponse>(
-    url + (userkey ? `/userkey/${userkey}` : ''),
-    body
-  );
+  try {
+    const { data } = await wykopAxiosInstance.post<D | WykopErrorResponse>(
+      url + (userkey ? `/userkey/${userkey}` : ''),
+      body
+    );
 
-  if ('error' in data) {
-    console.error(data);
-    return createResponse(data.error.message_pl, 500);
+    if ('error' in data) return createResponse(data.error.message_pl, 500);
+
+    return createResponse(dataMapper ? dataMapper(data) : data, 200);
+  } catch (err) {
+    console.error(err);
+    return createResponse(err.message, err.status);
   }
-
-  return createResponse(dataMapper ? dataMapper(data) : data, 200);
 };

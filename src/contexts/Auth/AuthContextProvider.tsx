@@ -1,4 +1,5 @@
 import { PropsWithChildren, useLayoutEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthData } from '~/hooks/api/useLogin';
 import useLocalStorage from '~/hooks/useLocalStorage';
 import axios from '~/utils/axios';
@@ -6,6 +7,7 @@ import AuthContext, { AuthContextInterface } from './AuthContext';
 
 const AuthContextProvider = ({ children }: PropsWithChildren) => {
   const [authData, setAuthData] = useLocalStorage<AuthData | undefined>('auth', undefined);
+  const navigate = useNavigate();
 
   const value = useMemo<AuthContextInterface>(
     () => ({
@@ -16,21 +18,28 @@ const AuthContextProvider = ({ children }: PropsWithChildren) => {
   );
 
   useLayoutEffect(() => {
-    // const errInterceptor = (error) => {
-    //   if (error.response.status === 401) {
-    //     navigate('/login');
-    //   }
-
-    //   return Promise.reject(error);
-    // };
-
     axios.interceptors.request.use((config) => {
       config.headers = { ...config.headers, Authorization: authData?.userkey };
       return config;
     });
 
-    return () => axios.interceptors.request.clear();
-  }, [authData?.userkey]);
+    axios.interceptors.response.use(
+      (res) => res,
+      (err) => {
+        if (err.response.status === 401) {
+          setAuthData(undefined);
+          navigate('/zaloguj');
+        } else {
+          return Promise.reject(err);
+        }
+      }
+    );
+
+    return () => {
+      axios.interceptors.request.clear();
+      axios.interceptors.response.clear();
+    };
+  }, [authData?.userkey, navigate, setAuthData]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
