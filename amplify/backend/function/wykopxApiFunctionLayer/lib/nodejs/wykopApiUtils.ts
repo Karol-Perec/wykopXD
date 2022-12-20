@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { APIGatewayProxyResult } from 'aws-lambda';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { MD5 } from 'crypto-js';
 import { WykopErrorResponse } from '../../../../types';
 
@@ -75,7 +75,7 @@ export const post = async <D extends object>(
 
     return createResponse(dataMapper ? dataMapper(data) : data, 200);
   } catch (err) {
-    console.error(err);
-    return createResponse(err.message, err.status);
+    console.error(err.response);
+    return createResponse(err.message, err.response?.status || 400);
   }
 };
