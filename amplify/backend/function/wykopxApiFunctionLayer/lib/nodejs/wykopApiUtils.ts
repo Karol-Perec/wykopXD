@@ -54,8 +54,8 @@ export const get = async <D extends object>(
 
     return createResponse(dataMapper(data), 200);
   } catch (err) {
-    console.error(err);
-    return createResponse(err.message, err.status);
+    console.error(err.response);
+    return createResponse(err.message, err.response?.status || 400);
   }
 };
 
