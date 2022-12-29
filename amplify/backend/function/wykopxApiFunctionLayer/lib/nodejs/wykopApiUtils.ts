@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { APIGatewayProxyResult } from 'aws-lambda';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { MD5 } from 'crypto-js';
 import { WykopErrorResponse } from '../../../../types';
 
