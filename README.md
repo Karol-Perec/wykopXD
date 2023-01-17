@@ -5,6 +5,7 @@
 </p>
 
 <h1 align="center">WykopX</h1>
+<h2 align="center"><strong>ok, Białek wyjebał API v2, muszę to przepisać</strong></h2>
 <p align="center">New beautiful and extremely fast version of Wykop.pl
 </p>
 
