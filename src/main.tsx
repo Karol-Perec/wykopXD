@@ -9,9 +9,7 @@ import { globalStyles } from './globalStyles';
 
 const queryClient = new QueryClient();
 
-const root = createRoot(document.getElementById('root') as HTMLElement);
-
-root.render(
+createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
     <BrowserRouter basename={import.meta.env.PUBLIC_URL}>
       <QueryClientProvider client={queryClient}>
