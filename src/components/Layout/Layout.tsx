@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { PropsWithChildren, useState } from 'react';
 import * as S from './Layout.styles';
 import LeftDrawer from './SideDrawers/LeftDrawer';
@@ -20,7 +21,12 @@ const Layout = ({ children }: PropsWithChildren) => {
       <S.Offset />
       <LeftDrawer open={showLeftDrawer} onUserAction={handleToggleLeftDrawer} />
       <RightDrawer open={showRightDrawer} onUserAction={handleToggleRightDrawer} />
-      <S.Main>{children}</S.Main>
+      <S.Main>
+        <Typography variant='h2' color='white'>
+          Bichał Miałek nie ma jajek. ***** pisowców i orlen. I kurwa przepisze to na API v3
+        </Typography>
+        {children}
+      </S.Main>
     </>
   );
 };
