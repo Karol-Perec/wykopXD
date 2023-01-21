@@ -1,5 +1,5 @@
 import { ReactEventHandler, useEffect, useState } from 'react';
-import useEntry from '~/hooks/api/useEntry';
+import useEntryComments from '~/hooks/api/useEntryComments';
 import { Entry } from '~/types';
 import CommentsDrawer from './CommentsDrawer';
 
@@ -12,7 +12,7 @@ interface EntryCommentsDrawerProps {
 
 const EntryCommentsDrawer = ({ entry, open, onOpen, onClose }: EntryCommentsDrawerProps) => {
   const [wasOpened, setWasOpened] = useState(false);
-  const { data, isLoading, error } = useEntry(entry.id, entry, wasOpened);
+  const { data, isLoading, error } = useEntryComments(entry, 'best', wasOpened);
 
   useEffect(() => {
     if (open) setWasOpened(true);
@@ -20,7 +20,7 @@ const EntryCommentsDrawer = ({ entry, open, onOpen, onClose }: EntryCommentsDraw
 
   return (
     <CommentsDrawer
-      comments={data?.comments}
+      comments={data?.pages.map((p) => p.data).flat()}
       isLoading={isLoading}
       error={error}
       open={open}

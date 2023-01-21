@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Loading from '~/components/UI/Loading';
 import useInfiniteScrolling from '~/hooks/useInfiniteScrolling';
-import { Comment, ExtendedComment } from '~/types';
+import { Comment, CommentType } from '~/types';
 import CommentView from './Comment/Comment';
 import * as S from './Comments.styles';
 
@@ -17,21 +17,20 @@ interface CommentOrder {
 const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
   best: {
     label: 'Najlepsze',
-    comparator: (c1, c2) =>
-      c2.voteCountPlus + (c2.voteCountMinus || 0) - c1.voteCountPlus - (c1.voteCountMinus || 0),
+    comparator: (c1, c2) => c2.votes.up + c2.votes.down - c1.votes.up - c1.votes.down,
   },
   oldest: {
     label: 'Najstarsze',
-    comparator: (c1, c2) => new Date(c1.date).getTime() - new Date(c2.date).getTime(),
+    comparator: (c1, c2) => new Date(c1.created_at).getTime() - new Date(c2.created_at).getTime(),
   },
   newest: {
     label: 'Najnowsze',
-    comparator: (c1, c2) => new Date(c2.date).getTime() - new Date(c1.date).getTime(),
+    comparator: (c1, c2) => new Date(c2.created_at).getTime() - new Date(c1.created_at).getTime(),
   },
 };
 
 interface CommentsProps {
-  comments?: Comment[] | ExtendedComment[];
+  comments?: Comment<CommentType>[];
 }
 
 const PAGE_SIZE = 10;

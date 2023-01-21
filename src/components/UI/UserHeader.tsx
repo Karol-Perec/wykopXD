@@ -1,9 +1,9 @@
 import { styled, Tooltip, Typography } from '@mui/material';
-import { User } from '~/types';
+import { USER_COLOR } from '~/constants/userColor.constant';
+import { UserPreview } from '~/types';
 import { calculateAprroximatedAge } from '~/utils/dateUtils';
 import Avatar from './Avatar';
 import { RouterNoPropagationLink } from './CustomLinks';
-import { USER_COLOR } from '~/constants/userColor.constant';
 
 const Container = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -13,22 +13,22 @@ const Container = styled('div')(({ theme }) => ({
 }));
 
 interface UserHeaderProps {
-  user: User;
+  user: UserPreview;
   date: string;
 }
 
 const UserHeader = ({ user, date }: UserHeaderProps) => (
   <Container>
-    <RouterNoPropagationLink to={`/ludzie/${user.login}`} title={`@${user.login}`}>
-      <Avatar src={user.avatarUrl} size={24} />
+    <RouterNoPropagationLink to={`/ludzie/${user.username}`} title={`@${user.username}`}>
+      <Avatar src={user.avatar || undefined} size={24} />
     </RouterNoPropagationLink>
     <RouterNoPropagationLink
-      to={`/ludzie/${user.login}`}
-      color={USER_COLOR[user.color]}
-      title={`@${user.login}`}
+      to={`/ludzie/${user.username}`}
+      color={USER_COLOR.get(user.color)?.hex}
+      title={`@${user.username}`}
     >
       <Typography variant='subtitle2' component='span'>
-        {user.login}
+        {user.username}
       </Typography>
     </RouterNoPropagationLink>
 

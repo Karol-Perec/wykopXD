@@ -12,7 +12,9 @@ const useLinks = (type: LinksType, sort?: HomePageSort | UpcomingSort) =>
   useInfiniteQuery({
     queryKey: ['links', type, sort],
     queryFn: ({ pageParam = 1 }) =>
-      axios.get<WykopCollection<Link>>('/links', { params: { page: pageParam, sort } }),
+      axios
+        .get<WykopCollection<Link>>('/links', { params: { page: pageParam, sort } })
+        .then((d) => d.data),
     getNextPageParam: (_, pages) => pages.length + 1,
     ...defaultQueryOptions,
   });

@@ -1,18 +1,17 @@
 import { ReactEventHandler, useEffect, useState } from 'react';
-import useLink from '~/hooks/api/useLink';
-import { Link } from '~/types';
+import useLinkComments from '~/hooks/api/useLinkComments';
 import CommentsDrawer from './CommentsDrawer';
 
 interface LinkCommentsDrawerProps {
-  link: Link;
+  linkId: number;
   onOpen: ReactEventHandler;
   onClose: ReactEventHandler;
   open: boolean;
 }
 
-const LinkCommentsDrawer = ({ link, open, onOpen, onClose }: LinkCommentsDrawerProps) => {
+const LinkCommentsDrawer = ({ linkId, open, onOpen, onClose }: LinkCommentsDrawerProps) => {
   const [wasOpened, setWasOpened] = useState(open);
-  const { data, isLoading, error } = useLink(link.id, link, wasOpened);
+  const { data, isLoading, error } = useLinkComments(linkId, 'best', wasOpened);
 
   useEffect(() => {
     if (open) setWasOpened(true);
@@ -20,7 +19,7 @@ const LinkCommentsDrawer = ({ link, open, onOpen, onClose }: LinkCommentsDrawerP
 
   return (
     <CommentsDrawer
-      comments={data?.comments}
+      comments={data?.pages.map((p) => p.data).flat()}
       isLoading={isLoading}
       error={error}
       open={open}

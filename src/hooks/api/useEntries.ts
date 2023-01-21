@@ -7,7 +7,9 @@ const useEntries = (category: string) =>
   useInfiniteQuery({
     queryKey: ['entries', category],
     queryFn: ({ pageParam = 1 }) =>
-      axios.get<WykopCollection<Entry>>('/entries', { params: { page: pageParam, category } }),
+      axios
+        .get<WykopCollection<Entry>>('/entries', { params: { page: pageParam, category } })
+        .then((d) => d.data),
     getNextPageParam: (_lastPage, pages) => pages.length + 1,
     ...defaultQueryOptions,
   });

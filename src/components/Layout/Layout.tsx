@@ -1,4 +1,4 @@
-import { CircularProgress, Typography } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { PropsWithChildren, useContext, useEffect, useState } from 'react';
 import AuthContext from '~/contexts/Auth/AuthContext';
 import useAuth from '~/hooks/api/useAuth';
@@ -29,12 +29,7 @@ const Layout = ({ children }: PropsWithChildren) => {
       <S.Offset />
       <LeftDrawer open={showLeftDrawer} onUserAction={handleToggleLeftDrawer} />
       <RightDrawer open={showRightDrawer} onUserAction={handleToggleRightDrawer} />
-      <S.Main>
-        <Typography variant='h2' color='white'>
-          Bichał Miałek nie ma jajek. ***** pisowców i orlen. I kurwa przepisze to na API v3
-        </Typography>
-        {isLoading ? <CircularProgress /> : children}
-      </S.Main>
+      <S.Main>{isLoading ? <CircularProgress /> : children}</S.Main>
     </>
   );
 };

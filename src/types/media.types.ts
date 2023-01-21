@@ -14,7 +14,7 @@ export interface Media {
     thumbnail: string | null;
     type: MediaType;
     url: string;
-  };
+  } | null;
   photo: {
     height: number;
     key: string;

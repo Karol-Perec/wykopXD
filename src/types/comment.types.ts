@@ -1,9 +1,9 @@
 import { Media } from './media.types';
 import { UserPreview } from './user.types';
 
-type CommentType = 'link_comment' | 'entry_comment';
+export type CommentType = 'link_comment' | 'entry_comment';
 
-export interface Comment<T extends CommentType> {
+export interface Comment<T extends CommentType = 'link_comment'> {
   actions: {
     create: boolean;
     create_favourite: boolean;

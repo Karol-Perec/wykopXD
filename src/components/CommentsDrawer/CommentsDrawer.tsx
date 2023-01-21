@@ -3,12 +3,12 @@ import { ReactEventHandler } from 'react';
 import Comments from '~/components/Comments/Comments';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import Loading from '~/components/UI/Loading';
-import { Comment, ExtendedComment } from '~/types';
+import { Comment, CommentType } from '~/types';
 import { handleStopPropagation } from '~/utils/windowUtils';
 import * as S from './CommentsDrawer.styles';
 
 interface CommentsDrawerProps {
-  comments?: Comment[] | ExtendedComment[];
+  comments?: Comment<CommentType>[];
   isLoading: boolean;
   error: unknown;
   onOpen: ReactEventHandler;

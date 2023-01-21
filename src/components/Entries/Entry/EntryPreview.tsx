@@ -22,9 +22,9 @@ interface EntryPreviewProps {
 }
 
 const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
-  const { media, user, body, id, date, commentsCount, voteCountPlus, survey } = data;
+  const { media, author, content, id, votes, created_at: createdAt, comments } = data;
   const navigate = useNavigate();
-  const parsedBody = useMemo(() => parseHtml(body), [body]);
+  const parsedContent = useMemo(() => parseHtml(content), [content]);
   const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
 
   const handleNavigateToEntry = () => {
@@ -56,11 +56,11 @@ const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
       onMouseUp={openInNewTab(`/wpis/${id}`)}
       listMode
     >
-      <UserHeader user={user} date={date} />
+      <UserHeader user={author} date={createdAt} />
 
       <ContentContainer>
-        <TextContainer>{parsedBody}</TextContainer>
-        {media && (
+        <TextContainer>{parsedContent}</TextContainer>
+        {/* {media && (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
           <div onClick={media.type !== 'image' ? handleStopPropagation : undefined}>
             <Media
@@ -72,19 +72,19 @@ const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
               listMode
             />
           </div>
-        )}
-        {survey && <SurveyResults survey={survey} />}
+        )} */}
+        {/* {survey && <SurveyResults survey={survey} />} */}
       </ContentContainer>
 
       <Divider variant='middle' />
 
       <S.Statistics>
         <Button startIcon={<ThumbUpIcon />} color='inherit' onClick={handleStopPropagation}>
-          <Typography>{voteCountPlus}</Typography>
+          <Typography>{votes.up}</Typography>
         </Button>
 
         <Button startIcon={<CommentsIcon />} onClick={handleToggleCommentsDrawer} color='inherit'>
-          <Typography>{commentsCount}</Typography>
+          <Typography>{comments.count}</Typography>
         </Button>
 
         {!!navigator.share && (
