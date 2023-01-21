@@ -1,23 +1,19 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Entry, Collection, Link } from '~/types';
+import { Entry, WykopCollection, Link } from '~/types';
 import axios from '~/utils/axios';
-import { defaultOptions } from './defaultOptions';
+import { defaultQueryOptions } from './defaultQueryOptions';
 
-const getUserActions = async (page: number, username: string) => {
-  const { data } = await axios.get<Collection<Entry | Link>>(`/users/${username}/actions`, {
-    params: { page },
-  });
-  return data.items;
-};
+const getUserActions = async (page: number, username: string) =>
+  axios
+    .get<WykopCollection<Entry | Link>>(`/users/${username}/actions`, { params: { page } })
+    .then((d) => d.data);
 
 const useUserActions = (username: string) =>
-  useInfiniteQuery(
-    ['user-actions', username],
-    ({ pageParam = 1 }) => getUserActions(pageParam, username),
-    {
-      ...defaultOptions,
-      getNextPageParam: (_, pages) => pages.length + 1,
-    }
-  );
+  useInfiniteQuery({
+    queryKey: ['user-actions', username],
+    queryFn: ({ pageParam = 1 }) => getUserActions(pageParam, username),
+    getNextPageParam: (_, pages) => pages.length + 1,
+    ...defaultQueryOptions,
+  });
 
 export default useUserActions;

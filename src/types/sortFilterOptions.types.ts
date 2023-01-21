@@ -1,10 +1,10 @@
-import { DateView } from '@mui/x-date-pickers';
+import { CalendarPickerView } from '@mui/x-date-pickers';
 
 export interface CategoryOption {
   path: string;
   label: string;
   value: string;
-  datePick?: DateView[];
+  datePick?: CalendarPickerView[];
 }
 
 export enum HitsCategory {

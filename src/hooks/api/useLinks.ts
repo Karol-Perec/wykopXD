@@ -1,25 +1,20 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Link, Collection } from '~/types';
+import { Link, WykopCollection } from '~/types';
 import axios from '~/utils/axios';
-import { defaultOptions } from './defaultOptions';
+import { defaultQueryOptions } from './defaultQueryOptions';
 
-type LinksType = 'promoted' | 'upcoming' | 'observed';
+type LinksType = 'homepage' | 'upcoming' | 'observed';
 
-const getLinks = async (page: number, type: LinksType, category?: string) => {
-  const { data } = await axios.get<Collection<Link>>('/links', {
-    params: { page, type, category },
+type HomePageSort = 'active' | 'newest';
+type UpcomingSort = HomePageSort | 'digged' | 'commented';
+
+const useLinks = (type: LinksType, sort?: HomePageSort | UpcomingSort) =>
+  useInfiniteQuery({
+    queryKey: ['links', type, sort],
+    queryFn: ({ pageParam = 1 }) =>
+      axios.get<WykopCollection<Link>>('/links', { params: { page: pageParam, sort } }),
+    getNextPageParam: (_, pages) => pages.length + 1,
+    ...defaultQueryOptions,
   });
-  return data.items;
-};
-
-const useLinks = (type: LinksType, category?: string) =>
-  useInfiniteQuery(
-    ['links', type, category],
-    ({ pageParam = 1 }) => getLinks(pageParam, type, category),
-    {
-      ...defaultOptions,
-      getNextPageParam: (_, pages) => pages.length + 1,
-    }
-  );
 
 export default useLinks;

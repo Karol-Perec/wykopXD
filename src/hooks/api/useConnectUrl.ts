@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from '~/utils/axios';
-import { defaultOptions } from './defaultOptions';
+import { defaultQueryOptions } from './defaultQueryOptions';
 
-const getConnectUrl = async (redirectUrl: string) => {
-  const { data } = await axios.get<string>(`/auth/connect-url`, { params: { redirectUrl } });
-  return data;
-};
+const getConnectUrl = (redirectUrl: string) =>
+  axios.get<string>(`/auth/connect-url`, { params: { redirectUrl } });
 
 const useConnectUrl = (redirectUrl: string, enabled: boolean) =>
-  useQuery(['connect-url', redirectUrl], () => getConnectUrl(redirectUrl), {
-    ...defaultOptions,
+  useQuery({
+    queryKey: ['connect-url', redirectUrl],
+    queryFn: () => getConnectUrl(redirectUrl),
+    ...defaultQueryOptions,
     enabled,
   });
 

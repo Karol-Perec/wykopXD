@@ -1,28 +1,43 @@
 import { Comment } from './comment.types';
 import { Media } from './media.types';
-import { User } from './user.types';
-
-export interface SurveyAnswer {
-  id: number;
-  text: string;
-  voteCount: number;
-  votePercentage: number;
-}
-
-export interface Survey {
-  question: string;
-  answers: SurveyAnswer[];
-  userAnswer?: number;
-}
+import { User, UserPreview } from './user.types';
 
 export interface Entry {
+  actions: {
+    create: boolean;
+    create_favourite: boolean;
+    delete: boolean;
+    delete_favourite: boolean;
+    report: boolean;
+    update: boolean;
+    vote_up: boolean;
+  };
+  adult: false;
+  archive: false;
+  author: User;
+  comments: {
+    count: number;
+    items: Comment<'entry_comment'>[];
+  };
+  blacklist: boolean;
+  content: string;
+  created_at: string;
+  deletable: boolean;
+  deleted?: 'moderator';
+  device: string;
+  editable: boolean;
+  favourite: boolean;
   id: number;
-  user: User;
-  body: string;
-  date: string;
-  voteCountPlus: number;
-  commentsCount: number;
-  survey?: Survey;
-  media?: Media;
-  comments?: Comment[];
+  media: Media;
+  parent: null;
+  resource: 'entry';
+  slug: string;
+  status: 'visible';
+  tags: string[];
+  voted: number;
+  votes: {
+    down: number;
+    up: number;
+    users: UserPreview[];
+  };
 }

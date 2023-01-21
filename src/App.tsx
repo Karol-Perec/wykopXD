@@ -67,7 +67,7 @@ const App = () => {
   return (
     <ErrorBoundary>
       <ScrollToTop />
-      <Layout>{renderRouterRoutes(!!authData?.userkey)}</Layout>
+      <Layout>{renderRouterRoutes(!!authData?.token)}</Layout>
     </ErrorBoundary>
   );
 };

@@ -3,17 +3,19 @@ import { User } from '~/types';
 import axios from '~/utils/axios';
 
 export interface AuthData {
-  user: User;
-  userkey: string;
-  accountkey: string;
+  // user: User;
+  // userkey: string;
+  // accountkey: string;
+  token: string;
 }
 
-const login = async (connectData: string) => {
-  const { data } = await axios.post<AuthData>('/auth/login', { connectData });
-  return data;
-};
+const login = (connectData: string) => axios.post<AuthData>('/auth/login', { connectData });
 
 const useLogin = (onSuccess: (data: AuthData) => void) =>
-  useMutation(login, { onSuccess, useErrorBoundary: false });
+  useMutation({
+    mutationFn: login,
+    onSuccess,
+    useErrorBoundary: false,
+  });
 
 export default useLogin;

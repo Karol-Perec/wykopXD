@@ -1,18 +1,51 @@
 import { Media } from './media.types';
-import { User } from './user.types';
+import { UserPreview } from './user.types';
 
-export interface Comment {
+type CommentType = 'link_comment' | 'entry_comment';
+
+export interface Comment<T extends CommentType> {
+  actions: {
+    create: boolean;
+    create_favourite: boolean;
+    delete: boolean;
+    delete_favourite: boolean;
+    report: boolean;
+    update: boolean;
+    vote_down: boolean;
+    vote_up: boolean;
+  };
+  adult: false;
+  archive: false;
+  author: UserPreview;
+  blacklist: boolean;
+  comments?: {
+    count: number;
+    comments: Comment<T>[];
+  };
+  content: string;
+  created_at: string;
+  deletable: boolean;
+  deleted: string;
+  device: string;
+  editable: boolean;
+  favourite: boolean;
   id: number;
-  user: User;
-  body: string;
-  date: string;
-  voteCountPlus: number;
-  voteCountMinus?: number;
-  media?: Media;
-  responses?: Comment[];
-}
-
-export interface ExtendedComment extends Comment {
-  voteCountMinus: number;
-  responses?: ExtendedComment[];
+  media: Media;
+  parent: {
+    author: UserPreview;
+    id: number;
+    // link: Link;
+    resource: (T extends 'link_comment' ? 'link' : 'entry') | T;
+    slug: string;
+  } | null;
+  parent_id?: number | null;
+  resource: T;
+  slug: 'komentarz';
+  tags: string[];
+  voted: number;
+  votes: {
+    down: number;
+    up: number;
+    users: [];
+  };
 }

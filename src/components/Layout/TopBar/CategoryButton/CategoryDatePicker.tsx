@@ -1,5 +1,5 @@
 import { ListItemIcon } from '@mui/material';
-import { DateView, DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { CalendarPickerView, DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import plLocale from 'date-fns/locale/pl';
 import { ReactElement, useEffect, useState } from 'react';
@@ -29,7 +29,7 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
   const handleSetDateParams = (
     newDate: Date | null,
     route: string,
-    picks: DateView[] | undefined
+    picks: CalendarPickerView[] | undefined
   ) => {
     handleClose();
     if (!newDate || !picks) return navigate('/');
@@ -59,8 +59,8 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
         onChange={setDate}
         desktopModeMediaQuery=''
         componentsProps={{
-          desktopPaper: { onClick: handleStopPropagation, onMouseDown: handleStopPropagation },
-          dialog: { onClick: handleStopPropagation, onMouseDown: handleStopPropagation },
+          paperContent: { onClick: handleStopPropagation, onMouseDown: handleStopPropagation },
+          // dialog: { onClick: handleStopPropagation, onMouseDown: handleStopPropagation },
         }}
         renderInput={(params) => {
           const endAndorment = params.InputProps?.endAdornment as ReactElement;

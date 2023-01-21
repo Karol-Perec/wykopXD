@@ -1,0 +1,7 @@
+import { UseQueryOptions } from '@tanstack/react-query';
+
+export const defaultQueryOptions = {
+  retry: false,
+  staleTime: Infinity,
+  refetchOnWindowFocus: false,
+} satisfies Partial<UseQueryOptions>;

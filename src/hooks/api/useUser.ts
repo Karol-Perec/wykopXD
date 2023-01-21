@@ -1,14 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import { UserFull } from '~/types';
+import { User } from '~/types';
 import axios from '~/utils/axios';
-import { defaultOptions } from './defaultOptions';
+import { defaultQueryOptions } from './defaultQueryOptions';
 
-const getUser = async (username: string) => {
-  const { data } = await axios.get<UserFull>(`/users/${username}`);
-  return data;
-};
+const getUser = (username: string) => axios.get<User>(`/users/${username}`);
 
 const useUser = (username: string) =>
-  useQuery(['user', username], () => getUser(username), defaultOptions);
+  useQuery({
+    queryKey: ['user', username],
+    queryFn: () => getUser(username),
+    ...defaultQueryOptions,
+  });
 
 export default useUser;

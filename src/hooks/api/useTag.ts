@@ -1,19 +1,19 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Entry, Collection, Link, TagMeta } from '~/types';
+import { Entry, WykopCollection, Link, TagMeta } from '~/types';
 import axios from '~/utils/axios';
-import { defaultOptions } from './defaultOptions';
+import { defaultQueryOptions } from './defaultQueryOptions';
 
-const getTag = async (page: number, tag: string) => {
-  const { data } = await axios.get<Collection<Entry | Link> & { meta: TagMeta }>(`/tags/${tag}`, {
+const getTag = (page: number, tag: string) =>
+  axios.get<WykopCollection<Entry | Link> & { meta: TagMeta }>(`/tags/${tag}`, {
     params: { page },
   });
-  return data;
-};
 
 const useTag = (tag: string) =>
-  useInfiniteQuery(['tag', tag], ({ pageParam = 1 }) => getTag(pageParam, tag), {
-    ...defaultOptions,
+  useInfiniteQuery({
+    queryKey: ['tag', tag],
+    queryFn: ({ pageParam = 1 }) => getTag(pageParam, tag),
     getNextPageParam: (_lastPage, pages) => pages.length + 1,
+    ...defaultQueryOptions,
   });
 
 export default useTag;

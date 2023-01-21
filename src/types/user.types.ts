@@ -1,34 +1,43 @@
-export enum UserStatus {
-  GREEN = 0,
-  ORANGE = 1,
-  RED = 2,
-  ADMIN = 5,
-  BANNED = 1001,
-  DELETED = 1002,
-  MEDIA = 2001,
+export type UserColor = 'black' | 'burgundy' | 'green' | 'orange' | 'purple' | 'red';
+
+export interface UserPreview {
+  avatar: string;
+  blacklist: false;
+  color: UserColor;
+  company: boolean;
+  follow: boolean;
+  gender: 'm' | 'f' | null;
+  note: boolean;
+  online: boolean;
+  rank: {
+    position: null;
+    trend: 0;
+  };
+  status: 'active';
+  username: string;
+  verified: boolean;
 }
 
-export interface User {
-  login: string;
-  sex?: 'male' | 'female';
-  status: UserStatus;
-  avatarUrl?: string;
-}
-
-export interface UserFull extends User {
-  about?: string;
-  backgroundUrl?: string;
-  registeredAt: string;
-  rank: number;
-  commentsCount: number;
-  diggsCount: number;
-  entriesCount: number;
-  entriesCommentsCount: number;
-  followersCount: number;
-  followingCount: number;
-  linksAddedCount: number;
-  linksPublishedCount: number;
-  isBlocked: boolean;
-  isObserved: boolean;
-  isVerified?: boolean;
+export interface User extends UserPreview {
+  about: string;
+  actions: {
+    blacklist: boolean;
+    follow: boolean;
+    report: boolean;
+    update: boolean;
+    update_gender: boolean;
+    update_note: boolean;
+  };
+  background: string;
+  city: string;
+  followers: number;
+  member_since: string; // "2008-04-02 21:42:26"
+  name: string;
+  public_email: string;
+  social_media: {
+    facebook: string;
+    instagram: string;
+    twitter: string;
+  };
+  website: string;
 }

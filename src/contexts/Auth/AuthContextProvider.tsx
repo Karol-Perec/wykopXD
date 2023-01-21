@@ -19,12 +19,13 @@ const AuthContextProvider = ({ children }: PropsWithChildren) => {
 
   useLayoutEffect(() => {
     axios.interceptors.request.use((config) => {
-      config.headers = { ...config.headers, Authorization: authData?.userkey };
+      const token = localStorage.getItem('token');
+      Object.assign(config.headers, { authorization: `Bearer ${token}` });
       return config;
     });
 
     axios.interceptors.response.use(
-      (res) => res,
+      (res) => res.data,
       (err) => {
         if (err.response.status === 401) {
           setAuthData(undefined);
@@ -39,7 +40,7 @@ const AuthContextProvider = ({ children }: PropsWithChildren) => {
       axios.interceptors.request.clear();
       axios.interceptors.response.clear();
     };
-  }, [authData?.userkey, navigate, setAuthData]);
+  }, [authData?.token, navigate, setAuthData]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

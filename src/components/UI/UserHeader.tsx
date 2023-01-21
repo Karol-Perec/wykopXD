@@ -1,9 +1,9 @@
 import { styled, Tooltip, Typography } from '@mui/material';
-import { USER_COLOR } from '~/constants/userColor.constant';
 import { User } from '~/types';
 import { calculateAprroximatedAge } from '~/utils/dateUtils';
 import Avatar from './Avatar';
 import { RouterNoPropagationLink } from './CustomLinks';
+import { USER_COLOR } from '~/constants/userColor.constant';
 
 const Container = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -24,7 +24,7 @@ const UserHeader = ({ user, date }: UserHeaderProps) => (
     </RouterNoPropagationLink>
     <RouterNoPropagationLink
       to={`/ludzie/${user.login}`}
-      color={USER_COLOR[user.status]}
+      color={USER_COLOR[user.color]}
       title={`@${user.login}`}
     >
       <Typography variant='subtitle2' component='span'>
