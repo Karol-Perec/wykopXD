@@ -2,7 +2,7 @@ import { Menu as MenuIcon } from '@mui/icons-material';
 import { IconButton, Toolbar, useMediaQuery, useTheme } from '@mui/material';
 import { MouseEventHandler, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import Avatar from '~/components/UI/Avatar';
+import Avatar from '~/components/UI/CustomAvatar';
 import AuthContext from '~/contexts/Auth/AuthContext';
 import { ROUTE } from '~/routes';
 import { NavLinks } from '../NavLinks/NavLinks';

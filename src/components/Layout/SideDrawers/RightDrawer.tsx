@@ -7,7 +7,7 @@ import {
 import { Divider, List, Typography } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 import { MouseEventHandler, useContext } from 'react';
-import Avatar from '~/components/UI/Avatar';
+import Avatar from '~/components/UI/CustomAvatar';
 import Drawer from '~/components/UI/Drawer';
 import AuthContext from '~/contexts/Auth/AuthContext';
 import { ListNavLink } from '../NavLinks/NavLink/NavLink';
@@ -19,11 +19,11 @@ interface RightDrawerProps {
 }
 
 const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
-  const { authData, saveAuthData } = useContext(AuthContext);
+  const { authData, setAuthData } = useContext(AuthContext);
   const queryClient = useQueryClient()
 
   const handleLogout: MouseEventHandler = (e) => {
-    saveAuthData(undefined);
+    setAuthData(undefined);
     queryClient.invalidateQueries();
     onUserAction(e);
   };
@@ -31,7 +31,7 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
   return (
     <Drawer anchor='right' onUserAction={onUserAction} open={open}>
       <S.RightDrawerHeader>
-        <Avatar src={authData?.user?.avatarUrl} size={60} />
+        <Avatar src={authData?.user?.avatar} size={60} />
         <Typography variant='h6'>{authData?.user?.login}</Typography>
       </S.RightDrawerHeader>
       <Divider variant='middle' />
