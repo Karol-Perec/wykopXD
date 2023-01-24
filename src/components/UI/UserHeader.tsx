@@ -4,6 +4,7 @@ import { USER_COLOR } from '~/constants/userColor.constant';
 import useDebouncedState from '~/hooks/useDebouncedState';
 import { UserPreview } from '~/types';
 import { calculateAprroximatedAge } from '~/utils/dateUtils';
+import { parseImageUrl } from '~/utils/mediaUtils';
 import { handleStopPropagation } from '~/utils/windowUtils';
 import CustomAvatar from './CustomAvatar';
 import { RouterNoPropagationLink } from './CustomLinks';
@@ -35,7 +36,7 @@ const UserHeader = ({ user, date }: UserHeaderProps) => {
     <Container>
       <RouterNoPropagationLink to={`/ludzie/${user.username}`}>
         <CustomAvatar
-          src={user.avatar}
+          src={parseImageUrl(user.avatar, 80)}
           size={24}
           showBadge={user.online}
           onMouseEnter={handlePopoverOpen}
@@ -68,7 +69,7 @@ const UserHeader = ({ user, date }: UserHeaderProps) => {
       >
         <Box sx={{ p: 2 }}>
           <RouterNoPropagationLink to={`/ludzie/${user.username}`}>
-            <CustomAvatar src={user.avatar} size={24} showBadge={user.online} />
+            <CustomAvatar src={parseImageUrl(user.avatar, 80)} size={60} showBadge={user.online} />
           </RouterNoPropagationLink>
           <RouterNoPropagationLink
             to={`/ludzie/${user.username}`}
@@ -77,10 +78,10 @@ const UserHeader = ({ user, date }: UserHeaderProps) => {
             <Typography variant='subtitle2' component='span'>
               {user.username}
             </Typography>
-            <Typography variant='subtitle2' component='div'>
-              TODO HERE
-            </Typography>
           </RouterNoPropagationLink>
+          <Typography variant='subtitle2' component='div'>
+            TODO HERE
+          </Typography>
         </Box>
       </Popover>
 

@@ -25,3 +25,6 @@ export const getLinkMediaType = (link: Link): MediaType => {
   if (ReactPlayer.canPlay(sourceUrl)) return 'video';
   return 'image';
 };
+
+export const parseImageUrl = (url: string | undefined, size: number) =>
+  url?.replace('.jpg', `,q${size}.jpg`);
