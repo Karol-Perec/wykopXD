@@ -36,7 +36,7 @@ const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarPro
           )}
         </S.MainNavigation>
 
-        <div id='category-button-wrapper' />
+        <div id='sort-select-wrapper' />
         <Avatar onClick={onRightDrawerToggleClick} size={32} src={authData?.user?.avatarUrl} />
       </Toolbar>
     </S.AppBar>

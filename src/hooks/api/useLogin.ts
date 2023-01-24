@@ -1,21 +1,21 @@
 import { useMutation } from '@tanstack/react-query';
-import { User } from '~/types';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthContext, { AuthData } from '~/contexts/Auth/AuthContext';
 import axios from '~/utils/axios';
 
-export interface AuthData {
-  // user: User;
-  // userkey: string;
-  // accountkey: string;
-  token: string;
-}
+const useLogin = () => {
+  const { setAuthData } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-const login = (connectData: string) => axios.post<AuthData>('/auth/login', { connectData });
-
-const useLogin = (onSuccess: (data: AuthData) => void) =>
-  useMutation({
-    mutationFn: login,
-    onSuccess,
+  return useMutation({
+    mutationFn: (connectData: string) => axios.post<AuthData>('/auth/login', { connectData }),
+    onSuccess: (data) => {
+      setAuthData(data);
+      navigate('/');
+    },
     useErrorBoundary: false,
   });
+};
 
 export default useLogin;

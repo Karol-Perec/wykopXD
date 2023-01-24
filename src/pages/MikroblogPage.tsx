@@ -1,59 +1,56 @@
+import { useParams } from 'react-router-dom';
 import EntriesList from '~/components/Entries/EntriesList/EntriesList';
-import CategoryButton from '~/components/Layout/TopBar/CategoryButton/CategoryButton';
+import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import useEntries from '~/hooks/api/useEntries';
 import useTitle from '~/hooks/useTitle';
 import { ROUTE } from '~/routes';
-import { MikroblogCategory, CategoryOption } from '~/types';
+import { MikroblogSort, SortOption } from '~/types';
 import { filterUniqueData } from '~/utils/dataUtils';
 
-const mikroblogCategories: Record<MikroblogCategory, CategoryOption> = {
-  [MikroblogCategory.NEW]: {
-    path: MikroblogCategory.NEW,
+const mikroblogSort: Record<MikroblogSort, SortOption> = {
+  [MikroblogSort.NEW]: {
+    path: MikroblogSort.NEW,
     label: 'Najnowsze',
     value: 'stream',
   },
-  [MikroblogCategory.ACTIVE]: {
-    path: MikroblogCategory.ACTIVE,
+  [MikroblogSort.ACTIVE]: {
+    path: MikroblogSort.ACTIVE,
     label: 'Aktywne',
     value: 'active',
   },
-  [MikroblogCategory.HOT_6H]: {
-    path: MikroblogCategory.HOT_6H,
+  [MikroblogSort.HOT_6H]: {
+    path: MikroblogSort.HOT_6H,
     label: 'Gorące 6h',
     value: 'hot/period/6',
   },
-  [MikroblogCategory.HOT_12H]: {
-    path: MikroblogCategory.HOT_12H,
+  [MikroblogSort.HOT_12H]: {
+    path: MikroblogSort.HOT_12H,
     label: 'Gorące 12h',
     value: 'hot/period/12',
   },
-  [MikroblogCategory.HOT_24H]: {
-    path: MikroblogCategory.HOT_24H,
+  [MikroblogSort.HOT_24H]: {
+    path: MikroblogSort.HOT_24H,
     label: 'Gorące 24h',
     value: 'hot/period/24',
   },
 };
 
-interface MikroblogPageProps {
-  category: MikroblogCategory;
-}
-
-const MikroblogPage = ({ category }: MikroblogPageProps) => {
+const MikroblogPage = () => {
   useTitle('Mikroblog');
+  const params = useParams<{ sort: MikroblogSort }>();
+  const sort = params.sort || MikroblogSort.HOT_12H;
+  // const lastActive = sort === 
 
-  const activeCategory = mikroblogCategories[category];
-  const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useEntries(
-    activeCategory.value
-  );
+  const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useEntries(sort);
 
   if (error) return <ErrorMessage error={error} />;
 
   return (
     <>
-      <CategoryButton
-        options={Object.values(mikroblogCategories)}
-        activeOption={activeCategory.label}
+      <SortSelect
+        options={Object.values(mikroblogSort)}
+        activeOption={sort}
         baseRoute={ROUTE.MIKROBLOG}
       />
       <EntriesList

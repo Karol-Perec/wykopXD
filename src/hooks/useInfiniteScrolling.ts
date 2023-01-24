@@ -1,5 +1,7 @@
 import { RefCallback, useCallback, useRef } from 'react';
 
+export const getInfiniteScrollingTriggerIdx = (data: unknown[]) => Math.max(0, data.length - 10);
+
 const useInfiniteScrolling = (
   disabled: boolean,
   callback: () => void

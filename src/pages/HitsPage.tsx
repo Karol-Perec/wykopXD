@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import CategoryButton from '~/components/Layout/TopBar/CategoryButton/CategoryButton';
+import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import useHits from '~/hooks/api/useHits';
@@ -62,7 +62,7 @@ const HitsPage = ({ category }: HitsPageProps) => {
 
   return (
     <>
-      <CategoryButton
+      <SortSelect
         options={Object.values(hitsCategories)}
         activeOption={activeCategory.label}
         baseRoute={ROUTE.HITS}

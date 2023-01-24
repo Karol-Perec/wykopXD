@@ -3,17 +3,17 @@ import { IconButton, ListItemText, Menu } from '@mui/material';
 import { MouseEventHandler, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import ReactPortal from '~/components/UI/ReactPortal';
-import { CategoryOption } from '~/types';
-import * as S from './CategoryButton.styles';
-import CategoryDatePicker from './CategoryDatePicker';
+import { SortOption } from '~/types';
+import SortDatePicker from './SortDatePicker';
+import * as S from './SortSelect.styles';
 
-interface CategoryButtonProps {
-  options: CategoryOption[];
+interface SortSelectProps {
+  options: SortOption[];
   activeOption?: string;
   baseRoute: string;
 }
 
-const CategoryButton = ({ options = [], activeOption, baseRoute }: CategoryButtonProps) => {
+const SortSelect = ({ options = [], activeOption, baseRoute }: SortSelectProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleOpenCategoriesMenu: MouseEventHandler<HTMLElement> = (event) => {
@@ -23,7 +23,7 @@ const CategoryButton = ({ options = [], activeOption, baseRoute }: CategoryButto
   const handleClose = () => setAnchorEl(null);
 
   return (
-    <ReactPortal wrapperId='category-button-wrapper'>
+    <ReactPortal wrapperId='sort-select-wrapper'>
       <IconButton onClick={handleOpenCategoriesMenu} color='inherit'>
         <SortIcon />
       </IconButton>
@@ -39,12 +39,12 @@ const CategoryButton = ({ options = [], activeOption, baseRoute }: CategoryButto
             component={RouterLink}
             onClick={handleClose}
             to={`${baseRoute}/${o.path}`}
-            selected={activeOption === o.label}
+            selected={activeOption === o.path}
             key={o.label}
           >
             <ListItemText>{o.label}</ListItemText>
             {o.datePick && (
-              <CategoryDatePicker option={o} baseRoute={baseRoute} handleClose={handleClose} />
+              <SortDatePicker option={o} baseRoute={baseRoute} handleClose={handleClose} />
             )}
           </S.MenuItem>
         ))}
@@ -53,4 +53,4 @@ const CategoryButton = ({ options = [], activeOption, baseRoute }: CategoryButto
   );
 };
 
-export default CategoryButton;
+export default SortSelect;

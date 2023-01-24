@@ -1,13 +1,20 @@
 import { createContext } from 'react';
-import { AuthData } from '~/hooks/api/useLogin';
+import { User } from '~/types';
+
+export interface AuthData {
+  user: User;
+}
 
 export interface AuthContextInterface {
-  saveAuthData: (authData: AuthData | undefined) => void;
+  setAuthData: (authData: AuthData | undefined) => void;
+  setToken: (token: string | undefined) => void;
+  token?: string;
   authData?: AuthData;
 }
 
 const AuthContext = createContext<AuthContextInterface>({
-  saveAuthData: () => undefined,
+  setAuthData: () => undefined,
+  setToken: () => undefined,
 });
 
 export default AuthContext;

@@ -6,14 +6,10 @@ import AuthContext from '~/contexts/Auth/AuthContext';
 import useLogin from '~/hooks/api/useLogin';
 
 const LoginCallback = () => {
-  const authContext = useContext(AuthContext);
-  const navigate = useNavigate();
+
   const connectData = useSearchParams()[0].get('connectData');
 
-  const { mutate: login, isLoading, error } = useLogin((data) => {
-    authContext.saveAuthData(data);
-    navigate('/');
-  });
+  const { mutate: login, isLoading, error } = useLogin();
 
   useEffect(() => {
     if (connectData) login(connectData);

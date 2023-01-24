@@ -1,4 +1,4 @@
-import CategoryButton from '~/components/Layout/TopBar/CategoryButton/CategoryButton';
+import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import useLinks from '~/hooks/api/useLinks';
@@ -46,7 +46,7 @@ const UpcomingPage = ({ category }: UpcomingPageProps) => {
 
   return (
     <>
-      <CategoryButton
+      <SortSelect
         options={Object.values(upcomingCategories)}
         activeOption={activeCategory.label}
         baseRoute={ROUTE.UPCOMING}

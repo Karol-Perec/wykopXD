@@ -4,17 +4,17 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import plLocale from 'date-fns/locale/pl';
 import { ReactElement, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { CategoryOption } from 'types';
+import { SortOption } from 'types';
 import { handleStopPropagation, stopPropagation } from '~/utils/windowUtils';
-import * as S from './CategoryButton.styles';
+import * as S from './SortSelect.styles';
 
-interface DateMenuItemContentProps {
-  option: CategoryOption;
+interface SortDatePickerProps {
+  option: SortOption;
   baseRoute: string;
   handleClose: () => void;
 }
 
-const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemContentProps) => {
+const SortDatePicker = ({ option, baseRoute, handleClose }: SortDatePickerProps) => {
   const { year, month } = useParams<{ year: string; month: string }>();
   const [date, setDate] = useState<Date | null>(new Date());
   const navigate = useNavigate();
@@ -83,4 +83,4 @@ const CategoryDatePicker = ({ option, baseRoute, handleClose }: DateMenuItemCont
   );
 };
 
-export default CategoryDatePicker;
+export default SortDatePicker;

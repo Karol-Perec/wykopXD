@@ -8,7 +8,7 @@ type LinksType = 'homepage' | 'upcoming' | 'observed';
 type HomePageSort = 'active' | 'newest';
 type UpcomingSort = HomePageSort | 'digged' | 'commented';
 
-const useLinks = (type: LinksType, sort?: HomePageSort | UpcomingSort) =>
+const useLinks = (type: LinksType, sort?: string) =>
   useInfiniteQuery({
     queryKey: ['links', type, sort],
     queryFn: ({ pageParam = 1 }) =>

@@ -24,15 +24,10 @@ const body: AuthBody = {
 };
 
 const useAuth = () => {
-  const authContext = useContext(AuthContext);
-
+  const { setToken } = useContext(AuthContext);
   return useMutation({
     mutationFn: () => axios.post<AuthResponse, AuthBody>('/auth', body),
-    onSuccess: (res) => {
-      const { token } = res.data;
-      localStorage.setItem('token', token);
-      authContext.saveAuthData({ token });
-    },
+    onSuccess: (res) => setToken(res.data.token),
   });
 };
 

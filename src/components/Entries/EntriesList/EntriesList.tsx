@@ -1,6 +1,6 @@
 import { MainContentContainer } from '~/components/UI/Containers';
 import Loading from '~/components/UI/Loading';
-import useInfiniteScrolling from '~/hooks/useInfiniteScrolling';
+import useInfiniteScrolling, { getInfiniteScrollingTriggerIdx } from '~/hooks/useInfiniteScrolling';
 import { Entry } from '~/types';
 import EntryPreview from '../Entry/EntryPreview';
 
@@ -19,7 +19,11 @@ const EntriesList = ({ entries, isLoading, onInfiniteScroll }: EntriesListProps)
         <EntryPreview
           data={entry}
           key={entry.id}
-          containerRef={idx + 2 === entries.length ? infiniteScrollingTriggerRef : undefined}
+          containerRef={
+            idx === getInfiniteScrollingTriggerIdx(entries)
+              ? infiniteScrollingTriggerRef
+              : undefined
+          }
         />
       ))}
       {isLoading && <Loading />}

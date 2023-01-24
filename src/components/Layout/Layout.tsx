@@ -1,21 +1,22 @@
-import { CircularProgress } from '@mui/material';
-import { PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import AuthContext from '~/contexts/Auth/AuthContext';
 import useAuth from '~/hooks/api/useAuth';
+import Loading from '../UI/Loading';
 import * as S from './Layout.styles';
 import LeftDrawer from './SideDrawers/LeftDrawer';
 import RightDrawer from './SideDrawers/RightDrawer';
 import TopBar from './TopBar/TopBar';
 
-const Layout = ({ children }: PropsWithChildren) => {
+const Layout = () => {
   const [showLeftDrawer, setShowLeftDrawer] = useState(false);
   const [showRightDrawer, setShowRightDrawer] = useState(false);
-  const { authData } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
   const { mutate: auth, isLoading } = useAuth();
 
   useEffect(() => {
-    if (!authData?.token && !isLoading) auth();
-  }, [auth, authData?.token, isLoading]);
+    if (!token && auth && !isLoading) auth();
+  }, [auth, token, isLoading]);
 
   const handleToggleLeftDrawer = () => setShowLeftDrawer((prev) => !prev);
   const handleToggleRightDrawer = () => setShowRightDrawer((prev) => !prev);
@@ -26,10 +27,9 @@ const Layout = ({ children }: PropsWithChildren) => {
         onLeftDrawerToggleClick={handleToggleLeftDrawer}
         onRightDrawerToggleClick={handleToggleRightDrawer}
       />
-      <S.Offset />
       <LeftDrawer open={showLeftDrawer} onUserAction={handleToggleLeftDrawer} />
       <RightDrawer open={showRightDrawer} onUserAction={handleToggleRightDrawer} />
-      <S.Main>{isLoading ? <CircularProgress /> : children}</S.Main>
+      <S.Main>{!token || isLoading ? <Loading /> : <Outlet />}</S.Main>
     </>
   );
 };

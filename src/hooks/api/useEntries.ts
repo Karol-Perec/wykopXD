@@ -3,12 +3,12 @@ import { Entry, WykopCollection } from '~/types';
 import axios from '~/utils/axios';
 import { defaultQueryOptions } from './defaultQueryOptions';
 
-const useEntries = (category: string) =>
+const useEntries = (sort: string) =>
   useInfiniteQuery({
-    queryKey: ['entries', category],
+    queryKey: ['entries', sort],
     queryFn: ({ pageParam = 1 }) =>
       axios
-        .get<WykopCollection<Entry>>('/entries', { params: { page: pageParam, category } })
+        .get<WykopCollection<Entry>>('/entries', { params: { page: pageParam, sort } })
         .then((d) => d.data),
     getNextPageParam: (_lastPage, pages) => pages.length + 1,
     ...defaultQueryOptions,
