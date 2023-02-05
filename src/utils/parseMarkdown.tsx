@@ -19,10 +19,10 @@ type Node = ReactElement | string;
 
 const parseTextNode = (
   text: string,
-  match: string | RegExp,
+  splitter: RegExp,
   renderer: (match: string, index: number) => Node
 ): Node[] => {
-  const result = text.split(match);
+  const result = text.split(splitter);
   if (result.length < 2) return result;
   let accLength = 0;
 
@@ -37,10 +37,10 @@ const parseTextNode = (
 
 const parseNode = (
   node: ReactElement,
-  match: string | RegExp,
+  splitter: RegExp,
   renderer: (match: string, index: number) => Node
 ): ReactElement => {
-  if (typeof node === 'string') return <>{parseTextNode(node, match, renderer)}</>;
+  if (typeof node === 'string') return <>{parseTextNode(node, splitter, renderer)}</>;
   if (!node.props.children) return node;
 
   return {
@@ -49,27 +49,29 @@ const parseNode = (
       ...node.props,
       children:
         typeof node.props.children === 'string'
-          ? parseTextNode(node.props.children, match, renderer)
+          ? parseTextNode(node.props.children, splitter, renderer)
           : Array.isArray(node.props.children)
-          ? node.props.children.map((ch: ReactElement) => parseNode(ch, match, renderer))
-          : parseNode(node.props.children, match, renderer),
+          ? node.props.children.map((ch: ReactElement) => parseNode(ch, splitter, renderer))
+          : parseNode(node.props.children, splitter, renderer),
     },
   };
 };
 
-class MarkdownParser {
+class ReactStringParser {
   private nodes: Node[];
 
   constructor(text: string) {
     this.nodes = [text];
   }
 
-  public parse(match: string | RegExp, renderer: (match: string, index: number) => Node): this {
-    const regExp = match instanceof RegExp ? match : new RegExp(`(${match})`, 'g');
+  parse(splitter: string | RegExp, renderer: (match: string, index: number) => Node): this {
+    const regExpSplitter = splitter instanceof RegExp ? splitter : new RegExp(`(${splitter})`);
 
     this.nodes = this.nodes
       .map((n) =>
-        typeof n === 'string' ? parseTextNode(n, regExp, renderer) : parseNode(n, regExp, renderer)
+        typeof n === 'string'
+          ? parseTextNode(n, regExpSplitter, renderer)
+          : parseNode(n, regExpSplitter, renderer)
       )
       .flat();
 
@@ -84,7 +86,7 @@ class MarkdownParser {
 export const parseMarkdown = (text: string) => {
   if (!text) return null;
 
-  return new MarkdownParser(text)
+  return new ReactStringParser(text)
     .parse('\n', (_, idx) => <br key={`br${idx}`} />)
     .parse(CITE_REGEX, (cite, idx) => (
       <blockquote
