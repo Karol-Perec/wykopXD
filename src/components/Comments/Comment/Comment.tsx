@@ -8,7 +8,7 @@ import Media from '~/components/Media/Media';
 import { ContentContainer, TextContainer } from '~/components/UI/Containers';
 import UserHeader from '~/components/UI/UserHeader';
 import { Comment as IComment } from '~/types';
-import { parseHtml } from '~/utils/parseHtml';
+import { parseMarkdown } from '~/utils/parseMarkdown';
 import { handleStopPropagation } from '~/utils/windowUtils';
 import * as S from './Comment.styles';
 
@@ -18,25 +18,24 @@ interface CommentProps {
 }
 
 const Comment = ({ comment, isResponse }: CommentProps) => {
-  const { id, body, user, date, media, responses, voteCountMinus, voteCountPlus } = comment;
-  const parsedBody = useMemo(() => parseHtml(body), [body]);
+  const { id, author, comments, votes, created_at: createdAt, content, media, adult } = comment;
+  const parsedContent = useMemo(() => parseMarkdown(content), [content]);
 
   return (
     <>
       <S.CommentContainer id={`comment-${id}`}>
-        <UserHeader user={user} date={date} />
+        <UserHeader user={author} date={createdAt} />
 
         <ContentContainer>
-          <TextContainer>{parsedBody}</TextContainer>
-          {media && (
+          <TextContainer>{parsedContent}</TextContainer>
+          {media.photo && (
             <S.CommentMediaContainer onClick={handleStopPropagation} doAddMargin={isResponse}>
               <Media
-                sourceUrl={media.url}
-                imageUrl={media.previewUrl}
-                type={media.type}
-                plus18={media.plus18}
-                ratio={media.ratio}
-                listMode={false}
+                sourceUrl={media.photo.url}
+                imageUrl={media.photo.url}
+                type=''
+                plus18={adult}
+                ratio={media.photo.width / media.photo.height}
               />
             </S.CommentMediaContainer>
           )}
@@ -44,22 +43,19 @@ const Comment = ({ comment, isResponse }: CommentProps) => {
 
         <S.Statistics>
           <Button startIcon={<ThumbUpIcon />} color='inherit'>
-            <Typography>{voteCountPlus}</Typography>
+            <Typography>{votes.up}</Typography>
           </Button>
-
-          {voteCountMinus !== undefined && (
-            <Button startIcon={<ThumbDownIcon />} color='inherit'>
-              <Typography>{voteCountMinus}</Typography>
-            </Button>
-          )}
+          <Button startIcon={<ThumbDownIcon />} color='inherit'>
+            <Typography>{votes.down}</Typography>
+          </Button>
         </S.Statistics>
       </S.CommentContainer>
 
       <Divider variant='middle' />
 
-      {responses && (
+      {comments?.items && (
         <S.ResponsesListContainer>
-          {responses.map((r) => (
+          {comments.items.map((r) => (
             <Comment key={r.id} comment={r} isResponse />
           ))}
         </S.ResponsesListContainer>

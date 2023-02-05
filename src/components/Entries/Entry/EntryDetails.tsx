@@ -16,7 +16,7 @@ import {
 } from '~/components/UI/Containers';
 import UserHeader from '~/components/UI/UserHeader';
 import { Entry } from '~/types';
-import { parseHtml } from '~/utils/parseHtml';
+import { parseMarkdown } from '~/utils/parseMarkdown';
 import * as S from './Entry.styles';
 
 interface EntryDetailsProps {
@@ -26,7 +26,7 @@ interface EntryDetailsProps {
 
 const EntryDetails = ({ data, isUpdatingComments = false }: EntryDetailsProps) => {
   const { media, user, body, id, date, commentsCount, voteCountPlus, comments, survey } = data;
-  const parsedBody = useMemo(() => parseHtml(body), [body]);
+  const parsedBody = useMemo(() => parseMarkdown(body), [body]);
 
   const handleShare = () => {
     navigator.share({ url: `${window.location.origin}/wpis/${id}` }).catch(() => undefined);

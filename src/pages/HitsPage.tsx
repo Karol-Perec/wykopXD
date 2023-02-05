@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
-import useHits from '~/hooks/api/useHits';
+import useHits from '~/api/useHits';
 import useTitle from '~/hooks/useTitle';
 import { ROUTE } from '~/routes';
 import { CategoryOption, HitsCategory } from '~/types';

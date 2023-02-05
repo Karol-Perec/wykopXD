@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
+import useLinks from '~/api/useLinks';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
-import useLinks from '~/hooks/api/useLinks';
 import { ROUTE } from '~/routes';
 import { HomePageSort, SortOption } from '~/types';
 import { filterUniqueData } from '~/utils/dataUtils';

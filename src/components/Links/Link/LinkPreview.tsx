@@ -76,20 +76,22 @@ const LinkPreview = ({ data, containerRef }: LinkDetailsProps) => {
       <UserHeader user={author} date={createdAt} />
 
       <S.ContentContainer>
-        {/* <S.MediaContainer
-          ref={mediaContainerRef}
-          // onClick={mediaType !== 'image' ? handleEnlargeVideo : undefined}
-          listMode
-        >
-          <Media
-            sourceUrl={source.url}
-            imageUrl={(media.photo?.url || media.embed?.thumbnail)!}
-            type={mediaType}
-            plus18={adult}
-            ratio={9 / 16}
+        {(media.embed || media.photo) && (
+          <S.MediaContainer
+            ref={mediaContainerRef}
+            // onClick={mediaType !== 'image' ? handleEnlargeVideo : undefined}
             listMode
-          />
-        </S.MediaContainer> */}
+          >
+            <Media
+              sourceUrl={media.embed?.url || media.photo?.url}
+              imageUrl={media.embed?.thumbnail || media.photo?.url || undefined}
+              type=''
+              plus18={adult}
+              ratio={16 / 9}
+              listMode
+            />
+          </S.MediaContainer>
+        )}
 
         <S.TextContentContainer>
           <RouterNoPropagationLink

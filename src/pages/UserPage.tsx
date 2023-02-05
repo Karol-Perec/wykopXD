@@ -2,8 +2,8 @@ import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import ContentList from '~/components/ContentList/ContentList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
-import useUser from '~/hooks/api/useUser';
-import useUserActions from '~/hooks/api/useUserActions';
+import useUser from '~/api/useUser';
+import useUserActions from '~/api/useUserActions';
 import useTitle from '~/hooks/useTitle';
 import { filterUniqueData } from '~/utils/dataUtils';
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import Loading from '~/components/UI/Loading';
 import AuthContext from '~/contexts/Auth/AuthContext';
-import useConnectUrl from '~/hooks/api/useConnectUrl';
+import useConnectUrl from '~/api/useConnectUrl';
 import useTitle from '~/hooks/useTitle';
 import { ROUTE } from '~/routes';
 

@@ -3,7 +3,7 @@ import { UserPreview } from './user.types';
 
 export type CommentType = 'link_comment' | 'entry_comment';
 
-export interface Comment<T extends CommentType = 'link_comment'> {
+export interface Comment<T extends CommentType | unknown = unknown> {
   actions: {
     create: boolean;
     create_favourite: boolean;
@@ -20,7 +20,7 @@ export interface Comment<T extends CommentType = 'link_comment'> {
   blacklist: boolean;
   comments?: {
     count: number;
-    comments: Comment<T>[];
+    items: Comment<T>[];
   };
   content: string;
   created_at: string;

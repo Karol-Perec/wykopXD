@@ -1,5 +1,5 @@
 import { ReactEventHandler, useEffect, useState } from 'react';
-import useEntryComments from '~/hooks/api/useEntryComments';
+import useEntryComments from '~/api/useEntryComments';
 import { Entry } from '~/types';
 import CommentsDrawer from './CommentsDrawer';
 

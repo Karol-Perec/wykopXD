@@ -1,18 +1,18 @@
 import { NavigationType, useLocation, useNavigationType, useParams } from 'react-router-dom';
+import useLink from '~/api/useLink';
 import LinkDetails from '~/components/Links/Link/LinkDetails';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import Loading from '~/components/UI/Loading';
-import useLink from '~/hooks/api/useLink';
 import useTitle from '~/hooks/useTitle';
 import { Link } from '~/types';
 
 const LinkPage = () => {
   const { id } = useParams();
-  const { state } = useLocation();
+  const { state }: { state: Link } = useLocation();
   const navigationType = useNavigationType();
   const { data, isLoading, error } = useLink(
     id!,
-    navigationType === NavigationType.Push && state ? (state as Link) : undefined
+    navigationType === NavigationType.Push && state ? state : undefined
   );
   useTitle(data?.title);
 

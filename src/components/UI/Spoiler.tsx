@@ -5,6 +5,10 @@ interface BlurContainerProps {
   showMessage: boolean;
 }
 
+// spolier = <section><button>
+// <section data-v-0ce0459c="" class="content-spoiler">
+//    <button data-v-0ce0459c="" data-action="" data-no-bubble="">Pokaż spoiler</button>
+// </section>
 export const BlurContainer = styled('span', {
   shouldForwardProp: (prop) => prop !== 'showMessage',
 })<BlurContainerProps>(({ showMessage }) => ({

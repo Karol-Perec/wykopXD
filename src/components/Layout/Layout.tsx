@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import AuthContext from '~/contexts/Auth/AuthContext';
-import useAuth from '~/hooks/api/useAuth';
+import useAuth from '~/api/useAuth';
 import Loading from '../UI/Loading';
 import * as S from './Layout.styles';
 import LeftDrawer from './SideDrawers/LeftDrawer';

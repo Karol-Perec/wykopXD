@@ -20,7 +20,7 @@ const EntriesList = ({ entries, isLoading, onInfiniteScroll }: EntriesListProps)
           data={entry}
           key={entry.id}
           containerRef={
-            idx === getInfiniteScrollingTriggerIdx(entries)
+            idx > getInfiniteScrollingTriggerIdx(entries)
               ? infiniteScrollingTriggerRef
               : undefined
           }

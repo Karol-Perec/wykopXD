@@ -36,7 +36,7 @@ export const TextContainer = styled(Typography)(({ theme }) => ({
 }));
 
 export const MainContentContainer = styled('div')(({ theme }) => ({
-  maxWidth: 700,
+  maxWidth: 800,
   paddingTop: theme.spacing(2),
   marginLeft: 'auto',
   marginRight: 'auto',

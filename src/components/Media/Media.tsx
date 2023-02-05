@@ -4,7 +4,7 @@ import Image from './Image/Image';
 import Video from './Video/Video';
 
 interface MediaProps {
-  type?: MediaType;
+  type?: MediaType | string;
   sourceUrl: string;
   imageUrl: string;
   plus18: boolean;

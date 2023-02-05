@@ -30,7 +30,7 @@ const COMMENTS_ORDER: Record<OrderKey, CommentOrder> = {
 };
 
 interface CommentsProps {
-  comments?: Comment<CommentType>[];
+  comments?: Comment[];
 }
 
 const PAGE_SIZE = 10;

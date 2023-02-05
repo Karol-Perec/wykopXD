@@ -3,7 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import Loading from '~/components/UI/Loading';
 import AuthContext from '~/contexts/Auth/AuthContext';
-import useLogin from '~/hooks/api/useLogin';
+import useLogin from '~/api/useLogin';
 
 const LoginCallback = () => {
 

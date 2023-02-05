@@ -12,7 +12,7 @@ import SurveyResults from '~/components/SurveyResults/SurveyResults';
 import { Card, ContentContainer, TextContainer } from '~/components/UI/Containers';
 import UserHeader from '~/components/UI/UserHeader';
 import { Entry } from '~/types';
-import { parseHtml } from '~/utils/parseHtml';
+import { parseMarkdown } from '~/utils/parseMarkdown';
 import { openInNewTab, stopPropagation, handleStopPropagation } from '~/utils/windowUtils';
 import * as S from './Entry.styles';
 
@@ -22,9 +22,9 @@ interface EntryPreviewProps {
 }
 
 const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
-  const { media, author, content, id, votes, created_at: createdAt, comments } = data;
+  const { media, author, content, id, votes, created_at: createdAt, comments, adult } = data;
   const navigate = useNavigate();
-  const parsedContent = useMemo(() => parseHtml(content), [content]);
+  const parsedContent = useMemo(() => parseMarkdown(content), [content]);
   const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
 
   const handleNavigateToEntry = () => {
@@ -60,19 +60,19 @@ const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
 
       <ContentContainer>
         <TextContainer>{parsedContent}</TextContainer>
-        {/* {media && (
+        {media.photo && (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-          <div onClick={media.type !== 'image' ? handleStopPropagation : undefined}>
+          <div onClick={(media.embed?.type as any) !== 'image' ? handleStopPropagation : undefined}>
             <Media
-              sourceUrl={media.url}
-              imageUrl={media.previewUrl}
-              type={media.type}
-              plus18={media.plus18}
-              ratio={media.ratio}
+              sourceUrl={media.photo.url}
+              imageUrl={media.photo.url}
+              type=''
+              plus18={adult}
+              ratio={media.photo.width / media.photo.height}
               listMode
             />
           </div>
-        )} */}
+        )}
         {/* {survey && <SurveyResults survey={survey} />} */}
       </ContentContainer>
 

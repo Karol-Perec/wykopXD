@@ -1,5 +1,5 @@
 import { Box, Popover, styled, Tooltip, Typography, useTheme } from '@mui/material';
-import { MouseEvent, useRef } from 'react';
+import { MouseEvent } from 'react';
 import { USER_COLOR } from '~/constants/userColor.constant';
 import useDebouncedState from '~/hooks/useDebouncedState';
 import { UserPreview } from '~/types';

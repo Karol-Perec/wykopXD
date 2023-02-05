@@ -20,7 +20,7 @@ const LinksList = ({ links, isLoading, onInfiniteScroll }: LinksListProps) => {
           data={link}
           key={link.id}
           containerRef={
-            idx === getInfiniteScrollingTriggerIdx(links) ? infiniteScrollingTriggerRef : undefined
+            idx > getInfiniteScrollingTriggerIdx(links) ? infiniteScrollingTriggerRef : undefined
           }
         />
       ))}

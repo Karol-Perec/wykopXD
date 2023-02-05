@@ -1,5 +1,5 @@
 import { ReactEventHandler, useEffect, useState } from 'react';
-import useLinkComments from '~/hooks/api/useLinkComments';
+import useLinkComments from '~/api/useLinkComments';
 import CommentsDrawer from './CommentsDrawer';
 
 interface LinkCommentsDrawerProps {

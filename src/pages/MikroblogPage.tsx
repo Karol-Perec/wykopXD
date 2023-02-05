@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
+import useEntries from '~/api/useEntries';
 import EntriesList from '~/components/Entries/EntriesList/EntriesList';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import ErrorMessage from '~/components/UI/ErrorMessage';
-import useEntries from '~/hooks/api/useEntries';
 import useTitle from '~/hooks/useTitle';
 import { ROUTE } from '~/routes';
 import { MikroblogSort, SortOption } from '~/types';
@@ -18,6 +18,11 @@ const mikroblogSort: Record<MikroblogSort, SortOption> = {
     path: MikroblogSort.ACTIVE,
     label: 'Aktywne',
     value: 'active',
+  },
+  [MikroblogSort.HOT_2H]: {
+    path: MikroblogSort.HOT_2H,
+    label: 'Gorące 2h',
+    value: 'hot/period/2',
   },
   [MikroblogSort.HOT_6H]: {
     path: MikroblogSort.HOT_6H,
@@ -39,8 +44,8 @@ const mikroblogSort: Record<MikroblogSort, SortOption> = {
 const MikroblogPage = () => {
   useTitle('Mikroblog');
   const params = useParams<{ sort: MikroblogSort }>();
-  const sort = params.sort || MikroblogSort.HOT_12H;
-  // const lastActive = sort === 
+  const sort = params.sort || MikroblogSort.HOT_24H;
+  // const lastActive = sort ===
 
   const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useEntries(sort);
 

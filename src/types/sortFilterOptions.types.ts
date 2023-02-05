@@ -23,6 +23,7 @@ export enum HomePageSort {
 export enum MikroblogSort {
   NEW = 'najnowsze',
   ACTIVE = 'aktywne',
+  HOT_2H = 'gorace/2',
   HOT_6H = 'gorace/6',
   HOT_12H = 'gorace/12',
   HOT_24H = 'gorace/24',

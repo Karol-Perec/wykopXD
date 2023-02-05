@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getDisplayedImageUrl, getImageQuality } from '~/utils/mediaUtils';
-import { availableWykopPathsRegex } from '~/utils/parseHtml';
+import { OVERRIDEABLE_WYKOP_LINK_REGEX } from '~/utils/regex';
 import { stopPropagation } from '~/utils/windowUtils';
 import { RouterNoPropagationLink } from '../../UI/CustomLinks';
 import * as S from './Image.styles';
@@ -30,7 +30,7 @@ const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => 
     </S.ImageContainer>
   );
 
-  const imageWithLink = sourceUrl.match(availableWykopPathsRegex) ? (
+  const imageWithLink = sourceUrl.match(OVERRIDEABLE_WYKOP_LINK_REGEX) ? (
     <RouterNoPropagationLink to={sourceUrl.split('wykop.pl')[1]}>{image}</RouterNoPropagationLink>
   ) : (
     <a href={sourceUrl}>{image}</a>

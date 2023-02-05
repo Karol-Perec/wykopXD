@@ -1,7 +1,7 @@
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
-import useLinks from '~/hooks/api/useLinks';
+import useLinks from '~/api/useLinks';
 import useTitle from '~/hooks/useTitle';
 import { ROUTE } from '~/routes';
 import { UpcomingCategory, CategoryOption } from '~/types';

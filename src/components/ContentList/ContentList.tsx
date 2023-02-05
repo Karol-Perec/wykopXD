@@ -25,7 +25,7 @@ const ContentList = ({ contents, isLoading, onInfiniteScroll }: MultiListProps) 
             data={content as any}
             key={content.id}
             containerRef={
-              idx === getInfiniteScrollingTriggerIdx(contents)
+              idx > getInfiniteScrollingTriggerIdx(contents)
                 ? infiniteScrollingTriggerRef
                 : undefined
             }

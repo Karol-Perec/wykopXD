@@ -1,5 +1,5 @@
 import { useMediaQuery } from '@mui/material';
-import useGfycat from '~/hooks/api/useGfycat';
+import useGfycat from '~/api/useGfycat';
 import { getDisplayedImageUrl } from '~/utils/mediaUtils';
 import { DesktopPlayer, MobilePlayer, PlayerProps } from './Player';
 import * as S from './Video.styles';
