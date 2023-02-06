@@ -1,7 +1,6 @@
-/* eslint-disable no-use-before-define */
-import { ReactElement } from 'react';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from '~/components/UI/CustomLinks';
 import Spoiler from '~/components/UI/Spoiler';
+import { ReactStringParser } from './reactStringParser';
 import {
   NAMED_URL_FULL_REGEX,
   NAMED_URL_SECTIONED_REGEX,
@@ -15,62 +14,6 @@ import {
   URL_REGEX,
   USERTAG_REGEX,
 } from './regex';
-
-type Key = string | number | null;
-type Node = ReactElement | string;
-type Renderer = (match: string, key: Key) => Node;
-
-const parseTextNode = (text: string, splitter: RegExp, renderer: Renderer, key: Key): Node[] => {
-  const result = text.split(splitter);
-  if (result.length < 2) return result;
-  return result.map((n, idx) => (idx % 2 ? renderer(n, `${key}-${idx}`) : n));
-};
-
-const parseNode = (node: Node, splitter: RegExp, renderer: Renderer, key: Key): Node[] | Node =>
-  typeof node === 'string'
-    ? parseTextNode(node, splitter, renderer, key)
-    : parseElementNode(node, splitter, renderer, key);
-
-const parseNodes = (nodes: Node[], splitter: RegExp, renderer: Renderer, key: Key): Node[] =>
-  nodes.map((n, idx) => parseNode(n, splitter, renderer, `${key}-${idx}`)).flat();
-
-const parseElementNode = (
-  element: ReactElement,
-  splitter: RegExp,
-  renderer: Renderer,
-  key: Key
-): ReactElement => {
-  const { children }: { children: Node | Node[] } = element.props;
-  if (!children) return element;
-
-  return {
-    ...element,
-    props: {
-      ...element.props,
-      children: Array.isArray(children)
-        ? parseNodes(children, splitter, renderer, key)
-        : parseNode(children, splitter, renderer, key),
-    },
-  };
-};
-
-class ReactStringParser {
-  private nodes: Node[];
-
-  constructor(text: string) {
-    this.nodes = [text];
-  }
-
-  getNodes() {
-    return this.nodes;
-  }
-
-  parse(splitter: string | RegExp, renderer: Renderer): this {
-    const regExpSplitter = splitter instanceof RegExp ? splitter : new RegExp(`(${splitter})`);
-    this.nodes = parseNodes(this.nodes, regExpSplitter, renderer, '');
-    return this;
-  }
-}
 
 export const parseMarkdown = (text: string) => {
   if (!text) return null;
