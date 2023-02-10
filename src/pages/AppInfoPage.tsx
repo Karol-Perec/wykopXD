@@ -13,7 +13,7 @@ const AppInfoPage = () => {
           src='https://cdn.7tv.app/emote/60d21943f8d1379624e1ba82/4x'
           width={80}
         />
-        <Typography variant='h2'>WykopX</Typography>
+        <Typography variant='h2'>WykopXD</Typography>
         <br />
         <Typography variant='h2'>
           {'Autor: '}
@@ -23,13 +23,13 @@ const AppInfoPage = () => {
         </Typography>
         <Typography variant='h2'>
           {'Obserwuj tag: '}
-          <RouterNoPropagationLink to='/tag/wykopx' title='#wykopx'>
-            #wykopx
+          <RouterNoPropagationLink to='/tag/wykopxd' title='#wykopxd'>
+            #wykopxd
           </RouterNoPropagationLink>
         </Typography>
         <br />
 
-        <ExternalNoPropagationLink href='https://github.com/Karol-Perec/wykopX' title='GitHub | WykopX'>
+        <ExternalNoPropagationLink href='https://github.com/Karol-Perec/wykopXD' title='GitHub | WykopXD'>
           <Typography variant='h2'>Strona projektu</Typography>
         </ExternalNoPropagationLink>
       </Card>
