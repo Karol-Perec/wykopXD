@@ -1,4 +1,5 @@
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from '~/components/UI/CustomLinks';
+import Quote from '~/components/UI/Quote';
 import Spoiler from '~/components/UI/Spoiler';
 import { ReactStringParser } from './reactStringParser';
 import {
@@ -20,20 +21,7 @@ export const parseMarkdown = (text: string) => {
 
   return new ReactStringParser(text)
     .parse('\n', (_, idx) => <br key={`br-${idx}`} />)
-    .parse(CITE_REGEX, (cite, key) => (
-      <blockquote
-        key={`blockquote-${key}`}
-        style={{
-          border: '1px dashed',
-          borderRadius: 10,
-          padding: 5,
-          marginTop: 0,
-          marginBottom: 0,
-        }}
-      >
-        {cite.substring(1)}
-      </blockquote>
-    ))
+    .parse(CITE_REGEX, (cite, key) => <Quote key={`quote-${key}`}>{cite.substring(1)}</Quote>)
     .parse(SPOILER_REGEX, (spoiler, key) => (
       <Spoiler key={`spoiler-${key}`}>{spoiler.substring(1)}</Spoiler>
     ))
