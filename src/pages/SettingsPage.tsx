@@ -7,11 +7,10 @@ import { PrimaryColor, ThemeMode, themeModeTitles } from '~/theme';
 
 const SettingsPage = () => {
   useTitle('Ustawienia');
-  const { handleSetPrimaryColor, primaryColor, handleChangeThemeMode, themeMode } =
-    useContext(ThemeContext);
+  const { setPrimaryColor, primaryColor, changeThemeMode, themeMode } = useContext(ThemeContext);
   const theme = useTheme();
 
-  const handleColor = (_: MouseEvent, color: PrimaryColor) => handleSetPrimaryColor(color);
+  const handleColor = (_: MouseEvent, color: PrimaryColor) => setPrimaryColor(color);
 
   return (
     <Container style={{ marginTop: 16, textAlign: 'center' }}>
@@ -44,7 +43,7 @@ const SettingsPage = () => {
       <div>
         <ToggleButtonGroup value={themeMode} exclusive>
           {Object.values(ThemeMode).map((mode) => (
-            <ToggleButton key={mode} value={mode} onClick={handleChangeThemeMode}>
+            <ToggleButton key={mode} value={mode} onClick={changeThemeMode}>
               {themeModeTitles[mode]}
             </ToggleButton>
           ))}

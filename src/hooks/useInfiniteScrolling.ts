@@ -11,20 +11,13 @@ const useInfiniteScrolling = (
   return useCallback(
     (node) => {
       if (disabled) return;
-
-      if (observer.current) {
-        observer.current.disconnect();
-      }
+      if (observer.current) observer.current.disconnect();
 
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          callback();
-        }
+        if (entries[0].isIntersecting) callback();
       });
 
-      if (node) {
-        observer.current.observe(node);
-      }
+      if (node) observer.current.observe(node);
     },
     [disabled, callback]
   );

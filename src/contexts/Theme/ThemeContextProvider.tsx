@@ -10,9 +10,9 @@ const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 
   const toggleThemeMode = useMemo<ThemeContextInterface>(
     () => ({
-      handleChangeThemeMode: (_: MouseEvent<HTMLElement>, mode: ThemeMode) => setThemeMode(mode),
+      changeThemeMode: (_: MouseEvent<HTMLElement>, mode: ThemeMode) => setThemeMode(mode),
       themeMode,
-      handleSetPrimaryColor: setPrimaryColor,
+      setPrimaryColor,
       primaryColor,
     }),
     [themeMode, setPrimaryColor, primaryColor, setThemeMode]
