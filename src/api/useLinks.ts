@@ -13,7 +13,7 @@ const useLinks = (type: LinksType, sort?: string) =>
     queryKey: ['links', type, sort],
     queryFn: ({ pageParam = 1 }) =>
       axios
-        .get<WykopCollection<Link>>('/links', { params: { page: pageParam, sort } })
+        .get<WykopCollection<Link>>('/links', { params: { page: pageParam, sort, type } })
         .then((d) => d.data),
     getNextPageParam: (_, pages) => pages.length + 1,
     ...defaultQueryOptions,

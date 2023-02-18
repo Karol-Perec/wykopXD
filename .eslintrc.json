@@ -75,6 +75,7 @@
     "react/destructuring-assignment": [1, "always", { "ignoreClassFields": true }],
     "consistent-return": 0,
     "@typescript-eslint/no-non-null-assertion": 0,
+    "react/jsx-props-no-spreading": 0,
     "import/order": [
       "error",
       {

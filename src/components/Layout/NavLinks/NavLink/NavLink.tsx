@@ -28,11 +28,5 @@ export const ListNavLink = ({ label, icon, to, onClick }: ListNavLinkProps) => {
 };
 
 export const TopBarNavLink = ({ to, label, ...props }: NavLinkProps & { value: string }) => (
-  <S.NavLinkTab
-    {...props} // eslint-disable-line react/jsx-props-no-spreading
-    component={RouterLink}
-    label={label}
-    to={to}
-    disableRipple
-  />
+  <S.NavLinkTab {...props} component={RouterLink} label={label} to={to} disableRipple />
 );

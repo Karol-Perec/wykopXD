@@ -34,7 +34,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const CustomAvatar = ({ showBadge, ...avatarProps }: CustomAvatarProps) => {
-  // eslint-disable-next-line react/jsx-props-no-spreading
   const avatar = <StyledAvatar alt='avatar' variant='rounded' {...avatarProps} />;
 
   return showBadge ? (

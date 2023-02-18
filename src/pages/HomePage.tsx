@@ -3,37 +3,34 @@ import useLinks from '~/api/useLinks';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
-import { ROUTE } from '~/routes';
 import { HomePageSort, SortOption } from '~/types';
 import { filterUniqueData } from '~/utils/dataUtils';
 
-const homePageSort: Record<HomePageSort, SortOption> = {
-  [HomePageSort.NEW]: {
+const homePageSortOptions: SortOption[] = [
+  {
     path: HomePageSort.NEW,
     label: 'Najnowsze',
     value: 'newest',
   },
-  [HomePageSort.ACTIVE]: {
+  {
     path: HomePageSort.ACTIVE,
     label: 'Aktywne',
     value: 'active',
   },
-};
+];
 
 const HomePage = () => {
-  const params = useParams<{ sort: HomePageSort }>();
-  const sort = params.sort || HomePageSort.ACTIVE;
-  const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useLinks('homepage', sort);
+  const { sort = HomePageSort.ACTIVE } = useParams<{ sort?: HomePageSort }>();
+  const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useLinks(
+    'homepage',
+    homePageSortOptions.find((o) => o.path === sort)?.value
+  );
 
   if (error) return <ErrorMessage error={error} />;
 
   return (
     <>
-      <SortSelect
-        options={Object.values(homePageSort)}
-        activeOption={sort}
-        baseRoute={ROUTE.HOME}
-      />
+      <SortSelect options={homePageSortOptions} activeOption={sort} baseRoute='' />
       <LinksList
         links={filterUniqueData(data?.pages.flat())}
         isLoading={isLoading || isFetchingNextPage}

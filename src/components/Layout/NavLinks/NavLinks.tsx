@@ -53,14 +53,15 @@ export const ListNavLinks = ({ onNavLinkClick }: ListNavLinksProps) => (
 );
 
 export const NavLinks = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
+
+  console.log(pathname);
+  
 
   const value =
     (
-      navLinks
-        .filter((l) => l.path !== ROUTE.HOME)
-        .find((l) => location.pathname.startsWith(l.path)) ||
-      navLinks.find((l) => l.path === location.pathname)
+      navLinks.filter((l) => l.path !== ROUTE.HOME).find((l) => pathname.startsWith(l.path)) ||
+      navLinks.find((l) => l.path === pathname)
     )?.path || false;
 
   return (
