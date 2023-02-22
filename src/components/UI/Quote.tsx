@@ -2,25 +2,14 @@ import { styled } from '@mui/material';
 import { PropsWithChildren } from 'react';
 
 export const StyledBlockquote = styled('blockquote')(({ theme }) => ({
-  border: '1px dashed',
-  borderRadius: 10,
-  padding: theme.spacing(1),
-  marginTop: 0,
-  marginBottom: 0,
+  borderLeft: `5px solid ${theme.palette.divider}`,
+  paddingLeft: theme.spacing(2),
+  margin: [theme.spacing(1), 0, theme.spacing(1), 0].join(' '),
+  color: theme.palette.text.disabled,
 }));
 
 const Blockquote = ({ children }: PropsWithChildren) => (
-  <StyledBlockquote
-    style={{
-      border: '1px dashed',
-      borderRadius: 10,
-      padding: 5,
-      marginTop: 0,
-      marginBottom: 0,
-    }}
-  >
-    {children}
-  </StyledBlockquote>
+  <StyledBlockquote>{children}</StyledBlockquote>
 );
 
 export default Blockquote;
