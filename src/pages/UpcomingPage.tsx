@@ -1,45 +1,40 @@
+import { useParams } from 'react-router-dom';
+import useLinks, { UpcomingSortParam } from '~/api/useLinks';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
-import useLinks from '~/api/useLinks';
 import useTitle from '~/hooks/useTitle';
 import { ROUTE } from '~/routes';
-import { UpcomingCategory, CategoryOption } from '~/types';
+import { SortOption } from '~/types';
 import { filterUniqueData } from '~/utils/dataUtils';
 
-export const upcomingCategories: Record<UpcomingCategory, CategoryOption> = {
-  [UpcomingCategory.ACTIVE]: {
-    path: UpcomingCategory.ACTIVE,
-    label: 'Aktywne',
-    value: 'active',
-  },
-  [UpcomingCategory.NEWEST]: {
-    path: UpcomingCategory.NEWEST,
-    label: 'Najnowsze',
-    value: 'date',
-  },
-  [UpcomingCategory.VOTED]: {
-    path: UpcomingCategory.VOTED,
-    label: 'Wykopywane',
-    value: 'votes',
-  },
-  [UpcomingCategory.COMMENTED]: {
-    path: UpcomingCategory.COMMENTED,
-    label: 'Komentowane',
-    value: 'comments',
-  },
-};
-
-interface UpcomingPageProps {
-  category: UpcomingCategory;
+export enum UpcomingSort {
+  ACTIVE = 'aktywne',
+  NEWEST = 'najnowsze',
+  DIGGED = 'wykopywane',
+  COMMENTED = 'komentowane',
 }
 
-const UpcomingPage = ({ category }: UpcomingPageProps) => {
+const upcomingSortParams: Record<UpcomingSort, UpcomingSortParam> = {
+  [UpcomingSort.NEWEST]: 'newest',
+  [UpcomingSort.ACTIVE]: 'active',
+  [UpcomingSort.DIGGED]: 'digged',
+  [UpcomingSort.COMMENTED]: 'commented',
+};
+
+export const upcomingSortOptions: SortOption[] = [
+  { path: UpcomingSort.NEWEST, label: 'Najnowsze' },
+  { path: UpcomingSort.ACTIVE, label: 'Aktywne' },
+  { path: UpcomingSort.DIGGED, label: 'Wykopywane' },
+  { path: UpcomingSort.COMMENTED, label: 'Komentowane' },
+];
+
+const UpcomingPage = () => {
   useTitle('Wykopalisko');
-  const activeCategory = upcomingCategories[category];
+  const { sort = UpcomingSort.ACTIVE } = useParams<{ sort?: UpcomingSort }>();
   const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useLinks(
     'upcoming',
-    activeCategory.value
+    upcomingSortParams[sort]
   );
 
   if (error) return <ErrorMessage error={error} />;
@@ -47,8 +42,8 @@ const UpcomingPage = ({ category }: UpcomingPageProps) => {
   return (
     <>
       <SortSelect
-        options={Object.values(upcomingCategories)}
-        activeOption={activeCategory.label}
+        options={upcomingSortOptions}
+        activeOptionPath={sort}
         baseRoute={ROUTE.UPCOMING}
       />
       <LinksList

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import useLinks, { HomePageLinksSort } from '~/api/useLinks';
+import useLinks, { HomePageSortParam } from '~/api/useLinks';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
@@ -11,7 +11,7 @@ enum HomePageSort {
   ACTIVE = 'aktywne',
 }
 
-const homePageSortParams: Record<HomePageSort, HomePageLinksSort> = {
+const homePageSortParams: Record<HomePageSort, HomePageSortParam> = {
   [HomePageSort.NEW]: 'newest',
   [HomePageSort.ACTIVE]: 'active',
 };

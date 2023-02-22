@@ -3,12 +3,12 @@ import { Link, WykopCollection } from '~/types';
 import axios from '~/utils/axios';
 import { defaultQueryOptions } from './defaultQueryOptions';
 
-type LinksType = 'homepage' | 'upcoming' | 'observed';
+type LinksTypeParam = 'homepage' | 'upcoming' | 'observed';
 
-export type HomePageLinksSort = 'active' | 'newest';
-type UpcomingSort = HomePageLinksSort | 'digged' | 'commented';
+export type HomePageSortParam = 'active' | 'newest';
+export type UpcomingSortParam = HomePageSortParam | 'digged' | 'commented';
 
-const useLinks = (type: LinksType, sort?: HomePageLinksSort) =>
+const useLinks = (type: LinksTypeParam, sort?: HomePageSortParam | UpcomingSortParam) =>
   useInfiniteQuery({
     queryKey: ['links', type, sort],
     queryFn: ({ pageParam = 1 }) =>

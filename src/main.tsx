@@ -1,4 +1,3 @@
-import { Upcoming } from '@mui/icons-material';
 import { GlobalStyles } from '@mui/material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { StrictMode } from 'react';
@@ -16,6 +15,7 @@ import LinkPage from './pages/LinkPage';
 import MikroblogPage from './pages/MikroblogPage';
 import SettingsPage from './pages/SettingsPage';
 import TagPage from './pages/TagPage';
+import UpcomingPage from './pages/UpcomingPage';
 import { ROUTE } from './routes';
 
 const queryClient = new QueryClient();
@@ -26,7 +26,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
     children: [
       { path: `${ROUTE.HOME}/:sort?`, element: <HomePage /> },
-      { path: `${ROUTE.UPCOMING}/:sort?`, element: <Upcoming /> },
+      { path: `${ROUTE.UPCOMING}/:sort?`, element: <UpcomingPage /> },
+      { path: `${ROUTE.HITS}/:sort?/:year?/:month?`, element: <HitsPage /> },
       { path: `${ROUTE.MIKROBLOG}/:sort?/:lastUpdate?`, element: <MikroblogPage /> },
       { path: `${ROUTE.LINK}/:id/:slug?`, element: <LinkPage /> },
       { path: `${ROUTE.ENTRY}/:id/:slug?`, element: <EntryPage /> },

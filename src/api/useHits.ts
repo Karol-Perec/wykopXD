@@ -3,13 +3,15 @@ import { Link, WykopCollection } from '~/types';
 import axios from '~/utils/axios';
 import { defaultQueryOptions } from './defaultQueryOptions';
 
-const useHits = (category: string, year?: number, month?: number) =>
+export type HitsSort =  'day' | 'week' | 'all';
+
+const useHits = (sort: HitsSort, year?: number, month?: number) =>
   useInfiniteQuery({
-    queryKey: ['hits', category, year, month],
+    queryKey: ['hits', sort, year, month],
     queryFn: ({ pageParam = 1 }) =>
       axios
-        .get<WykopCollection<Link>>('/hits', {
-          params: { page: pageParam, category, year, month },
+        .get<WykopCollection<Link>>('/hits/links', {
+          params: { page: pageParam, sort, year, month },
         })
         .then((d) => d.data),
     getNextPageParam: (_, pages) => pages.length + 1,

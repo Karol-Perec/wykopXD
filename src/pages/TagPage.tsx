@@ -1,8 +1,8 @@
 import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import useTag from '~/api/useTag';
 import ContentList from '~/components/ContentList/ContentList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
-import useTag from '~/api/useTag';
 import useTitle from '~/hooks/useTitle';
 import { filterUniqueData } from '~/utils/dataUtils';
 
