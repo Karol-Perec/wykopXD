@@ -3,7 +3,8 @@ import { CalendarPickerView } from '@mui/x-date-pickers';
 export interface SortOption {
   path: string;
   label: string;
-  value: string;
+  sort?: string;
+  lastUpdate?: number;
   datePick?: CalendarPickerView[];
 }
 

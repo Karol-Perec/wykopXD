@@ -9,11 +9,11 @@ import * as S from './SortSelect.styles';
 
 interface SortSelectProps {
   options: SortOption[];
-  activeOption?: string;
+  activeOptionPath?: string;
   baseRoute: string;
 }
 
-const SortSelect = ({ options = [], activeOption, baseRoute }: SortSelectProps) => {
+const SortSelect = ({ options = [], activeOptionPath, baseRoute }: SortSelectProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleOpenCategoriesMenu: MouseEventHandler<HTMLElement> = (event) => {
@@ -39,7 +39,7 @@ const SortSelect = ({ options = [], activeOption, baseRoute }: SortSelectProps) 
             component={RouterLink}
             onClick={handleClose}
             to={`${baseRoute}/${o.path}`}
-            selected={activeOption === o.path}
+            selected={activeOptionPath === o.path}
             key={o.label}
           >
             <ListItemText>{o.label}</ListItemText>

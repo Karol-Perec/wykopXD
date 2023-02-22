@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     children: [
       { path: `${ROUTE.HOME}/:sort?`, element: <HomePage /> },
       { path: `${ROUTE.UPCOMING}/:sort?`, element: <Upcoming /> },
-      { path: `${ROUTE.MIKROBLOG}/:sort?`, element: <MikroblogPage /> },
+      { path: `${ROUTE.MIKROBLOG}/:sort?/:lastUpdate?`, element: <MikroblogPage /> },
       { path: `${ROUTE.LINK}/:id/:slug?`, element: <LinkPage /> },
       { path: `${ROUTE.ENTRY}/:id/:slug?`, element: <EntryPage /> },
       { path: `${ROUTE.TAG}/:tag`, element: <TagPage /> },

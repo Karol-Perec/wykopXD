@@ -38,34 +38,36 @@ interface ListNavLinksProps {
   onNavLinkClick: MouseEventHandler;
 }
 
-export const ListNavLinks = ({ onNavLinkClick }: ListNavLinksProps) => (
-  <List>
-    {navLinks.map((nav) => (
-      <ListNavLink
-        to={nav.path}
-        label={nav.label}
-        icon={nav.icon}
-        key={nav.path}
-        onClick={onNavLinkClick}
-      />
-    ))}
-  </List>
-);
+export const ListNavLinks = ({ onNavLinkClick }: ListNavLinksProps) => {
+  const { pathname } = useLocation();
+  const activePath = Object.values(ROUTE)
+    .reverse()
+    .find((route) => pathname.startsWith(route));
+
+  return (
+    <List>
+      {navLinks.map((nav) => (
+        <ListNavLink
+          to={nav.path}
+          label={nav.label}
+          icon={nav.icon}
+          isActive={nav.path === activePath}
+          key={nav.path}
+          onClick={onNavLinkClick}
+        />
+      ))}
+    </List>
+  );
+};
 
 export const NavLinks = () => {
   const { pathname } = useLocation();
-
-  console.log(pathname);
-  
-
-  const value =
-    (
-      navLinks.filter((l) => l.path !== ROUTE.HOME).find((l) => pathname.startsWith(l.path)) ||
-      navLinks.find((l) => l.path === pathname)
-    )?.path || false;
+  const activePath = Object.values(ROUTE)
+    .reverse()
+    .find((route) => pathname.startsWith(route));
 
   return (
-    <S.NavTabs value={value} component='nav'>
+    <S.NavTabs value={activePath || false} component='nav'>
       {navLinks.map((nav) => (
         <TopBarNavLink label={nav.label} to={nav.path} key={nav.path} value={nav.path} />
       ))}

@@ -10,22 +10,19 @@ interface NavLinkProps {
 }
 
 interface ListNavLinkProps extends NavLinkProps {
+  isActive: boolean;
   icon: ReactNode;
   onClick: MouseEventHandler;
 }
 
-export const ListNavLink = ({ label, icon, to, onClick }: ListNavLinkProps) => {
-  const match = useMatch({ path: to, end: to === ROUTE.HOME });
-
-  return (
-    <li>
-      <ListItemButton selected={!!match} component={RouterLink} to={to} onClick={onClick}>
-        <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText>{label}</ListItemText>
-      </ListItemButton>
-    </li>
-  );
-};
+export const ListNavLink = ({ label, isActive, icon, to, onClick }: ListNavLinkProps) => (
+  <li>
+    <ListItemButton selected={isActive} component={RouterLink} to={to} onClick={onClick}>
+      <ListItemIcon>{icon}</ListItemIcon>
+      <ListItemText>{label}</ListItemText>
+    </ListItemButton>
+  </li>
+);
 
 export const TopBarNavLink = ({ to, label, ...props }: NavLinkProps & { value: string }) => (
   <S.NavLinkTab {...props} component={RouterLink} label={label} to={to} disableRipple />

@@ -1,12 +1,10 @@
-import { useContext, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import useLogin from '~/api/useLogin';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import Loading from '~/components/UI/Loading';
-import AuthContext from '~/contexts/Auth/AuthContext';
-import useLogin from '~/api/useLogin';
 
 const LoginCallback = () => {
-
   const connectData = useSearchParams()[0].get('connectData');
 
   const { mutate: login, isLoading, error } = useLogin();
