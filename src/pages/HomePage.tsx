@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import useLinks, { HomePageSortParam } from '~/api/useLinks';
+import ContentList from '~/components/ContentList/ContentList';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
-import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import { SortOption } from '~/types';
 import { filterUniqueData } from '~/utils/dataUtils';
@@ -33,8 +33,8 @@ const HomePage = () => {
   return (
     <>
       <SortSelect options={homePageSortOptions} activeOptionPath={sort} baseRoute='' />
-      <LinksList
-        links={filterUniqueData(data?.pages.flat())}
+      <ContentList
+        contents={filterUniqueData(data?.pages.flat())}
         isLoading={isLoading || isFetchingNextPage}
         onInfiniteScroll={fetchNextPage}
       />

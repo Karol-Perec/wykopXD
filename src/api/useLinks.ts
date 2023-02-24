@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Link, WykopCollection } from '~/types';
+import { Entry, Link, WykopCollection } from '~/types';
 import axios from '~/utils/axios';
 import { defaultQueryOptions } from './defaultQueryOptions';
 
@@ -13,10 +13,8 @@ const useLinks = (type: LinksTypeParam, sort?: HomePageSortParam | UpcomingSortP
     queryKey: ['links', type, sort],
     queryFn: ({ pageParam = 1 }) =>
       axios
-        // TODO <WykopCollection<Link | Entry>>
-        .get<WykopCollection<Link>>('/links', { params: { page: pageParam, sort, type } })
+        .get<WykopCollection<Link | Entry>>('/links', { params: { page: pageParam, sort, type } })
         .then((d) => d.data),
-
     getNextPageParam: (_, pages) => pages.length + 1,
     ...defaultQueryOptions,
   });

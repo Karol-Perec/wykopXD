@@ -17,19 +17,19 @@ import { openInNewTab, stopPropagation, handleStopPropagation } from '~/utils/wi
 import * as S from './Entry.styles';
 
 interface EntryPreviewProps {
-  data: Entry;
+  entry: Entry;
   containerRef?: RefCallback<HTMLElement>;
 }
 
-const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
-  const { media, author, content, id, votes, created_at: createdAt, comments, adult } = data;
+const EntryPreview = ({ entry, containerRef }: EntryPreviewProps) => {
+  const { media, author, content, id, votes, created_at: createdAt, comments, adult } = entry;
   const navigate = useNavigate();
   const parsedContent = useMemo(() => parseMarkdown(content), [content]);
   const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
 
   const handleNavigateToEntry = () => {
     if (document.getSelection()?.isCollapsed) {
-      navigate(`/wpis/${id}`, { state: data });
+      navigate(`/wpis/${id}`, { state: entry });
     }
   };
 
@@ -95,7 +95,7 @@ const EntryPreview = ({ data, containerRef }: EntryPreviewProps) => {
       </S.Statistics>
 
       <EntryCommentsDrawer
-        entry={data}
+        entry={entry}
         open={isCommentsDrawerOpened}
         onOpen={handleOpenCommentsDrawer}
         onClose={handleCloseCommentsDrawer}

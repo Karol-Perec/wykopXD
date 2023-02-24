@@ -18,11 +18,10 @@ const ContentList = ({ contents, isLoading, onInfiniteScroll }: MultiListProps) 
 
   return (
     <MainContentContainer>
-      {contents?.map((content, idx) => {
-        const ContentComponent = isLink(content) ? LinkPreview : EntryPreview;
-        return (
-          <ContentComponent
-            data={content as any}
+      {contents?.map((content, idx) =>
+        isLink(content) ? (
+          <LinkPreview
+            link={content}
             key={content.id}
             containerRef={
               idx > getInfiniteScrollingTriggerIdx(contents)
@@ -30,8 +29,18 @@ const ContentList = ({ contents, isLoading, onInfiniteScroll }: MultiListProps) 
                 : undefined
             }
           />
-        );
-      })}
+        ) : (
+          <EntryPreview
+            entry={content}
+            key={content.id}
+            containerRef={
+              idx > getInfiniteScrollingTriggerIdx(contents)
+                ? infiniteScrollingTriggerRef
+                : undefined
+            }
+          />
+        )
+      )}
       {isLoading && <Loading />}
     </MainContentContainer>
   );

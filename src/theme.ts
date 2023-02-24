@@ -84,6 +84,7 @@ export const getTheme = (mode: ThemeMode, primaryColor: PrimaryColor): ThemeOpti
       textDecoration: 'none',
     },
     fontFamily: [
+      // 'Inter',
       'Roboto',
       '-apple-system',
       'BlinkMacSystemFont',

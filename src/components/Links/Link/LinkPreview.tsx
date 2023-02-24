@@ -19,11 +19,11 @@ import { handleStopPropagation, openInNewTab, stopPropagation } from '~/utils/wi
 import * as S from './Link.styles';
 
 interface LinkDetailsProps {
-  data: Link;
+  link: Link;
   containerRef?: RefCallback<HTMLElement>;
 }
 
-const LinkPreview = ({ data, containerRef }: LinkDetailsProps) => {
+const LinkPreview = ({ link, containerRef }: LinkDetailsProps) => {
   const {
     id,
     description,
@@ -37,7 +37,7 @@ const LinkPreview = ({ data, containerRef }: LinkDetailsProps) => {
     comments,
     votes,
     slug,
-  } = data;
+  } = link;
   const theme = useTheme();
   const navigate = useNavigate();
   const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
@@ -46,7 +46,7 @@ const LinkPreview = ({ data, containerRef }: LinkDetailsProps) => {
 
   const handleNavigateToLink = () => {
     if (document.getSelection()?.isCollapsed) {
-      navigate(`/link/${id}/${slug}`, { state: data });
+      navigate(`/link/${id}/${slug}`, { state: link });
     }
   };
 
@@ -99,7 +99,7 @@ const LinkPreview = ({ data, containerRef }: LinkDetailsProps) => {
             color='inherit'
             title={title}
             underline='none'
-            state={data}
+            state={link}
           >
             <TextContainer variant='h6'>{title}</TextContainer>
             <TextContainer>{description}</TextContainer>
@@ -137,7 +137,7 @@ const LinkPreview = ({ data, containerRef }: LinkDetailsProps) => {
       </S.Statistics>
 
       <LinkCommentsDrawer
-        linkId={data.id}
+        linkId={link.id}
         open={isCommentsDrawerOpened}
         onOpen={handleOpenCommentsDrawer}
         onClose={handleCloseCommentsDrawer}
