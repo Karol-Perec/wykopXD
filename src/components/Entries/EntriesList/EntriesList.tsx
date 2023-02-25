@@ -17,12 +17,10 @@ const EntriesList = ({ entries, isLoading, onInfiniteScroll }: EntriesListProps)
     <MainContentContainer>
       {entries?.map((entry, idx) => (
         <EntryPreview
-          data={entry}
+          entry={entry}
           key={entry.id}
           containerRef={
-            idx > getInfiniteScrollingTriggerIdx(entries)
-              ? infiniteScrollingTriggerRef
-              : undefined
+            idx > getInfiniteScrollingTriggerIdx(entries) ? infiniteScrollingTriggerRef : undefined
           }
         />
       ))}

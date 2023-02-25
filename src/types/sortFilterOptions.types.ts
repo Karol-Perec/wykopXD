@@ -7,11 +7,3 @@ export interface SortOption {
   lastUpdate?: number;
   datePick?: CalendarPickerView[];
 }
-
-export enum HitsCategory {
-  POPULAR = 'popularne',
-  DAY = 'dnia',
-  WEEK = 'tygodnia',
-  MONTH = 'miesiaca',
-  YEAR = 'roku',
-}

@@ -3,9 +3,9 @@ import { Link, WykopCollection } from '~/types';
 import axios from '~/utils/axios';
 import { defaultQueryOptions } from './defaultQueryOptions';
 
-export type HitsSort =  'day' | 'week' | 'all';
+export type HitsSortParam = 'day' | 'week' | 'all';
 
-const useHits = (sort: HitsSort, year?: number, month?: number) =>
+const useHits = (sort: HitsSortParam, year?: number, month?: number) =>
   useInfiniteQuery({
     queryKey: ['hits', sort, year, month],
     queryFn: ({ pageParam = 1 }) =>
