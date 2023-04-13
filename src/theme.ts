@@ -44,7 +44,7 @@ const themePalettes: Record<ThemeMode, PaletteOptions> = {
 export const getTheme = (mode: ThemeMode, primaryColor: PrimaryColor): ThemeOptions => ({
   palette: {
     mode: mode === ThemeMode.Light ? 'light' : 'dark',
-    ...themePalettes.get(mode),
+    ...themePalettes[mode],
     primary: { main: primaryColor },
     text: { secondary: '#bbb' },
   },
