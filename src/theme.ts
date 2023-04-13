@@ -23,36 +23,23 @@ export const themeModeTitles = {
   [ThemeMode.Black]: 'Noc',
 };
 
-const themePalettes = new Map<ThemeMode, PaletteOptions>([
-  [
-    ThemeMode.Light,
-    {
-      action: { active: '#0f1419' },
-      background: { default: '#f9fbfa' },
-    },
-  ],
-  [
-    ThemeMode.Dim,
-    {
-      action: { active: '#fff' },
-      background: { default: '#15202b', paper: '#15202b' },
-    },
-  ],
-  [
-    ThemeMode.Dark,
-    {
-      action: { active: '#fff' },
-    },
-  ],
-
-  [
-    ThemeMode.Black,
-    {
-      action: { active: '#fff' },
-      background: { default: '#000', paper: '#000' },
-    },
-  ],
-]);
+const themePalettes: Record<ThemeMode, PaletteOptions> = {
+  [ThemeMode.Light]: {
+    action: { active: '#0f1419' },
+    background: { default: '#f9fbfa' },
+  },
+  [ThemeMode.Dim]: {
+    action: { active: '#fff' },
+    background: { default: '#15202b', paper: '#15202b' },
+  },
+  [ThemeMode.Dark]: {
+    action: { active: '#fff' },
+  },
+  [ThemeMode.Black]: {
+    action: { active: '#fff' },
+    background: { default: '#000', paper: '#000' },
+  },
+};
 
 export const getTheme = (mode: ThemeMode, primaryColor: PrimaryColor): ThemeOptions => ({
   palette: {
