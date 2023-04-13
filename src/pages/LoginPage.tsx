@@ -5,14 +5,14 @@ import ErrorMessage from '~/components/UI/ErrorMessage';
 import Loading from '~/components/UI/Loading';
 import AuthContext from '~/contexts/Auth/AuthContext';
 import useTitle from '~/hooks/useTitle';
-import { ROUTE } from '~/routes';
+import { Route } from '~/routes';
 
 const LoginPage = () => {
   useTitle('Zaloguj się');
   const { authData } = useContext(AuthContext);
   const navigate = useNavigate();
   const { data, isLoading, error } = useConnectUrl(
-    window.location.origin + ROUTE.LOGIN_CALLBACK,
+    window.location.origin + Route.LOGIN_CALLBACK,
     !import.meta.env.REACT_APP_CONNECT_URL
   );
   const connectUrl = import.meta.env.REACT_APP_CONNECT_URL || data;

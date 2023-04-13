@@ -4,7 +4,7 @@ import EntriesList from '~/components/Entries/EntriesList/EntriesList';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import useTitle from '~/hooks/useTitle';
-import { ROUTE } from '~/routes';
+import { Route } from '~/routes';
 import { SortOption } from '~/types';
 import { filterUniqueData } from '~/utils/dataUtils';
 
@@ -55,7 +55,7 @@ const MikroblogPage = () => {
       <SortSelect
         options={MIKROBLOG_SORT_OPTIONS}
         activeOptionPath={[sort, lastUpdate].filter(Boolean).join('/')}
-        baseRoute={ROUTE.MIKROBLOG}
+        baseRoute={Route.MIKROBLOG}
       />
       <EntriesList
         entries={filterUniqueData(data?.pages.flat())}

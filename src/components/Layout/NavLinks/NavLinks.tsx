@@ -2,34 +2,34 @@ import { Whatshot as HitsIcon } from '@mui/icons-material';
 import { List } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ROUTE } from '~/routes';
+import { Route } from '~/routes';
 import { ListNavLink, TopBarNavLink } from './NavLink/NavLink';
 import * as S from './NavLinks.styles';
 
 export const navLinks = [
   {
     label: 'Główna',
-    path: ROUTE.HOME,
+    path: Route.HOME,
     icon: <S.MainIcon />,
   },
   {
     label: 'Wykopalisko',
-    path: ROUTE.UPCOMING,
+    path: Route.UPCOMING,
     icon: <S.UpcomingIcon />,
   },
   {
     label: 'Hity',
-    path: ROUTE.HITS,
+    path: Route.HITS,
     icon: <HitsIcon />,
   },
   {
     label: 'Mikroblog',
-    path: ROUTE.MIKROBLOG,
+    path: Route.MIKROBLOG,
     icon: <S.MikroblogIcon />,
   },
   // {
   //   label: 'Mój Wykop',
-  //   path: ROUTE.MY_WYKOP,
+  //   path: Route.MY_WYKOP,
   //   icon: <AccountCircle />,
   // },
 ];
@@ -40,7 +40,7 @@ interface ListNavLinksProps {
 
 export const ListNavLinks = ({ onNavLinkClick }: ListNavLinksProps) => {
   const { pathname } = useLocation();
-  const activePath = Object.values(ROUTE)
+  const activePath = Object.values(Route)
     .reverse()
     .find((route) => pathname.startsWith(route));
 
@@ -62,7 +62,7 @@ export const ListNavLinks = ({ onNavLinkClick }: ListNavLinksProps) => {
 
 export const NavLinks = () => {
   const { pathname } = useLocation();
-  const activePath = Object.values(ROUTE)
+  const activePath = Object.values(Route)
     .reverse()
     .find((route) => pathname.startsWith(route));
 

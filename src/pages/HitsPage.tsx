@@ -4,7 +4,7 @@ import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import useTitle from '~/hooks/useTitle';
-import { ROUTE } from '~/routes';
+import { Route } from '~/routes';
 import { SortOption } from '~/types';
 import { filterUniqueData } from '~/utils/dataUtils';
 
@@ -46,7 +46,7 @@ const HitsPage = () => {
 
   return (
     <>
-      <SortSelect options={HITS_SORT_OPTIONS} activeOptionPath={sort} baseRoute={ROUTE.HITS} />
+      <SortSelect options={HITS_SORT_OPTIONS} activeOptionPath={sort} baseRoute={Route.HITS} />
       <LinksList
         links={filterUniqueData(data?.pages.flat())}
         isLoading={isLoading || isFetchingNextPage}

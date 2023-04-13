@@ -1,4 +1,4 @@
-export enum ROUTE {
+export enum Route {
   ANY = '*',
   HOME = '/',
   UPCOMING = '/wykopalisko',

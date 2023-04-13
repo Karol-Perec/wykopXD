@@ -4,7 +4,7 @@ import { MouseEventHandler, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Avatar from '~/components/UI/CustomAvatar';
 import AuthContext from '~/contexts/Auth/AuthContext';
-import { ROUTE } from '~/routes';
+import { Route } from '~/routes';
 import { NavLinks } from '../NavLinks/NavLinks';
 import * as S from './TopBar.styles';
 
@@ -28,7 +28,7 @@ const TopBar = ({ onLeftDrawerToggleClick, onRightDrawerToggleClick }: TopBarPro
             </IconButton>
           ) : (
             <>
-              <IconButton component={RouterLink} to={ROUTE.HOME} disableRipple>
+              <IconButton component={RouterLink} to={Route.HOME} disableRipple>
                 <S.Logo />
               </IconButton>
               <NavLinks />

@@ -4,7 +4,7 @@ import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import LinksList from '~/components/Links/LinksList/LinksList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import useTitle from '~/hooks/useTitle';
-import { ROUTE } from '~/routes';
+import { Route } from '~/routes';
 import { SortOption } from '~/types';
 import { filterUniqueData } from '~/utils/dataUtils';
 
@@ -44,7 +44,7 @@ const UpcomingPage = () => {
       <SortSelect
         options={UPCOMING_SORT_OPTIONS}
         activeOptionPath={sort}
-        baseRoute={ROUTE.UPCOMING}
+        baseRoute={Route.UPCOMING}
       />
       <LinksList
         links={filterUniqueData(data?.pages.flat())}
