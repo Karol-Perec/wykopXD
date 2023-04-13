@@ -44,7 +44,7 @@ const EntryDetails = ({ data, isUpdatingComments = false }: EntryDetailsProps) =
               sourceUrl={media.url}
               imageUrl={media.previewUrl}
               type={media.type}
-              plus18={media.plus18}
+              adult={media.adult}
               ratio={media.ratio}
             />
           )}

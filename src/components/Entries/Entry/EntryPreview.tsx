@@ -67,7 +67,7 @@ const EntryPreview = ({ entry, containerRef }: EntryPreviewProps) => {
               sourceUrl={media.photo.url}
               imageUrl={media.photo.url}
               type=''
-              plus18={adult}
+              adult={adult}
               ratio={media.photo.width / media.photo.height}
               listMode
             />

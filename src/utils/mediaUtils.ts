@@ -1,18 +1,30 @@
 import ReactPlayer from 'react-player';
-import { Link, MediaType } from '~/types';
+import { Link, MediaType, MimeType } from '~/types';
 
-type ImageQuality = 'original' | 'hd' | 'hq' | 'mq' | 'lq';
+type ImageQuality = 'original' | 'hd' | 'hq' | 'mq' | '220x142' | '440x284';
 
-export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality) => {
-  const qualityResoultionMap: Record<ImageQuality, string> = {
-    hd: ',w600',
-    hq: ',w400',
-    mq: ',w300',
-    lq: ',w207h139',
-    original: '',
-  };
+const qualityResoultionMap: Record<ImageQuality, string> = {
+  hd: ',w800',
+  hq: ',w400',
+  mq: ',w300',
+  '220x142': ',w220h142',
+  '440x284': ',w2440h284',
+  original: '',
+};
 
-  return imageUrl?.replace(/,w[0-9]+(h[0-9]+)?/g, qualityResoultionMap[quality]);
+export const getDisplayedImageUrl = (
+  imageUrl: string,
+  quality: ImageQuality,
+  mimeType: MimeType
+) => {
+  switch (mimeType) {
+    case 'image/jpeg':
+      return imageUrl.replace('.jpg', `${qualityResoultionMap[quality]}.jpg`);
+    case 'image/png':
+      return imageUrl.replace('.png', `${qualityResoultionMap[quality]}.png`);
+    default:
+      return imageUrl;
+  }
 };
 
 export const getImageQuality = (listMode: boolean, isBlur: boolean): ImageQuality => {

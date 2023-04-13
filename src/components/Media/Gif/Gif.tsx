@@ -6,14 +6,14 @@ import * as S from './Gif.styles';
 interface GifProps {
   sourceUrl: string;
   imageUrl: string;
-  plus18: boolean;
+  adult: boolean;
   listMode: boolean;
   ratio?: number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Gif = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: GifProps) => {
-  const [isBlurred, setIsBlurred] = useState(plus18);
+const Gif = ({ sourceUrl, imageUrl, adult, ratio, listMode }: GifProps) => {
+  const [isBlurred, setIsBlurred] = useState(adult);
   const [isPlaying, setIsPlaying] = useState(false);
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, isBlurred));
 

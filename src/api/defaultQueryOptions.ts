@@ -4,4 +4,5 @@ export const defaultQueryOptions = {
   retry: false,
   staleTime: Infinity,
   refetchOnWindowFocus: false,
+  // onError: (err) => {},
 } satisfies Partial<UseQueryOptions>;

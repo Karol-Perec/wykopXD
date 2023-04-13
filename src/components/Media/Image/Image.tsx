@@ -8,13 +8,13 @@ import * as S from './Image.styles';
 interface ImageProps {
   sourceUrl: string;
   imageUrl: string;
-  plus18: boolean;
+  adult: boolean;
   listMode: boolean;
   ratio?: number;
 }
 
-const Image = ({ sourceUrl, imageUrl, plus18, ratio, listMode }: ImageProps) => {
-  const [isBlurred, setIsBlurred] = useState(plus18);
+const Image = ({ sourceUrl, imageUrl, adult, ratio, listMode }: ImageProps) => {
+  const [isBlurred, setIsBlurred] = useState(adult);
   const displayedImageUrl = getDisplayedImageUrl(imageUrl, getImageQuality(listMode, isBlurred));
 
   const handleUnblurImage = stopPropagation(() => setIsBlurred(false));

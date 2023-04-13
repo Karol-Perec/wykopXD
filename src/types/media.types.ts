@@ -1,5 +1,5 @@
 export type MediaType = 'youtube' | 'twitter' | 'streamable' | 'gfycat';
-export type MimeType = 'image/jpeg' | 'image/gif'
+export type MimeType = 'image/jpeg' | 'image/gif' | 'image/png';
 
 export interface SurveyAnswer {
   count: number;

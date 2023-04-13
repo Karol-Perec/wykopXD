@@ -23,7 +23,7 @@ const LinkDetails = ({ data }: LinkDetailsProps) => {
     id,
     body,
     date,
-    plus18,
+    adult,
     previewUrl,
     sourceUrl,
     title,
@@ -55,7 +55,7 @@ const LinkDetails = ({ data }: LinkDetailsProps) => {
               sourceUrl={sourceUrl}
               imageUrl={previewUrl}
               type={mediaType}
-              plus18={plus18}
+              adult={adult}
               ratio={9 / 16}
             />
           </S.MediaContainer>

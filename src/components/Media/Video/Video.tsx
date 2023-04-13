@@ -10,7 +10,7 @@ interface VideoProps extends PlayerProps {
   isGfycat: boolean;
 }
 
-const Video = ({ sourceUrl, previewUrl, plus18, ratio, listMode, isGfycat }: VideoProps) => {
+const Video = ({ sourceUrl, previewUrl, adult, ratio, listMode, isGfycat }: VideoProps) => {
   const { data: gfycatSourceUrl } = useGfycat(sourceUrl, isGfycat);
   const displayedPreviewUrl = getDisplayedImageUrl(previewUrl, listMode ? 'mq' : 'hq');
   const isMobile = useMediaQuery('(pointer:coarse)');
@@ -20,7 +20,7 @@ const Video = ({ sourceUrl, previewUrl, plus18, ratio, listMode, isGfycat }: Vid
     <S.Container>
       <Player
         sourceUrl={isGfycat ? gfycatSourceUrl! : sourceUrl}
-        plus18={plus18}
+        adult={adult}
         previewUrl={displayedPreviewUrl}
         ratio={ratio}
       />

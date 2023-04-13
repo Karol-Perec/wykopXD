@@ -7,19 +7,19 @@ interface MediaProps {
   type?: MediaType | string;
   sourceUrl: string;
   imageUrl: string;
-  plus18: boolean;
+  adult: boolean;
   listMode?: boolean;
   ratio?: number;
 }
 
-const Media = ({ type, sourceUrl, imageUrl, plus18, ratio, listMode = false }: MediaProps) => {
+const Media = ({ type, sourceUrl, imageUrl, adult, ratio, listMode = false }: MediaProps) => {
   switch (type) {
     case 'gif':
       return (
         <Gif
           sourceUrl={sourceUrl}
           imageUrl={imageUrl}
-          plus18={plus18}
+          adult={adult}
           ratio={ratio}
           listMode={listMode}
         />
@@ -30,7 +30,7 @@ const Media = ({ type, sourceUrl, imageUrl, plus18, ratio, listMode = false }: M
         <Video
           sourceUrl={sourceUrl}
           previewUrl={imageUrl}
-          plus18={plus18}
+          adult={adult}
           ratio={ratio}
           listMode={listMode}
           isGfycat={type === 'gfycat'}
@@ -41,7 +41,7 @@ const Media = ({ type, sourceUrl, imageUrl, plus18, ratio, listMode = false }: M
         <Image
           sourceUrl={sourceUrl}
           imageUrl={imageUrl}
-          plus18={plus18}
+          adult={adult}
           ratio={ratio}
           listMode={listMode}
         />

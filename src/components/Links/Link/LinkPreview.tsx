@@ -86,7 +86,7 @@ const LinkPreview = ({ link, containerRef }: LinkDetailsProps) => {
               sourceUrl={media.embed?.url || media.photo?.url}
               imageUrl={media.embed?.thumbnail || media.photo?.url || undefined}
               type=''
-              plus18={adult}
+              adult={adult}
               ratio={16 / 9}
               listMode
             />
