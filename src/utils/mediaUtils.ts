@@ -3,7 +3,7 @@ import { Link, MediaType, MimeType } from '~/types';
 
 type ImageQuality = 'original' | 'hd' | 'hq' | 'mq' | '220x142' | '440x284';
 
-const qualityResoultionMap: Record<ImageQuality, string> = {
+const qualityResolutionMap: Record<ImageQuality, string> = {
   hd: ',w800',
   hq: ',w400',
   mq: ',w300',
@@ -19,9 +19,9 @@ export const getDisplayedImageUrl = (
 ) => {
   switch (mimeType) {
     case 'image/jpeg':
-      return imageUrl.replace('.jpg', `${qualityResoultionMap[quality]}.jpg`);
+      return imageUrl.replace('.jpg', `${qualityResolutionMap[quality]}.jpg`);
     case 'image/png':
-      return imageUrl.replace('.png', `${qualityResoultionMap[quality]}.png`);
+      return imageUrl.replace('.png', `${qualityResolutionMap[quality]}.png`);
     default:
       return imageUrl;
   }

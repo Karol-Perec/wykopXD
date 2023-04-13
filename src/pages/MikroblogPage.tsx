@@ -27,7 +27,7 @@ const entriesSortParams: Record<MikroblogSort, EntriesSort> = {
   [MikroblogSort.HOT]: 'hot',
 };
 
-const mikroblogSortOptions: SortOption[] = [
+const MIKROBLOG_SORT_OPTIONS: SortOption[] = [
   { path: MikroblogSort.NEW, label: 'Najnowsze' },
   { path: MikroblogSort.ACTIVE, label: 'Aktywne' },
   { path: `${MikroblogSort.HOT}/${MikroblogLastUpdate.HOURS_2}`, label: 'Gorące 2h' },
@@ -53,7 +53,7 @@ const MikroblogPage = () => {
   return (
     <>
       <SortSelect
-        options={mikroblogSortOptions}
+        options={MIKROBLOG_SORT_OPTIONS}
         activeOptionPath={[sort, lastUpdate].filter(Boolean).join('/')}
         baseRoute={ROUTE.MIKROBLOG}
       />

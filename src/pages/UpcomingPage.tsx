@@ -8,21 +8,21 @@ import { ROUTE } from '~/routes';
 import { SortOption } from '~/types';
 import { filterUniqueData } from '~/utils/dataUtils';
 
-export enum UpcomingSort {
+enum UpcomingSort {
   ACTIVE = 'aktywne',
   NEWEST = 'najnowsze',
   DIGGED = 'wykopywane',
   COMMENTED = 'komentowane',
 }
 
-const upcomingSortParams: Record<UpcomingSort, UpcomingSortParam> = {
+const UPCOMING_SORT_PARAMS: Record<UpcomingSort, UpcomingSortParam> = {
   [UpcomingSort.NEWEST]: 'newest',
   [UpcomingSort.ACTIVE]: 'active',
   [UpcomingSort.DIGGED]: 'digged',
   [UpcomingSort.COMMENTED]: 'commented',
 };
 
-export const upcomingSortOptions: SortOption[] = [
+export const UPCOMING_SORT_OPTIONS: SortOption[] = [
   { path: UpcomingSort.NEWEST, label: 'Najnowsze' },
   { path: UpcomingSort.ACTIVE, label: 'Aktywne' },
   { path: UpcomingSort.DIGGED, label: 'Wykopywane' },
@@ -34,7 +34,7 @@ const UpcomingPage = () => {
   const { sort = UpcomingSort.ACTIVE } = useParams<{ sort?: UpcomingSort }>();
   const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useLinks(
     'upcoming',
-    upcomingSortParams[sort]
+    UPCOMING_SORT_PARAMS[sort]
   );
 
   if (error) return <ErrorMessage error={error} />;
@@ -42,7 +42,7 @@ const UpcomingPage = () => {
   return (
     <>
       <SortSelect
-        options={upcomingSortOptions}
+        options={UPCOMING_SORT_OPTIONS}
         activeOptionPath={sort}
         baseRoute={ROUTE.UPCOMING}
       />

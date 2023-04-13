@@ -15,14 +15,14 @@ enum HitsSort {
   YEAR = 'roku',
 }
 
-const hitsSortParams: Record<HitsSort, HitsSortParam> = {
+const HITS_SORT_PARAMS: Record<HitsSort, HitsSortParam> = {
   [HitsSort.DAY]: 'day',
   [HitsSort.WEEK]: 'week',
   [HitsSort.MONTH]: 'all',
   [HitsSort.YEAR]: 'all',
 };
 
-const hitsSortOptions: SortOption[] = [
+const HITS_SORT_OPTIONS: SortOption[] = [
   { path: HitsSort.DAY, label: 'Dnia' },
   { path: HitsSort.WEEK, label: 'Tygodnia' },
   { path: HitsSort.MONTH, label: 'Miesiąca' }, // , datePick: ['month', 'year']
@@ -37,7 +37,7 @@ const HitsPage = () => {
     year = new Date().getFullYear(),
   } = useParams<{ sort?: HitsSort; month?: string; year?: string }>();
   const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useHits(
-    hitsSortParams[sort],
+    HITS_SORT_PARAMS[sort],
     sort === HitsSort.MONTH || sort === HitsSort.YEAR ? Number(year) || undefined : undefined,
     sort === HitsSort.MONTH ? Number(month) || undefined : undefined
   );
@@ -46,7 +46,7 @@ const HitsPage = () => {
 
   return (
     <>
-      <SortSelect options={hitsSortOptions} activeOptionPath={sort} baseRoute={ROUTE.HITS} />
+      <SortSelect options={HITS_SORT_OPTIONS} activeOptionPath={sort} baseRoute={ROUTE.HITS} />
       <LinksList
         links={filterUniqueData(data?.pages.flat())}
         isLoading={isLoading || isFetchingNextPage}
