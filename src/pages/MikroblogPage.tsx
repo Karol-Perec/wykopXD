@@ -21,7 +21,7 @@ enum MikroblogLastUpdate {
   HOURS_24 = '24',
 }
 
-const entriesSortParams: Record<MikroblogSort, EntriesSort> = {
+const MIKROBLOG_SORT_PARAMS: Record<MikroblogSort, EntriesSort> = {
   [MikroblogSort.NEW]: 'newest',
   [MikroblogSort.ACTIVE]: 'active',
   [MikroblogSort.HOT]: 'hot',
@@ -44,7 +44,7 @@ const MikroblogPage = () => {
   }>();
 
   const { data, isLoading, fetchNextPage, isFetchingNextPage, error } = useEntries(
-    entriesSortParams[sort],
+    MIKROBLOG_SORT_PARAMS[sort],
     sort === MikroblogSort.HOT ? lastUpdate : undefined
   );
 
