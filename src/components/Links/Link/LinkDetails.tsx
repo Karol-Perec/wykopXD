@@ -21,25 +21,25 @@ interface LinkDetailsProps {
 const LinkDetails = ({ data }: LinkDetailsProps) => {
   const {
     id,
-    body,
-    date,
-    adult,
-    previewUrl,
-    sourceUrl,
+    description,
     title,
-    user,
+    source,
+    author,
+    media,
+    created_at: createdAt,
+    adult,
+    hot,
     comments,
-    commentsCount,
-    voteCountPlus,
-    isHot,
+    votes,
+    slug,
   } = data;
   const theme = useTheme();
-  const mediaType = getLinkMediaType(sourceUrl);
+  // const mediaType = getLinkMediaType(sourceUrl);
 
   const handleShare = () => {
     navigator
       .share({
-        url: `${window.location.origin}/link/${id}`,
+        url: `${window.location.origin}/link/${id}/${slug}`,
       })
       .catch(() => undefined);
   };
@@ -50,7 +50,7 @@ const LinkDetails = ({ data }: LinkDetailsProps) => {
         <UserHeader user={user} date={date} />
 
         <S.ContentContainer>
-          <S.MediaContainer>
+          {/* <S.MediaContainer>
             <Media
               sourceUrl={sourceUrl}
               imageUrl={previewUrl}
@@ -58,7 +58,7 @@ const LinkDetails = ({ data }: LinkDetailsProps) => {
               adult={adult}
               ratio={9 / 16}
             />
-          </S.MediaContainer>
+          </S.MediaContainer> */}
 
           <S.TextContentContainer>
             <ExternalNoPropagationLink href={sourceUrl} underline='none' color='inherit'>

@@ -1,6 +1,6 @@
 import { Box, Popover, styled, Tooltip, Typography, useTheme } from '@mui/material';
 import { MouseEvent } from 'react';
-import { USER_COLOR } from '~/constants/userColor.constant';
+import { USER_COLORS } from '~/constants/userColors.constant';
 import useDebouncedState from '~/hooks/useDebouncedState';
 import { UserPreview } from '~/types';
 import { calculateAprroximatedAge } from '~/utils/dateUtils';
@@ -27,7 +27,7 @@ const UserHeader = ({ user, date }: UserHeaderProps) => {
     null,
     500
   );
-  const userColor = USER_COLOR.get(user.color);
+  const userColor = USER_COLORS[user.color];
 
   const handlePopoverOpen = (event: MouseEvent<HTMLElement>) => setAnchorEl(event.currentTarget);
   const handlePopoverClose = () => setAnchorEl(null);
@@ -45,7 +45,7 @@ const UserHeader = ({ user, date }: UserHeaderProps) => {
       </RouterNoPropagationLink>
       <RouterNoPropagationLink
         to={`/ludzie/${user.username}`}
-        color={theme.palette.mode === 'dark' ? userColor?.hex_dark : userColor?.hex}
+        color={theme.palette.mode === 'dark' ? userColor.hex_dark : userColor.hex}
       >
         <Typography
           variant='subtitle2'
@@ -73,7 +73,7 @@ const UserHeader = ({ user, date }: UserHeaderProps) => {
           </RouterNoPropagationLink>
           <RouterNoPropagationLink
             to={`/ludzie/${user.username}`}
-            color={theme.palette.mode === 'dark' ? userColor?.hex_dark : userColor?.hex}
+            color={theme.palette.mode === 'dark' ? userColor.hex_dark : userColor.hex}
           >
             <Typography variant='subtitle2' component='span'>
               {user.username}

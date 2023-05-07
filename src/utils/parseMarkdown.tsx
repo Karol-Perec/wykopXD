@@ -1,7 +1,7 @@
+import Blockquote from '~/components/UI/Blockquote';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from '~/components/UI/CustomLinks';
-import Quote from '~/components/UI/Quote';
 import Spoiler from '~/components/UI/Spoiler';
-import { ReactStringParser } from './reactStringParser';
+import { ReactStringParser } from './ReactStringParser';
 import {
   NAMED_URL_FULL_REGEX,
   NAMED_URL_SECTIONED_REGEX,
@@ -21,7 +21,9 @@ export const parseMarkdown = (text: string) => {
 
   return new ReactStringParser(text)
     .parse('\n', (_, idx) => <br key={`br-${idx}`} />)
-    .parse(CITE_REGEX, (cite, key) => <Quote key={`quote-${key}`}>{cite.substring(1)}</Quote>)
+    .parse(CITE_REGEX, (cite, key) => (
+      <Blockquote key={`quote-${key}`}>{cite.substring(1)}</Blockquote>
+    ))
     .parse(SPOILER_REGEX, (spoiler, key) => (
       <Spoiler key={`spoiler-${key}`}>{spoiler.substring(1)}</Spoiler>
     ))

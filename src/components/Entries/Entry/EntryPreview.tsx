@@ -28,9 +28,8 @@ const EntryPreview = ({ entry, containerRef }: EntryPreviewProps) => {
   const [isCommentsDrawerOpened, setIsCommentsDrawerOpened] = useState(false);
 
   const handleNavigateToEntry = () => {
-    if (document.getSelection()?.isCollapsed) {
-      navigate(`/wpis/${id}`, { state: entry });
-    }
+    if (!document.getSelection()?.isCollapsed) return;
+    navigate(`/wpis/${id}`, { state: entry });
   };
 
   const handleToggleCommentsDrawer = stopPropagation((e) => {
@@ -38,13 +37,9 @@ const EntryPreview = ({ entry, containerRef }: EntryPreviewProps) => {
     setIsCommentsDrawerOpened((prev) => !prev);
   });
 
-  const handleShare = stopPropagation(() => {
-    navigator
-      .share({
-        url: `${window.location.origin}/wpis/${id}`,
-      })
-      .catch(() => undefined);
-  });
+  const handleShare = stopPropagation(() =>
+    navigator.share({ url: `${window.location.origin}/wpis/${id}` })
+  );
 
   const handleOpenCommentsDrawer = () => setIsCommentsDrawerOpened(true);
   const handleCloseCommentsDrawer = () => setIsCommentsDrawerOpened(false);

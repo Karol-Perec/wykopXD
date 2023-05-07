@@ -1,6 +1,6 @@
 import { UserColor } from '~/types';
 
-export const USER_COLOR: Record<UserColor, { hex: string; hex_dark: string }> = {
+export const USER_COLORS: Record<UserColor, { hex: string; hex_dark: string }> = {
   black: { hex: '#000', hex_dark: '#fff' },
   burgundy: { hex: '#900', hex_dark: '#b11' },
   green: { hex: '#393', hex_dark: '#393' },

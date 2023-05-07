@@ -11,7 +11,6 @@ interface GifProps {
   ratio?: number;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Gif = ({ sourceUrl, imageUrl, adult, ratio, listMode }: GifProps) => {
   const [isBlurred, setIsBlurred] = useState(adult);
   const [isPlaying, setIsPlaying] = useState(false);

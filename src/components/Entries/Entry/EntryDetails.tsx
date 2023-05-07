@@ -1,6 +1,6 @@
 import {
   ModeCommentOutlined as CommentsIcon,
-  AddBox as PlusIcon,
+  ThumbUpOutlined as ThumbUpIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';
 import { Typography, Button, Divider, IconButton } from '@mui/material';
@@ -20,46 +20,45 @@ import { parseMarkdown } from '~/utils/parseMarkdown';
 import * as S from './Entry.styles';
 
 interface EntryDetailsProps {
-  data: Entry;
+  entry: Entry;
   isUpdatingComments?: boolean;
 }
 
-const EntryDetails = ({ data, isUpdatingComments = false }: EntryDetailsProps) => {
-  const { media, user, body, id, date, commentsCount, voteCountPlus, comments, survey } = data;
-  const parsedBody = useMemo(() => parseMarkdown(body), [body]);
+const EntryDetails = ({ entry, isUpdatingComments = false }: EntryDetailsProps) => {
+  const { media, author, content, id, votes, created_at: createdAt, comments, adult } = entry;
+  const parsedContent = useMemo(() => parseMarkdown(content), [content]);
 
-  const handleShare = () => {
-    navigator.share({ url: `${window.location.origin}/wpis/${id}` }).catch(() => undefined);
-  };
+  const handleShare = () => navigator.share({ url: `${window.location.origin}/wpis/${id}` });
 
   return (
     <MainContentContainer>
       <Card>
-        <UserHeader user={user} date={date} />
+        <UserHeader user={author} date={createdAt} />
 
         <ContentContainer>
-          <TextContainer>{parsedBody}</TextContainer>
-          {media && (
+          <TextContainer>{parsedContent}</TextContainer>
+          {media.photo && (
             <Media
-              sourceUrl={media.url}
-              imageUrl={media.previewUrl}
-              type={media.type}
-              adult={media.adult}
-              ratio={media.ratio}
+              sourceUrl={media.photo.url}
+              imageUrl={media.photo.url}
+              type=''
+              adult={adult}
+              ratio={media.photo.width / media.photo.height}
+              listMode
             />
           )}
-          {survey && <SurveyResults survey={survey} />}
+          {/* {survey && <SurveyResults survey={survey} />} */}
         </ContentContainer>
 
         <Divider variant='middle' />
 
         <S.Statistics>
-          <Button startIcon={<PlusIcon />} color='inherit'>
-            <Typography>{voteCountPlus}</Typography>
+          <Button startIcon={<ThumbUpIcon />} color='inherit'>
+            <Typography>{votes.up}</Typography>
           </Button>
 
           <Button startIcon={<CommentsIcon />} color='inherit'>
-            <Typography>{commentsCount}</Typography>
+            <Typography>{comments.count}</Typography>
           </Button>
 
           {!!navigator.share && (

@@ -10,7 +10,7 @@ const AppInfoPage = () => {
       <Card sx={{ p: 2, textAlign: 'center' }}>
         <img
           alt='peepoGlad'
-          src='https://cdn.7tv.app/emote/60d21943f8d1379624e1ba82/4x'
+          src='https://cdn.7tv.app/emote/60d21943f8d1379624e1ba82/4x.webp'
           width={80}
         />
         <Typography variant='h2'>WykopXD</Typography>

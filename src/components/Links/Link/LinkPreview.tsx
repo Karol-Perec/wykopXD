@@ -12,7 +12,6 @@ import Media from '~/components/Media/Media';
 import { Card, TextContainer } from '~/components/UI/Containers';
 import { RouterNoPropagationLink } from '~/components/UI/CustomLinks';
 import UserHeader from '~/components/UI/UserHeader';
-import { USER_COLOR } from '~/constants/userColor.constant';
 import { Link } from '~/types';
 import { getLinkMediaType } from '~/utils/mediaUtils';
 import { handleStopPropagation, openInNewTab, stopPropagation } from '~/utils/windowUtils';
@@ -76,7 +75,7 @@ const LinkPreview = ({ link, containerRef }: LinkDetailsProps) => {
       <UserHeader user={author} date={createdAt} />
 
       <S.ContentContainer>
-        {(media.embed || media.photo) && (
+        {/* {(media.embed || media.photo) && (
           <S.MediaContainer
             ref={mediaContainerRef}
             // onClick={mediaType !== 'image' ? handleEnlargeVideo : undefined}
@@ -91,7 +90,7 @@ const LinkPreview = ({ link, containerRef }: LinkDetailsProps) => {
               listMode
             />
           </S.MediaContainer>
-        )}
+        )} */}
 
         <S.TextContentContainer>
           <RouterNoPropagationLink
