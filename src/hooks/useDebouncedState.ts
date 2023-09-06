@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 
-function useDebouncedState<T>(
+const useDebouncedState = <T>(
   initialValue: T,
   delayMs: number
-): [T, T, Dispatch<SetStateAction<T>>] {
+): [T, T, Dispatch<SetStateAction<T>>] => {
   const [value, setValue] = useState(initialValue);
   const [debouncedValue, setDebouncedValue] = useState(initialValue);
   const debounceTimer = useRef<number>();
@@ -14,6 +14,6 @@ function useDebouncedState<T>(
   }, [delayMs, value]);
 
   return [value, debouncedValue, setValue];
-}
+};
 
 export default useDebouncedState;

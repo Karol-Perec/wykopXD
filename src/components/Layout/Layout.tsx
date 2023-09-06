@@ -15,11 +15,11 @@ const Layout = () => {
   const { mutate: auth, isLoading } = useAuth();
 
   useEffect(() => {
-    if (!token && auth && !isLoading) auth();
+    if (!token && !isLoading) auth();
   }, [auth, token, isLoading]);
 
-  const handleToggleLeftDrawer = () => setShowLeftDrawer((prev) => !prev);
-  const handleToggleRightDrawer = () => setShowRightDrawer((prev) => !prev);
+  const handleToggleLeftDrawer = () => setShowLeftDrawer((show) => !show);
+  const handleToggleRightDrawer = () => setShowRightDrawer((show) => !show);
 
   return (
     <>

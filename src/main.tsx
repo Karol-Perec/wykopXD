@@ -4,7 +4,6 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import App from './App';
-import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import ErrorElement from './errorElement';
 import { globalStyles } from './globalStyles';
 import AppInfoPage from './pages/AppInfoPage';
@@ -43,9 +42,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <GlobalStyles styles={globalStyles} />
-      <ErrorBoundary>
-        <RouterProvider router={router} />
-      </ErrorBoundary>
+      <RouterProvider router={router} />
     </QueryClientProvider>
   </StrictMode>
 );

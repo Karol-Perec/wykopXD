@@ -10,7 +10,7 @@ const SettingsPage = () => {
   const { setPrimaryColor, primaryColor, changeThemeMode, themeMode } = useContext(ThemeContext);
   const theme = useTheme();
 
-  const handleColor = (_: MouseEvent, color: PrimaryColor) => setPrimaryColor(color);
+  const handleChangeColor = (_: MouseEvent, color: PrimaryColor) => setPrimaryColor(color);
 
   return (
     <Container style={{ marginTop: 16, textAlign: 'center' }}>
@@ -23,7 +23,7 @@ const SettingsPage = () => {
             <ToggleButton
               key={color}
               value={color}
-              onClick={handleColor}
+              onClick={handleChangeColor}
               style={{
                 backgroundColor: color,
                 borderRadius: '50%',
