@@ -1,3 +1,4 @@
+import { transliterate } from 'transliteration';
 import Blockquote from '~/components/UI/Blockquote';
 import { ExternalNoPropagationLink, RouterNoPropagationLink } from '~/components/UI/CustomLinks';
 import Spoiler from '~/components/UI/Spoiler';
@@ -53,7 +54,10 @@ export const parseMarkdown = (text: string) => {
     .parse(BOLD_REGEX, (bold, key) => <b key={`bold-${key}`}>{bold.substring(2, bold.length - 2)}</b>)
     .parse(ITALIC_REGEX, (italic, key) => <i key={`italic-${key}`}>{italic.substring(1, italic.length - 1)}</i>)
     .parse(HASHTAG_REGEX, (hashTag, key) => (
-      <RouterNoPropagationLink to={`/tag/${hashTag.substring(1)}`} key={`${hashTag}-${key}`}>
+      <RouterNoPropagationLink
+        to={`/tag/${transliterate(hashTag.substring(1))}`}
+        key={`${hashTag}-${key}`}
+      >
         {hashTag}
       </RouterNoPropagationLink>
     ))
