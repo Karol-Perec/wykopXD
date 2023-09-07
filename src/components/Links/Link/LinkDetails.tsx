@@ -3,7 +3,7 @@ import {
   Share as ShareIcon,
   LocalFireDepartment as HotIcon,
 } from '@mui/icons-material';
-import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/material';
+import { Button, Divider, IconButton, useTheme, Badge } from '@mui/material';
 import { ReactComponent as WykopIcon } from '~/assets/images/logo.svg';
 import Comments from '~/components/Comments/Comments';
 import Media from '~/components/Media/Media';
@@ -82,11 +82,11 @@ const LinkDetails = ({ data }: LinkDetailsProps) => {
             }
             color='inherit'
           >
-            <Typography>{voteCountPlus}</Typography>
+            {voteCountPlus}
           </Button>
 
           <Button startIcon={<CommentsIcon />} color='inherit'>
-            <Typography>{commentsCount}</Typography>
+            {commentsCount}
           </Button>
 
           {!!navigator.share && (

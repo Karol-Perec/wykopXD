@@ -11,7 +11,7 @@ interface SurveyAnswerProps {
 const SurveyAnswer = ({ answer, isActive }: SurveyAnswerProps) => (
   <S.Container>
     <S.SurveyProgress variant='determinate' value={answer.votePercentage} highlight={isActive} />
-    <Typography component='div'>
+    <Typography>
       <S.Label>{answer.text}</S.Label>
       <S.Statistics>
         {isActive && <UserVoteIcon fontSize='small' />}

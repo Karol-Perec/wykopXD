@@ -3,7 +3,7 @@ import {
   ThumbUpOutlined as ThumbUpIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';
-import { Typography, Button, Divider, IconButton } from '@mui/material';
+import { Button, Divider, IconButton } from '@mui/material';
 import { RefCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EntryCommentsDrawer from '~/components/CommentsDrawer/EntryCommentsDrawer';
@@ -68,11 +68,11 @@ const EntryPreview = ({ entry, containerRef }: EntryPreviewProps) => {
 
       <S.Statistics>
         <Button startIcon={<ThumbUpIcon />} color='inherit' onClick={handleStopPropagation}>
-          <Typography>{votes.up}</Typography>
+          {votes.up}
         </Button>
 
         <Button startIcon={<CommentsIcon />} onClick={handleToggleCommentsDrawer} color='inherit'>
-          <Typography>{comments.count}</Typography>
+          {comments.count}
         </Button>
 
         {!!navigator.share && (

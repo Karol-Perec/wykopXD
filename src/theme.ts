@@ -95,5 +95,10 @@ export const getTheme = (mode: ThemeMode, primaryColor: PrimaryColor): ThemeOpti
         },
       },
     },
+    MuiTypography: {
+      defaultProps: {
+        component: 'div',
+      },
+    },
   },
 });

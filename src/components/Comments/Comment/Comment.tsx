@@ -1,5 +1,5 @@
 import { ThumbUpOutlined as ThumbUpIcon, ThumbDownOutlined as ThumbDownIcon } from '@mui/icons-material';
-import { Button, Divider, Typography } from '@mui/material';
+import { Button, Divider } from '@mui/material';
 import { useMemo } from 'react';
 import Media from '~/components/Media/Media';
 import { ContentContainer, TextContainer } from '~/components/UI/Containers';
@@ -40,10 +40,10 @@ const Comment = ({ comment, isResponse }: CommentProps) => {
 
         <S.Statistics>
           <Button startIcon={<ThumbUpIcon />} color='inherit'>
-            <Typography>{votes.up}</Typography>
+            {votes.up}
           </Button>
           <Button startIcon={<ThumbDownIcon />} color='inherit'>
-            <Typography>{votes.down}</Typography>
+            {votes.down}
           </Button>
         </S.Statistics>
       </S.CommentContainer>

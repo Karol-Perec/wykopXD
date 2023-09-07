@@ -3,7 +3,7 @@ import {
   Share as ShareIcon,
   LocalFireDepartment as HotIcon,
 } from '@mui/icons-material';
-import { Button, Divider, Typography, IconButton, useTheme, Badge } from '@mui/material';
+import { Button, Divider, IconButton, useTheme, Badge } from '@mui/material';
 import { RefCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as WykopIcon } from '~/assets/images/logo.svg';
@@ -116,11 +116,11 @@ const LinkPreview = ({ link, containerRef }: LinkDetailsProps) => {
           onClick={handleStopPropagation}
           color='inherit'
         >
-          <Typography>{votes.up}</Typography>
+          {votes.up}
         </Button>
 
         <Button startIcon={<CommentsIcon />} onClick={handleToggleCommentsDrawer} color='inherit'>
-          <Typography>{comments.count}</Typography>
+          {comments.count}
         </Button>
 
         {!!navigator.share && (

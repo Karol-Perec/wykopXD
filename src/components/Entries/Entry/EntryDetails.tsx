@@ -3,7 +3,7 @@ import {
   ThumbUpOutlined as ThumbUpIcon,
   Share as ShareIcon,
 } from '@mui/icons-material';
-import { Typography, Button, Divider, IconButton } from '@mui/material';
+import { Button, Divider, IconButton } from '@mui/material';
 import { useMemo } from 'react';
 import Comments from '~/components/Comments/Comments';
 import Media from '~/components/Media/Media';
@@ -49,11 +49,11 @@ const EntryDetails = ({ entry, isUpdatingComments = false }: EntryDetailsProps) 
 
         <S.Statistics>
           <Button startIcon={<ThumbUpIcon />} color='inherit'>
-            <Typography>{votes.up}</Typography>
+            {votes.up}
           </Button>
 
           <Button startIcon={<CommentsIcon />} color='inherit'>
-            <Typography>{comments.count}</Typography>
+            {comments.count}
           </Button>
 
           {!!navigator.share && (
