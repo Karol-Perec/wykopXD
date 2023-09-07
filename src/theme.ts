@@ -84,4 +84,16 @@ export const getTheme = (mode: ThemeMode, primaryColor: PrimaryColor): ThemeOpti
       '"Segoe UI Symbol"',
     ].join(','),
   },
+  components: {
+    MuiBackdrop: {
+      styleOverrides: {
+        root: {
+          backdropFilter: 'blur(8px)',
+        },
+        invisible: {
+          backdropFilter: 'none',
+        },
+      },
+    },
+  },
 });
