@@ -23,21 +23,13 @@ const ContentList = ({ contents, isLoading, onInfiniteScroll }: MultiListProps) 
           <LinkPreview
             link={content}
             key={content.id}
-            containerRef={
-              idx > getInfiniteScrollingTriggerIdx(contents)
-                ? infiniteScrollingTriggerRef
-                : undefined
-            }
+            containerRef={idx > getInfiniteScrollingTriggerIdx(contents) ? infiniteScrollingTriggerRef : undefined}
           />
         ) : (
           <EntryPreview
             entry={content}
             key={content.id}
-            containerRef={
-              idx > getInfiniteScrollingTriggerIdx(contents)
-                ? infiniteScrollingTriggerRef
-                : undefined
-            }
+            containerRef={idx > getInfiniteScrollingTriggerIdx(contents) ? infiniteScrollingTriggerRef : undefined}
           />
         )
       )}

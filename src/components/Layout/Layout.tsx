@@ -23,10 +23,7 @@ const Layout = () => {
 
   return (
     <>
-      <TopBar
-        onLeftDrawerToggleClick={handleToggleLeftDrawer}
-        onRightDrawerToggleClick={handleToggleRightDrawer}
-      />
+      <TopBar onLeftDrawerToggleClick={handleToggleLeftDrawer} onRightDrawerToggleClick={handleToggleRightDrawer} />
       <LeftDrawer open={showLeftDrawer} onUserAction={handleToggleLeftDrawer} />
       <RightDrawer open={showRightDrawer} onUserAction={handleToggleRightDrawer} />
       <S.Main>{!token || isLoading ? <Loading /> : <Outlet />}</S.Main>

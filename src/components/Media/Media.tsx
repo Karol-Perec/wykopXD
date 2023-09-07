@@ -15,15 +15,7 @@ interface MediaProps {
 const Media = ({ type, sourceUrl, imageUrl, adult, ratio, listMode = false }: MediaProps) => {
   switch (type) {
     case 'gif':
-      return (
-        <Gif
-          sourceUrl={sourceUrl}
-          imageUrl={imageUrl}
-          adult={adult}
-          ratio={ratio}
-          listMode={listMode}
-        />
-      );
+      return <Gif sourceUrl={sourceUrl} imageUrl={imageUrl} adult={adult} ratio={ratio} listMode={listMode} />;
     case 'video':
     case 'gfycat':
       return (
@@ -37,15 +29,7 @@ const Media = ({ type, sourceUrl, imageUrl, adult, ratio, listMode = false }: Me
         />
       );
     default:
-      return (
-        <Image
-          sourceUrl={sourceUrl}
-          imageUrl={imageUrl}
-          adult={adult}
-          ratio={ratio}
-          listMode={listMode}
-        />
-      );
+      return <Image sourceUrl={sourceUrl} imageUrl={imageUrl} adult={adult} ratio={ratio} listMode={listMode} />;
   }
 };
 

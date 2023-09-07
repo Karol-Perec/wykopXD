@@ -1,9 +1,9 @@
 import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import ContentList from '~/components/ContentList/ContentList';
-import ErrorMessage from '~/components/UI/ErrorMessage';
 import useUser from '~/api/useUser';
 import useUserActions from '~/api/useUserActions';
+import ContentList from '~/components/ContentList/ContentList';
+import ErrorMessage from '~/components/UI/ErrorMessage';
 import useTitle from '~/hooks/useTitle';
 import { filterUniqueData } from '~/utils/dataUtils';
 
@@ -24,9 +24,7 @@ const UserPage = () => {
   return (
     <>
       <Container disableGutters>
-        {user.data?.backgroundUrl && (
-          <img src={user.data.backgroundUrl} width='100%' alt={username} />
-        )}
+        {user.data?.backgroundUrl && <img src={user.data.backgroundUrl} width='100%' alt={username} />}
       </Container>
 
       <ContentList

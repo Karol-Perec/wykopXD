@@ -1,7 +1,4 @@
-import {
-  ThumbUpOutlined as ThumbUpIcon,
-  ThumbDownOutlined as ThumbDownIcon,
-} from '@mui/icons-material';
+import { ThumbUpOutlined as ThumbUpIcon, ThumbDownOutlined as ThumbDownIcon } from '@mui/icons-material';
 import { Button, Divider, Typography } from '@mui/material';
 import { useMemo } from 'react';
 import Media from '~/components/Media/Media';

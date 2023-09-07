@@ -1,9 +1,4 @@
-import {
-  styled,
-  alpha,
-  AppBar as MuiAppBar,
-  Container,
-} from '@mui/material';
+import { styled, alpha, AppBar as MuiAppBar, Container } from '@mui/material';
 import { ReactComponent as SvgLogo } from '~/assets/images/logo.svg';
 
 export const AppBar = styled(MuiAppBar)(({ theme }) => ({

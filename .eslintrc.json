@@ -36,7 +36,7 @@
     }
   },
   "rules": {
-    "max-len": ["warn", { "code": 100, "ignoreUrls": true }],
+    "max-len": ["warn", { "code": 120, "ignoreUrls": true }],
     "react/function-component-definition": [
       2,
       {
@@ -91,16 +91,7 @@
             "position": "after"
           }
         ],
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type"
-        ]
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]
       }
     ]
   }

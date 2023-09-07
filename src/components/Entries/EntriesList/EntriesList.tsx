@@ -19,9 +19,7 @@ const EntriesList = ({ entries, isLoading, onInfiniteScroll }: EntriesListProps)
         <EntryPreview
           entry={entry}
           key={entry.id}
-          containerRef={
-            idx > getInfiniteScrollingTriggerIdx(entries) ? infiniteScrollingTriggerRef : undefined
-          }
+          containerRef={idx > getInfiniteScrollingTriggerIdx(entries) ? infiniteScrollingTriggerRef : undefined}
         />
       ))}
       {isLoading && <Loading />}

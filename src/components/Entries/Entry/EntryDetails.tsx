@@ -8,12 +8,7 @@ import { useMemo } from 'react';
 import Comments from '~/components/Comments/Comments';
 import Media from '~/components/Media/Media';
 import SurveyResults from '~/components/SurveyResults/SurveyResults';
-import {
-  Card,
-  ContentContainer,
-  MainContentContainer,
-  TextContainer,
-} from '~/components/UI/Containers';
+import { Card, ContentContainer, MainContentContainer, TextContainer } from '~/components/UI/Containers';
 import UserHeader from '~/components/UI/UserHeader';
 import { Entry } from '~/types';
 import { parseMarkdown } from '~/utils/parseMarkdown';

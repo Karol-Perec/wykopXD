@@ -12,11 +12,7 @@ const qualityResolutionMap: Record<ImageQuality, string> = {
   original: '',
 };
 
-export const getDisplayedImageUrl = (
-  imageUrl: string,
-  quality: ImageQuality,
-  mimeType: MimeType
-) => {
+export const getDisplayedImageUrl = (imageUrl: string, quality: ImageQuality, mimeType: MimeType) => {
   switch (mimeType) {
     case 'image/jpeg':
       return imageUrl.replace('.jpg', `${qualityResolutionMap[quality]}.jpg`);
@@ -38,5 +34,4 @@ export const getLinkMediaType = (link: Link): MediaType => {
   return 'image';
 };
 
-export const parseImageUrl = (url: string | undefined, size: number) =>
-  url?.replace('.jpg', `,q${size}.jpg`);
+export const parseImageUrl = (url: string | undefined, size: number) => url?.replace('.jpg', `,q${size}.jpg`);

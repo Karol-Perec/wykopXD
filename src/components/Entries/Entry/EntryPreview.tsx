@@ -37,20 +37,13 @@ const EntryPreview = ({ entry, containerRef }: EntryPreviewProps) => {
     setIsCommentsDrawerOpened((prev) => !prev);
   });
 
-  const handleShare = stopPropagation(() =>
-    navigator.share({ url: `${window.location.origin}/wpis/${id}` })
-  );
+  const handleShare = stopPropagation(() => navigator.share({ url: `${window.location.origin}/wpis/${id}` }));
 
   const handleOpenCommentsDrawer = () => setIsCommentsDrawerOpened(true);
   const handleCloseCommentsDrawer = () => setIsCommentsDrawerOpened(false);
 
   return (
-    <Card
-      ref={containerRef}
-      onClick={handleNavigateToEntry}
-      onMouseUp={openInNewTab(`/wpis/${id}`)}
-      listMode
-    >
+    <Card ref={containerRef} onClick={handleNavigateToEntry} onMouseUp={openInNewTab(`/wpis/${id}`)} listMode>
       <UserHeader user={author} date={createdAt} />
 
       <ContentContainer>

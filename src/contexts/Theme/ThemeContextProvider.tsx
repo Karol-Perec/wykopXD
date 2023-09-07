@@ -18,10 +18,7 @@ const ThemeContextProvider = ({ children }: PropsWithChildren) => {
     [themeMode, setPrimaryColor, primaryColor, setThemeMode]
   );
 
-  const theme = useMemo(
-    () => createTheme(getTheme(themeMode, primaryColor)),
-    [themeMode, primaryColor]
-  );
+  const theme = useMemo(() => createTheme(getTheme(themeMode, primaryColor)), [themeMode, primaryColor]);
 
   return (
     <ThemeModeContext.Provider value={toggleThemeMode}>

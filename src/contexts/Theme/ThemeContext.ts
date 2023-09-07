@@ -1,9 +1,9 @@
-import { MouseEvent, createContext } from 'react';
+import { MouseEvent, createContext, Dispatch, SetStateAction } from 'react';
 import { PrimaryColor, ThemeMode } from '~/theme';
 
 export interface ThemeContextInterface {
   changeThemeMode: (event: MouseEvent<HTMLElement>, mode: ThemeMode) => void;
-  setPrimaryColor: React.Dispatch<React.SetStateAction<PrimaryColor>>;
+  setPrimaryColor: Dispatch<SetStateAction<PrimaryColor>>;
   themeMode: ThemeMode;
   primaryColor: PrimaryColor;
 }

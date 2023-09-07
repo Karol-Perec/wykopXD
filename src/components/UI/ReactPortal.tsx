@@ -15,7 +15,7 @@ const ReactPortal = ({ children, wrapperId }: PropsWithChildren<ReactPortalProps
 
   if (mountContainer === null) return null;
 
-  return createPortal(children, mountContainer);
+  return createPortal(<div>{children}</div>, mountContainer);
 };
 
 export default ReactPortal;

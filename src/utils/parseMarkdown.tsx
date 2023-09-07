@@ -21,12 +21,8 @@ export const parseMarkdown = (text: string) => {
 
   return new ReactStringParser(text)
     .parse('\n', (_, idx) => <br key={`br-${idx}`} />)
-    .parse(CITE_REGEX, (cite, key) => (
-      <Blockquote key={`quote-${key}`}>{cite.substring(1)}</Blockquote>
-    ))
-    .parse(SPOILER_REGEX, (spoiler, key) => (
-      <Spoiler key={`spoiler-${key}`}>{spoiler.substring(1)}</Spoiler>
-    ))
+    .parse(CITE_REGEX, (cite, key) => <Blockquote key={`quote-${key}`}>{cite.substring(1)}</Blockquote>)
+    .parse(SPOILER_REGEX, (spoiler, key) => <Spoiler key={`spoiler-${key}`}>{spoiler.substring(1)}</Spoiler>)
     .parse(NAMED_URL_FULL_REGEX, (namedUrl, key) => {
       const urlMatch = namedUrl.match(NAMED_URL_SECTIONED_REGEX);
 
@@ -53,15 +49,9 @@ export const parseMarkdown = (text: string) => {
         </ExternalNoPropagationLink>
       )
     )
-    .parse(CODE_REGEX, (code, key) => (
-      <code key={`code-${key}`}>{code.substring(1, code.length - 1)}</code>
-    ))
-    .parse(BOLD_REGEX, (bold, key) => (
-      <b key={`bold-${key}`}>{bold.substring(2, bold.length - 2)}</b>
-    ))
-    .parse(ITALIC_REGEX, (italic, key) => (
-      <i key={`italic-${key}`}>{italic.substring(1, italic.length - 1)}</i>
-    ))
+    .parse(CODE_REGEX, (code, key) => <code key={`code-${key}`}>{code.substring(1, code.length - 1)}</code>)
+    .parse(BOLD_REGEX, (bold, key) => <b key={`bold-${key}`}>{bold.substring(2, bold.length - 2)}</b>)
+    .parse(ITALIC_REGEX, (italic, key) => <i key={`italic-${key}`}>{italic.substring(1, italic.length - 1)}</i>)
     .parse(HASHTAG_REGEX, (hashTag, key) => (
       <RouterNoPropagationLink to={`/tag/${hashTag.substring(1)}`} key={`${hashTag}-${key}`}>
         {hashTag}

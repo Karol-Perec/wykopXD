@@ -16,14 +16,7 @@ interface CommentsDrawerProps {
   open: boolean;
 }
 
-const CommentsDrawer = ({
-  comments,
-  isLoading,
-  error,
-  open,
-  onOpen,
-  onClose,
-}: CommentsDrawerProps) => {
+const CommentsDrawer = ({ comments, isLoading, error, open, onOpen, onClose }: CommentsDrawerProps) => {
   const theme = useTheme();
   const isDekstop = useMediaQuery(theme.breakpoints.up('md'));
 

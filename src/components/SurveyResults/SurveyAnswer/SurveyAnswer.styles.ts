@@ -30,7 +30,7 @@ export const SurveyProgress = styled(LinearProgress, {
   borderRadius: 10,
 
   // border: highlight ? '1px solid #bbb' : undefined,
-  
+
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor: theme.palette.grey[theme.palette.mode === 'dark' ? 800 : 200],
   },

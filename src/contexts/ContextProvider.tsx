@@ -1,10 +1,13 @@
 import { PropsWithChildren } from 'react';
 import AuthContextProvider from './Auth/AuthContextProvider';
+import SettingsContextProvider from './Settings/SettingsContextProvider';
 import ThemeContextProvider from './Theme/ThemeContextProvider';
 
 const ContextProvider = ({ children }: PropsWithChildren) => (
   <ThemeContextProvider>
-    <AuthContextProvider>{children}</AuthContextProvider>
+    <SettingsContextProvider>
+      <AuthContextProvider>{children}</AuthContextProvider>
+    </SettingsContextProvider>
   </ThemeContextProvider>
 );
 

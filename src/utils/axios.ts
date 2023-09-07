@@ -1,17 +1,17 @@
 import axios, { AxiosInstance, RawAxiosRequestConfig } from 'axios';
 
 interface CustomAxiosInstance extends AxiosInstance {
-  request<R = any, D = any>(config: RawAxiosRequestConfig<D>): Promise<R>;
-  get<R = any, D = any>(url: string, config?: RawAxiosRequestConfig<D>): Promise<R>;
-  delete<R = any, D = any>(url: string, config?: RawAxiosRequestConfig<D>): Promise<R>;
-  head<R = any, D = any>(url: string, config?: RawAxiosRequestConfig<D>): Promise<R>;
-  options<R = any, D = any>(url: string, config?: RawAxiosRequestConfig<D>): Promise<R>;
-  post<R = any, D = any>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
-  put<R = any, D = any>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
-  patch<R = any, D = any>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
-  postForm<R = any, D = any>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
-  putForm<R = any, D = any>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
-  patchForm<R = any, D = any>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  request<R = unknown, D = unknown>(config: RawAxiosRequestConfig<D>): Promise<R>;
+  get<R = unknown, D = unknown>(url: string, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  delete<R = unknown, D = unknown>(url: string, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  head<R = unknown, D = unknown>(url: string, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  options<R = unknown, D = unknown>(url: string, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  post<R = unknown, D = unknown>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  put<R = unknown, D = unknown>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  patch<R = unknown, D = unknown>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  postForm<R = unknown, D = unknown>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  putForm<R = unknown, D = unknown>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
+  patchForm<R = unknown, D = unknown>(url: string, data?: D, config?: RawAxiosRequestConfig<D>): Promise<R>;
 }
 
 const axiosInstance: CustomAxiosInstance = axios.create({

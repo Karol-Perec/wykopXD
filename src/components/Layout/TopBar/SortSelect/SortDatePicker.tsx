@@ -26,11 +26,7 @@ const SortDatePicker = ({ option, baseRoute, handleClose }: SortDatePickerProps)
     setDate(initDate);
   }, [month, option.datePick, year]);
 
-  const handleSetDateParams = (
-    newDate: Date | null,
-    route: string,
-    picks: CalendarPickerView[] | undefined
-  ) => {
+  const handleSetDateParams = (newDate: Date | null, route: string, picks: CalendarPickerView[] | undefined) => {
     handleClose();
     if (!newDate || !picks) return navigate('/');
     navigate(
@@ -53,9 +49,7 @@ const SortDatePicker = ({ option, baseRoute, handleClose }: SortDatePickerProps)
         minDate={new Date('2005-12-01')}
         maxDate={new Date()}
         value={date}
-        onAccept={(newDate) =>
-          handleSetDateParams(newDate, `${baseRoute}/${option.path}`, option.datePick)
-        }
+        onAccept={(newDate) => handleSetDateParams(newDate, `${baseRoute}/${option.path}`, option.datePick)}
         onChange={setDate}
         desktopModeMediaQuery=''
         componentsProps={{

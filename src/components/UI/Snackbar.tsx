@@ -12,13 +12,7 @@ const CustomizedSnackbars = () => {
 
   return (
     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-      <Alert
-        onClose={handleClose}
-        elevation={6}
-        variant='filled'
-        severity='success'
-        sx={{ width: '100%' }}
-      >
+      <Alert onClose={handleClose} elevation={6} variant='filled' severity='success' sx={{ width: '100%' }}>
         This is a success message!
       </Alert>
     </Snackbar>

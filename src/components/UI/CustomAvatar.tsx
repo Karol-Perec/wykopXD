@@ -37,11 +37,7 @@ const CustomAvatar = ({ showBadge, ...avatarProps }: CustomAvatarProps) => {
   const avatar = <StyledAvatar alt='avatar' variant='rounded' {...avatarProps} />;
 
   return showBadge ? (
-    <StyledBadge
-      overlap='rectangular'
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      variant='dot'
-    >
+    <StyledBadge overlap='rectangular' anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant='dot'>
       {avatar}
     </StyledBadge>
   ) : (

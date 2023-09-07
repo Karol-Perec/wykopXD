@@ -41,11 +41,7 @@ const UpcomingPage = () => {
 
   return (
     <>
-      <SortSelect
-        options={UPCOMING_SORT_OPTIONS}
-        activeOptionPath={sort}
-        baseRoute={Route.UPCOMING}
-      />
+      <SortSelect options={UPCOMING_SORT_OPTIONS} activeOptionPath={sort} baseRoute={Route.UPCOMING} />
       <LinksList
         links={filterUniqueData(data?.pages.flat())}
         isLoading={isLoading || isFetchingNextPage}

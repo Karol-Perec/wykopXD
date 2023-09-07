@@ -21,5 +21,5 @@ export const MikroblogIcon = styled(MainIcon)({
 export const NavTabs = styled(Tabs)(({ theme }) => ({
   '.MuiTabs-indicator': {
     backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.main : '#fff',
-  }
+  },
 })) as typeof Tabs;

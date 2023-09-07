@@ -66,12 +66,7 @@ const LinkPreview = ({ link, containerRef }: LinkDetailsProps) => {
   });
 
   return (
-    <Card
-      ref={containerRef}
-      onClick={handleNavigateToLink}
-      onMouseUp={openInNewTab(`/link/${id}/${slug}`)}
-      listMode
-    >
+    <Card ref={containerRef} onClick={handleNavigateToLink} onMouseUp={openInNewTab(`/link/${id}/${slug}`)} listMode>
       <UserHeader user={author} date={createdAt} />
 
       <S.ContentContainer>

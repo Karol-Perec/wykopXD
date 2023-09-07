@@ -8,13 +8,7 @@ interface DrawerProps {
 }
 
 const Drawer = ({ open, anchor, children, onUserAction }: PropsWithChildren<DrawerProps>) => (
-  <MuiDrawer
-    open={open}
-    onClose={onUserAction}
-    anchor={anchor}
-    keepMounted
-    PaperProps={{ style: { width: 220 } }}
-  >
+  <MuiDrawer open={open} onClose={onUserAction} anchor={anchor} keepMounted PaperProps={{ style: { width: 220 } }}>
     {children}
   </MuiDrawer>
 );

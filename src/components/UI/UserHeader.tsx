@@ -1,4 +1,4 @@
-import { Box, Popover, styled, Tooltip, Typography, useTheme } from '@mui/material';
+import { Box, CardHeader, Popover, styled, Tooltip, Typography, useTheme } from '@mui/material';
 import { MouseEvent } from 'react';
 import { USER_COLORS } from '~/constants/userColors.constant';
 import useDebouncedState from '~/hooks/useDebouncedState';
@@ -23,10 +23,7 @@ interface UserHeaderProps {
 
 const UserHeader = ({ user, date }: UserHeaderProps) => {
   const theme = useTheme();
-  const [anchorEl, debouncedAnchorEl, setAnchorEl] = useDebouncedState<HTMLElement | null>(
-    null,
-    500
-  );
+  const [anchorEl, debouncedAnchorEl, setAnchorEl] = useDebouncedState<HTMLElement | null>(null, 500);
   const userColor = USER_COLORS[user.color];
 
   const handlePopoverOpen = (event: MouseEvent<HTMLElement>) => setAnchorEl(event.currentTarget);

@@ -10,10 +10,7 @@ const EntryPage = () => {
   const { id } = useParams();
   const { state }: { state: Entry } = useLocation();
   const navigationType = useNavigationType();
-  const { data, isLoading, error } = useEntry(
-    id!,
-    navigationType === NavigationType.Push && state ? state : undefined
-  );
+  const { data, isLoading, error } = useEntry(id!, navigationType === NavigationType.Push && state ? state : undefined);
   useTitle(`Wpis użytkownika ${data ? `@${data.author.username}` : '...'}`);
 
   if (error) return <ErrorMessage error={error} />;

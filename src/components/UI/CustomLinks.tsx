@@ -32,8 +32,7 @@ export const RouterNoPropagationLink = ({
   underline = 'hover',
   state,
   children,
-}: Pick<RouterLinkProps, 'to' | 'children' | 'color' | 'title' | 'state'> &
-  Pick<MuiLinkProps, 'underline'>) => (
+}: Pick<RouterLinkProps, 'to' | 'children' | 'color' | 'title' | 'state'> & Pick<MuiLinkProps, 'underline'>) => (
   <StyledMuiLink
     component={RouterLink}
     to={to}

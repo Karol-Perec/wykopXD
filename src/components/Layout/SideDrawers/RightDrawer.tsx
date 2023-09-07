@@ -20,7 +20,7 @@ interface RightDrawerProps {
 
 const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
   const { authData, setAuthData } = useContext(AuthContext);
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   const handleLogout: MouseEventHandler = (e) => {
     setAuthData(undefined);
@@ -37,28 +37,11 @@ const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
       <Divider variant='middle' />
       <List>
         {!authData?.userkey && (
-          <ListNavLink
-            to='/zaloguj'
-            label='Zaloguj się'
-            onClick={onUserAction}
-            icon={<LoginIcon />}
-          />
+          <ListNavLink to='/zaloguj' label='Zaloguj się' onClick={onUserAction} icon={<LoginIcon />} />
         )}
-        {authData?.userkey && (
-          <ListNavLink to='/' label='Wyloguj się' onClick={handleLogout} icon={<LogoutIcon />} />
-        )}
-        <ListNavLink
-          to='/ustawienia'
-          label='Ustawienia'
-          onClick={onUserAction}
-          icon={<SettingsIcon />}
-        />
-        <ListNavLink
-          to='/o-aplikacji'
-          label='O aplikacji'
-          onClick={onUserAction}
-          icon={<AppInfoIcon />}
-        />
+        {authData?.userkey && <ListNavLink to='/' label='Wyloguj się' onClick={handleLogout} icon={<LogoutIcon />} />}
+        <ListNavLink to='/ustawienia' label='Ustawienia' onClick={onUserAction} icon={<SettingsIcon />} />
+        <ListNavLink to='/o-aplikacji' label='O aplikacji' onClick={onUserAction} icon={<AppInfoIcon />} />
       </List>
       <Divider variant='middle' />
     </Drawer>

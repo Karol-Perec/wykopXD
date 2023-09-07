@@ -10,10 +10,7 @@ const LinkPage = () => {
   const { id } = useParams();
   const { state }: { state: Link } = useLocation();
   const navigationType = useNavigationType();
-  const { data, isLoading, error } = useLink(
-    id!,
-    navigationType === NavigationType.Push && state ? state : undefined
-  );
+  const { data, isLoading, error } = useLink(id!, navigationType === NavigationType.Push && state ? state : undefined);
   useTitle(data?.title);
 
   if (error) return <ErrorMessage error={error} />;

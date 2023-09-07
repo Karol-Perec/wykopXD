@@ -43,9 +43,7 @@ const SortSelect = ({ options = [], activeOptionPath, baseRoute }: SortSelectPro
             key={o.label}
           >
             <ListItemText>{o.label}</ListItemText>
-            {o.datePick && (
-              <SortDatePicker option={o} baseRoute={baseRoute} handleClose={handleClose} />
-            )}
+            {o.datePick && <SortDatePicker option={o} baseRoute={baseRoute} handleClose={handleClose} />}
           </S.MenuItem>
         ))}
       </Menu>

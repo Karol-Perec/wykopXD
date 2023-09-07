@@ -4,9 +4,7 @@ import axios from '~/utils/axios';
 import { defaultQueryOptions } from './defaultQueryOptions';
 
 const getUserActions = async (page: number, username: string) =>
-  axios
-    .get<WykopCollection<Entry | Link>>(`/users/${username}/actions`, { params: { page } })
-    .then((d) => d.data);
+  axios.get<WykopCollection<Entry | Link>>(`/users/${username}/actions`, { params: { page } }).then((d) => d.data);
 
 const useUserActions = (username: string) =>
   useInfiniteQuery({

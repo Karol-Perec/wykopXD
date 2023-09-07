@@ -60,9 +60,7 @@ const Comments = ({ comments = [] }: CommentsProps) => {
 
   useEffect(() => {
     if (comments.length && hash.includes('#comment-')) {
-      document
-        .getElementById(hash.slice(1))
-        ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }, [comments, hash]);
 
@@ -85,9 +83,7 @@ const Comments = ({ comments = [] }: CommentsProps) => {
 
       <div style={{ overflowY: 'auto' }} ref={containerRef}>
         {commentsList}
-        {page * PAGE_SIZE <= comments.length && (
-          <Loading containerRef={infiniteScrollingTriggerRef} />
-        )}
+        {page * PAGE_SIZE <= comments.length && <Loading containerRef={infiniteScrollingTriggerRef} />}
       </div>
     </>
   );
