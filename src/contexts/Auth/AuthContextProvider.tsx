@@ -1,6 +1,7 @@
 import { PropsWithChildren, useLayoutEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '~/hooks/useLocalStorage';
+import { Route } from '~/routes';
 import axios from '~/utils/axios';
 import AuthContext, { AuthContextInterface, AuthData } from './AuthContext';
 
@@ -25,7 +26,7 @@ const AuthContextProvider = ({ children }: PropsWithChildren) => {
       (err) => {
         if (err.response.data.code === 403 && err.response.data.error.key === 2) {
           setToken(undefined);
-          navigate('/zaloguj');
+          navigate(Route.LOGIN);
         } else {
           return Promise.reject(err);
         }

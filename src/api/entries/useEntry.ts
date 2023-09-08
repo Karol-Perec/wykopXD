@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Entry, WykopResponse } from '~/types';
 import axios from '~/utils/axios';
-import { defaultQueryOptions } from './defaultQueryOptions';
+import { defaultQueryOptions } from '../defaultQueryOptions';
 
 const useEntry = (id: string | number, initialData?: Entry, enabled = true) =>
   useQuery({

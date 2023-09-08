@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import useTag from '~/api/useTag';
+import useTag from '~/api/tags/useTag';
 import ContentList from '~/components/ContentList/ContentList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import useTitle from '~/hooks/useTitle';

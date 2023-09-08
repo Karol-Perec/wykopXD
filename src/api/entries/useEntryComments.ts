@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Comment, Entry, WykopCollection } from '~/types';
 import axios from '~/utils/axios';
-import { defaultQueryOptions } from './defaultQueryOptions';
+import { defaultQueryOptions } from '../defaultQueryOptions';
 
 type CommentsSort = 'best' | 'newest' | 'oldest';
 

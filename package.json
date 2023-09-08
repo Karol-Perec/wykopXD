@@ -17,7 +17,7 @@
     "@mui/icons-material": "^5.14.8",
     "@mui/material": "^5.14.8",
     "@mui/x-date-pickers": "^5.0.20",
-    "@tanstack/react-query": "^4.33.0",
+    "@tanstack/react-query": "^4.35.0",
     "axios": "^1.5.0",
     "date-fns": "^2.30.0",
     "react": "^18.2.0",
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^4.34.1",
-    "@tanstack/react-query-devtools": "^4.33.0",
+    "@tanstack/react-query-devtools": "^4.35.0",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.6.0",

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useConnectUrl from '~/api/useConnectUrl';
+import useConnectUrl from '~/api/auth/useConnectUrl';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import Loading from '~/components/UI/Loading';
 import AuthContext from '~/contexts/Auth/AuthContext';

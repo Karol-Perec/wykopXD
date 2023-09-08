@@ -1,5 +1,5 @@
 import { NavigationType, useLocation, useNavigationType, useParams } from 'react-router-dom';
-import useLink from '~/api/useLink';
+import useLink from '~/api/links/useLink';
 import LinkDetails from '~/components/Links/Link/LinkDetails';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import Loading from '~/components/UI/Loading';

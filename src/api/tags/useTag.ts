@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Entry, WykopCollection, Link, TagMeta } from '~/types';
 import axios from '~/utils/axios';
-import { defaultQueryOptions } from './defaultQueryOptions';
+import { defaultQueryOptions } from '../defaultQueryOptions';
 
 const getTag = (page: number, tag: string) =>
   axios.get<WykopCollection<Entry | Link> & { meta: TagMeta }>(`/tags/${tag}`, {

@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import useUser from '~/api/useUser';
-import useUserActions from '~/api/useUserActions';
+import useUserActions from '~/api/users/useUserActions';
 import ContentList from '~/components/ContentList/ContentList';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import useTitle from '~/hooks/useTitle';

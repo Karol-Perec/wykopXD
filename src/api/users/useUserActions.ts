@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Entry, WykopCollection, Link } from '~/types';
 import axios from '~/utils/axios';
-import { defaultQueryOptions } from './defaultQueryOptions';
+import { defaultQueryOptions } from '../defaultQueryOptions';
 
 const getUserActions = async (page: number, username: string) =>
   axios.get<WykopCollection<Entry | Link>>(`/users/${username}/actions`, { params: { page } }).then((d) => d.data);
