@@ -17,7 +17,13 @@ import TagPage from './pages/TagPage';
 import UpcomingPage from './pages/UpcomingPage';
 import { Route } from './routes';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    mutations: {
+      useErrorBoundary: false,
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -31,6 +37,7 @@ const router = createBrowserRouter([
       { path: `${Route.LINK}/:id/:slug?`, element: <LinkPage /> },
       { path: `${Route.ENTRY}/:id/:slug?`, element: <EntryPage /> },
       { path: `${Route.TAG}/:tag`, element: <TagPage /> },
+      { path: Route.LOGIN, element: <Navigate to={Route.HOME} /> },
       { path: Route.SETTINGS, element: <SettingsPage /> },
       { path: Route.APP_INFO, element: <AppInfoPage /> },
       { path: Route.ANY, element: <Navigate to={Route.HOME} /> },

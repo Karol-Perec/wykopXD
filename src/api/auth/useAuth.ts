@@ -1,20 +1,17 @@
 import { useMutation } from '@tanstack/react-query';
 import { useContext } from 'react';
 import AuthContext from '~/contexts/Auth/AuthContext';
+import { WykopBody, WykopResponse } from '~/types';
 import axios from '~/utils/axios';
 
-interface AuthBody {
-  data: {
-    key: string;
-    secret: string;
-  };
-}
+type AuthBody = WykopBody<{
+  key: string;
+  secret: string;
+}>;
 
-interface AuthResponse {
-  data: {
-    token: string;
-  };
-}
+type AuthResponse = WykopResponse<{
+  token: string;
+}>;
 
 const body: AuthBody = {
   data: {
@@ -27,7 +24,7 @@ const useAuth = () => {
   const { setToken } = useContext(AuthContext);
   return useMutation({
     mutationFn: () => axios.post<AuthResponse, AuthBody>('/auth', body),
-    onSuccess: (res) => setToken(res.data.token),
+    onSuccess: ({ data }) => setToken(data.token),
   });
 };
 

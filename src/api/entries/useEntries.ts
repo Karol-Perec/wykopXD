@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Entry, WykopCollection } from '~/types';
 import axios from '~/utils/axios';
-import { defaultQueryOptions } from './defaultQueryOptions';
+import { defaultQueryOptions } from '../defaultQueryOptions';
 
 export type EntriesSort = 'newest' | 'active' | 'hot';
 

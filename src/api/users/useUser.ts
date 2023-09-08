@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { User } from '~/types';
 import axios from '~/utils/axios';
-import { defaultQueryOptions } from './defaultQueryOptions';
+import { defaultQueryOptions } from '../defaultQueryOptions';
 
 const getUser = (username: string) => axios.get<User>(`/users/${username}`);
 

@@ -10,14 +10,15 @@ interface NavLinkProps {
 }
 
 interface ListNavLinkProps extends NavLinkProps {
-  isActive: boolean;
+  isActive?: boolean;
   icon: ReactNode;
+  disabled?: boolean;
   onClick: MouseEventHandler;
 }
 
-export const ListNavLink = ({ label, isActive, icon, to, onClick }: ListNavLinkProps) => (
+export const ListNavLink = ({ label, isActive, icon, to, disabled, onClick }: ListNavLinkProps) => (
   <li>
-    <ListItemButton selected={isActive} component={RouterLink} to={to} onClick={onClick}>
+    <ListItemButton selected={isActive} component={RouterLink} to={to} onClick={onClick} disabled={disabled}>
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText>{label}</ListItemText>
     </ListItemButton>

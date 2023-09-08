@@ -1,29 +1,17 @@
-import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useConnectUrl from '~/api/auth/useConnectUrl';
+import useConnect from '~/api/auth/useConnect';
 import ErrorMessage from '~/components/UI/ErrorMessage';
 import Loading from '~/components/UI/Loading';
-import AuthContext from '~/contexts/Auth/AuthContext';
 import useTitle from '~/hooks/useTitle';
-import { Route } from '~/routes';
 
 const LoginPage = () => {
   useTitle('Zaloguj się');
-  const { authData } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const { data, isLoading, error } = useConnectUrl(
-    window.location.origin + Route.LOGIN_CALLBACK,
-    !import.meta.env.REACT_APP_CONNECT_URL
-  );
-  const connectUrl = import.meta.env.REACT_APP_CONNECT_URL || data;
-
-  useEffect(() => {
-    if (authData?.userkey) navigate('/');
-  }, [navigate, authData?.userkey]);
+  const { data, isLoading, error } = useConnect();
 
   if (error) return <ErrorMessage error={error} />;
-  if (isLoading && !connectUrl) return <Loading />;
-  if (connectUrl) window.location.href = connectUrl;
+  if (isLoading) return <Loading />;
+  if (data?.data.connect_url) {
+    window.location.href = data.data.connect_url;
+  }
 
   return null;
 };

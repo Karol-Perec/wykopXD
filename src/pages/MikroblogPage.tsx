@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import useEntries, { EntriesSort } from '~/api/useEntries';
+import useEntries, { EntriesSort } from '~/api/entries/useEntries';
 import EntriesList from '~/components/Entries/EntriesList/EntriesList';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import ErrorMessage from '~/components/UI/ErrorMessage';

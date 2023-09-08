@@ -18,34 +18,21 @@ interface RightDrawerProps {
   onUserAction: MouseEventHandler;
 }
 
-const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => {
-  const { authData, setAuthData } = useContext(AuthContext);
-  const queryClient = useQueryClient();
-
-  const handleLogout: MouseEventHandler = (e) => {
-    setAuthData(undefined);
-    queryClient.invalidateQueries();
-    onUserAction(e);
-  };
-
-  return (
+const RightDrawer = ({ open, onUserAction }: RightDrawerProps) => (
     <Drawer anchor='right' onUserAction={onUserAction} open={open}>
       <S.RightDrawerHeader>
-        <Avatar src={authData?.user?.avatar} size={60} />
-        <Typography variant='h6'>{authData?.user?.login}</Typography>
+        <Avatar src={undefined} size={60} />
+        <Typography variant='h6'>{undefined}</Typography>
       </S.RightDrawerHeader>
       <Divider variant='middle' />
       <List>
-        {!authData?.userkey && (
-          <ListNavLink to='/zaloguj' label='Zaloguj się' onClick={onUserAction} icon={<LoginIcon />} />
-        )}
-        {authData?.userkey && <ListNavLink to='/' label='Wyloguj się' onClick={handleLogout} icon={<LogoutIcon />} />}
+        <ListNavLink to='/zaloguj' label='Zaloguj się' onClick={onUserAction} icon={<LoginIcon />} disabled />
+
         <ListNavLink to='/ustawienia' label='Ustawienia' onClick={onUserAction} icon={<SettingsIcon />} />
         <ListNavLink to='/o-aplikacji' label='O aplikacji' onClick={onUserAction} icon={<AppInfoIcon />} />
       </List>
       <Divider variant='middle' />
     </Drawer>
   );
-};
 
 export default RightDrawer;

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import useLinks, { HomePageSortParam } from '~/api/useLinks';
+import useLinks, { HomePageSortParam } from '~/api/links/useLinks';
 import ContentList from '~/components/ContentList/ContentList';
 import SortSelect from '~/components/Layout/TopBar/SortSelect/SortSelect';
 import ErrorMessage from '~/components/UI/ErrorMessage';

@@ -62,12 +62,10 @@ export const ListNavLinks = ({ onNavLinkClick }: ListNavLinksProps) => {
 
 export const NavLinks = () => {
   const { pathname } = useLocation();
-  const activePath = Object.values(Route)
-    .reverse()
-    .find((route) => pathname.startsWith(route));
+  const activeLink = navLinks.find(({ path }) => path.startsWith(pathname));
 
   return (
-    <S.NavTabs value={activePath || false} component='nav'>
+    <S.NavTabs value={activeLink?.path || false} component='nav'>
       {navLinks.map((nav) => (
         <TopBarNavLink label={nav.label} to={nav.path} key={nav.path} value={nav.path} />
       ))}

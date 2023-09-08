@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Entry, Link, WykopCollection } from '~/types';
 import axios from '~/utils/axios';
-import { defaultQueryOptions } from './defaultQueryOptions';
+import { defaultQueryOptions } from '../defaultQueryOptions';
 
 type LinksTypeParam = 'homepage' | 'upcoming' | 'observed';
 
